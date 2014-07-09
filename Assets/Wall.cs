@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-public class SpatialCorrection : MonoBehaviour {
+[ExecuteInEditMode]
+public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
     
