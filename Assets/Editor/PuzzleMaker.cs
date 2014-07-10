@@ -25,8 +25,6 @@ class PuzzleMaker : EditorWindow
 	}
     void OnUpdate(SceneView sceneView)
     {
-        
-
 		if(Active){
             if (Indicator == null)
             {
@@ -45,8 +43,6 @@ class PuzzleMaker : EditorWindow
 	        Selection.activeObject = null;
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
-
-
 
 			Vector2 screenpos = Event.current.mousePosition;
 			screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
@@ -97,7 +93,6 @@ class PuzzleMaker : EditorWindow
                 vect.x += blockSize;
                 vect.y += blockSize / 2;
                 orientation = Wall.Orientation.Vertical;
-
             }
         }
         else
@@ -107,7 +102,6 @@ class PuzzleMaker : EditorWindow
                 //area left
                 vect.y += blockSize / 2;
                 orientation = Wall.Orientation.Vertical;
-
             }
             else
             {
@@ -115,19 +109,12 @@ class PuzzleMaker : EditorWindow
                 vect.x += blockSize / 2;
                 vect.y += blockSize;
                 orientation = Wall.Orientation.Horizontal;
-
             }
         }
-
-
-        
         vect.x += originX;
         vect.y += originY;
         return vect;
-
     }
-
-
     bool isLeftPressed(bool prevValue)
     {
 
@@ -147,25 +134,26 @@ class PuzzleMaker : EditorWindow
 	bool LeftDown(){
 		return (Event.current.type == EventType.MouseDown && Event.current.button == 0);
 	}
-    
+    public enum tools
+    {
+        Wall,
+        Block,
+        Key,
+        Player,
+
+    }
+    public tools selectedTool = tools.Wall;
     void OnGUI()
     {
-        Rect r =  EditorGUILayout.BeginHorizontal("Button");
-        if (GUI.Button(r, GUIContent.none))
-        {
-            Debug.Log("DO sometninggasd");
-        }
-        GUILayout.Label("Make Wall");
-        EditorGUILayout.EndHorizontal();
-
-        EditorGUILayout.Vector2Field("MousePos", MousePos);
+        //EditorGUILayout.Vector2Field("MousePos", MousePos);
         Active =  (EditorGUILayout.Toggle("Active", Active) && WallPrefab != null);
-		
-        EditorGUILayout.Toggle("LeftClick", LeftClick);
-        EditorGUILayout.Toggle("RightClick", RightClick);
-		WallPrefab = (GameObject)EditorGUILayout.ObjectField("WallPrefab",WallPrefab,typeof(GameObject),false);
+        WallPrefab = (GameObject)EditorGUILayout.ObjectField("WallPrefab", WallPrefab, typeof(GameObject), false);
 
-
+        tools newtool = (tools)EditorGUILayout.EnumPopup("Select Tool:", selectedTool);
+        if (selectedTool != newtool)
+        {
+            selectedTool = newtool;
+        }
     }
     void OnInspectorUpdate()
     {
