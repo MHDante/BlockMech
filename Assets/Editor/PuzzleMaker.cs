@@ -24,13 +24,14 @@ class PuzzleMaker : EditorWindow
 	}
     void OnUpdate(SceneView sceneView)
     {
-        if (Indicator == null)
-        {
-            Indicator = (GameObject)Instantiate(WallPrefab);
-            Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
-        }
+        
 
 		if(Active){
+            if (Indicator == null)
+            {
+                Indicator = (GameObject)Instantiate(WallPrefab);
+                Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
+            }
 	        if (Event.current.type == EventType.layout)
 	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
 	        Selection.activeObject = null;
@@ -149,7 +150,7 @@ class PuzzleMaker : EditorWindow
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Vector2Field("MousePos", MousePos);
-        Active =  EditorGUILayout.Toggle("Active", Active);
+        Active =  (EditorGUILayout.Toggle("Active", Active) && WallPrefab != null);
 		
         EditorGUILayout.Toggle("LeftClick", LeftClick);
         EditorGUILayout.Toggle("RightClick", RightClick);
