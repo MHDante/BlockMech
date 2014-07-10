@@ -7,19 +7,21 @@ using System.Linq;
 public abstract class GamePiece : MonoBehaviour
 {
     public Cell cell;
-    public enum PlayerState
+
+    public enum State
     {
         moving,
-        idle
+		idle,
+		disabled
     }
-    public PlayerState state = PlayerState.idle;
+
     public abstract bool isSolid { get; set; }
 
     public abstract bool isPushable { get; set; }
 
-    public GamePiece containedPiece {get ;set;}
+    public GamePiece containedPiece { get ;set;}
 
-    public virtual bool pushFrom(Wall.Orientation orientation)
+    public virtual bool pushFrom(Side side)
     {
         return true;
     }
@@ -36,6 +38,8 @@ public abstract class GamePiece : MonoBehaviour
         return temp;
     }
 
-    public virtual bool move(Wall.Orientation orientation) { return true;  }
+    public virtual bool move(Side side) {
+		return true;  
+	}
 }
 
