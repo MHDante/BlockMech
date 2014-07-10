@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
-
-    int moveCounter = 0;
+public class Player : MonoBehaviour 
+{
     int distance = 4;
     float timer;
     float moveDelayTime = 0.2f;

@@ -44,7 +44,6 @@ public class RoomManager : MonoBehaviour {
             {
                 Grid[PosX - 1][PosY].walls[Side.right] = w;
             }
-
         }
         else if (w.orientation == Wall.Orientation.Horizontal)
         {
@@ -56,24 +55,18 @@ public class RoomManager : MonoBehaviour {
             {
                 Grid[PosX][PosY - 1].walls[Side.top] = w;
             }
-
         }
     }
-
 	// Use this for initialization
 	void Start () {
 	}
-	
 	// Update is called once per frame
 	void Update () {
         if(!Application.isPlaying && roomManager == null)
         { roomManager = this; Awake(); }
 	}
-
-
     public void RemoveWall(Vector2 target, Wall.Orientation orientation)
     {
-
         int PosY = (int)target.y / Wall.blockSize;
         int PosX = (int)target.x / Wall.blockSize;
 
@@ -87,7 +80,6 @@ public class RoomManager : MonoBehaviour {
             {
                 RemoveWall(PosX - 1, PosY, Side.right);
             }
-
         }
         else if (orientation == Wall.Orientation.Horizontal)
         {
@@ -99,9 +91,7 @@ public class RoomManager : MonoBehaviour {
             {
                 RemoveWall(PosX, PosY-1, Side.top);
             }
-
         }
-
     }
     private void RemoveWall(int x, int y, Side side)
     {
