@@ -12,7 +12,26 @@ public class Cell {
 
     public Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
 
-    public GamePiece gamePiece;
+	public GamePiece gamePiece{ get; private set;}
+
+	public bool Occupy(GamePiece piece){
+		if(gamePiece == null){
+			gamePiece = piece;
+			return true;
+		} 
+		GamePiece g = gamePiece.containedPiece;
+		while(g!=null){
+			if(g.isSolid)return false;
+			g=g.containedPiece;
+		}
+		g.onOccupy(piece);
+		return true;
+	}
+	public GamePiece DeOccupy(){
+		GamePiece ret = gamePiece;
+		gamePiece = null;
+		return gamePiece;
+		}
 
 	public Cell getNeighbour(Side s){
 		try{
