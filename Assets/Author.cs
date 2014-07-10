@@ -8,5 +8,9 @@ public class Author : MonoBehaviour {
     public string author;
     public string levelName;
     public difficulty_setting difficulty;
+    void Awake()
+    {
+        
+    }
 
 }

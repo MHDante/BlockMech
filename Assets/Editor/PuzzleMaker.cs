@@ -2,25 +2,12 @@
 using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
-class PuzzleMaker : EditorWindow
+
+public class PuzzleMaker : EditorWindow
 {
-    public enum pieces
-    {
-        none,
-        antitrap,
-        button,
-        end,
-        key,
-        keyhole,
-        player,
-        start,
-        teleport,
-        trap,
-        wall,
-    }
-    public pieces selectedPiece = pieces.wall;
-    public Dictionary<pieces, GameObject> pieceGameObjects;
-    public Dictionary<pieces, GameObject> pieceParents;
+    public PieceType selectedPiece = PieceType.wall;
+    public Dictionary<PieceType, GameObject> pieceGameObjects;
+    public Dictionary<PieceType, GameObject> pieceParents;
     Vector2 MousePos;
     bool LeftClick;
     bool RightClick;
@@ -42,23 +29,22 @@ class PuzzleMaker : EditorWindow
 	}
     void Initialize()
     {
-
         if (pieceGameObjects == null)
         {
-            pieceGameObjects = new Dictionary<pieces, GameObject>()
+            pieceGameObjects = new Dictionary<PieceType, GameObject>()
             {
-                { pieces.antitrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
-                { pieces.button, Resources.Load<GameObject>("Prefabs/button")},
-                { pieces.end, Resources.Load<GameObject>("Prefabs/end")},
-                { pieces.key, Resources.Load<GameObject>("Prefabs/key")},
-                { pieces.keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
-                { pieces.player, Resources.Load<GameObject>("Prefabs/player")},
-                { pieces.start, Resources.Load<GameObject>("Prefabs/start")},
-                { pieces.teleport, Resources.Load<GameObject>("Prefabs/teleport")},
-                { pieces.trap, Resources.Load<GameObject>("Prefabs/trap")},
-                { pieces.wall, Resources.Load<GameObject>("Prefabs/Wall")},
+                { PieceType.antitrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
+                { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
+                { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
+                { PieceType.key, Resources.Load<GameObject>("Prefabs/key")},
+                { PieceType.keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
+                { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
+                { PieceType.start, Resources.Load<GameObject>("Prefabs/start")},
+                { PieceType.teleport, Resources.Load<GameObject>("Prefabs/teleport")},
+                { PieceType.trap, Resources.Load<GameObject>("Prefabs/trap")},
+                { PieceType.wall, Resources.Load<GameObject>("Prefabs/Wall")},
             };
-            pieceParents = new Dictionary<pieces, GameObject>();
+            pieceParents = new Dictionary<PieceType, GameObject>();
         }
         if (Indicator == null)
         {
@@ -78,7 +64,7 @@ class PuzzleMaker : EditorWindow
         {
             DestroyImmediate(Indicator);
         }
-        if (selectedPiece != pieces.none)
+        if (selectedPiece != PieceType.none)
         {
             Indicator = (GameObject)Instantiate(pieceGameObjects[selectedPiece]);
             Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
@@ -99,7 +85,7 @@ class PuzzleMaker : EditorWindow
 			Vector2 screenpos = Event.current.mousePosition;
 			screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 			MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
-            if (selectedPiece == pieces.wall)
+            if (selectedPiece == PieceType.wall)
             {
                 Wall.Orientation or;
                 Vector2 target = GetWallTarget(sceneView, out or);
@@ -116,51 +102,52 @@ class PuzzleMaker : EditorWindow
                     sceneView.Repaint();
                 }
             }
-            else if (selectedPiece != pieces.none)//spawn any other piece (other than wall)
+            else if (selectedPiece != PieceType.none)//spawn any other piece (other than wall)
             {
                 Vector2 target = GetPieceTarget(sceneView);
                 Indicator.transform.position = target;
                 if (LeftDown())
                 {
-                    SpawnObject(selectedPiece, target, sceneView);
+                    SpawnPiece(selectedPiece, target, sceneView);
                 }
                 else if (RightDown())
                 {
-                    //RoomManager.roomManager.RemoveWall(target, or);
-                    //sceneView.Update();
-                    //sceneView.Repaint();
+                    bool destroyChildren = false;
+                    RoomManager.roomManager.RemovePiece(target, destroyChildren);
+                    sceneView.Update();
+                    sceneView.Repaint();
                 }
             }
-            else if (selectedPiece == pieces.none)
+            else if (selectedPiece == PieceType.none)
             {
                 
             }
 			Event.current.Use();
 		}
     }
-    public void SpawnObject(pieces piece, Vector3 target, SceneView sceneView)
+    public void SpawnPiece(PieceType piece, Vector3 target, SceneView sceneView)
     {
         GameObject parent = GetPieceParent(piece);
         GameObject obj = (GameObject)Instantiate(pieceGameObjects[selectedPiece], target, Quaternion.identity);
         obj.transform.parent = parent.transform;
         //add object to room manager
         //
-
+        RoomManager.roomManager.AddPiece(obj, piece);
         sceneView.Update();
         sceneView.Repaint();
     }
     public void SpawnWall(Vector3 target, Wall.Orientation orient, SceneView sceneView)
     {
-        GameObject wall = (GameObject)Instantiate(pieceGameObjects[pieces.wall], target, Quaternion.identity);
-        wall.transform.parent = GetPieceParent(pieces.wall).transform;
+        GameObject wall = (GameObject)Instantiate(pieceGameObjects[PieceType.wall], target, Quaternion.identity);
+        wall.transform.parent = GetPieceParent(PieceType.wall).transform;
         wall.GetComponent<Wall>().orientation = orient;
         RoomManager.roomManager.AddWall(wall);
         sceneView.Update();
         sceneView.Repaint();
     }
-    public GameObject GetPieceParent(pieces piece)
+    public GameObject GetPieceParent(PieceType piece)
     {
-        if (!pieceParents.ContainsKey(piece))
+        if (!pieceParents.ContainsKey(piece) || pieceParents[piece] == null)
         {
             pieceParents[piece] = new GameObject();
             pieceParents[piece].name = piece.ToString();
@@ -244,7 +231,7 @@ class PuzzleMaker : EditorWindow
         Active =  (EditorGUILayout.Toggle("Active", Active));// && WallPrefab != null);
         //WallPrefab = (GameObject)EditorGUILayout.ObjectField("WallPrefab", WallPrefab, typeof(GameObject), false);
 
-        pieces newpiece = (pieces)EditorGUILayout.EnumPopup("Select Piece:", selectedPiece);
+        PieceType newpiece = (PieceType)EditorGUILayout.EnumPopup("Select Piece:", selectedPiece);
         if (selectedPiece != newpiece)
         {
             selectedPiece = newpiece;
