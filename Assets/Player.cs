@@ -14,7 +14,7 @@ public class Player : GamePiece {
     public override bool isSolid { get; set; }
     public override bool isPushable { get; set; }
 
-    public override bool move(Wall.Orientation orientation) { return true; }
+    public override bool move(Side side) { return true; }
 
 	// Use this for initialization
 	void Start () {
@@ -34,11 +34,6 @@ public class Player : GamePiece {
         float x, y;
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
-
-        if (state == PlayerState.idle)
-        {
-
-        }
 
 
 

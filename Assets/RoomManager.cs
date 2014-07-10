@@ -18,7 +18,7 @@ public class RoomManager : MonoBehaviour {
         {
             Grid[i] = new Cell[maxHeight];
             for(int j = 0; j < maxHeight; j++){
-                Grid[i][j] = new Cell();
+                Grid[i][j] = new Cell(this);
             }
         }
 

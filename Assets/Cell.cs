@@ -25,7 +25,7 @@ public class Cell {
 				return room.Grid[x-1][y];
 			case Side.right:
 				return room.Grid[x+1][y];
-			}
+            } throw new Exception("WHAT THE FUCK");
 		} catch (IndexOutOfRangeException e){
 			return null;
 		}
@@ -46,6 +46,6 @@ public class Cell {
 
     public Cell(RoomManager room)
     {
-		this.room = RoomManager;
+		this.room = room;
 	}
 }
