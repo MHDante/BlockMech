@@ -59,7 +59,7 @@ public abstract class GamePiece : MonoBehaviour
 	}
 	void DeOccupy(){
 		if (container == null){
-			cell.gamePiece= null;
+			cell.DeOccupy();
 		} else {
 			container.onDeOccupy();
 		}
