@@ -7,46 +7,69 @@ class PuzzleMaker : EditorWindow
     Vector2 MousePos;
     bool LeftClick;
     bool RightClick;
+	bool Active;
+	GameObject WallPrefab;
     [MenuItem("Window/PuzzleMaker")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(PuzzleMaker));
     }
     void OnEnable()
-    {
-        
-        SceneView.onSceneGUIDelegate += OnUpdate;   
+    {        
+        SceneView.onSceneGUIDelegate += OnUpdate;  
     }
+	void OnDisable(){
+		SceneView.onSceneGUIDelegate -= OnUpdate;  
+	}
     void OnUpdate(SceneView sceneView)
     {
-        if (Event.current.type == EventType.layout)
-            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
-        Selection.activeObject = null;
-        Event e = Event.current;
-        MousePos = e.mousePosition;
-        RightClick = isRightDown(RightClick);
-        LeftClick = LeftPressed(LeftClick);
-        Debug.Log(RightClick);
-        Event.current.Use();
+		if(Active){
+	        if (Event.current.type == EventType.layout)
+	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
+	        Selection.activeObject = null;
+			RightClick = isRightPressed(RightClick);
+			LeftClick = isLeftPressed(LeftClick);
 
 
+			Vector2 screenpos = Event.current.mousePosition;
+			screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
+			MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
+
+			if(LeftDown ()){
+				Instantiate(WallPrefab, new Vector3(MousePos.x, MousePos.y, 0), Quaternion.identity);
+				sceneView.Update();
+				sceneView.Repaint();
+				HandleUtility.Repaint();
+				SceneView.RepaintAll();
+
+
+
+			}
+			Event.current.Use();
+		}
     }
 
 
 
-    bool LeftPressed(bool prevValue)
+    bool isLeftPressed(bool prevValue)
     {
 
-        if(Event.current.type == EventType.MouseDown && Event.current.button == 0) return true;
+		if(LeftDown()) return true;
         if(Event.current.type == EventType.MouseUp && Event.current.button == 0) return false;
         return prevValue;
     }
-    bool isRightDown(bool prevValue)
+    bool isRightPressed(bool prevValue)
     {
-        if (Event.current.type == EventType.MouseDown && Event.current.button == 1) return true;
+		if (RightDown()) return true;
         if (Event.current.type == EventType.MouseUp && Event.current.button == 1) return false;
         return prevValue;
     }
+	bool RightDown(){
+		return (Event.current.type == EventType.MouseDown && Event.current.button == 1);
+	}
+	bool LeftDown(){
+		return (Event.current.type == EventType.MouseDown && Event.current.button == 0);
+	}
     
     void OnGUI()
     {
@@ -59,15 +82,17 @@ class PuzzleMaker : EditorWindow
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Vector2Field("MousePos", MousePos);
+        Active =  EditorGUILayout.Toggle("Active", Active);
+		
         EditorGUILayout.Toggle("LeftClick", LeftClick);
         EditorGUILayout.Toggle("RightClick", RightClick);
-        EditorGUILayout.ObjectField(")
+		WallPrefab = (GameObject)EditorGUILayout.ObjectField("WallPrefab",WallPrefab,typeof(GameObject),false);
+
 
     }
     void OnInspectorUpdate()
     {
         Repaint();
     }
-
 
 }
