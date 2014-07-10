@@ -23,6 +23,7 @@ public abstract class GamePiece : MonoBehaviour
 
     public virtual bool pushFrom(Side side)
     {
+		if (!isPushable) return false;
         return true;
     }
     public virtual bool onOccupy(GamePiece piece)
