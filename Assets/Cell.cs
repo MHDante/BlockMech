@@ -6,7 +6,8 @@ using System;
 public enum Side { top, right, bottom, left };
 public class Cell {
 
-    
+    public int x { get; set; }
+    public int y { get; set; }
 
     public Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
 
