@@ -22,6 +22,7 @@ public class Wall : MonoBehaviour {
                 ((int)Mathf.Round((transform.position.x - blockSize / 2) / blockSize)) * blockSize + blockSize / 2,
                 ((int)Mathf.Round(transform.position.y / blockSize)) * blockSize,
                 transform.position.z );
+            transform.eulerAngles = new Vector3(0, 0, 90);
         }
 
         else if (orientation == Orientation.Vertical)
@@ -30,6 +31,7 @@ public class Wall : MonoBehaviour {
                 ((int)Mathf.Round(transform.position.x / blockSize)) * blockSize,
                 ((int)Mathf.Round((transform.position.y - blockSize / 2) / blockSize)) * blockSize + blockSize / 2,
                 transform.position.z);
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
 	}
 }

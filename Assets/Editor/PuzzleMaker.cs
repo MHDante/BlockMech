@@ -9,6 +9,7 @@ class PuzzleMaker : EditorWindow
     bool RightClick;
 	bool Active;
 	GameObject WallPrefab;
+    GameObject Indicator;
     [MenuItem("Window/PuzzleMaker")]
     public static void ShowWindow()
     {
@@ -23,6 +24,12 @@ class PuzzleMaker : EditorWindow
 	}
     void OnUpdate(SceneView sceneView)
     {
+        if (Indicator == null)
+        {
+            Indicator = (GameObject)Instantiate(WallPrefab);
+            Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
+        }
+
 		if(Active){
 	        if (Event.current.type == EventType.layout)
 	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
@@ -31,24 +38,84 @@ class PuzzleMaker : EditorWindow
 			LeftClick = isLeftPressed(LeftClick);
 
 
+
 			Vector2 screenpos = Event.current.mousePosition;
 			screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 			MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
 
+            Wall.Orientation or;
+            Vector2 target = GetWallTarget(sceneView, out or);
+
+            Indicator.transform.position = target;
+            Indicator.GetComponent<Wall>().orientation = or;
+
 			if(LeftDown ()){
-				Instantiate(WallPrefab, new Vector3(MousePos.x, MousePos.y, 0), Quaternion.identity);
-				sceneView.Update();
-				sceneView.Repaint();
-				HandleUtility.Repaint();
-				SceneView.RepaintAll();
-
-
-
-			}
+                GameObject wall = (GameObject)Instantiate(WallPrefab, target, Quaternion.identity);
+                wall.GetComponent<Wall>().orientation = or;
+                RoomManager.roomManager.AddWall(wall);
+                sceneView.Update();
+                sceneView.Repaint();
+            } if (RightDown())
+            {
+                RoomManager.roomManager.RemoveWall(target, or);
+                sceneView.Update();
+                sceneView.Repaint();
+            }
 			Event.current.Use();
 		}
     }
+    
+    Vector2 GetWallTarget(SceneView sceneView, out Wall.Orientation orientation)
+    {
+        int blockSize = Wall.blockSize;
+        float originX = ((int)Mathf.Floor(MousePos.x / blockSize)) * blockSize;
+        float originY = ((int)Mathf.Floor(MousePos.y / blockSize)) * blockSize;
+        float x = MousePos.x - originX;
+        float y = MousePos.y - originY;
+        Vector3 vect = Vector3.zero;
+        if (x > y)
+        {
+            if (x < blockSize - y)
+            {
+                //area bottom
+                vect.x += blockSize / 2;
+                orientation = Wall.Orientation.Horizontal;
+            }
+            else
+            {
+                //area right
+                vect.x += blockSize;
+                vect.y += blockSize / 2;
+                orientation = Wall.Orientation.Vertical;
 
+            }
+        }
+        else
+        {
+            if (x < blockSize - y)
+            {
+                //area left
+                vect.y += blockSize / 2;
+                orientation = Wall.Orientation.Vertical;
+
+            }
+            else
+            {
+                //area top
+                vect.x += blockSize / 2;
+                vect.y += blockSize;
+                orientation = Wall.Orientation.Horizontal;
+
+            }
+        }
+
+
+        
+        vect.x += originX;
+        vect.y += originY;
+        return vect;
+
+    }
 
 
     bool isLeftPressed(bool prevValue)
