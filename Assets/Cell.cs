@@ -11,6 +11,7 @@ public class Cell {
 	RoomManager room;
 
     private Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
+	public static Cell Get(int x, int y){return RoomManager.roomManager.Grid[x][y];}
 
 	public GamePiece gamePiece{ get; set;}
 
@@ -32,8 +33,8 @@ public class Cell {
 
 	public bool Occupy(GamePiece piece){
 		if(gamePiece == null){
-            piece.cell = this;
 			gamePiece = piece;
+			piece.cell = this;
 			return true;
 		} 
 		GamePiece g = gamePiece;
@@ -41,10 +42,9 @@ public class Cell {
 			if(g.isSolid)return false;
 			g=g.containedPiece;
 		}
-		if (g.onOccupy(piece))
-        {
-            piece.cell = this;
-        }
+        //todo: revise?
+		piece.cell = this;
+		g.onOccupy(piece);
 		return true;
 	}
 	public GamePiece DeOccupy(){
@@ -81,13 +81,13 @@ public class Cell {
         return true;
     }
 
-	public bool isOccupied(){
-		if (gamePiece == null) return false;
-		GamePiece g = gamePiece.containedPiece;
-		while (g!= null){
-		if (g.isSolid) return true;
-			g=g.containedPiece;
-		} return false;
+	public bool IsSolidlyOccupied(){
+		return !Occupy(null);
+	}
+
+	public bool Reserve ()
+	{
+		throw new NotImplementedException ();
 	}
 
     public Cell(RoomManager room, int x, int y)
