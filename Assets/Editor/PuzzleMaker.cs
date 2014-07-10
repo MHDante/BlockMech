@@ -10,6 +10,7 @@ class PuzzleMaker : EditorWindow
 	bool Active;
 	GameObject WallPrefab;
     GameObject Indicator;
+    GameObject WallParent;
     [MenuItem("Window/PuzzleMaker")]
     public static void ShowWindow()
     {
@@ -31,7 +32,14 @@ class PuzzleMaker : EditorWindow
             {
                 Indicator = (GameObject)Instantiate(WallPrefab);
                 Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
+                Indicator.name = "Indicator";
             }
+            if (WallParent == null)
+            {
+                WallParent = new GameObject();
+                WallParent.name = "Walls";
+            }
+            
 	        if (Event.current.type == EventType.layout)
 	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
 	        Selection.activeObject = null;
@@ -52,6 +60,7 @@ class PuzzleMaker : EditorWindow
 
 			if(LeftDown ()){
                 GameObject wall = (GameObject)Instantiate(WallPrefab, target, Quaternion.identity);
+                wall.transform.parent = WallParent.transform;
                 wall.GetComponent<Wall>().orientation = or;
                 RoomManager.roomManager.AddWall(wall);
                 sceneView.Update();
