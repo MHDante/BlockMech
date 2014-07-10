@@ -5,7 +5,8 @@ using System.Collections;
 public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
-    
+
+	public virtual bool isTraversible {get;set;}    
 
     public enum Orientation { Horizontal, Vertical };
     public Orientation orientation = Orientation.Horizontal; 

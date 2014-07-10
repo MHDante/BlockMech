@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Player : GamePiece {
 
@@ -13,8 +14,7 @@ public class Player : GamePiece {
 
     public override bool isSolid { get; set; }
     public override bool isPushable { get; set; }
-
-    public override bool moveTo(Side side) { return true; }
+	public override bool moveTo(Side side) { throw new NotImplementedException(); }
 
 	// Use this for initialization
 	void Start () {
