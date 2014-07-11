@@ -15,10 +15,6 @@ public static Side opposite(this Side s){
 	}throw new WTFException();
 }
 
-	public static Vector2 WorldToWallPos(Vector2 worldPos, out Side s){
-		Wall.Orientation or;
-		return WorldToWallPos(worldPos, out s, out or);
-	}
 
 	public static bool isWithinGrid(this Vector2 worldPos){
 		
@@ -74,6 +70,7 @@ public static Side opposite(this Side s){
 				orientation = Wall.Orientation.Horizontal;
 			}
 		}
+
 		vect.x += originX;
 		vect.y += originY;
 		return vect;

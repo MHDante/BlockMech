@@ -18,7 +18,7 @@ public class Wall : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public virtual void Update () {
 	    if (orientation == Orientation.Horizontal){
             transform.position = new Vector3(
                 ((int)Mathf.Round((transform.position.x - halfBlock) / blockSize)) * blockSize + halfBlock,

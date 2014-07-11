@@ -12,10 +12,9 @@ public class Cell {
 
     private Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
 	public static Cell Get(int x, int y){
-		try{return RoomManager.roomManager.Grid[x][y];}
-		catch(IndexOutOfRangeException e){
-			return null;
-		}
+        if (x < 0 || x >= RoomManager.roomManager.Grid.Length
+            || y < 0 || y >= RoomManager.roomManager.Grid[0].Length) return null;
+		return RoomManager.roomManager.Grid[x][y];
 	}
 
 	public static Cell GetFromWorldPos(Vector2 worldPos){
@@ -23,8 +22,9 @@ public class Cell {
 	}
 	public static Cell GetFromWorldPos(float x, float y){
 		int blockSize = Wall.blockSize;
-		int originX = ((int)Mathf.Floor(x / blockSize));
-		int originY = ((int)Mathf.Floor(y / blockSize));
+        int originX = (int)Mathf.Floor(x / blockSize);
+        int originY = (int)Mathf.Floor(y / blockSize);
+        Debug.Log("adding: " + originX + " " + originY);
 		return Cell.Get(originX, originY);
 	}
 
@@ -70,22 +70,18 @@ public class Cell {
 	}
 
 	public Cell getNeighbour(Side s){
-		try{
-			switch(s){
-			case Side.bottom:
-				return room.Grid[x][y-1];
-			case Side.top:
-				return room.Grid[x][y+1];
-			case Side.left:
-				return room.Grid[x-1][y];
-			case Side.right:
-				return room.Grid[x+1][y];
-            } throw new WTFException();
-		} catch (IndexOutOfRangeException e){
-
-			Debug.Log(e);
-			return null;
-		}
+        switch (s)
+        {
+            case Side.bottom:
+                return Cell.Get(x, y - 1);
+            case Side.top:
+                return Cell.Get(x, y + 1);
+            case Side.left:
+                return Cell.Get(x - 1, y);
+            case Side.right:
+                return Cell.Get(x + 1, y);
+        }
+        return null;
 	}
 
 	public Wall getWall(Side s){
@@ -102,11 +98,17 @@ public class Cell {
 	public bool IsSolidlyOccupied(){
 		return !Occupy(null);
 	}
-
-	public bool Reserve ()
+    private bool IsReserved = false;
+	public bool Reserve()
 	{
-		throw new NotImplementedException ();
+        if (IsReserved) return false;
+        IsReserved = true;
+        return true;
 	}
+    public void Unreserve()
+    {
+        IsReserved = false;
+    }
 
     public Cell(RoomManager room, int x, int y)
     {

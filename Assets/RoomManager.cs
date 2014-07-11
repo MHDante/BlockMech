@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using System;
 [ExecuteInEditMode]
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
@@ -27,18 +28,35 @@ public class RoomManager : MonoBehaviour {
         {
 			Wall wall  = wallobj.GetComponent<Wall>();
 			if(wall != null){
-				Wall.Orientation orient;
-				Side side;
-				Vector2 Position = wallobj.transform.position;
-				if(Position.isWithinGrid()){
-					Utils.WorldToWallPos(Position, out side, out orient);
-					AddWall(wall, side);
+				if(((Vector2)wall.transform.position).isWithinGrid()){
+                    AddWall(wall);
 				}
 				else{
-					Debug.Log ("Wall was found out of Grid Range @ " + Position);
+                    Debug.Log("Wall was found out of Grid Range @ " + wall.transform.position);
 				}
 			}
         }
+    }
+    public void PrintWallAmount()
+    {
+
+        int count = 0;
+        for(int i = 0; i < Grid.Length; i++)
+        {
+            for(int j = 0; j < Grid[0].Length; j++)
+            {
+                foreach(Side s in Enum.GetValues(typeof(Side)))
+                {
+                    if (Grid[i][j].getWall(s) != null)
+                    {
+                        Debug.Log(i + " : " + j + " side: " + s.ToString());
+                        count++;
+
+                    }
+                }
+            }
+        }
+        Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
     }
     public void AddPiece(GameObject piece, PieceType piecetype)
     {
@@ -62,21 +80,17 @@ public class RoomManager : MonoBehaviour {
 
     }
 
-	public void AddWall(Wall wall, Side side)
-    {
-		float x = wall.transform.position.x;
-		float y = wall.transform.position.y;
-		float offset = (float)Wall.blockSize /2;
-
-		if (wall.orientation == Wall.Orientation.Horizontal){
-
-			if (Cell.GetFromWorldPos(x, y+offset )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
-			if (Cell.GetFromWorldPos(x, y-offset )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
-		}else if(wall.orientation == Wall.Orientation.Vertical){
-			if (Cell.GetFromWorldPos(x+offset, y )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
-			if (Cell.GetFromWorldPos(x-offset, y )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
-		}
-    }
+    //public void AddWall(Wall wall, Side side)
+    //{
+    //	float x = wall.transform.position.x;
+    //	float y = wall.transform.position.y;
+    //
+    //	if (wall.orientation == Wall.Orientation.Horizontal){
+    //		if (Cell.GetFromWorldPos(x, y)!= null) Cell.GetFromWorldPos(x,y).setWall(side,wall);
+    //	} else if(wall.orientation == Wall.Orientation.Vertical){
+    //		if (Cell.GetFromWorldPos(x, y )!= null) Cell.GetFromWorldPos(x,y).setWall(side,wall);
+    //	}
+    //}
 	// Use this for initialization
 	void Start () {
 	}
@@ -98,8 +112,13 @@ public class RoomManager : MonoBehaviour {
         }
     }
 
-	public void RemoveWall(Cell cell, Side side)
+	public void RemoveWall(Vector2 position)
     {
+        Side side; Wall.Orientation orient;
+        Utils.WorldToWallPos(position, out side, out orient);
+        Cell cell = Cell.GetFromWorldPos(position);
+
+        if (cell == null) { Debug.Log("Stay inside the grid!"); return; }
 		if (cell.getWall(side) != null)
         {
 			DestroyImmediate(cell.getWall(side).gameObject);
@@ -110,4 +129,24 @@ public class RoomManager : MonoBehaviour {
 			neighbour.setWall(Utils.opposite(side), null);
 	    }
 	}
+    public void AddWall(Wall wall)
+    {
+        Side side; Wall.Orientation orient;
+        Utils.WorldToWallPos(wall.transform.position, out side, out orient);
+        Cell cell = Cell.GetFromWorldPos(wall.transform.position);
+
+        if (cell == null) { Debug.Log("Stay inside the grid!"); return; }
+        
+        if (cell.getWall(side) != null)
+        {
+            RemoveWall(wall.transform.position);
+        }
+        cell.setWall(side, wall);
+        Cell neighbour = cell.getNeighbour(side);
+        if (neighbour != null)
+        {
+            neighbour.setWall(Utils.opposite(side), wall);
+        }
+
+    }
 }

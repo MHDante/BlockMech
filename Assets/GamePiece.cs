@@ -22,7 +22,7 @@ public abstract class GamePiece : MonoBehaviour
     public Cell cell;
     public PieceType piecetype;
 	private const int defaultWeight  = 1;
-	Cell target;
+	Cell destination;
 	bool isMoving = false;
 	public GamePiece container{get{
 			GamePiece ret = cell.gamePiece;
@@ -77,21 +77,27 @@ public abstract class GamePiece : MonoBehaviour
 
     public virtual bool moveTo(Side side) {
 		if (isMoving) return false;
-		target = cell.getNeighbour(side);
-		return isMoving = target.Reserve();//Intentional Set.
-
+		Cell dest = cell.getNeighbour(side);
+        if (dest == null) return false;
+        bool available = dest.Reserve();//Intentional Set.
+		if (available)
+        {
+            isMoving = true;
+            destination = dest;
+        }
+        return available;
 	}
 	public virtual bool TeleportTo(Cell target){
 		Cell currentCell = cell;
 		if (target.IsSolidlyOccupied())return false;
-		DeOccupy();
+		DeOccupyParent();
 		if (!target.Occupy(this)) {
 			currentCell.Occupy(this);
 			return false;
 		} return true;
 
 	}
-	void DeOccupy(){
+	void DeOccupyParent(){
 		if (container == null){
 			if (this != cell.DeOccupy()) throw new WTFException();
 		} else {
@@ -136,7 +142,27 @@ public abstract class GamePiece : MonoBehaviour
 
 
     }
-	public virtual void Update(){
+    public float speed = 5f;
+    public float currentLerp = 0f, maxLerp = 100f;
+	public virtual void Update()
+    {
+        if (isMoving)
+        {
+            if (currentLerp >= maxLerp)
+            {
+                currentLerp = 0f;
+                isMoving = false;
+                transform.position = destination.WorldPos();
+                destination.Unreserve();
+                cell = destination;
+                destination = null;
+            }
+            else
+            {
+                transform.position = Vector2.Lerp(cell.WorldPos(), destination.WorldPos(), currentLerp / 100f);
+                currentLerp += speed;
+            }
+        }
 	}
 	public virtual void Awake(){}
 	public virtual void Start(){}

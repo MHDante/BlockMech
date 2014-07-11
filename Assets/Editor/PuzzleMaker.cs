@@ -102,12 +102,13 @@ public class PuzzleMaker : EditorWindow
                 }
                 else if (RightDown())
                 {
-
-					Cell pos = Cell.GetFromWorldPos(MousePos);
-					if (pos== null) Debug.Log("Stay inside the grid!");
-					RoomManager.roomManager.RemoveWall(pos, side);
+					RoomManager.roomManager.RemoveWall(MousePos);
                     sceneView.Update();
                     sceneView.Repaint();
+                }
+                else if (Event.current.type == EventType.MouseDown && Event.current.button == 2)
+                {
+                    RoomManager.roomManager.PrintWallAmount();
                 }
             }
             else if (selectedPiece != PieceType.none)//spawn any other piece (other than wall)
@@ -115,18 +116,18 @@ public class PuzzleMaker : EditorWindow
 				Cell target = Cell.GetFromWorldPos(MousePos);
 				if (target!=null) {
 					Indicator.transform.position = target.WorldPos();
-					            if (LeftDown())
-					            {
-					                SpawnPiece(selectedPiece, target);
+                    if (LeftDown())
+                    {
+					    SpawnPiece(selectedPiece, target);
 						sceneView.Update();
 						sceneView.Repaint();
-					            }
-					            else if (RightDown())
-					            {
-					                bool destroyChildren = false;
-					                RoomManager.roomManager.RemovePiece(target, destroyChildren);
-					                sceneView.Update();
-					                sceneView.Repaint();
+					}
+					else if (RightDown())
+					{
+                        bool destroyChildren = false;
+                        RoomManager.roomManager.RemovePiece(target, destroyChildren);
+                        sceneView.Update();
+                        sceneView.Repaint();
 					}
 				}
             }
@@ -152,7 +153,8 @@ public class PuzzleMaker : EditorWindow
 		Wall wall = wallobj.GetComponent<Wall>();
 		if(wall == null) throw new WTFException();
 		wall.orientation = orient;
-        RoomManager.roomManager.AddWall(wall, side);
+        wall.Update();
+        RoomManager.roomManager.AddWall(wall);
     }
     public GameObject GetPieceParent(PieceType piece)
     {
