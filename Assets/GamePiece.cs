@@ -5,16 +5,18 @@ using System.Linq;
 public enum PieceType
 {
     none,
-    antitrap,
-    button,
+    wall,
+    door,
+    player,
     end,
+    button,
+    switcH,
     key,
     keyhole,
-    player,
-    start,
     teleport,
+    tile,
     trap,
-    wall,
+    antitrap,
 }
 [ExecuteInEditMode]
 public abstract class GamePiece : MonoBehaviour
@@ -55,7 +57,8 @@ public abstract class GamePiece : MonoBehaviour
     }
     public virtual void Start() 
     {
-        if (!Cell.GetFromWorldPos(transform.position).Occupy(this)) throw new WTFException(this.GetType().ToString());
+        if (!Cell.GetFromWorldPos(transform.position).Occupy(this)) 
+            throw new WTFException(this.GetType().ToString());
     }
 
     public virtual bool pushFrom(Side side, int strength = 1)
@@ -81,7 +84,7 @@ public abstract class GamePiece : MonoBehaviour
 		if (containedPiece == null){//not intentional set
         	containedPiece = piece;
 			return true;
-		} return false;
+        } return containedPiece.onOccupy(piece);
     }
 
     public virtual GamePiece onDeOccupy() 

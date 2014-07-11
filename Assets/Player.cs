@@ -21,7 +21,6 @@ public class Player : GamePiece {
         if (Input.GetKey(KeyCode.DownArrow)) { moveTo(Side.bottom); }
         if (Input.GetKey(KeyCode.LeftArrow)) { moveTo(Side.left); }
         if (Input.GetKey(KeyCode.RightArrow)) { moveTo(Side.right); }
-
     }
 
     void OnSwipeUp(){ moveTo(Side.top); }

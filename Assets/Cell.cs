@@ -85,10 +85,12 @@ public class Cell {
 		} 
 		GamePiece g = gamePiece;
 		while(g.containedPiece!=null){
-			if(g.isSolid)return false;
+			if(g.isSolid)
+                return false;
 			g=g.containedPiece;
 		}
-		if (!g.onOccupy(piece))return false;
+		if (!g.onOccupy(piece))
+            return false;
 		piece.cell = this;
 		return true;
 	}	

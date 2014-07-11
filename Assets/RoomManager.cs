@@ -2,15 +2,57 @@
 using System.Collections;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 [ExecuteInEditMode]
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
+    public static Dictionary<PieceType, GameObject> pieceGameObjects;
+    public static Dictionary<PieceType, GameObject> pieceParents;
+    public static Dictionary<PieceType, Type> pieceTypes;
 
     public const int gridWidth = 16;
     public const int gridHeight = 12;
 
     public Cell[][] Grid;
     public Player player;
+
+    void InitializeDictionaries()
+    {
+        if (RoomManager.pieceGameObjects == null || RoomManager.pieceTypes == null)
+        {
+            RoomManager.pieceTypes = new Dictionary<PieceType, Type>()
+            {
+                { PieceType.wall, typeof(Wall) },
+                { PieceType.door, typeof(Door) },
+                { PieceType.player, typeof(Player) },
+                { PieceType.end, typeof(End) },
+                { PieceType.button, typeof(Button) },
+                { PieceType.switcH, typeof(Switch) },
+                { PieceType.key, typeof(Key) },
+                { PieceType.keyhole,  typeof(Keyhole) },
+                { PieceType.teleport, typeof(Teleport) },
+                { PieceType.tile, typeof(Tile) },
+                { PieceType.trap, typeof(Trap) },
+                { PieceType.antitrap, typeof(Antitrap) },
+            };
+            RoomManager.pieceGameObjects = new Dictionary<PieceType, GameObject>()
+            {
+                { PieceType.wall, Resources.Load<GameObject>("Prefabs/Wall")},
+                { PieceType.door, Resources.Load<GameObject>("Prefabs/Wall")},//also wall, door script added later
+                { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
+                { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
+                { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
+                { PieceType.switcH, Resources.Load<GameObject>("Prefabs/button")},//also button, switcH script added later
+                { PieceType.key, Resources.Load<GameObject>("Prefabs/key")},
+                { PieceType.keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
+                { PieceType.teleport, Resources.Load<GameObject>("Prefabs/teleport")},
+                { PieceType.tile, Resources.Load<GameObject>("Prefabs/tile")},
+                { PieceType.trap, Resources.Load<GameObject>("Prefabs/trap")},
+                { PieceType.antitrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
+            };
+            RoomManager.pieceParents = new Dictionary<PieceType, GameObject>();
+        }
+    }
 
     void Awake() {
         roomManager = this;
@@ -36,6 +78,8 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
+
+        InitializeDictionaries();
     }
     public void PrintWallAmount()
     {
@@ -59,22 +103,35 @@ public class RoomManager : MonoBehaviour {
         }
         Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
     }
-    public void AddPiece(GameObject piece, PieceType piecetype)
+    public void AddPiece(GameObject gameobject, PieceType piecetype)
     {
         GamePiece gamePiece;
-        if (piecetype == PieceType.player)
+        Type t = pieceTypes[piecetype];
+        gamePiece = (GamePiece)gameobject.GetComponent(t);
+        if (gamePiece == null)
         {
-            gamePiece = piece.GetComponent<Player>();
-            if (gamePiece == null) gamePiece = piece.AddComponent<Player>();
-            RoomManager.roomManager.player = (Player)gamePiece;
-            gamePiece.piecetype = piecetype;
+            gamePiece = (GamePiece)gameobject.AddComponent(t);
         }
-        else
+        gamePiece.piecetype = piecetype;
+        if (t == typeof(Player))
         {
-            gamePiece = piece.GetComponent<Placeholder>();
-            if (gamePiece == null) gamePiece = piece.AddComponent<Placeholder>();
-            gamePiece.piecetype = piecetype;
+            player = (Player)gamePiece;
         }
+
+
+        //if (piecetype == PieceType.player)
+        //{
+        //    gamePiece = gameobject.GetComponent<Player>();
+        //    if (gamePiece == null) gamePiece = gameobject.AddComponent<Player>();
+        //    RoomManager.roomManager.player = (Player)gamePiece;
+        //    gamePiece.piecetype = piecetype;
+        //}
+        //else
+        //{
+        //    gamePiece = gameobject.GetComponent<Placeholder>();
+        //    if (gamePiece == null) gamePiece = gameobject.AddComponent<Placeholder>();
+        //    gamePiece.piecetype = piecetype;
+        //}
 		//Cell cell = Cell.GetFromWorldPos(piece.transform.position);
         //if (cell != null)
         //{
@@ -89,6 +146,11 @@ public class RoomManager : MonoBehaviour {
 
     }
 	void Start () {
+        if (Application.isPlaying)
+        {
+            GameObject preexisting = GameObject.Find("Indicator");
+            if (preexisting != null) DestroyImmediate(preexisting);
+        }
 	}
 	void Update () {
         if(!Application.isPlaying && roomManager == null)
