@@ -17,22 +17,31 @@ public enum PieceType
     trap,
     wall,
 }
+[ExecuteInEditMode]
 public abstract class GamePiece : MonoBehaviour
 {
-    public Cell cell;
+    public Cell _cell ;
+    public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
     public PieceType piecetype;
 	private const int defaultWeight  = 1;
 	Cell destination;
 	bool isMoving = false;
-	public GamePiece container{get{
+	public GamePiece container { get
+    {
+        
 			GamePiece ret = cell.gamePiece;
-			if (ret == this) return null;
-			while (ret.containedPiece != this){
+            if (cell == null) return null;
+			if (ret == this || ret ==null) return null;
+
+			while (ret.containedPiece != this) {
 				if (ret == null) throw new WTFException();
 				ret = ret.containedPiece;
+                if (ret == null)
+                    Debug.Log("ErrorEngine");
 			} return ret;
 
-		}}
+		}
+    }
     public abstract bool isSolid { get; set; }
 
 	private int _weight = defaultWeight;
@@ -41,6 +50,14 @@ public abstract class GamePiece : MonoBehaviour
     public abstract bool isPushable { get; set; }
 
     public GamePiece containedPiece { get ;set; }
+
+    public virtual void Awake() {
+        
+    }
+    public virtual void Start() 
+    {
+        if (!Cell.GetFromWorldPos(transform.position).Occupy(this)) throw new WTFException(this.GetType().ToString());
+    }
 
     public virtual bool pushFrom(Side side, int strength = 1)
     {
@@ -62,7 +79,7 @@ public abstract class GamePiece : MonoBehaviour
     }
     public virtual bool onOccupy(GamePiece piece)
     {
-		if (containedPiece = null){
+		if (containedPiece == null){//not intentional set
         	containedPiece = piece;
 			return true;
 		} return false;
@@ -77,7 +94,11 @@ public abstract class GamePiece : MonoBehaviour
 
     public virtual bool moveTo(Side side) {
 		if (isMoving) return false;
+        if (cell == null)
+            return false;
 		Cell dest = cell.getNeighbour(side);
+        Wall w = cell.getWall(side);
+        if(w!=null && !w.isTraversible) return false;
         if (dest == null) return false;
         bool available = dest.Reserve();//Intentional Set.
 		if (available)
@@ -90,42 +111,33 @@ public abstract class GamePiece : MonoBehaviour
 	public virtual bool TeleportTo(Cell target){
 		Cell currentCell = cell;
 		if (target.IsSolidlyOccupied())return false;
-		DeOccupyParent();
+		Detatch();
 		if (!target.Occupy(this)) {
 			currentCell.Occupy(this);
 			return false;
 		} return true;
 
 	}
-	void DeOccupyParent(){
-		if (container == null){
-			if (this != cell.DeOccupy()) throw new WTFException();
-		} else {
-			container.onDeOccupy();
-		}
-	}
 
-
-    internal void Destroy(bool destroyChildren = false)
+    public void Detatch(bool bringChildren = true)
     {
-        if (destroyChildren)
+        
+        if (bringChildren)
         {
             if (container == null)
             {
-                if (cell.DeOccupy() != this) throw new WTFException();
+                if (cell.Empty() != this) throw new WTFException();
             }
             else
             {
-                container.containedPiece = null;
+                container.onDeOccupy();
             }
-            DestroyImmediate(this.gameObject);
-            if (containedPiece != null) containedPiece.Destroy(destroyChildren);
         }
         else
         {
             if (containedPiece == null)
             {
-                this.Destroy(true);
+                this.Detatch(true);
                 return;
             }
             else if (container == null)
@@ -135,12 +147,20 @@ public abstract class GamePiece : MonoBehaviour
             else
             {
                 container.containedPiece = containedPiece;
+                if (containedPiece == null) container.onDeOccupy();
+                this.containedPiece = null;
             }
-            DestroyImmediate(this.gameObject);
         }
-
-
-
+    }
+    public void Destroy(bool destroyChildren = true)
+    {
+        Detatch(destroyChildren);
+        GamePiece g = this;
+        while (g!=null){
+            if (this.gameObject)DestroyImmediate(this.gameObject);
+            g = g.containedPiece; 
+        }
+        
     }
     public float speed = 5f;
     public float currentLerp = 0f, maxLerp = 100f;
@@ -152,9 +172,11 @@ public abstract class GamePiece : MonoBehaviour
             {
                 currentLerp = 0f;
                 isMoving = false;
-                transform.position = destination.WorldPos();
+                Detatch();
+
+                
                 destination.Unreserve();
-                cell = destination;
+                destination.Occupy(this);
                 destination = null;
             }
             else
@@ -164,7 +186,8 @@ public abstract class GamePiece : MonoBehaviour
             }
         }
 	}
-	public virtual void Awake(){}
-	public virtual void Start(){}
+    public virtual void OnDestroy(){
+        if(cell != null)Detatch();
+    }
 }
 

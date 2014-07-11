@@ -9,14 +9,19 @@ public class Player : GamePiece {
     public override bool isSolid { get; set; }
     public override bool isPushable { get; set; }
 
-	// Use this for initialization
 	public  override void Start () {
-        //Debug.Log(RoomManager.roomManager != null);
-        GameObject g = this.gameObject;
-        RoomManager.roomManager.AddPiece(g, piecetype);
+        base.Start();
+        RoomManager.roomManager.player = this;
+        //GameObject g = this.gameObject;
+        //RoomManager.roomManager.AddPiece(g, piecetype);
 	}
-	
-	// Update is called once per frame
 	public  override void Update () {
+        base.Update();
+
+        if (Input.GetKey(KeyCode.UpArrow)) { moveTo(Side.top); }
+        if (Input.GetKey(KeyCode.DownArrow)) { moveTo(Side.bottom); }
+        if (Input.GetKey(KeyCode.LeftArrow)) { moveTo(Side.left); }
+        if (Input.GetKey(KeyCode.RightArrow)) { moveTo(Side.right); }
+
     }
 }
