@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-[ExecuteInEditMode]
 public enum PieceType
 {
     none,

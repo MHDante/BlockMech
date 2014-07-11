@@ -17,7 +17,6 @@ public class Player : GamePiece {
 	}
 	public  override void Update () {
         base.Update();
-
         if (Input.GetKey(KeyCode.UpArrow)) { moveTo(Side.top); }
         if (Input.GetKey(KeyCode.DownArrow)) { moveTo(Side.bottom); }
         if (Input.GetKey(KeyCode.LeftArrow)) { moveTo(Side.left); }
