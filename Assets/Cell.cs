@@ -161,7 +161,6 @@ public class Cell {
 
     public Cell(RoomManager room, int x, int y)
     {
-        this.room = room;
         this.x = x;
         this.y = y;
         walls = new Dictionary<Side, Wall>();
