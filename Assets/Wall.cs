@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 [ExecuteInEditMode]
 public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
 	public const int halfBlock = blockSize/2;
-
+    [ExposePropertyAttribute]
 	public virtual bool isTraversible {get;set;}    
 
     public enum Orientation { Horizontal, Vertical };
-    public Orientation orientation = Orientation.Horizontal; 
+    public Orientation orientation = Orientation.Horizontal;
 
 	// Use this for initialization
 	void Start () {

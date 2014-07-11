@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour {
     public const int gridHeight = 12;
 
     public Cell[][] Grid;
-
+    public Player player;
 
     void Awake() {
         roomManager = this;
@@ -39,75 +39,68 @@ public class RoomManager : MonoBehaviour {
     }
     public void PrintWallAmount()
     {
-
         int count = 0;
         for(int i = 0; i < Grid.Length; i++)
         {
             for(int j = 0; j < Grid[0].Length; j++)
             {
-                foreach(Side s in Enum.GetValues(typeof(Side)))
-                {
-                    if (Grid[i][j].getWall(s) != null)
-                    {
-                        Debug.Log(i + " : " + j + " side: " + s.ToString());
-                        count++;
-
-                    }
-                }
+                //foreach(Side s in Enum.GetValues(typeof(Side)))
+                //{
+                //    if (Grid[i][j].getWall(s) != null)
+                //    {
+                //        Debug.Log(i + " : " + j + " side: " + s.ToString());
+                //        count++;
+                //
+                //    }
+                //}
+                if (Cell.Get(i, j).gamePiece != null)
+                    Debug.Log("Found : " + Cell.Get(i, j).gamePiece + " @ " + i + " , " + j);
             }
         }
         Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
     }
     public void AddPiece(GameObject piece, PieceType piecetype)
     {
-        GamePiece gamePiece = piece.GetComponent<Player>();
-        if (gamePiece == null)
+        GamePiece gamePiece;
+        if (piecetype == PieceType.player)
         {
-            gamePiece = piece.AddComponent<Player>();
+            gamePiece = piece.GetComponent<Player>();
+            if (gamePiece == null) gamePiece = piece.AddComponent<Player>();
+            RoomManager.roomManager.player = (Player)gamePiece;
             gamePiece.piecetype = piecetype;
         }
-		Cell cell = Cell.GetFromWorldPos(piece.transform.position);
-        if (cell != null)
+        else
         {
-            var list = cell.getPiecesOnCell();
-            if (list.Select(gpiece => gpiece.piecetype).Contains(piecetype))
-            {
-                return;
-            }
-            bool success = cell.Occupy(gamePiece);
-            //do something if the cell was successfully placed.
+            gamePiece = piece.GetComponent<Placeholder>();
+            if (gamePiece == null) gamePiece = piece.AddComponent<Placeholder>();
+            gamePiece.piecetype = piecetype;
         }
+		//Cell cell = Cell.GetFromWorldPos(piece.transform.position);
+        //if (cell != null)
+        //{
+        //    var list = cell.getPiecesOnCell();
+        //    if (list.Select(gpiece => gpiece.piecetype).Contains(piecetype))
+        //    {
+        //        return;
+        //    }
+        //    bool success = cell.Occupy(gamePiece);
+        //    //do something if the cell was successfully placed.
+        //}
 
     }
-
-    //public void AddWall(Wall wall, Side side)
-    //{
-    //	float x = wall.transform.position.x;
-    //	float y = wall.transform.position.y;
-    //
-    //	if (wall.orientation == Wall.Orientation.Horizontal){
-    //		if (Cell.GetFromWorldPos(x, y)!= null) Cell.GetFromWorldPos(x,y).setWall(side,wall);
-    //	} else if(wall.orientation == Wall.Orientation.Vertical){
-    //		if (Cell.GetFromWorldPos(x, y )!= null) Cell.GetFromWorldPos(x,y).setWall(side,wall);
-    //	}
-    //}
-	// Use this for initialization
 	void Start () {
 	}
-	// Update is called once per frame
 	void Update () {
         if(!Application.isPlaying && roomManager == null)
         { roomManager = this; Awake(); }
 	}
-    public void RemovePiece(Cell target, bool destroyChildren = false)//, PieceType piece)
+    public void RemoveTopPiece(Cell target, bool destroyChildren = false)//, PieceType piece)
     {
-
 		if (target != null)
         {
 			var gamepieces = target.getPiecesOnCell();
 			if (target.gamePiece == null || gamepieces.Count == 0) return;
             GamePiece g = gamepieces.Last();
-
             g.Destroy(destroyChildren);
         }
     }
@@ -121,7 +114,7 @@ public class RoomManager : MonoBehaviour {
         if (cell == null) { Debug.Log("Stay inside the grid!"); return; }
 		if (cell.getWall(side) != null)
         {
-			DestroyImmediate(cell.getWall(side).gameObject);
+            if (cell.getWall(side).gameObject) DestroyImmediate(cell.getWall(side).gameObject);
         }
 		cell.setWall(side, null);
 		Cell neighbour = cell.getNeighbour(side);

@@ -44,7 +44,6 @@ public class Cell {
 		int blockSize = Wall.blockSize;
         int originX = (int)Mathf.Floor(x / blockSize);
         int originY = (int)Mathf.Floor(y / blockSize);
-        Debug.Log("adding: " + originX + " " + originY);
 		return Cell.Get(originX, originY);
 	}
 	/// <summary>
@@ -97,9 +96,11 @@ public class Cell {
 	/// Removes the contents of this cell;
 	/// </summary>
 	/// <returns>Returns the piece that was in this cell.</returns>
-	public GamePiece DeOccupy(){
+
+	public GamePiece Empty(){
 		GamePiece ret = gamePiece;
 		gamePiece = null;
+        ret.cell = null;
         return ret;
 	}
 	/// <summary>
@@ -134,7 +135,17 @@ public class Cell {
     }
 
 	public bool IsSolidlyOccupied(){
-		return !Occupy(null);
+        if (gamePiece == null)
+        {
+            return false;
+        }
+        GamePiece g = gamePiece;
+        while (g.containedPiece != null)
+        {
+            if (g.isSolid) return true;
+            g = g.containedPiece;
+        }
+        return false;
 	}
     private bool IsReserved = false;
 	public bool Reserve()

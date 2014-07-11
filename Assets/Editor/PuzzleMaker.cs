@@ -62,10 +62,12 @@ public class PuzzleMaker : EditorWindow
     {
         if (Indicator != null)
         {
-            DestroyImmediate(Indicator);
+            if (Indicator) DestroyImmediate(Indicator);
         }
         if (selectedPiece != PieceType.none)
         {
+            if (pieceGameObjects == null || pieceGameObjects[selectedPiece] == null)
+                Debug.Log("Why?");
             Indicator = (GameObject)Instantiate(pieceGameObjects[selectedPiece]);
             Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
             Indicator.name = "Indicator";
@@ -111,6 +113,28 @@ public class PuzzleMaker : EditorWindow
                     RoomManager.roomManager.PrintWallAmount();
                 }
             }
+            else if (selectedPiece == PieceType.player)
+            {
+                Cell target = Cell.GetFromWorldPos(MousePos);
+                if (target != null)
+                {
+                    Indicator.transform.position = target.WorldPos();
+                    if (LeftDown())
+                    {
+                        //SpawnPiece(selectedPiece, target);
+                        SpawnPlayer(target);
+                        sceneView.Update();
+                        sceneView.Repaint();
+                    }
+                    else if (RightDown())
+                    {
+                        bool destroyChildren = false;
+                        RoomManager.roomManager.RemoveTopPiece(target, destroyChildren);
+                        sceneView.Update();
+                        sceneView.Repaint();
+                    }
+                }
+            }
             else if (selectedPiece != PieceType.none)//spawn any other piece (other than wall)
             {
 				Cell target = Cell.GetFromWorldPos(MousePos);
@@ -125,7 +149,7 @@ public class PuzzleMaker : EditorWindow
 					else if (RightDown())
 					{
                         bool destroyChildren = false;
-                        RoomManager.roomManager.RemovePiece(target, destroyChildren);
+                        RoomManager.roomManager.RemoveTopPiece(target, destroyChildren);
                         sceneView.Update();
                         sceneView.Repaint();
 					}
@@ -144,6 +168,20 @@ public class PuzzleMaker : EditorWindow
 		GameObject obj = (GameObject)Instantiate(pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
         obj.transform.parent = parent.transform;
         RoomManager.roomManager.AddPiece(obj, piece);
+
+    }
+    public void SpawnPlayer(Cell target)
+    {
+        if (RoomManager.roomManager.player == null)
+        {
+            GameObject obj = (GameObject)Instantiate(pieceGameObjects[PieceType.player], target.WorldPos(), Quaternion.identity);
+            RoomManager.roomManager.AddPiece(obj, PieceType.player);
+        }
+        else
+        {
+            RoomManager.roomManager.player.TeleportTo(target);
+        }
+        
 
     }
     public void SpawnWall(Vector3 target, Wall.Orientation orient, Side side)
