@@ -13,17 +13,29 @@ public class Author : MonoBehaviour
     private Vector2 StartPos;
     private int SwipeID = -1;
     #endregion
+
     public enum difficulty_setting { Easy, Normal, Hard, Nightmare, Battletoads }
 
     public string author;
     public string levelName;
     public difficulty_setting difficulty;
+    public bool usesLock;
+    public bool usesBlock;
+    public bool usesSwitch;
+    public bool usesButton;
+    public bool usesTrap;
+    public bool usesTeleporter;
+
+
     void Awake()
     {
         
     }
+
     void Update()
     {
+
+        //touch detection code, doesn't belong here :'( 
         if (MessageTarget == null)
             MessageTarget = RoomManager.roomManager.player.gameObject;
         foreach (var T in Input.touches)
