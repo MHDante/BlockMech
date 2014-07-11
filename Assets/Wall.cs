@@ -5,6 +5,7 @@ using System.Collections;
 public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
+	public const int halfBlock = blockSize/2;
 
 	public virtual bool isTraversible {get;set;}    
 
@@ -20,7 +21,7 @@ public class Wall : MonoBehaviour {
 	void Update () {
 	    if (orientation == Orientation.Horizontal){
             transform.position = new Vector3(
-                ((int)Mathf.Round((transform.position.x - blockSize / 2) / blockSize)) * blockSize + blockSize / 2,
+                ((int)Mathf.Round((transform.position.x - halfBlock) / blockSize)) * blockSize + halfBlock,
                 ((int)Mathf.Round(transform.position.y / blockSize)) * blockSize,
                 transform.position.z );
             transform.eulerAngles = new Vector3(0, 0, 90);
@@ -30,7 +31,7 @@ public class Wall : MonoBehaviour {
         {
             transform.position = new Vector3(
                 ((int)Mathf.Round(transform.position.x / blockSize)) * blockSize,
-                ((int)Mathf.Round((transform.position.y - blockSize / 2) / blockSize)) * blockSize + blockSize / 2,
+                ((int)Mathf.Round((transform.position.y - halfBlock) / blockSize)) * blockSize + halfBlock,
                 transform.position.z);
             transform.eulerAngles = new Vector3(0, 0, 0);
         }

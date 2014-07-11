@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public enum Side { top, right, bottom, left };
+public enum Side {none, top, right, bottom, left };
 public class Cell {
 
     public int x { get; set; }
@@ -11,7 +11,24 @@ public class Cell {
 	RoomManager room;
 
     private Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
-	public static Cell Get(int x, int y){return RoomManager.roomManager.Grid[x][y];}
+	public static Cell Get(int x, int y){
+		try{return RoomManager.roomManager.Grid[x][y];}
+		catch(IndexOutOfRangeException e){
+			return null;
+		}
+	}
+
+	public static Cell GetFromWorldPos(Vector2 worldPos){
+		return GetFromWorldPos(worldPos.x, worldPos.y);
+	}
+	public static Cell GetFromWorldPos(float x, float y){
+		int blockSize = Wall.blockSize;
+		int originX = ((int)Mathf.Floor(x / blockSize));
+		int originY = ((int)Mathf.Floor(y / blockSize));
+		return Cell.Get(originX, originY);
+	}
+
+	public Vector2 WorldPos(){return new Vector2(x*Wall.blockSize+Wall.halfBlock, y*Wall.blockSize+Wall.halfBlock);}
 
 	public GamePiece gamePiece{ get; set;}
 
@@ -42,9 +59,8 @@ public class Cell {
 			if(g.isSolid)return false;
 			g=g.containedPiece;
 		}
-        //todo: revise?
+		if (!g.onOccupy(piece))return false;
 		piece.cell = this;
-		g.onOccupy(piece);
 		return true;
 	}
 	public GamePiece DeOccupy(){
@@ -64,8 +80,10 @@ public class Cell {
 				return room.Grid[x-1][y];
 			case Side.right:
 				return room.Grid[x+1][y];
-            } throw new Exception("WHAT THE FUCK");
+            } throw new WTFException();
 		} catch (IndexOutOfRangeException e){
+
+			Debug.Log(e);
 			return null;
 		}
 	}

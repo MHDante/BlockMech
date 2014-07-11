@@ -5,27 +5,39 @@ using System.Linq;
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
 
-    const int maxWidth = 16;
-    const int maxHeight = 12;
+    public const int gridWidth = 16;
+    public const int gridHeight = 12;
 
     public Cell[][] Grid;
 
 
     void Awake() {
         roomManager = this;
-        Grid = new Cell[maxWidth][];
-        for (int i = 0; i < maxWidth; i++)
+        Grid = new Cell[gridWidth][];
+        for (int i = 0; i < gridWidth; i++)
         {
-            Grid[i] = new Cell[maxHeight];
-            for(int j = 0; j < maxHeight; j++){
+            Grid[i] = new Cell[gridHeight];
+            for(int j = 0; j < gridHeight; j++){
                 Grid[i][j] = new Cell(this, i, j);
             }
         }
 
         GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
-        foreach (GameObject wall in walls)
+		foreach (GameObject wallobj in walls)
         {
-            AddWall(wall);
+			Wall wall  = wallobj.GetComponent<Wall>();
+			if(wall != null){
+				Wall.Orientation orient;
+				Side side;
+				Vector2 Position = wallobj.transform.position;
+				if(Position.isWithinGrid()){
+					Utils.WorldToWallPos(Position, out side, out orient);
+					AddWall(wall, side);
+				}
+				else{
+					Debug.Log ("Wall was found out of Grid Range @ " + Position);
+				}
+			}
         }
     }
     public void AddPiece(GameObject piece, PieceType piecetype)
@@ -36,9 +48,7 @@ public class RoomManager : MonoBehaviour {
             gamePiece = piece.AddComponent<Player>();
             gamePiece.piecetype = piecetype;
         }
-        int PosX = (int)piece.transform.position.x / Wall.blockSize;
-        int PosY = (int)piece.transform.position.y / Wall.blockSize;
-        Cell cell = Grid[PosX][PosY];
+		Cell cell = Cell.GetFromWorldPos(piece.transform.position);
         if (cell != null)
         {
             var list = cell.getPiecesOnCell();
@@ -51,33 +61,21 @@ public class RoomManager : MonoBehaviour {
         }
 
     }
-    public void AddWall(GameObject wall)
+
+	public void AddWall(Wall wall, Side side)
     {
-        Wall w = wall.GetComponent<Wall>();
-        int PosX = (int)wall.transform.position.x / Wall.blockSize;
-        int PosY = (int)wall.transform.position.y / Wall.blockSize;
-        if (w.orientation == Wall.Orientation.Vertical)
-        {
-            if ((PosX >= 0 && PosX < Grid.Length) && (PosY >= 0 && PosY < Grid[0].Length))
-            {
-                Grid[PosX][PosY].setWall(Side.left, w);
-            }
-            if ((PosX - 1 >= 0 && PosX - 1 < Grid.Length) && (PosY >= 0 && PosY < Grid[0].Length))
-            {
-                Grid[PosX - 1][PosY].setWall(Side.right, w);
-            }
-        }
-        else if (w.orientation == Wall.Orientation.Horizontal)
-        {
-            if ((PosX >= 0 && PosX < Grid.Length) && (PosY >= 0 && PosY < Grid[0].Length))
-            {
-                Grid[PosX][PosY].setWall(Side.bottom, w);
-            }
-            if ((PosX >= 0 && PosX < Grid.Length) && (PosY - 1 >= 0 && PosY - 1 < Grid[0].Length))
-            {
-                Grid[PosX][PosY - 1].setWall(Side.top, w);
-            }
-        }
+		float x = wall.transform.position.x;
+		float y = wall.transform.position.y;
+		float offset = (float)Wall.blockSize /2;
+
+		if (wall.orientation == Wall.Orientation.Horizontal){
+
+			if (Cell.GetFromWorldPos(x, y+offset )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
+			if (Cell.GetFromWorldPos(x, y-offset )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
+		}else if(wall.orientation == Wall.Orientation.Vertical){
+			if (Cell.GetFromWorldPos(x+offset, y )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
+			if (Cell.GetFromWorldPos(x-offset, y )!= null)Cell.GetFromWorldPos(x,y).setWall(side,wall);
+		}
     }
 	// Use this for initialization
 	void Start () {
@@ -87,54 +85,29 @@ public class RoomManager : MonoBehaviour {
         if(!Application.isPlaying && roomManager == null)
         { roomManager = this; Awake(); }
 	}
-    public void RemovePiece(Vector2 target, bool destroyChildren = false)//, PieceType piece)
+    public void RemovePiece(Cell target, bool destroyChildren = false)//, PieceType piece)
     {
-        int PosY = (int)target.y / Wall.blockSize;
-        int PosX = (int)target.x / Wall.blockSize;
-        Cell c = Grid[PosX][PosY];
-        if (c != null)
+
+		if (target != null)
         {
-            var gamepieces = c.getPiecesOnCell();
-            if (c.gamePiece == null || gamepieces.Count == 0) return;
+			var gamepieces = target.getPiecesOnCell();
+			if (target.gamePiece == null || gamepieces.Count == 0) return;
             GamePiece g = gamepieces.Last();
 
             g.Destroy(destroyChildren);
         }
     }
-    public void RemoveWall(Vector2 target, Wall.Orientation orientation)
-    {
-        int PosY = (int)target.y / Wall.blockSize;
-        int PosX = (int)target.x / Wall.blockSize;
 
-        if (orientation == Wall.Orientation.Vertical)
-        {
-            if ((PosX >= 0 && PosX < Grid.Length) && (PosY >= 0 && PosY < Grid[0].Length))
-            {
-                RemoveWall(PosX, PosY, Side.left);
-            }
-            if ((PosX - 1 >= 0 && PosX - 1 < Grid.Length) && (PosY >= 0 && PosY < Grid[0].Length))
-            {
-                RemoveWall(PosX - 1, PosY, Side.right);
-            }
-        }
-        else if (orientation == Wall.Orientation.Horizontal)
-        {
-            if ((PosX >= 0 && PosX < Grid.Length) && (PosY >= 0 && PosY < Grid[0].Length))
-            {
-                RemoveWall(PosX, PosY, Side.bottom);
-            }
-            if ((PosX >= 0 && PosX < Grid.Length) && (PosY - 1 >= 0 && PosY - 1 < Grid[0].Length))
-            {
-                RemoveWall(PosX, PosY-1, Side.top);
-            }
-        }
-    }
-    private void RemoveWall(int x, int y, Side side)
+	public void RemoveWall(Cell cell, Side side)
     {
-        if (Grid[x][y].getWall(side) != null)
+		if (cell.getWall(side) != null)
         {
-            DestroyImmediate(Grid[x][y].getWall(side).gameObject);
+			DestroyImmediate(cell.getWall(side).gameObject);
         }
-        Grid[x][y].setWall(side, null);
-    }
+		cell.setWall(side, null);
+		Cell neighbour = cell.getNeighbour(side);
+		if (neighbour != null){
+			neighbour.setWall(Utils.opposite(side), null);
+	    }
+	}
 }

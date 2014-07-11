@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+[ExecuteInEditMode]
 public enum PieceType
 {
     none,
@@ -82,10 +82,13 @@ public abstract class GamePiece : MonoBehaviour
 
 	}
 	public virtual bool TeleportTo(Cell target){
+		Cell currentCell = cell;
 		if (target.IsSolidlyOccupied())return false;
-		//if DeOccupy();
-		bool canMove = target.Occupy(this);
-		return canMove;
+		DeOccupy();
+		if (!target.Occupy(this)) {
+			currentCell.Occupy(this);
+			return false;
+		} return true;
 
 	}
 	void DeOccupy(){
@@ -129,6 +132,13 @@ public abstract class GamePiece : MonoBehaviour
             }
             DestroyImmediate(this.gameObject);
         }
+
+
+
     }
+	public virtual void Update(){
+	}
+	public virtual void Awake(){}
+	public virtual void Start(){}
 }
 

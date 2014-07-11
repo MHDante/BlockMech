@@ -73,7 +73,12 @@ public class PuzzleMaker : EditorWindow
     }
     void OnUpdate(SceneView sceneView)
     {
-		if(Active)
+		
+		Vector2 screenpos = Event.current.mousePosition;
+		screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
+		MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
+
+		if(Active && MousePos.isWithinGrid())
         {
             Initialize();
             
@@ -82,41 +87,48 @@ public class PuzzleMaker : EditorWindow
 	        Selection.activeObject = null;
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
-			Vector2 screenpos = Event.current.mousePosition;
-			screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
-			MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
-            if (selectedPiece == PieceType.wall)
+            if (selectedPiece == PieceType.wall )
             {
+				Side side;
                 Wall.Orientation or;
-                Vector2 target = GetWallTarget(sceneView, out or);
+				Vector2 target = Utils.WorldToWallPos(MousePos, out side, out or);
                 Indicator.transform.position = target;
                 Indicator.GetComponent<Wall>().orientation = or;
                 if (LeftDown())
                 {
-                    SpawnWall(target, or, sceneView);
+                    SpawnWall(target, or, side);
+					sceneView.Update();
+					sceneView.Repaint();
                 }
                 else if (RightDown())
                 {
-                    RoomManager.roomManager.RemoveWall(target, or);
+
+					Cell pos = Cell.GetFromWorldPos(MousePos);
+					if (pos== null) Debug.Log("Stay inside the grid!");
+					RoomManager.roomManager.RemoveWall(pos, side);
                     sceneView.Update();
                     sceneView.Repaint();
                 }
             }
             else if (selectedPiece != PieceType.none)//spawn any other piece (other than wall)
             {
-                Vector2 target = GetPieceTarget(sceneView);
-                Indicator.transform.position = target;
-                if (LeftDown())
-                {
-                    SpawnPiece(selectedPiece, target, sceneView);
-                }
-                else if (RightDown())
-                {
-                    bool destroyChildren = false;
-                    RoomManager.roomManager.RemovePiece(target, destroyChildren);
-                    sceneView.Update();
-                    sceneView.Repaint();
-                }
+				Cell target = Cell.GetFromWorldPos(MousePos);
+				if (target!=null) {
+					Indicator.transform.position = target.WorldPos();
+					            if (LeftDown())
+					            {
+					                SpawnPiece(selectedPiece, target);
+						sceneView.Update();
+						sceneView.Repaint();
+					            }
+					            else if (RightDown())
+					            {
+					                bool destroyChildren = false;
+					                RoomManager.roomManager.RemovePiece(target, destroyChildren);
+					                sceneView.Update();
+					                sceneView.Repaint();
+					}
+				}
             }
             else if (selectedPiece == PieceType.none)
             {
@@ -125,25 +137,22 @@ public class PuzzleMaker : EditorWindow
 			Event.current.Use();
 		}
     }
-    public void SpawnPiece(PieceType piece, Vector3 target, SceneView sceneView)
+    public void SpawnPiece(PieceType piece, Cell target)
     {
         GameObject parent = GetPieceParent(piece);
-        GameObject obj = (GameObject)Instantiate(pieceGameObjects[selectedPiece], target, Quaternion.identity);
+		GameObject obj = (GameObject)Instantiate(pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
         obj.transform.parent = parent.transform;
-        //add object to room manager
-        //
         RoomManager.roomManager.AddPiece(obj, piece);
-        sceneView.Update();
-        sceneView.Repaint();
+
     }
-    public void SpawnWall(Vector3 target, Wall.Orientation orient, SceneView sceneView)
+    public void SpawnWall(Vector3 target, Wall.Orientation orient, Side side)
     {
-        GameObject wall = (GameObject)Instantiate(pieceGameObjects[PieceType.wall], target, Quaternion.identity);
-        wall.transform.parent = GetPieceParent(PieceType.wall).transform;
-        wall.GetComponent<Wall>().orientation = orient;
-        RoomManager.roomManager.AddWall(wall);
-        sceneView.Update();
-        sceneView.Repaint();
+        GameObject wallobj = (GameObject)Instantiate(pieceGameObjects[PieceType.wall], target, Quaternion.identity);
+		wallobj.transform.parent = GetPieceParent(PieceType.wall).transform;
+		Wall wall = wallobj.GetComponent<Wall>();
+		if(wall == null) throw new WTFException();
+		wall.orientation = orient;
+        RoomManager.roomManager.AddWall(wall, side);
     }
     public GameObject GetPieceParent(PieceType piece)
     {
@@ -154,59 +163,8 @@ public class PuzzleMaker : EditorWindow
         }
         return pieceParents[piece];
     }
-    Vector2 GetPieceTarget(SceneView sceneView)
-    {
-        int blockSize = Wall.blockSize;
-        float originX = ((int)Mathf.Floor(MousePos.x / blockSize)) * blockSize;
-        float originY = ((int)Mathf.Floor(MousePos.y / blockSize)) * blockSize;
-        float middleX = originX + (blockSize / 2f);
-        float middleY = originY + (blockSize / 2f);
-        return new Vector2(middleX, middleY);
-    }
-    Vector2 GetWallTarget(SceneView sceneView, out Wall.Orientation orientation)
-    {
-        int blockSize = Wall.blockSize;
-        float originX = ((int)Mathf.Floor(MousePos.x / blockSize)) * blockSize;
-        float originY = ((int)Mathf.Floor(MousePos.y / blockSize)) * blockSize;
-        float x = MousePos.x - originX;
-        float y = MousePos.y - originY;
-        Vector3 vect = Vector3.zero;
-        if (x > y)
-        {
-            if (x < blockSize - y)
-            {
-                //area bottom
-                vect.x += blockSize / 2;
-                orientation = Wall.Orientation.Horizontal;
-            }
-            else
-            {
-                //area right
-                vect.x += blockSize;
-                vect.y += blockSize / 2;
-                orientation = Wall.Orientation.Vertical;
-            }
-        }
-        else
-        {
-            if (x < blockSize - y)
-            {
-                //area left
-                vect.y += blockSize / 2;
-                orientation = Wall.Orientation.Vertical;
-            }
-            else
-            {
-                //area top
-                vect.x += blockSize / 2;
-                vect.y += blockSize;
-                orientation = Wall.Orientation.Horizontal;
-            }
-        }
-        vect.x += originX;
-        vect.y += originY;
-        return vect;
-    }
+
+
     bool isLeftPressed(bool prevValue)
     {
 		if(LeftDown()) return true;
