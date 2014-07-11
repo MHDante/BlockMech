@@ -24,4 +24,9 @@ public class Player : GamePiece {
         if (Input.GetKey(KeyCode.RightArrow)) { moveTo(Side.right); }
 
     }
+
+    void OnSwipeUp(){ moveTo(Side.top); }
+    void OnSwipeDown() { moveTo(Side.bottom); }
+    void OnSwipeLeft() { moveTo(Side.left); }
+    void OnSwipeRight() { moveTo(Side.right); }
 }

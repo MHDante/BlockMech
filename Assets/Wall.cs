@@ -7,7 +7,7 @@ public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
 	public const int halfBlock = blockSize/2;
-    [ExposePropertyAttribute]
+    //[ExposePropertyAttribute]
 	public virtual bool isTraversible {get;set;}    
 
     public enum Orientation { Horizontal, Vertical };
