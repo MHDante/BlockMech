@@ -19,7 +19,7 @@ public class RoomManager : MonoBehaviour {
         {
             Grid[i] = new Cell[gridHeight];
             for(int j = 0; j < gridHeight; j++){
-                Grid[i][j] = new Cell(this, i, j);
+                Grid[i][j] = new Cell(i, j);
             }
         }
 
@@ -111,7 +111,7 @@ public class RoomManager : MonoBehaviour {
         Utils.WorldToWallPos(position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(position);
 
-        if (cell == null) { Debug.Log("Stay inside the grid!"); return; }
+        if (cell == null) { return; }
 		if (cell.getWall(side) != null)
         {
             if (cell.getWall(side).gameObject) DestroyImmediate(cell.getWall(side).gameObject);
@@ -128,7 +128,7 @@ public class RoomManager : MonoBehaviour {
         Utils.WorldToWallPos(wall.transform.position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(wall.transform.position);
 
-        if (cell == null) { Debug.Log("Stay inside the grid!"); return; }
+        if (cell == null) {  return; }
         
         if (cell.getWall(side) != null)
         {
