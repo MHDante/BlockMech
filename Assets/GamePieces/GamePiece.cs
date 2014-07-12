@@ -20,6 +20,7 @@ public enum PieceType
 }
 public enum ColorSlot
 {
+    none,
     color1,
     color2,
     color3,
@@ -67,6 +68,7 @@ public abstract class GamePiece : MonoBehaviour
     public abstract bool isPushable { get; set; }
 
     public GamePiece containedPiece { get ;set; }
+    public bool IsOccupied { get { return containedPiece != null; } }
 
     public virtual void Awake() {
         
@@ -75,8 +77,45 @@ public abstract class GamePiece : MonoBehaviour
     {
         if (!Cell.GetFromWorldPos(transform.position).Occupy(this)) 
             throw new WTFException(this.GetType().ToString());
+        UpdateColor();
     }
-
+    public virtual void Update()
+    {
+        if (isMoving)
+        {
+            if (currentLerp >= maxLerp)
+            {
+                currentLerp = 0f;
+                isMoving = false;
+                Detatch();
+                destination.Unreserve();
+                destination.Occupy(this);
+                destination = null;
+            }
+            else
+            {
+                transform.position = Vector2.Lerp(StartPos, destination.WorldPos(), currentLerp / 100f);
+                currentLerp += speed;
+            }
+        }
+        //prevent user from changing the color in inspector (it's only a preview)
+        if (colorPreview != oldColorPreview)
+        {
+            colorPreview = oldColorPreview;
+        }
+        //change the actual color based on the colorslot enum inspector change
+        if (colorslot != oldColorSlot)
+        {
+            UpdateColor();
+        }
+    }
+    private void UpdateColor()
+    {
+        oldColorSlot = colorslot;
+        colorPreview = Author.GetColorSlot(colorslot);
+        oldColorPreview = colorPreview;
+        gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+    }
     public virtual bool pushFrom(Side side, int strength = 1)
     {
 		if(!isSolid && this.containedPiece!= null && this.containedPiece.pushFrom(side, strength))
@@ -201,39 +240,7 @@ public abstract class GamePiece : MonoBehaviour
     public float speed = 5f;
     public float currentLerp = 0f, maxLerp = 100f;
     public Vector2 StartPos;
-	public virtual void Update()
-    {
-        if (isMoving)
-        {
-            if (currentLerp >= maxLerp)
-            {
-                currentLerp = 0f;
-                isMoving = false;
-                Detatch();
-                destination.Unreserve();
-                destination.Occupy(this);
-                destination = null;
-            }
-            else
-            {
-                transform.position = Vector2.Lerp(StartPos, destination.WorldPos(), currentLerp / 100f);
-                currentLerp += speed;
-            }
-        }
-        //prevent user from changing the color in inspector (it's only a preview)
-        if (colorPreview != oldColorPreview)
-        {
-            colorPreview = oldColorPreview;
-        }
-        //change the actual color based on the colorslot enum inspector change
-        if (colorslot != oldColorSlot)
-        {
-            oldColorSlot = colorslot;
-            colorPreview = Author.GetColorSlot(colorslot);
-            oldColorPreview = colorPreview;
-            //gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
-        }
-	}
+	
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }

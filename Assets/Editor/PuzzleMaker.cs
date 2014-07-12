@@ -152,6 +152,7 @@ public class PuzzleMaker : EditorWindow
     }
     public void SpawnPiece(PieceType piece, Cell target)
     {
+        if (target.IsSolidlyOccupied()) return;
         GameObject parent = GetPieceParent(piece);
         GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
         obj.transform.parent = parent.transform;

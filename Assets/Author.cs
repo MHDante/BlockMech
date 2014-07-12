@@ -28,7 +28,7 @@ public class Author : MonoBehaviour
     public bool usesTrap;
     public bool usesTeleporter;
 
-    public Color[] colors;
+    public Color[] colors = { Color.white, Color.blue, Color.green, Color.red, Color.yellow, Color.magenta };
     
     public static Color GetColorSlot(ColorSlot colorslot)
     {

@@ -103,6 +103,31 @@ public class RoomManager : MonoBehaviour {
         }
         Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
     }
+    public List<GamePiece> GetPiecesOfColor(ColorSlot colorslot, Type gamePieceType = null)
+    {
+        List<GamePiece> list = new List<GamePiece>();
+        Func<GamePiece, bool> typeTest;
+        if (gamePieceType != null) typeTest = (p) => p.GetType() == gamePieceType;
+        else typeTest = (p) => true;
+        for (int i = 0; i < Grid.Length; i++)
+        {
+            for (int j = 0; j < Grid[0].Length; j++)
+            {
+                Cell cell = Grid[i][j];
+                if (cell == null) continue;
+                var cellList = cell.getPiecesOnCell();
+                foreach(var gamepiece in cellList)
+                {
+                    if (typeTest(gamepiece) && !list.Contains(gamepiece) && gamepiece.colorslot == colorslot)
+                    {
+                        list.Add(gamepiece);
+                    }
+                }
+            }
+        }
+        return list;
+
+    }
     public void AddPiece(GameObject gameobject, PieceType piecetype)
     {
         GamePiece gamePiece;
