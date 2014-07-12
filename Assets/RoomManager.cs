@@ -97,8 +97,8 @@ public class RoomManager : MonoBehaviour {
                 //
                 //    }
                 //}
-                if (Cell.Get(i, j).gamePiece != null)
-                    Debug.Log("Found : " + Cell.Get(i, j).gamePiece + " @ " + i + " , " + j);
+                if (Cell.Get(i, j).pieces.Count != 0)
+                    Debug.Log("Found : " + Cell.Get(i, j).pieces[0] + " @ " + i + " , " + j);
             }
         }
         Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
@@ -115,7 +115,7 @@ public class RoomManager : MonoBehaviour {
             {
                 Cell cell = Grid[i][j];
                 if (cell == null) continue;
-                var cellList = cell.getPiecesOnCell();
+                var cellList = cell.pieces.ToList();
                 foreach(var gamepiece in cellList)
                 {
                     if (typeTest(gamepiece) && !list.Contains(gamepiece) && gamepiece.colorslot == colorslot)
@@ -181,14 +181,14 @@ public class RoomManager : MonoBehaviour {
         if(!Application.isPlaying && roomManager == null)
         { roomManager = this; Awake(); }
 	}
-    public void RemoveTopPiece(Cell target, bool destroyChildren = false)//, PieceType piece)
+    public void RemoveTopPiece(Cell target)
     {
 		if (target != null)
         {
-			var gamepieces = target.getPiecesOnCell();
-			if (target.gamePiece == null || gamepieces.Count == 0) return;
+			var gamepieces = target.pieces.ToList();
+			if (!target.HasPiece()) return;
             GamePiece g = gamepieces.Last();
-            g.Destroy(destroyChildren);
+            g.Destroy();
         }
     }
 

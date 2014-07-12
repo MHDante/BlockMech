@@ -92,17 +92,18 @@ public class PuzzleMaker : EditorWindow
 	        Selection.activeObject = null;
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
-            Vector2 Scroll = getScroll();
+            Vector2 ScrollVect = getScroll();
 
+            int scroll = Math.Sign(ScrollVect.y);
+            if (scroll != 0)
             {
-                int nextPiece = (int)selectedPiece + Math.Sign(Scroll.y);
-                if (nextPiece>=0 && nextPiece < Enum.GetValues(typeof(PieceType)).Length){
+                int nextPiece = (int)selectedPiece + scroll;
+                if (nextPiece >= 0 && nextPiece < Enum.GetValues(typeof(PieceType)).Length)
+                {
                     selectedPiece = (PieceType)nextPiece;
                     SetIndicator();
                 }
-                
             }
-            
 
 
             if (selectedPiece == PieceType.wall )
@@ -141,8 +142,7 @@ public class PuzzleMaker : EditorWindow
                     }
                     else if (RightDown())
                     {
-                        bool destroyChildren = false;
-                        RoomManager.roomManager.RemoveTopPiece(target, destroyChildren);
+                        RoomManager.roomManager.RemoveTopPiece(target);
                         sceneView.Update();
                         sceneView.Repaint();
                     }
@@ -161,8 +161,7 @@ public class PuzzleMaker : EditorWindow
 					}
 					else if (RightDown())
 					{
-                        bool destroyChildren = false;
-                        RoomManager.roomManager.RemoveTopPiece(target, destroyChildren);
+                        RoomManager.roomManager.RemoveTopPiece(target);
                         sceneView.Update();
                         sceneView.Repaint();
 					}
