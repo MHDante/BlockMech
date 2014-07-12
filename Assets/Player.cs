@@ -48,7 +48,7 @@ public class Player : GamePiece {
 			return false;//Hit a wall or something
 		}
 		return true;
-	}
+    }
 
 	void OnSwipeUp(){ TryMove(Side.top); }
 	void OnSwipeDown() { TryMove(Side.bottom); }

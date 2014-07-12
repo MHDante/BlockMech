@@ -2,18 +2,18 @@
 using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
+using System;
 
 public class PuzzleMaker : EditorWindow
 {
     public PieceType selectedPiece = PieceType.wall;
-    public Dictionary<PieceType, GameObject> pieceGameObjects;
-    public Dictionary<PieceType, GameObject> pieceParents;
+    
     Vector2 MousePos;
     bool LeftClick;
     bool RightClick;
 	bool Active;
     GameObject Indicator;
-    GameObject WallParent;
+    //GameObject WallParent;
     [MenuItem("Window/PuzzleMaker")]
     public static void ShowWindow()
     {
@@ -27,48 +27,36 @@ public class PuzzleMaker : EditorWindow
     {
 		SceneView.onSceneGUIDelegate -= OnUpdate;
 	}
+    
     void Initialize()
     {
-        if (pieceGameObjects == null)
-        {
-            pieceGameObjects = new Dictionary<PieceType, GameObject>()
-            {
-                { PieceType.antitrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
-                { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
-                { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
-                { PieceType.key, Resources.Load<GameObject>("Prefabs/key")},
-                { PieceType.keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
-                { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
-                { PieceType.start, Resources.Load<GameObject>("Prefabs/start")},
-                { PieceType.teleport, Resources.Load<GameObject>("Prefabs/teleport")},
-                { PieceType.trap, Resources.Load<GameObject>("Prefabs/trap")},
-                { PieceType.wall, Resources.Load<GameObject>("Prefabs/Wall")},
-            };
-            pieceParents = new Dictionary<PieceType, GameObject>();
-        }
+        
         if (Indicator == null)
         {
             SetIndicator();
         }
-        if (WallParent == null)
-        {
-            WallParent = new GameObject();
-            WallParent.name = "Walls";
-        }
+        //if (WallParent == null)
+        //{
+        //    WallParent = new GameObject();
+        //    WallParent.name = "Walls";
+        //}
     }
 
     
     void SetIndicator()
     {
+        if (Application.isPlaying) return;
         if (Indicator != null)
         {
-            if (Indicator) DestroyImmediate(Indicator);
+            DestroyImmediate(Indicator);
         }
+        GameObject preexisting = GameObject.Find("Indicator");
+        if (preexisting != null) DestroyImmediate(preexisting);
         if (selectedPiece != PieceType.none)
         {
-            if (pieceGameObjects == null || pieceGameObjects[selectedPiece] == null)
+            if (RoomManager.pieceGameObjects == null || RoomManager.pieceGameObjects[selectedPiece] == null)
                 Debug.Log("Why?");
-            Indicator = (GameObject)Instantiate(pieceGameObjects[selectedPiece]);
+            Indicator = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece]);
             Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
             Indicator.name = "Indicator";
         }
@@ -139,7 +127,7 @@ public class PuzzleMaker : EditorWindow
             {
 				Cell target = Cell.GetFromWorldPos(MousePos);
 				if (target!=null) {
-					Indicator.transform.position = target.WorldPos();
+					if (Indicator != null) Indicator.transform.position = target.WorldPos();
                     if (LeftDown())
                     {
 					    SpawnPiece(selectedPiece, target);
@@ -165,7 +153,7 @@ public class PuzzleMaker : EditorWindow
     public void SpawnPiece(PieceType piece, Cell target)
     {
         GameObject parent = GetPieceParent(piece);
-		GameObject obj = (GameObject)Instantiate(pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
+        GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
         obj.transform.parent = parent.transform;
         RoomManager.roomManager.AddPiece(obj, piece);
 
@@ -174,7 +162,7 @@ public class PuzzleMaker : EditorWindow
     {
         if (RoomManager.roomManager.player == null)
         {
-            GameObject obj = (GameObject)Instantiate(pieceGameObjects[PieceType.player], target.WorldPos(), Quaternion.identity);
+            GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.player], target.WorldPos(), Quaternion.identity);
             RoomManager.roomManager.AddPiece(obj, PieceType.player);
         }
         else
@@ -186,22 +174,30 @@ public class PuzzleMaker : EditorWindow
     }
     public void SpawnWall(Vector3 target, Wall.Orientation orient, Side side)
     {
-        GameObject wallobj = (GameObject)Instantiate(pieceGameObjects[PieceType.wall], target, Quaternion.identity);
+        GameObject wallobj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.wall], target, Quaternion.identity);
 		wallobj.transform.parent = GetPieceParent(PieceType.wall).transform;
 		Wall wall = wallobj.GetComponent<Wall>();
 		if(wall == null) throw new WTFException();
 		wall.orientation = orient;
-        wall.Update();
+        //wall.Update();
         RoomManager.roomManager.AddWall(wall);
     }
     public GameObject GetPieceParent(PieceType piece)
     {
-        if (!pieceParents.ContainsKey(piece) || pieceParents[piece] == null)
+        if (!RoomManager.pieceParents.ContainsKey(piece) || RoomManager.pieceParents[piece] == null)
         {
-            pieceParents[piece] = new GameObject();
-            pieceParents[piece].name = piece.ToString();
+            GameObject preexisting = GameObject.Find(piece.ToString());
+            if (preexisting != null && preexisting.transform.parent == null)
+            {
+                RoomManager.pieceParents[piece] = preexisting;
+            }
+            else
+            {
+                RoomManager.pieceParents[piece] = new GameObject();
+                RoomManager.pieceParents[piece].name = piece.ToString();
+            }
         }
-        return pieceParents[piece];
+        return RoomManager.pieceParents[piece];
     }
 
 

@@ -12,12 +12,11 @@ public class Placeholder : GamePiece
     }
     public override GamePiece onDeOccupy()
     {
-        Debug.Log(containedPiece.name);
         return base.onDeOccupy();
     }
     public override bool onOccupy(GamePiece piece)
     {
-        Debug.Log(piece.name);
+        
         return base.onOccupy(piece);
     }
 

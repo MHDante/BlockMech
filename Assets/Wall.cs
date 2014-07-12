@@ -8,18 +8,20 @@ public class Wall : MonoBehaviour {
     public const int blockSize = 4;
 	public const int halfBlock = blockSize/2;
     //[ExposePropertyAttribute]
-	public virtual bool isTraversible {get;set;}    
+	public virtual bool isTraversible {get;set;}
 
     public enum Orientation { Horizontal, Vertical };
     public Orientation orientation = Orientation.Horizontal;
 
 	// Use this for initialization
-	void Start () {
-	
+    protected virtual void Start()
+    {
+	    
 	}
 	
 	// Update is called once per frame
-	public virtual void Update () {
+    protected virtual void Update()
+    {
 	    if (orientation == Orientation.Horizontal){
             transform.position = new Vector3(
                 ((int)Mathf.Round((transform.position.x - halfBlock) / blockSize)) * blockSize + halfBlock,

@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     enum State { Splash, ChoosingWorld, ChoosingLevel, Playing }
     State currentState = State.ChoosingWorld;
 
-    private GUISkin MenuStyle;
+    private GUISkin OurSkin;
 
     public static GameManager instance {
         get {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
 
             //main game manager logic goes here
 
-            MenuStyle = Resources.Load<GUISkin>("OurSkin");
+            OurSkin = Resources.Load<GUISkin>("OurSkin");
            
 
 
@@ -48,7 +48,25 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI(){
 
-        GUI.skin = MenuStyle;
+        //target resolutions have screen height on laptop screen in unity editor: 180 px smallest, 320 px largest
+        //font height is assumed to refer to the entire height.
+        //so the following prototypes with a target of 24 font height in 180 screen height test case.
+
+        float minScreenHeight = 180f;
+        float targetFontHeight = 24f;
+        float targetFontHeightPercentage = targetFontHeight / minScreenHeight;
+        float actualFontHeight = targetFontHeightPercentage * Screen.height;
+        Debug.Log(actualFontHeight + " " + (int)actualFontHeight);
+
+        float fontHeight;
+        
+
+        GUI.skin = OurSkin;
+        GUIStyle myLabelStyle= new GUIStyle(GUI.skin.label);
+        //Debug.Log(myLabelStyle.fontSize);
+        myLabelStyle.fontSize = (int)actualFontHeight;
+        GUI.skin.label = myLabelStyle;
+
 
         //Vector2 padding = new Vector2(50f, 50f);
         float paddingX = 50f;
