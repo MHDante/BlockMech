@@ -22,6 +22,17 @@ public class PuzzleMaker : EditorWindow
     void OnEnable()
     {        
         SceneView.onSceneGUIDelegate += OnUpdate;
+        EditorApplication.hierarchyWindowItemOnGUI += delegate(int instanceID, Rect selectionRect)
+        {
+            if (Event.current != null && selectionRect.Contains(Event.current.mousePosition)
+                && Event.current.button == 0 && Event.current.type <= EventType.MouseDown)
+            {
+                GameObject clickedObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
+
+                if (clickedObject){ Active = false; }
+
+    }
+        };
     }
 	void OnDisable()
     {
@@ -64,10 +75,14 @@ public class PuzzleMaker : EditorWindow
     void OnUpdate(SceneView sceneView)
     {
 		
+
 		Vector2 screenpos = Event.current.mousePosition;
 		screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 		MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
-
+        if (MousePos.isWithinGrid() && Event.current.type == EventType.MouseDown && Event.current.button == 2)
+        {
+            Active = !Active; Event.current.Use();
+        }
 		if(Active && MousePos.isWithinGrid())
         {
             Initialize();
@@ -77,6 +92,19 @@ public class PuzzleMaker : EditorWindow
 	        Selection.activeObject = null;
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
+            Vector2 Scroll = getScroll();
+
+            {
+                int nextPiece = (int)selectedPiece + Math.Sign(Scroll.y);
+                if (nextPiece>=0 && nextPiece < Enum.GetValues(typeof(PieceType)).Length){
+                    selectedPiece = (PieceType)nextPiece;
+                    SetIndicator();
+                }
+                
+            }
+            
+
+
             if (selectedPiece == PieceType.wall )
             {
 				Side side;
@@ -96,10 +124,7 @@ public class PuzzleMaker : EditorWindow
                     sceneView.Update();
                     sceneView.Repaint();
                 }
-                else if (Event.current.type == EventType.MouseDown && Event.current.button == 2)
-                {
-                    RoomManager.roomManager.PrintWallAmount();
-                }
+                
             }
             else if (selectedPiece == PieceType.player)
             {
@@ -220,6 +245,8 @@ public class PuzzleMaker : EditorWindow
 	bool LeftDown(){
 		return (Event.current.type == EventType.MouseDown && Event.current.button == 0);
 	}
+
+    Vector2 getScroll() {return Event.current.type == EventType.ScrollWheel ? Event.current.delta :  new Vector2();}
     void OnGUI()
     {
         //EditorGUILayout.Vector2Field("MousePos", MousePos);

@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour {
     enum Level { Scene1, Scene2, Scene3, Scene4, Scene5 };
 
 
-
-    List<Level> Scenes = new List<Level>();
     Dictionary<World, List<Level>> levels = new Dictionary<World, List<Level>>();
 
 
@@ -38,17 +36,15 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(_instance);
 
             //main game manager logic goes here
-            List<Level> sameLevelList = new List<Level>() { Level.Scene1, Level.Scene2, Level.Scene3, Level.Scene4, Level.Scene5 };
+            List<Level> sameScenes = new List<Level>() { Level.Scene1, Level.Scene2, Level.Scene3, Level.Scene4, Level.Scene5 };
 
-   
+            int eSize = System.Enum.GetNames(typeof(World)).Length;
 
-           // levels.Add(World.Jabir, sameLevelList);
-           // levels.Add(World.Jabir, sameLevelList);
-           // levels.Add(World.Jabir, sameLevelList);
-           // levels.Add(World.Jabir, sameLevelList);
-           // levels.Add(World.Jabir, sameLevelList);
+            for (int world = 0; world < eSize; world++) {
+                levels.Add((World)world, sameScenes);
+            }
 
-         }
+          }
         else 
         {
             //definitely a unity specific issue
@@ -62,9 +58,10 @@ public class GameManager : MonoBehaviour {
     void OnGUI(){
 
         //initialize various sizes
-        Vector2 padding = new Vector2(PercentHeightToPixel(.05f), PercentHeightToPixel(.05f));
-        float fontGameTitleHeight = PercentHeightToPixel(.10f);
-        float fontWorldTitleHeight = PercentHeightToPixel(.06f);
+        Vector2 padding = new Vector2(PercentToPixel(.05f, Screen.height), PercentToPixel(.05f, Screen.height));
+        float fontGameTitleHeight = PercentToPixel(.10f, Screen.height);
+        float fontWorldTitleHeight = PercentToPixel(.06f, Screen.height);
+        float fontButtonHeightMax = PercentToPixel(.04f, Screen.height);
 
         GUIStyle myLabelGameTitleStyle = new GUIStyle(GUI.skin.label);
         myLabelGameTitleStyle.fontSize = (int)fontGameTitleHeight;
@@ -73,6 +70,9 @@ public class GameManager : MonoBehaviour {
         GUIStyle myLabelWorldTitleStyle = new GUIStyle(GUI.skin.label);
         myLabelWorldTitleStyle.fontSize = (int)fontWorldTitleHeight;
 
+
+        GUIStyle myLabelButtonTitleStyle = new GUIStyle(GUI.skin.button);
+        myLabelButtonTitleStyle.fontSize = (int)fontButtonHeightMax;
 
         const string gameTitle = "BLOCK-IT";
         GUI.skin.label = myLabelGameTitleStyle;
@@ -87,6 +87,34 @@ public class GameManager : MonoBehaviour {
         Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld));
 
 
+        //find largest button text size
+
+        Vector2 longestTextSz = Vector2.zero;
+        string longestText = "";
+        foreach(KeyValuePair<World, List<Level>> world in levels)
+        {
+            string s = world.Key.ToString().ToUpper();
+            Vector2 checkLargestButtonTextSz = GUI.skin.label.CalcSize(new GUIContent( s ));
+            if (checkLargestButtonTextSz.x > longestTextSz.x)  //disregards height deliberately
+            { 
+                longestTextSz = checkLargestButtonTextSz;
+                longestText = s;
+            }
+        }
+
+
+        
+        Vector2 checkLargestLabelWithTextSz = GUI.skin.label.CalcSize(new GUIContent( longestText )); //lol scope sigh, can't overwrite, can't declare again. wtf.
+        
+        //check if longestTextSz exceeds button width, if so reduce until fits.
+        Vector2 levelSelectorSz = new Vector2(PercentToPixel(.18f, Screen.width), PercentToPixel(.18f, Screen.width));
+        if (checkLargestLabelWithTextSz.x > (int)levelSelectorSz.x ) {
+            //Debug.Log("MAKE ALGORITHM HERE. " + checkLargestLabelWithTextSz.x + " " + (int)levelSelectorSz.x);
+        }
+
+
+         
+        
 
 
         //draw level selector components
@@ -100,23 +128,49 @@ public class GameManager : MonoBehaviour {
         GUI.skin.label = myLabelWorldTitleStyle;
         GUI.Label(rectWorldTitle, worldTitle);
 
-        GUI.Box(new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height), "");
+        Rect rectSelectorGroup = new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
+        Rect rectSelectorBox = new Rect(0, 0, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
 
-        float used = Screen.width - (gameTitleSz.x + worldTitleSz.x);
-        Debug.Log(Screen.width + " " + gameTitleSz + worldTitleSz + " " + used + " " +used/Screen.width);
+        GUI.BeginGroup(rectSelectorGroup);
 
-        float heightCounter = padding.x;
-        float widthCounter = padding.y;
+        GUI.Box(rectSelectorBox, "");
 
+
+        int c = -1;
+        for (int i = 0; i < levels.Count; i++) //
+        {
+            int maxRowSz = 4;//... magic...
+            int r = i % maxRowSz;
+            if (r == 0) c++;
+            Debug.Log(r + " " + c);
+            Vector2 spawn = new Vector2(padding.x * 2 + r * (levelSelectorSz.x + padding.x), padding.y * 2 + c * (levelSelectorSz.y + padding.y));
+            Vector2 levelSelectorPos = new Vector2(spawn.x, spawn.y);
+            //  45% for margins, 55% for buttons.
+            // margins: 30 px * 9 = 270 px.   buttons 172 px * 4 = 688 px.   total screen calc = 958 
+            // margin: 3.13 %                 button: 18%
+            // 18 18 18 18 3.15 3.15 3.15 etc.
+
+            if (GUI.Button(new Rect(levelSelectorPos.x, levelSelectorPos.y, levelSelectorSz.x, levelSelectorSz.y), ((World)i).ToString().ToUpper(), myLabelButtonTitleStyle))
+            {
+                Debug.Log(i + " pressed");
+            }
+        }
+
+
+        GUI.EndGroup();
+        //GUI.Box(new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height), "");
+
+        //float used = Screen.width - (gameTitleSz.x + worldTitleSz.x);
+        //Debug.Log(Screen.width + " " + gameTitleSz + worldTitleSz + " " + used + " " +used/Screen.width);
 
 
     }
 
     //@percentage = 0.001 to 1.000
-    private float PercentHeightToPixel(float percentage)
+    private float PercentToPixel(float percentage, float relativeTo)
     {
         //const float minScreenHeight = 180f;
-        const float minPercentage = 0.05f;
+        const float minPercentage = 0.04f;
         const float maxPercentage = 1f;
 
         if (percentage < minPercentage) 
@@ -129,9 +183,11 @@ public class GameManager : MonoBehaviour {
             Debug.LogWarning("Percentage input <color=maroon>too small</color>, <color=orange>increased from " + percentage + " to " + maxPercentage);
             percentage = maxPercentage;
         }
-        float pixels = percentage * Screen.height;
+        float pixels = percentage * relativeTo;
         return pixels;
     }
+
+    
 	
 }
 
