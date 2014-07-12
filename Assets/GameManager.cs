@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,7 +9,14 @@ public class GameManager : MonoBehaviour {
     enum State { Splash, ChoosingWorld, ChoosingLevel, Playing }
     State currentState = State.ChoosingWorld;
 
-    private GUISkin OurSkin;
+    enum World { Jabir, Jordan, Morgan, Nadia, Ben, Matthew, Zack, Dante, Ian }; //crucially names of directories for internal usage only
+    enum Level { Scene1, Scene2, Scene3, Scene4, Scene5 };
+
+
+
+    List<Level> Scenes = new List<Level>();
+    Dictionary<World, List<Level>> levels = new Dictionary<World, List<Level>>();
+
 
     public static GameManager instance {
         get {
@@ -30,12 +38,17 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(_instance);
 
             //main game manager logic goes here
+            List<Level> sameLevelList = new List<Level>() { Level.Scene1, Level.Scene2, Level.Scene3, Level.Scene4, Level.Scene5 };
 
-            OurSkin = Resources.Load<GUISkin>("OurSkin");
-           
+   
 
+           // levels.Add(World.Jabir, sameLevelList);
+           // levels.Add(World.Jabir, sameLevelList);
+           // levels.Add(World.Jabir, sameLevelList);
+           // levels.Add(World.Jabir, sameLevelList);
+           // levels.Add(World.Jabir, sameLevelList);
 
-        }
+         }
         else 
         {
             //definitely a unity specific issue
@@ -48,39 +61,76 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI(){
 
-        //target resolutions have screen height on laptop screen in unity editor: 180 px smallest, 320 px largest
-        //font height is assumed to refer to the entire height.
-        //so the following prototypes with a target of 24 font height in 180 screen height test case.
+        //initialize various sizes
+        Vector2 padding = new Vector2(PercentHeightToPixel(.05f), PercentHeightToPixel(.05f));
+        float fontGameTitleHeight = PercentHeightToPixel(.10f);
+        float fontWorldTitleHeight = PercentHeightToPixel(.06f);
 
-        float minScreenHeight = 180f;
-        float targetFontHeight = 24f;
-        float targetFontHeightPercentage = targetFontHeight / minScreenHeight;
-        float actualFontHeight = targetFontHeightPercentage * Screen.height;
-        Debug.Log(actualFontHeight + " " + (int)actualFontHeight);
-
-        float fontHeight;
+        GUIStyle myLabelGameTitleStyle = new GUIStyle(GUI.skin.label);
+        myLabelGameTitleStyle.fontSize = (int)fontGameTitleHeight;
         
 
-        GUI.skin = OurSkin;
-        GUIStyle myLabelStyle= new GUIStyle(GUI.skin.label);
-        //Debug.Log(myLabelStyle.fontSize);
-        myLabelStyle.fontSize = (int)actualFontHeight;
-        GUI.skin.label = myLabelStyle;
+        GUIStyle myLabelWorldTitleStyle = new GUIStyle(GUI.skin.label);
+        myLabelWorldTitleStyle.fontSize = (int)fontWorldTitleHeight;
 
 
-        //Vector2 padding = new Vector2(50f, 50f);
-        float paddingX = 50f;
-        float paddingY = 50f;
-        float heightCounter = paddingX;
-        float widthCounter = paddingY;
-
-        Rect rectLabelBoxit = new Rect(paddingX, paddingY, paddingX + 100, paddingY + 30);
-
-        GUI.Label( rectLabelBoxit, "BLOCK-IT");
-
-        GUI.Box(new Rect(paddingX, paddingY + rectLabelBoxit.height, Screen.width - paddingX * 2, Screen.height - paddingY * 2 - rectLabelBoxit.height), "");
+        const string gameTitle = "BLOCK-IT";
+        GUI.skin.label = myLabelGameTitleStyle;
+        Vector2 gameTitleSz = GUI.skin.label.CalcSize(new GUIContent(gameTitle));
 
 
+        const string worldTitle = "WORLD SELECTOR";
+        GUI.skin.label = myLabelWorldTitleStyle;
+        Vector2 worldTitleSz = GUI.skin.label.CalcSize(new GUIContent(worldTitle));
+
+        string specificWorld = "";
+        Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld));
+
+
+
+
+        //draw level selector components
+        Rect rectLabelGameTitle = new Rect(padding.x, padding.y, padding.x + gameTitleSz.x, padding.y + gameTitleSz.y);
+        GUI.skin.label = myLabelGameTitleStyle;
+        GUI.Label(rectLabelGameTitle, gameTitle);
+
+
+
+        Rect rectWorldTitle = new Rect(Screen.width - worldTitleSz.x - padding.x, rectLabelGameTitle.height - worldTitleSz.y, padding.x + worldTitleSz.x, padding.y + worldTitleSz.y);
+        GUI.skin.label = myLabelWorldTitleStyle;
+        GUI.Label(rectWorldTitle, worldTitle);
+
+        GUI.Box(new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height), "");
+
+        float used = Screen.width - (gameTitleSz.x + worldTitleSz.x);
+        Debug.Log(Screen.width + " " + gameTitleSz + worldTitleSz + " " + used + " " +used/Screen.width);
+
+        float heightCounter = padding.x;
+        float widthCounter = padding.y;
+
+
+
+    }
+
+    //@percentage = 0.001 to 1.000
+    private float PercentHeightToPixel(float percentage)
+    {
+        //const float minScreenHeight = 180f;
+        const float minPercentage = 0.05f;
+        const float maxPercentage = 1f;
+
+        if (percentage < minPercentage) 
+        {
+            Debug.LogWarning("Percentage input <color=maroon>too small</color>, increased from " + percentage + " to " + minPercentage); 
+            percentage = minPercentage;
+        }
+        else if (percentage > maxPercentage)
+        {
+            Debug.LogWarning("Percentage input <color=maroon>too small</color>, <color=orange>increased from " + percentage + " to " + maxPercentage);
+            percentage = maxPercentage;
+        }
+        float pixels = percentage * Screen.height;
+        return pixels;
     }
 	
 }
