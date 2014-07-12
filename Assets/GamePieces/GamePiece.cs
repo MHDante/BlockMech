@@ -18,6 +18,14 @@ public enum PieceType
     trap,
     antitrap,
 }
+public enum ColorSlot
+{
+    color1,
+    color2,
+    color3,
+    color4,
+    color5,
+}
 [ExecuteInEditMode]
 public abstract class GamePiece : MonoBehaviour
 {
@@ -27,20 +35,27 @@ public abstract class GamePiece : MonoBehaviour
 	private const int defaultWeight  = 1;
 	Cell destination;
 	bool isMoving = false;
-	public GamePiece container { get
+    public ColorSlot colorslot = ColorSlot.color1;
+    private ColorSlot oldColorSlot = ColorSlot.color1;
+    public Color colorPreview;
+    private Color oldColorPreview;
+    
+	public GamePiece container
     {
-        
-			GamePiece ret = cell.gamePiece;
+        get 
+        {
+            GamePiece ret = cell.gamePiece;
             if (cell == null) return null;
-			if (ret == this || ret ==null) return null;
+            if (ret == this || ret == null) return null;
 
-			while (ret.containedPiece != this) {
-				if (ret == null) throw new WTFException();
-				ret = ret.containedPiece;
+            while (ret.containedPiece != this)
+            {
+                if (ret == null) throw new WTFException();
+                ret = ret.containedPiece;
                 if (ret == null)
                     Debug.Log("ErrorEngine");
-			} return ret;
-
+            } 
+            return ret;
 		}
     }
     public abstract bool isSolid { get; set; }
@@ -175,8 +190,6 @@ public abstract class GamePiece : MonoBehaviour
                 currentLerp = 0f;
                 isMoving = false;
                 Detatch();
-
-                
                 destination.Unreserve();
                 destination.Occupy(this);
                 destination = null;
@@ -187,9 +200,22 @@ public abstract class GamePiece : MonoBehaviour
                 currentLerp += speed;
             }
         }
+        //prevent user from changing the color in inspector (it's only a preview)
+        if (colorPreview != oldColorPreview)
+        {
+            colorPreview = oldColorPreview;
+        }
+        //change the actual color based on the colorslot enum inspector change
+        if (colorslot != oldColorSlot)
+        {
+            oldColorSlot = colorslot;
+            colorPreview = Author.GetColorSlot(colorslot);
+            oldColorPreview = colorPreview;
+            //gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+        }
 	}
     public virtual void OnDestroy(){
-        if(cell != null)Detatch();
+        if (cell != null) Detatch();
     }
 }
 
