@@ -34,7 +34,7 @@ public abstract class GamePiece : MonoBehaviour
     public PieceType piecetype;
 	private const int defaultWeight  = 1;
 	Cell destination;
-	bool isMoving = false;
+	public bool isMoving = false;
     public ColorSlot colorslot = ColorSlot.color1;
     private ColorSlot oldColorSlot = ColorSlot.color1;
     public Color colorPreview;
