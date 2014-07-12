@@ -33,7 +33,7 @@ public class Player : GamePiece {
 		if(!moveTo(s)){
 			Cell target = cell.getNeighbour(s);
             if (target == null) return false;
-			GamePiece obstructor = target.gamePiece;
+			GamePiece obstructor = target.firstSolid();
             if (obstructor != null)
             {
                 if (obstructor.pushFrom(Utils.opposite(s),3))

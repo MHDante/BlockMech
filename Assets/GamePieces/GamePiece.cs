@@ -50,12 +50,9 @@ public abstract class GamePiece : MonoBehaviour
 			GamePiece ret = cell.gamePiece;
             if (ret == this || ret == null) return null;
 
-            while (ret.containedPiece != this)
+            while (ret != null && ret.containedPiece != this)
             {
-				if (ret == null) throw new WTFException();
 				ret = ret.containedPiece;
-                if (ret == null)
-                    Debug.Log("ErrorEngine");
             } 
             return ret;
 		}
@@ -127,12 +124,12 @@ public abstract class GamePiece : MonoBehaviour
 			return false;
 		if (strength < weight) 
 			return false;
-		GamePiece obstructor = GetNeighbour(Utils.opposite(side));
+		GamePiece obstructor = cell.getNeighbour(side).firstSolid();
 
 		if(obstructor==null)return moveTo(Utils.opposite(side));
 		if(obstructor.isSolid && !isPushable) 
 			return false;
-		if(!obstructor.isSolid && !isPushable) 
+		if(!obstructor.isSolid && !obstructor.isPushable) 
 			return moveTo(Utils.opposite(side));
 		bool obsPushed = obstructor.pushFrom(side, strength - weight);
 		if (obsPushed){
@@ -197,7 +194,13 @@ public abstract class GamePiece : MonoBehaviour
             if (cell == null) return;
             if (container == null)
             {
-                if (cell.Empty() != this) throw new WTFException();
+                var gg = cell.gamePiece;
+                while (gg != this)
+                {
+                    if (gg == null) return;
+                    gg = gg.containedPiece;
+                }
+                var g = cell.Empty(); 
             }
             else
             {
