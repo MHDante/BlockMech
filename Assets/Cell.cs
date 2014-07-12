@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public enum Side {none, top, right, bottom, left };
+public enum Side {top, right, bottom, left };
 public class Cell {
 
     public int x { get; set; }
@@ -78,6 +78,7 @@ public class Cell {
 	/// </summary>
 	/// <returns>Returns false if the piece was not able to move into the cell.</returns>
 	public bool Occupy(GamePiece piece){
+		if (IsReserved)return false;
 		if(gamePiece == null){
 			gamePiece = piece;
 			piece.cell = this;
@@ -137,12 +138,13 @@ public class Cell {
     }
 
 	public bool IsSolidlyOccupied(){
+		if (IsReserved) return true;
         if (gamePiece == null)
         {
             return false;
         }
         GamePiece g = gamePiece;
-        while (g.containedPiece != null)
+        while (g != null)
         {
             if (g.isSolid) return true;
             g = g.containedPiece;
@@ -152,16 +154,16 @@ public class Cell {
     private bool IsReserved = false;
 	public bool Reserve()
 	{
-        if (IsReserved) return false;
-        IsReserved = true;
-        return true;
+		if (IsSolidlyOccupied()) return false;
+		IsReserved = true; 
+		return IsReserved;
 	}
     public void Unreserve()
     {
         IsReserved = false;
     }
 
-    public Cell(RoomManager room, int x, int y)
+    public Cell(int x, int y)
     {
         this.x = x;
         this.y = y;

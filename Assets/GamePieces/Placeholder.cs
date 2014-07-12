@@ -4,7 +4,7 @@ using System;
 public class Placeholder : GamePiece
 {
     public override bool isSolid { get { return true; } set { } }
-    public override bool isPushable { get { return false; } set { } }
+    public override bool isPushable { get { return true; } set { } }
 
     public override void Start()
     {

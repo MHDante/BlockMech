@@ -39,19 +39,20 @@ public abstract class GamePiece : MonoBehaviour
     private ColorSlot oldColorSlot = ColorSlot.color1;
     public Color colorPreview;
     private Color oldColorPreview;
-    
+        
 	public GamePiece container
     {
         get 
         {
-            GamePiece ret = cell.gamePiece;
-            if (cell == null) return null;
+            if (cell == null)
+                return null;
+			GamePiece ret = cell.gamePiece;
             if (ret == this || ret == null) return null;
 
             while (ret.containedPiece != this)
             {
-                if (ret == null) throw new WTFException();
-                ret = ret.containedPiece;
+				if (ret == null) throw new WTFException();
+				ret = ret.containedPiece;
                 if (ret == null)
                     Debug.Log("ErrorEngine");
             } 
@@ -78,21 +79,30 @@ public abstract class GamePiece : MonoBehaviour
 
     public virtual bool pushFrom(Side side, int strength = 1)
     {
-		if(!isPushable) return false;
+		if(!isSolid && this.containedPiece!= null && this.containedPiece.pushFrom(side, strength))
+			return true;
+		if(!isPushable) 
+			return false;
 		Wall w = cell.getWall(Utils.opposite(side));
-		if(w!=null && !w.isTraversible) return false;
-		if (strength < weight) return false;
-		GamePiece obstructor = cell.getNeighbour(side).gamePiece;
+		if(w!=null && !w.isTraversible) 
+			return false;
+		if (strength < weight) 
+			return false;
+		GamePiece obstructor = GetNeighbour(Utils.opposite(side));
 
-		if(obstructor!=null)return moveTo(Utils.opposite(side));
-		if(obstructor.isSolid && !isPushable) return false;
-		if(!obstructor.isSolid && !isPushable) return moveTo(Utils.opposite(side));
+		if(obstructor==null)return moveTo(Utils.opposite(side));
+		if(obstructor.isSolid && !isPushable) 
+			return false;
+		if(!obstructor.isSolid && !isPushable) 
+			return moveTo(Utils.opposite(side));
 		bool obsPushed = obstructor.pushFrom(side, strength - weight);
 		if (obsPushed){
+			obstructor.Detatch();
 			bool succeed = moveTo(Utils.opposite(side));
 			if (!succeed){obstructor.moveTo(side);}
 			return succeed;
-		} else return false;
+		} 
+		return false;
     }
     public virtual bool onOccupy(GamePiece piece)
     {
@@ -108,7 +118,11 @@ public abstract class GamePiece : MonoBehaviour
         containedPiece = null;
         return temp;
     }
-
+	public GamePiece GetNeighbour(Side s){
+		Cell neighbour = cell.getNeighbour(s); 
+		if(neighbour == null) return null;
+        return neighbour.gamePiece;
+	}
     public virtual bool moveTo(Side side) {
 		if (isMoving) return false;
         if (cell == null)
@@ -121,6 +135,7 @@ public abstract class GamePiece : MonoBehaviour
 		if (available)
         {
             isMoving = true;
+            StartPos = cell.WorldPos();
             destination = dest;
         }
         return available;
@@ -138,9 +153,9 @@ public abstract class GamePiece : MonoBehaviour
 
     public void Detatch(bool bringChildren = true)
     {
-        
         if (bringChildren)
         {
+            if (cell == null) return;
             if (container == null)
             {
                 if (cell.Empty() != this) throw new WTFException();
@@ -155,6 +170,10 @@ public abstract class GamePiece : MonoBehaviour
             if (containedPiece == null)
             {
                 this.Detatch(true);
+                return;
+            }
+            else if (cell == null) 
+            {
                 return;
             }
             else if (container == null)
@@ -181,6 +200,7 @@ public abstract class GamePiece : MonoBehaviour
     }
     public float speed = 5f;
     public float currentLerp = 0f, maxLerp = 100f;
+    public Vector2 StartPos;
 	public virtual void Update()
     {
         if (isMoving)
@@ -196,7 +216,7 @@ public abstract class GamePiece : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.Lerp(cell.WorldPos(), destination.WorldPos(), currentLerp / 100f);
+                transform.position = Vector2.Lerp(StartPos, destination.WorldPos(), currentLerp / 100f);
                 currentLerp += speed;
             }
         }
