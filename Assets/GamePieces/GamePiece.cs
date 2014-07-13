@@ -30,7 +30,6 @@ public enum ColorSlot
 [ExecuteInEditMode]
 public abstract class GamePiece : MonoBehaviour
 {
-    public bool isPlaced = false;
     public static Dictionary<Type, int> spawnNumbers = new Dictionary<Type, int>();
     public Cell _cell ;
     public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
