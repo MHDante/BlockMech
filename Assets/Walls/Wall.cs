@@ -13,12 +13,14 @@ public class Wall : MonoBehaviour {
     public bool active { get { return _active; } set { gameObject.SetActive(value); isTraversible = !value; _active = value; } }
 
     public enum Orientation { Horizontal, Vertical };
-    public Orientation orientation = Orientation.Horizontal;
+    public Orientation orientation = Orientation.Vertical;
 
 	// Use this for initialization
     protected virtual void Start()
     {
-        if (transform.rotation.Equals(Quaternion.identity)) orientation = Orientation.Vertical;
+        if (orientation== Orientation.Vertical && transform.rotation.Equals(Quaternion.identity)) 
+            orientation = Orientation.Vertical;
+
         else orientation = Orientation.Horizontal;
 	}
 	
