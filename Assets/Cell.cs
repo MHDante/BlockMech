@@ -149,10 +149,12 @@ public class Cell {
     public void QueuedOccupy(int Zposition, GamePiece piece)
     {
         if (Zposition > pieces.Count)
+        {
             occupationQueue[Zposition] = piece;
+        }
         else
         {
-            pieces.Add(piece);
+            Occupy(piece);
             foreach (int i in occupationQueue.Keys)
                 QueuedOccupy(i, occupationQueue[i]);
         }

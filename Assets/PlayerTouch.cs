@@ -18,7 +18,6 @@ public class PlayerTouch : MonoBehaviour {
     {
         if (Application.isPlaying && RoomManager.roomManager.player.gameObject != null)
         {
-            //touch detection code, doesn't belong here :'( 
             if (MessageTarget == null)
                 MessageTarget = RoomManager.roomManager.player.gameObject;
             foreach (var T in Input.touches)
