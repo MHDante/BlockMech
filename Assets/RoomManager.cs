@@ -80,6 +80,11 @@ public class RoomManager : MonoBehaviour {
         }
 
         InitializeDictionaries();
+
+        if (player == null)
+        {
+            Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
+        }
     }
     public void PrintWallAmount()
     {
