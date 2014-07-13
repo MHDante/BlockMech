@@ -11,11 +11,6 @@ public class Button : GamePiece
     {
         base.Start();
     }
-    public sealed override void Awake()
-    {
-        base.Awake();
-        Debug.Log("YEAH");
-    }
     public override void onDeOccupy(GamePiece piece)
     {
         base.onDeOccupy(piece);

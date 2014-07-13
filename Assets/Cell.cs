@@ -85,6 +85,35 @@ public class Cell {
         piece.cell = this;
         return true;
     }
+
+    private Dictionary<int, GamePiece> occupationQueue = new Dictionary<int, GamePiece>();
+    public void QueuedOccupy(int Zposition, GamePiece piece)
+    {
+        if (Zposition > pieces.Count)
+        {
+            occupationQueue[Zposition] = piece;
+        }
+        else
+        {
+            Occupy(piece);
+            foreach (int i in occupationQueue.Keys)
+                QueuedOccupy(i, occupationQueue[i]);
+        }
+    }
+
+
+	/// <summary>
+	/// Removes the contents of this cell;
+	/// </summary>
+	/// <returns>Returns the piece that was in this cell.</returns>
+    //public GamePiece Empty(){
+    //	GamePiece ret = gamePiece;
+    //	gamePiece = null;
+    //    if (ret != null) 
+    //    ret.cell = null;
+    //    return ret;
+    //}
+    //-----
     public List<GamePiece> Empty()
     {
         if (pieces.Count <= 1) return new List<GamePiece>();

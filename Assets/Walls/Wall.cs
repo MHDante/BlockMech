@@ -18,7 +18,8 @@ public class Wall : MonoBehaviour {
 	// Use this for initialization
     protected virtual void Start()
     {
-	    
+        if (transform.rotation.Equals(Quaternion.identity)) orientation = Orientation.Vertical;
+        else orientation = Orientation.Horizontal;
 	}
 	
 	// Update is called once per frame

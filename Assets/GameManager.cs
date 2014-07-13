@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
 
     Dictionary<World, List<Level>> levels = new Dictionary<World, List<Level>>();
 
+    bool showWorld;
+    World selectedWorld = (World)(-1);
 
     public static GameManager instance {
         get {
@@ -43,17 +45,25 @@ public class GameManager : MonoBehaviour {
             for (int world = 0; world < eSize; world++) {
                 levels.Add((World)world, sameScenes);
             }
+            showWorld = true;
 
-          }
+            Object[] scenes = Resources.LoadAll("Scenes");
+            string s = scenes[1].name;
+            //Application.LoadLevel(s);
+
+
+        }
         else 
         {
-            //definitely a unity specific issue
+            //definitely a unity specific issue: ZHARRIS;
             if (this != _instance)
                 Destroy(this.gameObject);
         }
 
 
     }
+
+    Vector2 scrollPosition = Vector2.zero;
 
     void OnGUI(){
 
@@ -117,32 +127,53 @@ public class GameManager : MonoBehaviour {
         
 
 
-        //draw level selector components
+        //draw game title 
         Rect rectLabelGameTitle = new Rect(padding.x, padding.y, padding.x + gameTitleSz.x, padding.y + gameTitleSz.y);
         GUI.skin.label = myLabelGameTitleStyle;
         GUI.Label(rectLabelGameTitle, gameTitle);
 
 
 
+        //figure out amount of rows, use to make inner scroll box height;
+        //
+        int eSize = System.Enum.GetNames(typeof(World)).Length;
+        int maxCol = 4;
+        int maxRow = (int)Mathf.Ceil((float)eSize / (float)maxCol);
+
+        string title;
+        if (showWorld)
+        {
+            title = worldTitle;
+        }
+        else 
+        {
+            title = selectedWorld.ToString().ToUpper() + "'S WORLD";
+        }
+
+        //draw world title placeholder
         Rect rectWorldTitle = new Rect(Screen.width - worldTitleSz.x - padding.x, rectLabelGameTitle.height - worldTitleSz.y, padding.x + worldTitleSz.x, padding.y + worldTitleSz.y);
         GUI.skin.label = myLabelWorldTitleStyle;
         GUI.Label(rectWorldTitle, worldTitle);
 
         Rect rectSelectorGroup = new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
-        Rect rectSelectorBox = new Rect(0, 0, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
+        Rect rectSelectorBox = new Rect(0, 0, Screen.width - padding.x , ((levelSelectorSz.y + padding.y) * maxRow + padding.y * 2 ));
 
-        GUI.BeginGroup(rectSelectorGroup);
+
+
+        //draw level selector components
+        scrollPosition = 
+        GUI.BeginScrollView(rectSelectorGroup, scrollPosition, rectSelectorBox);
 
         GUI.Box(rectSelectorBox, "");
 
 
         int c = -1;
-        for (int i = 0; i < levels.Count; i++) //
+        for (int world = 0; world < levels.Count; world++) //
         {
             int maxRowSz = 4;//... magic...
-            int r = i % maxRowSz;
+            int r = world % maxRowSz;
             if (r == 0) c++;
-            Debug.Log(r + " " + c);
+            //Debug.Log(r + " " + c);
             Vector2 spawn = new Vector2(padding.x * 2 + r * (levelSelectorSz.x + padding.x), padding.y * 2 + c * (levelSelectorSz.y + padding.y));
             Vector2 levelSelectorPos = new Vector2(spawn.x, spawn.y);
             //  45% for margins, 55% for buttons.
@@ -150,14 +181,34 @@ public class GameManager : MonoBehaviour {
             // margin: 3.13 %                 button: 18%
             // 18 18 18 18 3.15 3.15 3.15 etc.
 
-            if (GUI.Button(new Rect(levelSelectorPos.x, levelSelectorPos.y, levelSelectorSz.x, levelSelectorSz.y), ((World)i).ToString().ToUpper(), myLabelButtonTitleStyle))
+            if (GUI.Button(new Rect(levelSelectorPos.x, levelSelectorPos.y, levelSelectorSz.x, levelSelectorSz.y), ((World)world).ToString().ToUpper(), myLabelButtonTitleStyle))
             {
-                Debug.Log(i + " pressed");
+                DrawWorldMenu((World)world);
+                Debug.Log(world + " pressed");
             }
         }
 
 
-        GUI.EndGroup();
+        GUI.EndScrollView();
+
+        //move according to scroll wheel
+        float scrollMovement = 3.33f * levelSelectorSz.y/4;
+        float result = Input.GetAxis("Mouse ScrollWheel");
+        if (result != 0)
+        {
+            scrollPosition = new Vector2(scrollPosition.x, scrollPosition.y + result * -scrollMovement);
+        }
+
+
+
+        //move according to touches on screen
+
+        foreach (var T in Input.touches)
+        { 
+            
+        }
+
+
         //GUI.Box(new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height), "");
 
         //float used = Screen.width - (gameTitleSz.x + worldTitleSz.x);
@@ -185,6 +236,12 @@ public class GameManager : MonoBehaviour {
         }
         float pixels = percentage * relativeTo;
         return pixels;
+    }
+
+    private void DrawWorldMenu(World world) {
+
+        selectedWorld = world;
+
     }
 
     

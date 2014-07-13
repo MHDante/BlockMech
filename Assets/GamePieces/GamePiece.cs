@@ -84,14 +84,16 @@ public abstract class GamePiece : MonoBehaviour
 
         
     }
+    private int DebugCounter = 0;
     public virtual void Start() 
     {
-        if (!Cell.GetFromWorldPos(transform.position).Occupy(this)) 
-            throw new WTFException(this.GetType().ToString());
+        Cell.GetFromWorldPos(transform.position).QueuedOccupy((int)transform.position.z, this) ;
         SetColorSlot(colorslot);
     }
+
     public virtual void Update()
     {
+
         if (isMoving)
         {
             if (currentLerp >= maxLerp)
@@ -109,11 +111,13 @@ public abstract class GamePiece : MonoBehaviour
                 currentLerp += speed;
             }
         }
-    }
+        if (cell != null)
+            transform.position = new Vector3(transform.position.x, transform.position.y, getZPosition());
+        }
     void OnValidate()
-    {
+        {
         SetColorSlot(colorslot);
-    }
+        }
     public void SetColorSlot(ColorSlot colorSlot)
     {
         this.colorslot = colorSlot;
