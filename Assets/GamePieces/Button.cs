@@ -50,7 +50,6 @@ public class Button : GamePiece
         if (Application.isPlaying && IsOccupied)
         {
             string s = GetTextFromFile("readthisfile");
-            //Debug.Log(s);
             int a = 5;
             Rect r = new Rect(transform.position.x * a, transform.position.y * a, (transform.position.x + 100) * a, (transform.position.y + 100) * a);
             GUI.Label(r, s);

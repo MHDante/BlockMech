@@ -31,8 +31,7 @@ public class PuzzleMaker : EditorWindow
                 GameObject clickedObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
 
                 if (clickedObject){ Active = false; }
-
-    }
+            }
         };
     }
 	void OnDisable()
@@ -127,8 +126,11 @@ public class PuzzleMaker : EditorWindow
 				Side side;
                 Wall.Orientation or;
 				Vector2 target = Utils.WorldToWallPos(MousePos, out side, out or);
-                Indicator.transform.position = target;
-                Indicator.GetComponent<Wall>().orientation = or;
+                if (Indicator)
+                {
+                    Indicator.transform.position = target;
+                    Indicator.GetComponent<Wall>().orientation = or;
+                }
                 if (LeftDown())
                 {
                     SpawnWall(target, or, side);

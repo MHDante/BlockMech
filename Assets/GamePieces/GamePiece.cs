@@ -21,23 +21,24 @@ public enum PieceType
 public enum ColorSlot
 {
     none,
-    color1,
-    color2,
-    color3,
-    color4,
-    color5,
+    A,
+    B,
+    C,
+    D,
+    E,
 }
 [ExecuteInEditMode]
 public abstract class GamePiece : MonoBehaviour
 {
+    public static Dictionary<Type, int> spawnNumbers = new Dictionary<Type, int>();
     public Cell _cell ;
     public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
     public PieceType piecetype;
 	private const int defaultWeight  = 1;
 	Cell destination;
 	public bool isMoving = false;
-    public ColorSlot colorslot = ColorSlot.color1;
-    private ColorSlot oldColorSlot = ColorSlot.color1;
+    public ColorSlot colorslot = ColorSlot.A;
+    private ColorSlot oldColorSlot = ColorSlot.A;
     public Color colorPreview;
     private Color oldColorPreview;
         
@@ -98,8 +99,13 @@ public abstract class GamePiece : MonoBehaviour
     //public GamePiece containedPiece { get ;set; }
     //public bool IsOccupied { get { return containedPiece != null; } }
     public bool IsOccupied { get { return nextPiece != null; } }
+    public GamePiece()
+    {
+
+    }
 
     public virtual void Awake() {
+
         
     }
     public virtual void Start() 

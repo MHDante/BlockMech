@@ -126,7 +126,6 @@ public class RoomManager : MonoBehaviour {
             }
         }
         return list;
-
     }
     public void AddPiece(GameObject gameobject, PieceType piecetype, ColorSlot colorslot)
     {
@@ -139,6 +138,7 @@ public class RoomManager : MonoBehaviour {
         }
         gamePiece.piecetype = piecetype;
         gamePiece.colorslot = colorslot;
+        //gameobject.name = 
         if (t == typeof(Player))
         {
             player = (Player)gamePiece;
