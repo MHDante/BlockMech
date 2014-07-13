@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 public class Button : GamePiece
 {
     public override bool isSolid { get { return false; } set { } }
@@ -10,39 +11,64 @@ public class Button : GamePiece
     {
         base.Start();
     }
-    public override GamePiece onDeOccupy()
+    public override void onDeOccupy(GamePiece piece)
     {
-        GamePiece piece = base.onDeOccupy();
+        base.onDeOccupy(piece);
         var list = RoomManager.roomManager.GetPiecesOfColor(colorslot);
         foreach (var colorPiece in list)
         {
             if (colorPiece is Keyhole) ((Keyhole)colorPiece).active = true;
         }
         Debug.Log(list.Count);
-        return piece;
     }
     public override bool onOccupy(GamePiece piece)
     {
-        bool success = base.onOccupy(piece);
-        if (success)
+        var list = RoomManager.roomManager.GetPiecesOfColor(colorslot);
+        bool allOccupied = true;
+        foreach (var coloredPiece in list)
         {
-            var list = RoomManager.roomManager.GetPiecesOfColor(colorslot);
-            bool allOccupied = true;
-            foreach(var coloredPiece in list)
-            {
-                if (coloredPiece is Button && coloredPiece != this && !coloredPiece.IsOccupied) allOccupied = false;
-            }
-            if (allOccupied)
-            {
-                foreach(var colorPiece in list)
-                {
-                    if (colorPiece is Keyhole) ((Keyhole)colorPiece).active = false;
-                }
-            }
-            Debug.Log(list.Count);
+            if (coloredPiece is Button && coloredPiece != this && !coloredPiece.IsOccupied) allOccupied = false;
         }
+        if (allOccupied)
+        {
+            foreach (var colorPiece in list)
+            {
+                if (colorPiece is Keyhole) ((Keyhole)colorPiece).active = false;
+            }
+        }
+        Debug.Log(list.Count);
 
-        return success;
+        return true;
+    }
+    public override void Update()
+    {
+        base.Awake();
+    }
+
+    public void OnGUI()
+    {
+        if (Application.isPlaying && IsOccupied)
+        {
+            string s = GetTextFromFile("readthisfile");
+            int a = 5;
+            Rect r = new Rect(transform.position.x * a, transform.position.y * a, (transform.position.x + 100) * a, (transform.position.y + 100) * a);
+            GUI.Label(r, s);
+        }
+    }
+    public static Dictionary<string, string> fileTexts = new Dictionary<string, string>();
+    public static string GetTextFromFile(string filename)
+    {
+        if (fileTexts.ContainsKey(filename))
+        {
+            return fileTexts[filename];
+        }
+        TextAsset file = Resources.Load<TextAsset>(filename);
+        if (file != null)
+        {
+            fileTexts[filename] = file.text;
+            return file.text;
+        }
+        return "filenotfound";
     }
 
 }

@@ -13,10 +13,9 @@ public class Keyhole : GamePiece
     {
         base.Start();
     }
-    public override GamePiece onDeOccupy()
+    public override void onDeOccupy(GamePiece piece)
     {
-        
-        return base.onDeOccupy();
+        base.onDeOccupy(piece);
     }
     public override bool onOccupy(GamePiece piece)
     {
