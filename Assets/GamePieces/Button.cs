@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 public class Button : GamePiece
 {
     public override bool isSolid { get { return false; } set { } }
@@ -38,6 +39,37 @@ public class Button : GamePiece
         Debug.Log(list.Count);
 
         return true;
+    }
+    public override void Update()
+    {
+        base.Awake();
+    }
+
+    public void OnGUI()
+    {
+        if (Application.isPlaying && IsOccupied)
+        {
+            string s = GetTextFromFile("readthisfile");
+            //Debug.Log(s);
+            int a = 5;
+            Rect r = new Rect(transform.position.x * a, transform.position.y * a, (transform.position.x + 100) * a, (transform.position.y + 100) * a);
+            GUI.Label(r, s);
+        }
+    }
+    public static Dictionary<string, string> fileTexts = new Dictionary<string, string>();
+    public static string GetTextFromFile(string filename)
+    {
+        if (fileTexts.ContainsKey(filename))
+        {
+            return fileTexts[filename];
+        }
+        TextAsset file = Resources.Load<TextAsset>(filename);
+        if (file != null)
+        {
+            fileTexts[filename] = file.text;
+            return file.text;
+        }
+        return "filenotfound";
     }
 
 }

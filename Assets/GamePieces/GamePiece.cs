@@ -65,12 +65,17 @@ public abstract class GamePiece : MonoBehaviour
         {
             if (cell == null) return null;
             if (!cell.pieces.Contains(this)) throw new WTFException("Piece was expected in cell pieces list.");
-            if (cell.pieces.Count < 2) return null;
             int index = cell.pieces.IndexOf(this);
             if (index == 0) return null;
             return cell.pieces[index - 1];
         }
     }
+
+    public int getZPosition()
+    {
+        return cell.pieces.IndexOf(this);
+    }
+
     //formerly called containedPiece
     public GamePiece nextPiece
     {
@@ -78,10 +83,8 @@ public abstract class GamePiece : MonoBehaviour
         {
             if (cell == null) return null;
             if (!cell.pieces.Contains(this)) throw new WTFException("Piece was expected in cell pieces list.");
-            int listSize = cell.pieces.Count;
-            if (listSize < 2) return null;
             int index = cell.pieces.IndexOf(this);
-            if (index == listSize - 1) return null;
+            if (index == cell.pieces.Count - 1) return null;
             return cell.pieces[index + 1];
         }
     }
@@ -183,6 +186,10 @@ public abstract class GamePiece : MonoBehaviour
         return true;
     }
 
+    public virtual bool canBeOccupiedBy(GamePiece piece)
+    {
+        return true;
+    }
     public virtual void onDeOccupy(GamePiece piece) 
     {
     }
@@ -322,14 +329,11 @@ public abstract class GamePiece : MonoBehaviour
         var detatchList = new List<GamePiece>();
         var currentPieces = cell.pieces.ToList();
         int thisPieceIndex = currentPieces.IndexOf(this);
-        for (int i = 0; i < currentPieces.Count; i++)
+        for (int i = thisPieceIndex; i < currentPieces.Count; i++)
         {
-            if (i >= thisPieceIndex)
-            {
-                GamePiece piece = currentPieces[i];
-                piece.Detatch();
-                detatchList.Add(piece);
-            }
+            GamePiece piece = currentPieces[i];
+            piece.Detatch();
+            detatchList.Add(piece);
         }
         return detatchList;
 

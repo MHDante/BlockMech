@@ -42,7 +42,7 @@ public class RoomManager : MonoBehaviour {
                 { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
                 { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
                 { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
-                { PieceType.switcH, Resources.Load<GameObject>("Prefabs/button")},//also button, switcH script added later
+                { PieceType.switcH, Resources.Load<GameObject>("Prefabs/switch")},//also button, switcH script added later
                 { PieceType.key, Resources.Load<GameObject>("Prefabs/key")},
                 { PieceType.keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
                 { PieceType.teleport, Resources.Load<GameObject>("Prefabs/teleport")},
@@ -128,7 +128,7 @@ public class RoomManager : MonoBehaviour {
         return list;
 
     }
-    public void AddPiece(GameObject gameobject, PieceType piecetype)
+    public void AddPiece(GameObject gameobject, PieceType piecetype, ColorSlot colorslot)
     {
         GamePiece gamePiece;
         Type t = pieceTypes[piecetype];
@@ -138,12 +138,11 @@ public class RoomManager : MonoBehaviour {
             gamePiece = (GamePiece)gameobject.AddComponent(t);
         }
         gamePiece.piecetype = piecetype;
+        gamePiece.colorslot = colorslot;
         if (t == typeof(Player))
         {
             player = (Player)gamePiece;
         }
-
-
         //if (piecetype == PieceType.player)
         //{
         //    gamePiece = gameobject.GetComponent<Player>();
@@ -168,7 +167,6 @@ public class RoomManager : MonoBehaviour {
         //    bool success = cell.Occupy(gamePiece);
         //    //do something if the cell was successfully placed.
         //}
-
     }
 	void Start () {
         if (Application.isPlaying)

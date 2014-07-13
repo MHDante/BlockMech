@@ -10,6 +10,7 @@ public class Cell {
     public int x { get; set; }
     public int y { get; set; }
     public List<GamePiece> pieces { get; set; }
+    public GamePiece this[int i] { get { return pieces[i]; } }
 
     private Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
 
@@ -131,9 +132,13 @@ public class Cell {
     {
         if (pieces.Contains(piece)) return false;
         if (IsSolidlyOccupied()) return false;
-        foreach(GamePiece p in pieces)
+        foreach (GamePiece p in pieces)
         {
-            p.onOccupy(piece); //maybe we should have a 'try occupy' that checks whether occupying is possibly, and if not, does nothing and aborts the entire occupy, other call all the onOccupy() events
+            if (!p.canBeOccupiedBy(piece)) return false;
+        }
+        foreach (GamePiece p in pieces)
+        {
+            p.onOccupy(piece); 
         }
         pieces.Add(piece);
         piece.cell = this;
@@ -153,16 +158,10 @@ public class Cell {
     //    return ret;
     //}
     //-----
-    public GamePiece Empty()
+    public List<GamePiece> Empty()
     {
-        GamePiece firstPiece = null;
-        if (pieces.Count > 0)
-        {
-            firstPiece = pieces[0];
-            firstPiece.cell = null;
-        }
-        pieces = new List<GamePiece>();
-        return firstPiece;
+        if (pieces.Count <= 1) return new List<GamePiece>();
+        return pieces[0].DetatchWithChilren();
     }
 
 
@@ -234,7 +233,7 @@ public class Cell {
     public bool IsSolidlyOccupied()
     {
         if (IsReserved) return true;
-        return pieces.Count > 0 && pieces.Any(p => p.isSolid);
+        return HasPiece() && pieces.Any(p => p.isSolid);
     }
     private bool IsReserved = false;
 	public bool Reserve()

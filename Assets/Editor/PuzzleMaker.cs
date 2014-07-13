@@ -7,7 +7,8 @@ using System;
 public class PuzzleMaker : EditorWindow
 {
     public PieceType selectedPiece = PieceType.wall;
-    
+    ColorSlot colorslot = ColorSlot.none;
+    Color spawnColor = Color.white;
     Vector2 MousePos;
     bool LeftClick;
     bool RightClick;
@@ -39,18 +40,28 @@ public class PuzzleMaker : EditorWindow
 		SceneView.onSceneGUIDelegate -= OnUpdate;
 	}
     
-    void Initialize()
+    void UpdateIndicator(bool withinGrid)
     {
-        
         if (Indicator == null)
         {
             SetIndicator();
         }
-        //if (WallParent == null)
-        //{
-        //    WallParent = new GameObject();
-        //    WallParent.name = "Walls";
-        //}
+        else
+        {
+            SpriteRenderer renderer = Indicator.GetComponent<SpriteRenderer>();
+            if (renderer != null)
+            {
+                if (withinGrid)
+                {
+                    if (!renderer.enabled) renderer.enabled = true;
+                    renderer.color = spawnColor * 0.5f;
+                }
+                else
+                {
+                    if (renderer.enabled) renderer.enabled = false;
+                }
+            }
+        }
     }
 
     
@@ -70,23 +81,30 @@ public class PuzzleMaker : EditorWindow
             Indicator = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece]);
             Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
             Indicator.name = "Indicator";
+            GamePiece piece = Indicator.GetComponent<GamePiece>();
+            if (piece != null)
+            {
+                piece.colorslot = colorslot;
+            }
         }
     }
     void OnUpdate(SceneView sceneView)
     {
-		
-
 		Vector2 screenpos = Event.current.mousePosition;
 		screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 		MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
-        if (MousePos.isWithinGrid() && Event.current.type == EventType.MouseDown && Event.current.button == 2)
+        bool withinGrid = MousePos.isWithinGrid();
+        if (withinGrid && Event.current.type == EventType.MouseDown && Event.current.button == 2)
         {
-            Active = !Active; Event.current.Use();
+            Active = !Active; 
+            Event.current.Use(); //keeping this line causes one bug, removing it causes another.
         }
-		if(Active && MousePos.isWithinGrid())
+        if (Active)
         {
-            Initialize();
-            
+            UpdateIndicator(withinGrid);
+        }
+		if(Active && withinGrid)
+        {
 	        if (Event.current.type == EventType.layout)
 	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
 	        Selection.activeObject = null;
@@ -104,8 +122,6 @@ public class PuzzleMaker : EditorWindow
                     SetIndicator();
                 }
             }
-
-
             if (selectedPiece == PieceType.wall )
             {
 				Side side;
@@ -167,10 +183,6 @@ public class PuzzleMaker : EditorWindow
 					}
 				}
             }
-            else if (selectedPiece == PieceType.none)
-            {
-                
-            }
 			Event.current.Use();
 		}
     }
@@ -180,7 +192,7 @@ public class PuzzleMaker : EditorWindow
         GameObject parent = GetPieceParent(piece);
         GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
         obj.transform.parent = parent.transform;
-        RoomManager.roomManager.AddPiece(obj, piece);
+        RoomManager.roomManager.AddPiece(obj, piece, colorslot);
 
     }
     public void SpawnPlayer(Cell target)
@@ -188,7 +200,7 @@ public class PuzzleMaker : EditorWindow
         if (RoomManager.roomManager.player == null)
         {
             GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.player], target.WorldPos(), Quaternion.identity);
-            RoomManager.roomManager.AddPiece(obj, PieceType.player);
+            RoomManager.roomManager.AddPiece(obj, PieceType.player, ColorSlot.none);
         }
         else
         {
@@ -258,6 +270,13 @@ public class PuzzleMaker : EditorWindow
             selectedPiece = newpiece;
             SetIndicator();
         }
+        ColorSlot newColor = (ColorSlot)EditorGUILayout.EnumPopup("Select Color:", colorslot);
+        if (newColor != colorslot)
+        {
+            colorslot = newColor;
+            spawnColor = Author.GetColorSlot(colorslot);
+        }
+        EditorGUILayout.ColorField("Color Preview:", spawnColor);
     }
     void OnInspectorUpdate()
     {
