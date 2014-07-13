@@ -11,19 +11,24 @@ public class Button : GamePiece
     {
         base.Start();
     }
+    public sealed override void Awake()
+    {
+        base.Awake();
+        Debug.Log("YEAH");
+    }
     public override void onDeOccupy(GamePiece piece)
     {
         base.onDeOccupy(piece);
-        var list = RoomManager.roomManager.GetPiecesOfColor(colorslot);
-        foreach (var colorPiece in list)
+        List<Door> doors = RoomManager.roomManager.GetDoorsOfColor(colorslot);
+        foreach (var door in doors)
         {
-            if (colorPiece is Keyhole) ((Keyhole)colorPiece).active = true;
+            door.active = true;
         }
-        Debug.Log(list.Count);
+        //Debug.Log(list.Count);
     }
     public override bool onOccupy(GamePiece piece)
     {
-        var list = RoomManager.roomManager.GetPiecesOfColor(colorslot);
+        var list = RoomManager.roomManager.GetPiecesOfColor(colorslot, typeof(Button));
         bool allOccupied = true;
         foreach (var coloredPiece in list)
         {
@@ -31,12 +36,13 @@ public class Button : GamePiece
         }
         if (allOccupied)
         {
-            foreach (var colorPiece in list)
+            List<Door> doors = RoomManager.roomManager.GetDoorsOfColor(colorslot);
+            foreach (var door in doors)
             {
-                if (colorPiece is Keyhole) ((Keyhole)colorPiece).active = false;
+                door.active = false;
             }
         }
-        Debug.Log(list.Count);
+        //Debug.Log(list.Count);
 
         return true;
     }

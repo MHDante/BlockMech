@@ -12,7 +12,7 @@ public class Cell {
     public List<GamePiece> pieces { get; set; }
     public GamePiece this[int i] { get { return pieces[i]; } }
 
-    private Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
+    public Dictionary<Side, Wall> walls = new Dictionary<Side, Wall>();
 
     public Cell(int x, int y)
     {
@@ -69,65 +69,6 @@ public class Cell {
 	/// </summary>
 	public Vector2 WorldPos(){return new Vector2(x*Wall.blockSize+Wall.halfBlock, y*Wall.blockSize+Wall.halfBlock);}
 
-	/// <summary>
-	/// The gamepiece currently occupying this cell. To get all of the gamepieces occupying this cell,
-	/// call getPiecesOnCell().
-	/// </summary>
-    //private GamePiece _g;
-    //public GamePiece gamePiece{ 
-    //    get{return _g;} set{
-    //        if (value == null)
-    //            Debug.Log("Who?");
-    //        _g = value;
-    //    }
-    //}
-    //-----
-    
-
-	/// <summary>
-	/// Returns a list of gamePieces on the cell. Starting from the bottom-most piece.
-	/// </summary>
-    //public List<GamePiece> getPiecesOnCell()
-    //{
-    //    List<GamePiece> list = new List<GamePiece>();
-	//	GamePiece g = gamePiece;
-    //    while (g != null)
-    //    {
-	//		list.Add(g);
-	//		g = g.containedPiece;
-    //    }
-    //    return list;
-    //}
-
-	/// <summary>
-	/// Places the <param name="piece">piece</param> within this cell. If this cell is already occupied,
-	/// tries to place the piece within the cell that is already there.
-	/// </summary>
-	/// <returns>Returns false if the piece was not able to move into the cell.</returns>
-	//public bool Occupy(GamePiece piece){
-    //    if (IsReserved)
-    //    {
-    //        Debug.Log("God. I am not a religious man. But Today I come to you In a time of need:" +
-    //        "Please let this return true..." + IsReserved);
-    //        return false;
-    //    }
-	//	if(gamePiece == null){
-	//		gamePiece = piece;
-	//		piece.cell = this;
-	//		return true;
-	//	} 
-	//	GamePiece g = gamePiece;
-	//	while(g.containedPiece!=null){
-	//		if(g.isSolid)
-    //            return false;
-	//		g=g.containedPiece;
-	//	}
-	//	if (!g.onOccupy(piece))
-    //        return false;
-	//	piece.cell = this;
-	//	return true;
-	//}	
-    //-----------
     public bool Occupy(GamePiece piece)
     {
         if (pieces.Contains(piece)) return false;
@@ -144,20 +85,6 @@ public class Cell {
         piece.cell = this;
         return true;
     }
-
-
-	/// <summary>
-	/// Removes the contents of this cell;
-	/// </summary>
-	/// <returns>Returns the piece that was in this cell.</returns>
-    //public GamePiece Empty(){
-    //	GamePiece ret = gamePiece;
-    //	gamePiece = null;
-    //    if (ret != null) 
-    //    ret.cell = null;
-    //    return ret;
-    //}
-    //-----
     public List<GamePiece> Empty()
     {
         if (pieces.Count <= 1) return new List<GamePiece>();
@@ -190,17 +117,6 @@ public class Cell {
 		    return walls[s];
         return null;
 	}
-    //public GamePiece firstSolid()
-    //{
-    //    GamePiece g = gamePiece;
-    //    while (g != null)
-    //    {
-    //        if (g.isSolid) return g;
-    //        g = g.containedPiece;
-    //    }
-    //    return null;
-    //}
-    //---------
     public GamePiece firstSolid()
     {
         foreach(GamePiece piece in pieces)
@@ -214,22 +130,6 @@ public class Cell {
         walls[s] = w;
         return true;
     }
-
-    //public bool IsSolidlyOccupied(){
-    //	if (IsReserved) return true;
-    //    if (gamePiece == null)
-    //    {
-    //        return false;
-    //    }
-    //    GamePiece g = gamePiece;
-    //    while (g != null)
-    //    {
-    //        if (g.isSolid) return true;
-    //        g = g.containedPiece;
-    //    }
-    //    return false;
-    //}
-    //------
     public bool IsSolidlyOccupied()
     {
         if (IsReserved) return true;
