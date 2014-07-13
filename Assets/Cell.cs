@@ -145,6 +145,19 @@ public class Cell {
         return true;
     }
 
+    private Dictionary<int, GamePiece> occupationQueue = new Dictionary<int, GamePiece>();
+    public void QueuedOccupy(int Zposition, GamePiece piece)
+    {
+        if (Zposition > pieces.Count)
+            occupationQueue[Zposition] = piece;
+        else
+        {
+            pieces.Add(piece);
+            foreach (int i in occupationQueue.Keys)
+                QueuedOccupy(i, occupationQueue[i]);
+        }
+    }
+
 
 	/// <summary>
 	/// Removes the contents of this cell;

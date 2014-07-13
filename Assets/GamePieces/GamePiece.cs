@@ -108,12 +108,18 @@ public abstract class GamePiece : MonoBehaviour
 
         
     }
+    private int DebugCounter = 0;
     public virtual void Start() 
     {
-        if (!Cell.GetFromWorldPos(transform.position).Occupy(this)) 
-            throw new WTFException(this.GetType().ToString());
+        Initialize();
+    }
+    private bool initialized = false;
+    public void Initialize()
+    {
+        Cell.GetFromWorldPos(transform.position).QueuedOccupy((int)transform.position.z, this) ;
         UpdateColor();
     }
+
     public virtual void Update()
     {
         if (isMoving)
@@ -143,6 +149,9 @@ public abstract class GamePiece : MonoBehaviour
         {
             UpdateColor();
         }
+        //Update the Zposition Based on the Stack order;
+         if (cell!=null)
+             transform.position = new Vector3(transform.position.x, transform.position.y, getZPosition());
     }
     private void UpdateColor()
     {
