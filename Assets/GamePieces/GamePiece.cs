@@ -85,7 +85,6 @@ public abstract class GamePiece : MonoBehaviour
 
         
     }
-    private int DebugCounter = 0;
     public virtual void Start() 
     {
         Cell.GetFromWorldPos(transform.position).QueuedOccupy((int)transform.position.z, this) ;
@@ -115,13 +114,20 @@ public abstract class GamePiece : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, -getZPosition());
         }
     void OnValidate()
-    {
+        {
         SetColorSlot(colorslot);
-    }
+        }
     public void SetColorSlot(ColorSlot colorSlot)
     {
         this.colorslot = colorSlot;
         colorPreview = Author.GetColorSlot(colorSlot);
+        var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var r in renderers)
+        {
+            if (r.gameObject.name == "Colorized") r.color = colorPreview;
+            return;
+
+        }
         gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
     }
     [Flags]public enum Axis

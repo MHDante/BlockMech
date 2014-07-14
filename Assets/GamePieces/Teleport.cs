@@ -30,6 +30,8 @@ public class Teleport : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
+        //if (target = null) Debug.LogError("Teleporter placed @ " + cell.x +", " + cell.y+" does not have a target set!");
+        //piece.TeleportTo(target.GetComponent<GamePiece>().cell);
         return base.onOccupy(piece);
     }
 

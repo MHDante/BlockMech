@@ -83,8 +83,16 @@ public class PuzzleMaker : EditorWindow
             {
                 Debug.Log(selectedPiece + " was not found in the dictionary");
             }
+
             Indicator = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece]);
-            Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
+            bool foundColorized = false;
+            var renderers = Indicator.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var r in renderers)
+            {
+                if (r.gameObject.name == "Colorized") r.color *= 0.5f;
+                foundColorized = true;
+            }
+            if (!foundColorized)Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
             Indicator.name = "Indicator";
             GamePiece piece = Indicator.GetComponent<GamePiece>();
             if (piece != null)
