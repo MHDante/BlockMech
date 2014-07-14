@@ -156,9 +156,14 @@ public abstract class GamePiece : MonoBehaviour
 			return false;
 		if (strength < weight) 
 			return false;
-		GamePiece obstructor = cell.getNeighbour(side).firstSolid();
+        Cell neighbour = cell.getNeighbour(Utils.opposite(side));
+		GamePiece obstructor = neighbour.firstSolid();
 
-		if(obstructor==null)return moveTo(Utils.opposite(side));
+        if (obstructor == null)
+        {
+            Side newside = Utils.opposite(side);
+            return moveTo(newside);
+        }
 		if(obstructor.isSolid && !isPushable) 
 			return false;
 		if(!obstructor.isSolid && !obstructor.isPushable) 
@@ -167,7 +172,8 @@ public abstract class GamePiece : MonoBehaviour
 		if (obsPushed){
 			obstructor.Detatch();
 			bool succeed = moveTo(Utils.opposite(side));
-			if (!succeed){obstructor.moveTo(side);}
+			if (!succeed)
+            {obstructor.moveTo(side);}
 			return succeed;
 		} 
 		return false;

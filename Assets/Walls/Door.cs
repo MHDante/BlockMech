@@ -5,14 +5,8 @@ public class Door : Wall
 {
     public ColorSlot colorslot = ColorSlot.A;
     public Color colorPreview;
-    protected override void Start()
-    {
-        base.Start();
-    }
-    protected override void Update()
-    {
-        base.Update();
-    }
+    public bool isOpen { get { return isTraversible; } }
+
     void OnValidate()
     {
         SetColorSlot(colorslot);
@@ -23,4 +17,18 @@ public class Door : Wall
         colorPreview = Author.GetColorSlot(colorSlot);
         gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
     }
+    public void Open()
+    {
+        if (isOpen) return;
+        isTraversible = true;
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+    public void Close()
+    {
+        if (!isOpen) return;
+        isTraversible = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
 }

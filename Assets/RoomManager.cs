@@ -16,6 +16,13 @@ public class RoomManager : MonoBehaviour {
     public Cell[][] Grid;
     public Player player;
 
+    public enum ButtonOptions
+    {
+        ActivateOnAllPushed,
+        ActivateOnOnePushed,
+    }
+    public ButtonOptions buttonOptions = ButtonOptions.ActivateOnAllPushed;
+
     void InitializeDictionaries()
     {
         if (RoomManager.pieceGameObjects == null || RoomManager.pieceTypes == null)
@@ -81,9 +88,7 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-
         InitializeDictionaries();
-
         if (player == null)
         {
             Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
@@ -150,22 +155,50 @@ public class RoomManager : MonoBehaviour {
         }
         return list;
     }
+
     public void RefreshColorFamily(ColorSlot colorslot)
     {
-        bool allSatisfied = true;
-        List<GamePiece> pieces = GetPiecesOfColor(colorslot);
-        foreach(GamePiece piece in pieces)
+        if (buttonOptions == ButtonOptions.ActivateOnAllPushed)
         {
-            if (piece is Triggerable)
+            bool allSatisfied = true;
+            List<GamePiece> pieces = GetPiecesOfColor(colorslot);
+            foreach (GamePiece piece in pieces)
             {
-                Triggerable t = (Triggerable)piece;
-                if (!t.IsTriggered) allSatisfied = false;
+                if (piece is Triggerable)
+                {
+                    Triggerable t = (Triggerable)piece;
+                    if (!t.IsTriggered) allSatisfied = false;
+                }
+            }
+            List<Door> doors = GetDoorsOfColor(colorslot);
+            foreach (Door door in doors)
+            {
+                if (allSatisfied) door.Open();
+                else door.Close();
             }
         }
-        List<Door> doors = GetDoorsOfColor(colorslot);
-        foreach(Door door in doors)
+        else if (buttonOptions == ButtonOptions.ActivateOnOnePushed)
         {
-            door.active = !allSatisfied;
+            bool oneSatisfied = false;
+            List<GamePiece> pieces = GetPiecesOfColor(colorslot);
+            foreach (GamePiece piece in pieces)
+            {
+                if (piece is Triggerable)
+                {
+                    Triggerable t = (Triggerable)piece;
+                    if (t.IsTriggered)
+                    {
+                        oneSatisfied = true;
+                        break;
+                    }
+                }
+            }
+            List<Door> doors = GetDoorsOfColor(colorslot);
+            foreach (Door door in doors)
+            {
+                if (oneSatisfied) door.Open();
+                else door.Close();
+            }
         }
     }
     public void AddPiece(GameObject gameobject, PieceType piecetype, ColorSlot colorslot)
