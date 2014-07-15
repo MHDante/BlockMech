@@ -40,6 +40,7 @@ public abstract class GamePiece : MonoBehaviour
 	public bool isMoving = false;
     public ColorSlot colorslot = ColorSlot.A;
     public Color colorPreview;
+    public SpriteRenderer rendererColorized, rendererActivated;
     public GamePiece previousPiece
     {
         get
@@ -81,12 +82,13 @@ public abstract class GamePiece : MonoBehaviour
         //Debug.Log("CONSTRUCTOR");
     }
 
-    public virtual void Awake() {
-
+    public virtual void Awake() 
+    {
         
     }
     public virtual void Start() 
     {
+        FindRenderers();
         Cell.GetFromWorldPos(transform.position).QueuedOccupy((int)transform.position.z, this) ;
         SetColorSlot(colorslot);
     }
@@ -117,22 +119,48 @@ public abstract class GamePiece : MonoBehaviour
     {
         SetColorSlot(colorslot);
     }
-    public void SetColorSlot(ColorSlot colorSlot)
+    
+    public void FindRenderers()
     {
-        this.colorslot = colorSlot;
-        colorPreview = Author.GetColorSlot(colorSlot);
         var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
         foreach (var r in renderers)
         {
             if (r.gameObject.name == "Colorized")
             {
                 r.color = colorPreview;
+                rendererColorized = r;
             }
-            else if (r.gameObject.name == "Activated" && this is Triggerable)
+            else if (r.gameObject.name == "Activated")
             {
-                Triggerable t = (Triggerable)this;
-                r.color = t.IsTriggered ? colorPreview : Color.white;
+                rendererActivated = r;
             }
+        }
+    }
+    public void SetColorSlot(ColorSlot colorSlot)
+    {
+        this.colorslot = colorSlot;
+        colorPreview = Author.GetColorSlot(colorSlot);
+        var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        //foreach (var r in renderers)
+        //{
+        //    if (r.gameObject.name == "Colorized")
+        //    {
+        //        r.color = colorPreview;
+        //    }
+        //    else if (r.gameObject.name == "Activated" && this is Triggerable)
+        //    {
+        //        Triggerable t = (Triggerable)this;
+        //        r.color = t.IsTriggered ? colorPreview : Color.white;
+        //    }
+        //}
+        if (rendererColorized != null)
+        {
+            rendererColorized.color = colorPreview;
+        }
+        if (rendererActivated != null && this is Triggerable)
+        {
+            Triggerable t = (Triggerable)this;
+            rendererActivated.color = t.IsTriggered ? colorPreview : Color.white;
         }
         if (gameObject.GetComponent<SpriteRenderer>() != null)
         {
@@ -151,8 +179,8 @@ public abstract class GamePiece : MonoBehaviour
         {
             case Axis.Xaxis: return new Vector3(angle, 0, 0);
             case Axis.Yaxis: return new Vector3(0, angle, 0);
-            case Axis.Zaxis: return new Vector3(0, 0, angle);
             case Axis.Xaxis | Axis.Yaxis: return new Vector3(angle, angle, 0);
+            case Axis.Zaxis: return new Vector3(0, 0, angle);
             case Axis.Xaxis | Axis.Zaxis: return new Vector3(angle, 0, angle);
             case Axis.Yaxis | Axis.Zaxis: return new Vector3(0, angle, angle);
             case Axis.Xaxis | Axis.Yaxis | Axis.Zaxis: return new Vector3(angle, angle, angle);

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 public class Switch : GamePiece, Triggerable
 {
     public override bool isSolid { get { return false; } set { } }
@@ -18,22 +19,17 @@ public class Switch : GamePiece, Triggerable
         base.Update();
         if (flipping)
         {
-            int sign = flipped ? -1 : 1;
+            int sign = !flipped ? -1 : 1;
             fliprotation = fliprotation + flipRate * sign;
-            if (!flipped && fliprotation > 180)
+            if (flipped && fliprotation > 180)
             {
                 fliprotation = 180;
                 flipping = false;
-                flipped = true;
-                RoomManager.roomManager.RefreshColorFamily(colorslot);
-
             }
-            else if (flipped && fliprotation < 0)
+            else if (!flipped && fliprotation < 0)
             {
                 fliprotation = 0;
                 flipping = false;
-                flipped = false;
-                RoomManager.roomManager.RefreshColorFamily(colorslot);
             }
             transform.eulerAngles = getAngleVector(fliprotation, Axis.Xaxis);
         }
@@ -41,6 +37,8 @@ public class Switch : GamePiece, Triggerable
     public void StartFlip()
     {
         flipping = true;
+        flipped = !flipped;
+        RoomManager.roomManager.RefreshColorFamily(colorslot);
     }
     public override void onDeOccupy(GamePiece piece)
     {

@@ -16,13 +16,21 @@ public class Teleport : GamePiece
     {
         base.Update();
         rotation = rotation + rotationRate;
-        if (rotation > 360f)
+        if (rotation > 180f)
         {
-            rotation = 360f - rotation;
-            axisCounter = (axisCounter + 1) % 6;
+            rotation = 180f - rotation;
+            axisCounter = (axisCounter + 1) % 7;
         }
-
-        transform.eulerAngles = getAngleVector(rotation, Axis.Xaxis | Axis.Yaxis | Axis.Zaxis);
+        if (rendererActivated != null)
+        {
+            //transform.eulerAngles = getAngleVector(rotation, Axis.Xaxis | Axis.Yaxis | Axis.Zaxis);
+            rendererActivated.transform.eulerAngles = getAngleVector(rotation, (Axis)(axisCounter + 1));
+        }
+        if (rendererColorized != null)
+        {
+            //transform.eulerAngles = getAngleVector(rotation, Axis.Xaxis | Axis.Yaxis | Axis.Zaxis);
+            rendererColorized.transform.eulerAngles = getAngleVector(rotation, (Axis)((axisCounter + 4) % 7));
+        }
     }
     
     public override void onDeOccupy(GamePiece piece)
@@ -31,9 +39,15 @@ public class Teleport : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        if (target == null) Debug.LogError("Teleporter placed @ " + cell.x +", " + cell.y+" does not have a target set!");
-        Cell targetCell = target.GetComponent<GamePiece>().cell;
-        piece.TeleportTo(targetCell);
+        if (target == null)
+        {
+            Debug.Log("Teleporter placed @ " + cell.x + ", " + cell.y + " does not have a target set!");
+        }
+        else
+        {
+            Cell targetCell = target.GetComponent<GamePiece>().cell;
+            piece.TeleportTo(targetCell);
+        }
         return base.onOccupy(piece);
     }
 }

@@ -22,7 +22,7 @@ public class Button : GamePiece, Triggerable
         base.onDeOccupy(piece);
         RoomManager.roomManager.RefreshColorFamily(colorslot);
         SetColorSlot(colorslot);
-        }
+    }
     public override bool onOccupy(GamePiece piece)
     {
         RoomManager.roomManager.RefreshColorFamily(colorslot);
@@ -33,9 +33,9 @@ public class Button : GamePiece, Triggerable
     {
         base.Awake();
     }
-
     public void OnGUI()
     {
+
     }
     public static Dictionary<string, string> fileTexts = new Dictionary<string, string>();
     public static string GetTextFromFile(string filename)
