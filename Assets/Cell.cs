@@ -79,7 +79,7 @@ public class Cell {
         }
         pieces.Add(piece);
         piece.cell = this;
-        foreach (GamePiece p in pieces)
+        foreach (GamePiece p in pieces.ToList())
         {
             if (p == piece) continue;
             p.onOccupy(piece); 
