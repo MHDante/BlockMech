@@ -190,7 +190,7 @@ public abstract class GamePiece : MonoBehaviour
     public virtual bool pushFrom(Side side, int strength = 1)
     {
         GamePiece nextpiece = this.nextPiece;
-        if (!isSolid && nextpiece != null && nextpiece.pushFrom(side, strength))
+        if (!isSolid && nextpiece != null && nextpiece.pushFrom(side, strength-1))
 			return true;
 		if(!isPushable) 
 			return false;

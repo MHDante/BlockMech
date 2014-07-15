@@ -19,7 +19,11 @@ public class PlayerTouch : MonoBehaviour {
         if (Application.isPlaying && RoomManager.roomManager.player.gameObject != null)
         {
             if (MessageTarget == null)
-                MessageTarget = RoomManager.roomManager.player.gameObject;
+                MessageTarget = this.gameObject;
+            if (Input.touchCount >= 3)
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
             foreach (var T in Input.touches)
             {
                 var P = T.position;
