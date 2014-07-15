@@ -7,6 +7,7 @@ public enum PieceType
     none,
     wall,
     door,
+    block,
     player,
     end,
     button,
@@ -92,7 +93,6 @@ public abstract class GamePiece : MonoBehaviour
 
     public virtual void Update()
     {
-
         if (isMoving)
         {
             if (currentLerp >= maxLerp)
@@ -130,6 +130,26 @@ public abstract class GamePiece : MonoBehaviour
         }
         gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
     }
+    [Flags]public enum Axis
+    {
+        Xaxis = 1,
+        Yaxis = 2,
+        Zaxis = 4,
+    }
+    public static Vector3 getAngleVector(float angle, Axis axis)
+    {
+        switch (axis)
+        {
+            case Axis.Xaxis: return new Vector3(angle, 0, 0);
+            case Axis.Yaxis: return new Vector3(0, angle, 0);
+            case Axis.Zaxis: return new Vector3(0, 0, angle);
+            case Axis.Xaxis | Axis.Yaxis: return new Vector3(angle, angle, 0);
+            case Axis.Xaxis | Axis.Zaxis: return new Vector3(angle, 0, angle);
+            case Axis.Yaxis | Axis.Zaxis: return new Vector3(0, angle, angle);
+            case Axis.Xaxis | Axis.Yaxis | Axis.Zaxis: return new Vector3(angle, angle, angle);
+            default: return new Vector3(0, 0, 0);
+        }
+    }
     public virtual bool pushFrom(Side side, int strength = 1)
     {
         GamePiece nextpiece = this.nextPiece;
@@ -142,9 +162,14 @@ public abstract class GamePiece : MonoBehaviour
 			return false;
 		if (strength < weight) 
 			return false;
-		GamePiece obstructor = cell.getNeighbour(side).firstSolid();
+        Cell neighbour = cell.getNeighbour(Utils.opposite(side));
+		GamePiece obstructor = neighbour.firstSolid();
 
-		if(obstructor==null)return moveTo(Utils.opposite(side));
+        if (obstructor == null)
+        {
+            Side newside = Utils.opposite(side);
+            return moveTo(newside);
+        }
 		if(obstructor.isSolid && !isPushable) 
 			return false;
 		if(!obstructor.isSolid && !obstructor.isPushable) 
@@ -153,7 +178,8 @@ public abstract class GamePiece : MonoBehaviour
 		if (obsPushed){
 			obstructor.Detatch();
 			bool succeed = moveTo(Utils.opposite(side));
-			if (!succeed){obstructor.moveTo(side);}
+			if (!succeed)
+            {obstructor.moveTo(side);}
 			return succeed;
 		} 
 		return false;
@@ -201,14 +227,14 @@ public abstract class GamePiece : MonoBehaviour
     {
         if (cell == null) return;
         //call onDeOccupy only for pieces Under you (possibly revisable design decision)
-        foreach(GamePiece piece in cell.pieces)
+        List<GamePiece> piecesCopy = cell.pieces.ToList();
+        cell.pieces.Remove(this);
+        cell = null;
+        foreach (GamePiece piece in piecesCopy)
         {
             if (piece == this) break;
             piece.onDeOccupy(this);
         }
-        cell.pieces.Remove(this);
-        cell = null;
-
     }
     //detatches with all children, calls onDeOccupy for all pieces underneath, and returns full list of detatched pieces
     public List<GamePiece> DetatchWithChilren()
@@ -230,6 +256,7 @@ public abstract class GamePiece : MonoBehaviour
     {
         Detatch();
         if (this.gameObject) DestroyImmediate(this.gameObject);
+        
     }
     //----------------
     public void DestroyWithChildren()
@@ -247,5 +274,10 @@ public abstract class GamePiece : MonoBehaviour
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }
+}
+
+public interface Triggerable
+{
+    bool IsTriggered { get; }
 }
 

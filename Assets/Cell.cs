@@ -77,12 +77,13 @@ public class Cell {
         {
             if (!p.canBeOccupiedBy(piece)) return false;
         }
-        foreach (GamePiece p in pieces)
-        {
-            p.onOccupy(piece); 
-        }
         pieces.Add(piece);
         piece.cell = this;
+        foreach (GamePiece p in pieces)
+        {
+            if (p == piece) continue;
+            p.onOccupy(piece); 
+        }
         return true;
     }
 
@@ -100,20 +101,6 @@ public class Cell {
                 QueuedOccupy(i, occupationQueue[i]);
         }
     }
-
-
-	/// <summary>
-	/// Removes the contents of this cell;
-	/// </summary>
-	/// <returns>Returns the piece that was in this cell.</returns>
-    //public GamePiece Empty(){
-    //	GamePiece ret = gamePiece;
-    //	gamePiece = null;
-    //    if (ret != null) 
-    //    ret.cell = null;
-    //    return ret;
-    //}
-    //-----
     public List<GamePiece> Empty()
     {
         if (pieces.Count <= 1) return new List<GamePiece>();

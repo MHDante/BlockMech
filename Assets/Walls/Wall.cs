@@ -9,8 +9,6 @@ public class Wall : MonoBehaviour {
 	public const int halfBlock = blockSize/2;
     //[ExposePropertyAttribute]
 	public virtual bool isTraversible { get; set; }
-    private bool _active = true;
-    public bool active { get { return _active; } set { gameObject.SetActive(value); isTraversible = !value; _active = value; } }
 
     public enum Orientation { Horizontal, Vertical };
     public Orientation orientation = Orientation.Vertical;

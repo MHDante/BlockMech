@@ -16,6 +16,13 @@ public class RoomManager : MonoBehaviour {
     public Cell[][] Grid;
     public Player player;
 
+    public enum ButtonOptions
+    {
+        ActivateOnAllPushed,
+        ActivateOnOnePushed,
+    }
+    public ButtonOptions buttonOptions = ButtonOptions.ActivateOnAllPushed;
+
     void InitializeDictionaries()
     {
         if (RoomManager.pieceGameObjects == null || RoomManager.pieceTypes == null)
@@ -24,6 +31,7 @@ public class RoomManager : MonoBehaviour {
             {
                 { PieceType.wall, typeof(Wall) },
                 { PieceType.door, typeof(Door) },
+                { PieceType.block, typeof(Block) },
                 { PieceType.player, typeof(Player) },
                 { PieceType.end, typeof(End) },
                 { PieceType.button, typeof(Button) },
@@ -39,6 +47,7 @@ public class RoomManager : MonoBehaviour {
             {
                 { PieceType.wall, Resources.Load<GameObject>("Prefabs/Wall")},
                 { PieceType.door, Resources.Load<GameObject>("Prefabs/Door")},//also wall, door script added later
+                { PieceType.block, Resources.Load<GameObject>("Prefabs/octogon")},
                 { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
                 { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
                 { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
@@ -79,9 +88,7 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-
         InitializeDictionaries();
-
         if (player == null)
         {
             Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
@@ -147,6 +154,52 @@ public class RoomManager : MonoBehaviour {
             }
         }
         return list;
+    }
+
+    public void RefreshColorFamily(ColorSlot colorslot)
+    {
+        if (buttonOptions == ButtonOptions.ActivateOnAllPushed)
+        {
+            bool allSatisfied = true;
+            List<GamePiece> pieces = GetPiecesOfColor(colorslot);
+            foreach (GamePiece piece in pieces)
+            {
+                if (piece is Triggerable)
+                {
+                    Triggerable t = (Triggerable)piece;
+                    if (!t.IsTriggered) allSatisfied = false;
+                }
+            }
+            List<Door> doors = GetDoorsOfColor(colorslot);
+            foreach (Door door in doors)
+            {
+                if (allSatisfied) door.Open();
+                else door.Close();
+            }
+        }
+        else if (buttonOptions == ButtonOptions.ActivateOnOnePushed)
+        {
+            bool oneSatisfied = false;
+            List<GamePiece> pieces = GetPiecesOfColor(colorslot);
+            foreach (GamePiece piece in pieces)
+            {
+                if (piece is Triggerable)
+                {
+                    Triggerable t = (Triggerable)piece;
+                    if (t.IsTriggered)
+                    {
+                        oneSatisfied = true;
+                        break;
+                    }
+                }
+            }
+            List<Door> doors = GetDoorsOfColor(colorslot);
+            foreach (Door door in doors)
+            {
+                if (oneSatisfied) door.Open();
+                else door.Close();
+            }
+        }
     }
     public void AddPiece(GameObject gameobject, PieceType piecetype, ColorSlot colorslot)
     {
