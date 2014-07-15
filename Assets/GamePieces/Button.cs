@@ -14,7 +14,6 @@ public class Button : GamePiece, Triggerable
         if (activatedChild != null)
         {
             SpriteRenderer sr = activatedChild.GetComponent<SpriteRenderer>();
-            sr.transform.localScale = Vector3.one * 0.9f;
         }
     }
     public override void onDeOccupy(GamePiece piece)
