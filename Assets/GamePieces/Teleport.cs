@@ -6,7 +6,6 @@ public class Teleport : GamePiece
     public override bool isSolid { get { return true; } set { } }
     public override bool isPushable { get { return true; } set { } }
     public GameObject target;
-
     public override void Start()
     {
         base.Start();
@@ -21,5 +20,4 @@ public class Teleport : GamePiece
         //piece.TeleportTo(target.GetComponent<GamePiece>().cell);
         return base.onOccupy(piece);
     }
-
 }
