@@ -114,9 +114,9 @@ public abstract class GamePiece : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, -getZPosition());
         }
     void OnValidate()
-        {
+    {
         SetColorSlot(colorslot);
-        }
+    }
     public void SetColorSlot(ColorSlot colorSlot)
     {
         this.colorslot = colorSlot;
@@ -124,11 +124,20 @@ public abstract class GamePiece : MonoBehaviour
         var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
         foreach (var r in renderers)
         {
-            if (r.gameObject.name == "Colorized") r.color = colorPreview;
-            return;
-
+            if (r.gameObject.name == "Colorized")
+            {
+                r.color = colorPreview;
+            }
+            else if (r.gameObject.name == "Activated" && this is Triggerable)
+            {
+                Triggerable t = (Triggerable)this;
+                r.color = t.IsTriggered ? colorPreview : Color.white;
+            }
         }
-        gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+        if (gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+        }
     }
     [Flags]public enum Axis
     {

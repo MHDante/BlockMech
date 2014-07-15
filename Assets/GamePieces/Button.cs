@@ -10,15 +10,23 @@ public class Button : GamePiece, Triggerable
     public override void Start()
     {
         base.Start();
+        Transform activatedChild = transform.FindChild("Activated");
+        if (activatedChild != null)
+        {
+            SpriteRenderer sr = activatedChild.GetComponent<SpriteRenderer>();
+            sr.transform.localScale = Vector3.one * 0.9f;
+        }
     }
     public override void onDeOccupy(GamePiece piece)
     {
         base.onDeOccupy(piece);
         RoomManager.roomManager.RefreshColorFamily(colorslot);
+        SetColorSlot(colorslot);
         }
     public override bool onOccupy(GamePiece piece)
     {
         RoomManager.roomManager.RefreshColorFamily(colorslot);
+        SetColorSlot(colorslot);
         return true;
     }
     public override void Update()
