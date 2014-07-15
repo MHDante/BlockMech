@@ -223,17 +223,31 @@ public class PuzzleMaker : EditorWindow
 		}
     }
 
+    int? colorSlotCount = null;
 
     public void HandleNumKeys()
     {
         if (Event.current.type == EventType.KeyDown)
         {
-            Debug.Log((Event.current.keyCode - KeyCode.Alpha0));
-            Debug.Log("wah" + (Event.current.keyCode - KeyCode.Keypad0));
-            if ((int)Event.current.keyCode <= (int)KeyCode.Alpha9 && (int)Event.current.keyCode >= (int)KeyCode.Alpha0)
-                colorslot = (ColorSlot)((int)Event.current.keyCode - (int)KeyCode.Alpha0);
-            if ((int)Event.current.keyCode <= (int)KeyCode.Keypad9 && (int)Event.current.keyCode >= (int)KeyCode.Keypad0)
-                colorslot = (ColorSlot)((int)Event.current.keyCode - (int)KeyCode.Keypad0);
+            if (colorSlotCount == null)
+            {
+                colorSlotCount = Enum.GetValues(typeof(ColorSlot)).Length;
+            }
+            ColorSlot newColorSlot = colorslot;
+            int code = (int)Event.current.keyCode;
+            int alpha = code - (int)KeyCode.Alpha0;
+            int keypad = code - (int)KeyCode.Keypad0;
+            if (alpha >= 0 && alpha < colorSlotCount)
+                newColorSlot = (ColorSlot)(alpha);
+            else if (keypad >= 0 && keypad < colorSlotCount)
+                newColorSlot = (ColorSlot)(keypad);
+
+            if (colorslot != newColorSlot)
+            {
+                colorslot = newColorSlot;
+                spawnColor = Author.GetColorSlot(colorslot);
+            }
+
             UpdateIndicator(true);
         }
 
@@ -349,5 +363,4 @@ public class PuzzleMaker : EditorWindow
     {
         Repaint();
     }
-
 }

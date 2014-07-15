@@ -11,24 +11,27 @@ public class Teleport : GamePiece
     public override void Start()
     {
         base.Start();
+        axisCounter = UnityEngine.Random.Range(0, DateTime.Now.Millisecond) % 7;
     }
     public override void Update()
     {
         base.Update();
+        RotateRenderers();
+    }
+    public void RotateRenderers()
+    {
         rotation = rotation + rotationRate;
         if (rotation > 180f)
         {
             rotation = 180f - rotation;
             axisCounter = (axisCounter + 1) % 7;
         }
-        if (rendererActivated != null)
+        if (rendererWhite != null)
         {
-            //transform.eulerAngles = getAngleVector(rotation, Axis.Xaxis | Axis.Yaxis | Axis.Zaxis);
-            rendererActivated.transform.eulerAngles = getAngleVector(rotation, (Axis)(axisCounter + 1));
+            rendererWhite.transform.eulerAngles = getAngleVector(rotation, (Axis)(axisCounter + 1));
         }
         if (rendererColorized != null)
         {
-            //transform.eulerAngles = getAngleVector(rotation, Axis.Xaxis | Axis.Yaxis | Axis.Zaxis);
             rendererColorized.transform.eulerAngles = getAngleVector(rotation, (Axis)((axisCounter + 4) % 7));
         }
     }
@@ -45,8 +48,17 @@ public class Teleport : GamePiece
         }
         else
         {
-            Cell targetCell = target.GetComponent<GamePiece>().cell;
-            piece.TeleportTo(targetCell);
+            if (piece.JustTeleported)
+            {
+                piece.JustTeleported = false;
+            }
+            else
+            {
+                piece.JustTeleported = true;
+                Cell targetCell = target.GetComponent<GamePiece>().cell;
+                piece.TeleportTo(targetCell);
+                
+            }
         }
         return base.onOccupy(piece);
     }

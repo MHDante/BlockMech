@@ -40,7 +40,11 @@ public abstract class GamePiece : MonoBehaviour
 	public bool isMoving = false;
     public ColorSlot colorslot = ColorSlot.A;
     public Color colorPreview;
-    public SpriteRenderer rendererColorized, rendererActivated;
+    public SpriteRenderer rendererColorized, rendererActivated, rendererWhite;
+    public float moveSpeed = 5f, teleportSpeed = 10f;
+    private float tempSpeed = 5f;
+    public float currentLerp = 0f, maxLerp = 100f;
+    public Vector2 StartPos;
     public GamePiece previousPiece
     {
         get
@@ -109,7 +113,7 @@ public abstract class GamePiece : MonoBehaviour
             else
             {
                 transform.position = Vector2.Lerp(StartPos, destination.WorldPos(), currentLerp / 100f);
-                currentLerp += speed;
+                currentLerp += moveSpeed;
             }
         }
         if (cell != null)
@@ -133,6 +137,10 @@ public abstract class GamePiece : MonoBehaviour
             else if (r.gameObject.name == "Activated")
             {
                 rendererActivated = r;
+            }
+            else if (r.gameObject.name == "White")
+            {
+                rendererWhite = r;
             }
         }
     }
@@ -241,15 +249,31 @@ public abstract class GamePiece : MonoBehaviour
         Wall w = cell.getWall(side);
         if(w!=null && !w.isTraversible) return false;
         if (dest == null) return false;
-        bool available = dest.Reserve();//Intentional Set.
-		if (available)
+        //bool available = dest.Reserve();//Intentional Set.
+		//if (available)
+        //{
+        //    isMoving = true;
+        //    StartPos = cell.WorldPos();
+        //    destination = dest;
+        //}
+        //return available;
+        return StartLerp(dest, moveSpeed);
+	}
+    public bool StartLerp(Cell dest, float speed)
+    {
+        bool available = dest.Reserve() && dest != null;
+        if (available)
         {
             isMoving = true;
             StartPos = cell.WorldPos();
             destination = dest;
+            tempSpeed = speed;
         }
         return available;
-	}
+    }
+
+
+    public bool JustTeleported = false;
 	public virtual bool TeleportTo(Cell target){
 		Cell currentCell = cell;
 		if (target.IsSolidlyOccupied())return false;
@@ -304,10 +328,6 @@ public abstract class GamePiece : MonoBehaviour
             if (piece.gameObject) DestroyImmediate(piece.gameObject);
         }
     }
-    public float speed = 5f;
-    public float currentLerp = 0f, maxLerp = 100f;
-    public Vector2 StartPos;
-	
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }
