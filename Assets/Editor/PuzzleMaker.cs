@@ -107,11 +107,16 @@ public class PuzzleMaker : EditorWindow
 		screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 		MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
         bool withinGrid = MousePos.isWithinGrid();
-        if (withinGrid && Event.current.type == EventType.MouseDown && Event.current.button == 2)
+        if (withinGrid)
         {
-            Active = !Active; 
-            Event.current.Use(); //keeping this line causes one bug, removing it causes another.
+            
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 2)
+            {
+                Active = !Active;
+                Event.current.Use(); //keeping this line causes one bug, removing it causes another.
+            }
         }
+
         if (Active)
         {
             UpdateIndicator(withinGrid);
@@ -121,6 +126,7 @@ public class PuzzleMaker : EditorWindow
 	        if (Event.current.type == EventType.layout)
 	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
 	        Selection.activeObject = null;
+            HandleNumKeys();
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
             Vector2 ScrollVect = getScroll();
@@ -215,6 +221,26 @@ public class PuzzleMaker : EditorWindow
             }
 			Event.current.Use();
 		}
+    }
+
+
+    public void HandleNumKeys()
+    {
+        if (Event.current.type == EventType.KeyDown)
+        {
+            Debug.Log((Event.current.keyCode - KeyCode.Alpha0));
+            Debug.Log("wah" + (Event.current.keyCode - KeyCode.Keypad0));
+            if ((int)Event.current.keyCode <= (int)KeyCode.Alpha9 && (int)Event.current.keyCode >= (int)KeyCode.Alpha0)
+                colorslot = (ColorSlot)((int)Event.current.keyCode - (int)KeyCode.Alpha0);
+            if ((int)Event.current.keyCode <= (int)KeyCode.Keypad9 && (int)Event.current.keyCode >= (int)KeyCode.Keypad0)
+                colorslot = (ColorSlot)((int)Event.current.keyCode - (int)KeyCode.Keypad0);
+            UpdateIndicator(true);
+        }
+
+
+        
+
+
     }
     public void SpawnPiece(PieceType piece, Cell target)
     {
