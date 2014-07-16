@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     string selectedWorld;
 
+
     
 
     public static GameManager instance
@@ -79,16 +80,17 @@ public class GameManager : MonoBehaviour
         if (worlds.Count == 0) { Debug.LogWarning("No scenes detected. Please click <color=magenta>Update Scene Names</color>."); }
 
         selectedWorld = "";
+        textureArrow = Resources.Load<Texture>("Textures/arrow");
     }
     void OnGUI(){
 
         if (selState == SelectionState.WorldSelector)
         {
-            Draw(worlds);
+            Draw(worlds, worldTitle);
         }
         else if (selState == SelectionState.LevelSelector)
         {
-            Draw(levels);
+            Draw(levels, selectedWorld.ToUpper() + " WORLD");
         }
 		
     }
@@ -117,14 +119,19 @@ public class GameManager : MonoBehaviour
 
 
     Vector2 scrollPosition = Vector2.zero;
+    const string worldTitle = "WORLD SELECTOR";
+    Texture textureArrow;
 
-    void Draw(List<string> boxesToSelect)
+
+    void Draw(List<string> boxesToSelect, string selectionTitle)
     {
         //initialize various sizes
         Vector2 padding = new Vector2(PercentToPixel(.05f, Screen.height), PercentToPixel(.05f, Screen.height));
         float fontGameTitleHeight = PercentToPixel(.10f, Screen.height);
         float fontWorldTitleHeight = PercentToPixel(.06f, Screen.height);
         float fontButtonHeightMax = PercentToPixel(.04f, Screen.height);
+        float backButtonHeight = PercentToPixel(.12f, Screen.height);
+        float backButtonPadding = backButtonHeight + padding.x;
 
         GUIStyle myLabelGameTitleStyle = new GUIStyle(GUI.skin.label);
         myLabelGameTitleStyle.fontSize = (int)fontGameTitleHeight;
@@ -142,35 +149,30 @@ public class GameManager : MonoBehaviour
         Vector2 gameTitleSz = GUI.skin.label.CalcSize(new GUIContent(gameTitle));
 
 
-        const string worldTitle = "WORLD SELECTOR";
+        
         GUI.skin.label = myLabelWorldTitleStyle;
-        Vector2 worldTitleSz = GUI.skin.label.CalcSize(new GUIContent(worldTitle));
+        Vector2 selectionTitleSz = GUI.skin.label.CalcSize(new GUIContent(selectionTitle));
 
-        string specificWorld = "";
-        Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
+       // string specificWorld = "";
+       // Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
 
 
         Rect rectLabelGameTitle = new Rect(padding.x, padding.y, padding.x + gameTitleSz.x, padding.y + gameTitleSz.y);
 
-        Rect rectWorldTitle = new Rect(Screen.width - worldTitleSz.x - padding.x, rectLabelGameTitle.height - worldTitleSz.y, padding.x + worldTitleSz.x, padding.y + worldTitleSz.y);
+        Rect rectWorldTitle = new Rect(Screen.width - selectionTitleSz.x - padding.x, rectLabelGameTitle.height - selectionTitleSz.y, padding.x + selectionTitleSz.x, padding.y + selectionTitleSz.y);
 
-        Rect rectPosition = new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
 
-        Vector2 levelSelectorSz = new Vector2(PercentToPixel(.18f, Screen.width), PercentToPixel(.18f, Screen.width)); //this can be more versatile, it's hacky in that it only depends on width to calculate it's dimensions.
+        Rect rectPosition = new Rect(padding.x + backButtonPadding, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2 - backButtonPadding * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height); 
+
+        Vector2 levelSelectorSz = new Vector2(PercentToPixel(.15f, Screen.width), PercentToPixel(.10f, Screen.width)); //this can be more versatile, it's hacky in that it only depends on width to calculate it's dimensions.
 
         int viewportReduction = 20;
         int maxCol = (int)Mathf.Floor((float)(rectPosition.width - viewportReduction - padding.x * 3) / (float)(levelSelectorSz.x + padding.x)); //4
-        int maxRow;
-       // if (boxesToSelect.Count < maxCol)
-       // {
-       //     maxRow = (int)Mathf.Ceil((float)maxCol / (float)boxesToSelect.Count);
-       // }
-       // else
-       // {
-            maxRow = (int)Mathf.Ceil((float)boxesToSelect.Count / (float)maxCol);
-       // }
+        int maxRow = (int)Mathf.Ceil((float)boxesToSelect.Count / (float)maxCol);
 
         Rect rectViewport = new Rect(0, 0, rectPosition.width - viewportReduction, ((levelSelectorSz.y + padding.y) * maxRow + padding.y * 2) + padding.y);
+
+        Vector2 backButtonSz = new Vector2(backButtonHeight, backButtonHeight);
 
 
 
@@ -181,11 +183,20 @@ public class GameManager : MonoBehaviour
 
         //draw world title placeholder
         GUI.skin.label = myLabelWorldTitleStyle;    //not my favourite variable name... meh...
-        GUI.Label(rectWorldTitle, worldTitle);
+        GUI.Label(rectWorldTitle, selectionTitle);
 
 
 
 
+        //draw back button
+        if (selState == SelectionState.LevelSelector)
+        {
+            if (GUI.Button(new Rect(padding.x, Screen.height - backButtonSz.y - padding.y, backButtonSz.x, backButtonSz.y), textureArrow, myLabelButtonTitleStyle))
+            {
+                selState = SelectionState.WorldSelector;
+                selectedWorld = worldTitle;
+            }
+        }
 
 
         //**DRAW START**
@@ -218,15 +229,20 @@ public class GameManager : MonoBehaviour
                     selState = SelectionState.PlayingGame;
                     Application.LoadLevel( worldScenes[ selectedWorld ][box] );
                     Debug.Log("<color=green>Loading level " + worldScenes[selectedWorld][box] + "</color>");
+
                 }
                
             }
+
+
 
         }
 
 
         GUI.EndScrollView();
         //**DRAW END**
+
+
 
 
         //**MOVE START**
