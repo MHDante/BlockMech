@@ -5,25 +5,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     private static GameManager _instance;
 
-    enum State { Splash, ChoosingWorld, ChoosingLevel, Playing }
-    State currentState = State.ChoosingWorld;
+    enum SelectionState { NoSelector, WorldSelector, LevelSelector };
 
-    enum World { Jabir, Jordan, Morgan, Nadia, Ben, Matthew, Zack, Dante, Ian }; //these world's represent directories and are just fluff, i.e., not important functionally, just present as reminders to make puzzles.
+    SelectionState selState = SelectionState.WorldSelector;
+
+    List<string> worlds { get {
+        return worldScenes.Keys.ToList(); 
+    } } //ian question: why is this return statement valid in the class-space? a method is executing before inititialize if a get is executed? ... however, it seems this get would never actually execute before it's allowed... i need help conceptualizing why this is valid to access ... 
+
+    List<string> levels { get 
+    {
+        List<string> s = worldScenes[selectedWorld];
+        return s; 
+    } }
+
+    Dictionary<string, List<string>> worldScenes;
+
+    string selectedWorld;
+
     
 
-    Dictionary<string, List<string>> levels = new Dictionary<string, List<string>>();
-
-    bool showWorld;
-    string selectedWorld;
-    private string targetScene;
-    List<string> foundWorlds;
-
-    public static GameManager instance {
-        get {
+    public static GameManager instance
+    {
+        get
+        {
             if (_instance == null)
             {
                 _instance = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -35,7 +45,8 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    void Awake(){
+    void Awake()
+    {
 
         if (_instance == null)
         {
@@ -44,7 +55,7 @@ public class GameManager : MonoBehaviour {
             init();
 
         }
-        else 
+        else
         {
             //definitely a unity specific issue: ZHARRIS;
             if (this != _instance)
@@ -54,102 +65,38 @@ public class GameManager : MonoBehaviour {
 
     }
 
+
     void init()
     {
-        //main game manager logic goes here
-        List<string> sameScenes = new List<string>();
+        //worlds = ReadSceneNames.instance.worlds.ToList();            
+        //    // = ReadSceneNames.instance.scenesD.Keys.ToList(); //DOESN'T WORK: DANTE SAYS UNITY WON'T SERIALIZE
 
-        //parse all individual names into a list<string> called worlds
-        //parse all world's numbers afterwards.
-        List<string> buildSettingScenes = (ReadSceneNames.instance.scenes).ToList<string>();
-        string pattern = @"^[A-Z]*";
-        foundWorlds = new List<string>();
-        Regex rgx = new Regex(pattern, RegexOptions.IgnoreCase);
-        foreach (string sceneString in buildSettingScenes)
-        {
-            MatchCollection matches = rgx.Matches(sceneString);
-            foreach (Match match in matches)
-            {
-                string key = match.Value;
-                int startPos = match.Value.Length;
-                string leftOver = sceneString.Substring(startPos);
-                string value = leftOver;
+        //ArraysToDictionaryMagic atdm = new ArraysToDictionaryMagic(ReadSceneNames.instance.worlds, ReadSceneNames.instance.scenes);
+        //worldScenes = atdm.get();
 
-                if (!foundWorlds.Contains(match.Value))
-                {
-                    
-                    //adds empty list to dictionary
-                    levels.Add(key, new List<string>());
-                    if (!levels[key].Contains(value)) 
-                    {
-                        //adds first entry to dictionary
-                        levels[key].Add(value);
-                    }
-                    else 
-                    {
-                        Debug.Log("Duplicate scene found: " + key+value );
-                    }
+        ArraysToDictionaryMagic atdm = new ArraysToDictionaryMagic(ReadSceneNames.instance);
+        worldScenes = atdm.getScenes;
+        if (worlds.Count == 0) { Debug.LogWarning("No scenes detected. Please click <color=magenta>Update Scene Names</color>."); }
 
-                }
-                else 
-                {
-                    if (!levels[key].Contains(value))
-                    {
-                        levels[key].Add(value);
-                    }
-                    else
-                    {
-                        Debug.Log("Duplicate scene found: " + key + value);
-                    }
-                }
-                
-            }
-        }
-
-
-        //List<string> b = buildSettingScenes.Distinct();
-        //
-        //for (int world = 0; world < eSize; world++) {
-        //    levels.Add((World)world, sameScenes);
-        //}
-        showWorld = true;
+        selectedWorld = "";
     }
 
-    Vector2 scrollPosition = Vector2.zero;
+
+    
 
     void OnGUI(){
 
-        
-
-        if (showWorld)
+        if (selState == SelectionState.WorldSelector)
         {
-
-
-            List<string> levelsForThatSelection = foundWorlds;
-            bool isTerminal = false;
-
-            RecursiveSelect(levelsForThatSelection, isTerminal);
-
-
-
-
-        } //end if (showWorld)
-        else 
-        {
-            for (int level = 0; level < levels.Count; level++) 
-            {
-
-            }
+            Draw(worlds);
         }
-
-
-
-
-
-
-
-
+        else if (selState == SelectionState.LevelSelector)
+        {
+            Draw(levels);
+        }
+		
     }
+
 
     //@percentage = 0.001 to 1.000
     private float PercentToPixel(float percentage, float relativeTo)
@@ -158,9 +105,9 @@ public class GameManager : MonoBehaviour {
         const float minPercentage = 0.04f;
         const float maxPercentage = 1f;
 
-        if (percentage < minPercentage) 
+        if (percentage < minPercentage)
         {
-            Debug.LogWarning("Percentage input <color=maroon>too small</color>, increased from " + percentage + " to " + minPercentage); 
+            Debug.LogWarning("Percentage input <color=maroon>too small</color>, increased from " + percentage + " to " + minPercentage);
             percentage = minPercentage;
         }
         else if (percentage > maxPercentage)
@@ -173,24 +120,10 @@ public class GameManager : MonoBehaviour {
     }
 
 
-    void RecursiveSelect (List<string> boxesToSelect, bool isTerminal)
-    {
-        Draw(boxesToSelect);
-        if (!isTerminal)
-        {
-            boxesToSelect = new List<string>(){ "1", "2", "3" }; /*numbers found*/;
-            isTerminal = true;
-            RecursiveSelect( boxesToSelect, isTerminal );
-        }
-        else 
-        { 
-            return ; 
-        }
-    }
+    Vector2 scrollPosition = Vector2.zero;
 
-    void Draw(List<string> boxesToSelect) 
+    void Draw(List<string> boxesToSelect)
     {
-
         //initialize various sizes
         Vector2 padding = new Vector2(PercentToPixel(.05f, Screen.height), PercentToPixel(.05f, Screen.height));
         float fontGameTitleHeight = PercentToPixel(.10f, Screen.height);
@@ -218,123 +151,92 @@ public class GameManager : MonoBehaviour {
         Vector2 worldTitleSz = GUI.skin.label.CalcSize(new GUIContent(worldTitle));
 
         string specificWorld = "";
-        Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld));
+        Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
 
 
-        //find largest button text size
+        Rect rectLabelGameTitle = new Rect(padding.x, padding.y, padding.x + gameTitleSz.x, padding.y + gameTitleSz.y);
 
+        Rect rectWorldTitle = new Rect(Screen.width - worldTitleSz.x - padding.x, rectLabelGameTitle.height - worldTitleSz.y, padding.x + worldTitleSz.x, padding.y + worldTitleSz.y);
 
+        Rect rectPosition = new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
 
-        Vector2 longestTextSz = Vector2.zero;
-        string longestText = "";
-        foreach (KeyValuePair<string, List<string>> world in levels)
-        {
-            string s = world.Key.ToString().ToUpper();
-            Vector2 checkLargestButtonTextSz = GUI.skin.label.CalcSize(new GUIContent(s));
-            if (checkLargestButtonTextSz.x > longestTextSz.x)  //disregards height deliberately
-            {
-                longestTextSz = checkLargestButtonTextSz;
-                longestText = s;
-            }
-        }
+        Vector2 levelSelectorSz = new Vector2(PercentToPixel(.18f, Screen.width), PercentToPixel(.18f, Screen.width)); //this can be more versatile, it's hacky in that it only depends on width to calculate it's dimensions.
 
+        int viewportReduction = 20;
+        int maxCol = (int)Mathf.Floor((float)(rectPosition.width - viewportReduction - padding.x * 3) / (float)(levelSelectorSz.x + padding.x)); //4
+        int maxRow;
+       // if (boxesToSelect.Count < maxCol)
+       // {
+       //     maxRow = (int)Mathf.Ceil((float)maxCol / (float)boxesToSelect.Count);
+       // }
+       // else
+       // {
+            maxRow = (int)Mathf.Ceil((float)boxesToSelect.Count / (float)maxCol);
+       // }
 
-
-
-
-
+        Rect rectViewport = new Rect(0, 0, rectPosition.width - viewportReduction, ((levelSelectorSz.y + padding.y) * maxRow + padding.y * 2) + padding.y);
 
 
 
         //draw game title 
-        Rect rectLabelGameTitle = new Rect(padding.x, padding.y, padding.x + gameTitleSz.x, padding.y + gameTitleSz.y);
         GUI.skin.label = myLabelGameTitleStyle;
         GUI.Label(rectLabelGameTitle, gameTitle);
 
 
-
         //draw world title placeholder
-        Rect rectWorldTitle = new Rect(Screen.width - worldTitleSz.x - padding.x, rectLabelGameTitle.height - worldTitleSz.y, padding.x + worldTitleSz.x, padding.y + worldTitleSz.y);
-        GUI.skin.label = myLabelWorldTitleStyle;
+        GUI.skin.label = myLabelWorldTitleStyle;    //not my favourite variable name... meh...
         GUI.Label(rectWorldTitle, worldTitle);
 
 
-        string title;
-        if (showWorld)
-        {
-            title = worldTitle;
-        }
-        else
-        {
-            title = selectedWorld.ToString().ToUpper() + "'S WORLD";
-        }
-
-        Vector2 checkLargestLabelWithTextSz = GUI.skin.label.CalcSize(new GUIContent(longestText)); //lol scope sigh, can't overwrite, can't declare again. wtf.
-
-        //check if longestTextSz exceeds button width, if so reduce until fits.
-        Vector2 levelSelectorSz = new Vector2(PercentToPixel(.18f, Screen.width), PercentToPixel(.18f, Screen.width));
-        if (checkLargestLabelWithTextSz.x > (int)levelSelectorSz.x)
-        {
-            //Debug.Log("MAKE ALGORITHM HERE. " + checkLargestLabelWithTextSz.x + " " + (int)levelSelectorSz.x);
-        }
-
-
-        Rect rectPosition = new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
-
-        //figure out amount of rows, use to make inner scroll box height;
-        //
-        int wSize = foundWorlds.Count;
-        int maxCol = (int)Mathf.Ceil((float)rectPosition.width / (float)levelSelectorSz.x); //4
-        int maxRow = (int)Mathf.Ceil((float)wSize / (float)maxCol);
-
-        Rect rectViewport = new Rect(0, 0, rectPosition.width - 20, ((levelSelectorSz.y + padding.y) * maxRow + padding.y * 2));
 
 
 
 
-        //**START**
+        //**DRAW START**
         //draw level selector components
         scrollPosition =
         GUI.BeginScrollView(rectPosition, scrollPosition, rectViewport);
-
         GUI.Box(rectViewport, "");
 
 
         int c = -1;
-        for (int box = 0; box < levels.Count; box++) //
+        for (int box = 0; box < boxesToSelect.Count; box++) 
         {
-            int maxRowSz = 4; //... magic...
-            int r = box % maxRowSz;
+            int r = box % maxCol;
             if (r == 0) c++;
-            //Debug.Log(r + " " + c);
+
             Vector2 spawn = new Vector2(padding.x * 2 + r * (levelSelectorSz.x + padding.x), padding.y * 2 + c * (levelSelectorSz.y + padding.y));
-            Vector2 levelSelectorPos = new Vector2(spawn.x, spawn.y);
+            float colSpaceWasted = rectViewport.width - (padding.x * 4 + maxCol * (levelSelectorSz.x + padding.x) - padding.x); 
 
-            if (GUI.Button(new Rect(levelSelectorPos.x, levelSelectorPos.y, levelSelectorSz.x, levelSelectorSz.y), box.ToString().ToUpper(), myLabelButtonTitleStyle))
+            string labelText = boxesToSelect[box].ToString();
+            if (GUI.Button(new Rect(spawn.x + colSpaceWasted/2, spawn.y, levelSelectorSz.x, levelSelectorSz.y), labelText.ToUpper(), myLabelButtonTitleStyle))
             {
-
-                
-                RecursiveSelect()
-
-                //clicked 
-                showWorld = false;
-                Debug.Log(box + " pressed");
-                selectedWorld = foundWorlds[box];
-                targetScene = box.ToString() + box;
-                string foundScene = Array.Find(ReadSceneNames.instance.scenes, seeking => seeking == targetScene);
-                Debug.Log(targetScene + ", " + foundScene);
-                if (foundScene != null)
+                if (selState == SelectionState.WorldSelector)
                 {
-                    Application.LoadLevel(foundScene);
-                    Debug.Log("<color=green>Loading level " + foundScene + "</color>");
+                    //set global variable, next iteration of main game loop would cause different list menu
+                    selectedWorld = labelText;
+                    selState = SelectionState.LevelSelector;
                 }
+                else if (selState == SelectionState.LevelSelector)
+                {
+
+                }
+                
+
+                //Application.LoadLevel( ReadSceneNames.instance.scenes[ selectedWorld ][] );
+                //Debug.Log("<color=green>Loading level " + foundScene + "</color>");
+
+
             }
-        }//end for (worlds)
+
+        }
+
 
         GUI.EndScrollView();
-        //**END**
+        //**DRAW END**
 
 
+        //**MOVE START**
         //move according to scroll wheel
         float scrollMovement = 3.33f * levelSelectorSz.y / 4;
         float result = Input.GetAxis("Mouse ScrollWheel");
@@ -343,24 +245,12 @@ public class GameManager : MonoBehaviour {
             scrollPosition = new Vector2(scrollPosition.x, scrollPosition.y + result * -scrollMovement);
         }
 
-
-
-        //move according to touches on screen
-
         foreach (var T in Input.touches)
         {
 
         }
-
-
-        //GUI.Box(new Rect(padding.x, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height), "");
-
-        //float used = Screen.width - (gameTitleSz.x + worldTitleSz.x);
-        //Debug.Log(Screen.width + " " + gameTitleSz + worldTitleSz + " " + used + " " +used/Screen.width);
+        //**MOVE END**
 
     }
 
-    
-	
 }
-
