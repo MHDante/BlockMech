@@ -103,17 +103,20 @@ public abstract class GamePiece : MonoBehaviour
         {
             if (currentLerp >= maxLerp)
             {
+                Debug.Log("end............");
                 currentLerp = 0f;
                 isMoving = false;
                 Detatch();
                 destination.Unreserve();
-                destination.Occupy(this);
+                Cell temp = destination;
                 destination = null;
+
+                temp.Occupy(this);
             }
             else
             {
                 transform.position = Vector2.Lerp(StartPos, destination.WorldPos(), currentLerp / 100f);
-                currentLerp += moveSpeed;
+                currentLerp += tempSpeed;
             }
         }
         if (cell != null)
@@ -249,32 +252,32 @@ public abstract class GamePiece : MonoBehaviour
         //    destination = dest;
         //}
         //return available;
-        return StartLerp(dest, moveSpeed);
+        return StartLerp(cell, dest, moveSpeed);
 	}
-    public bool StartLerp(Cell dest, float speed)
+    public bool StartLerp(Cell source, Cell dest, float speed)
     {
         bool available = dest.Reserve() && dest != null;
         if (available)
         {
             isMoving = true;
-            StartPos = cell.WorldPos();
+            StartPos = source.WorldPos();
             destination = dest;
             tempSpeed = speed;
+            currentLerp = 0f;
         }
         return available;
     }
-
-
     public bool JustTeleported = false;
-	public virtual bool TeleportTo(Cell target){
+	public virtual bool TeleportTo(Cell target)
+    {
 		Cell currentCell = cell;
 		if (target.IsSolidlyOccupied())return false;
 		Detatch();
-		if (!target.Occupy(this)) {
-			currentCell.Occupy(this);
-			return false;
-		} return true;
-
+        //f (!target.Occupy(this)) {
+        //	currentCell.Occupy(this);
+        //	return false;
+        // //return true;
+        return StartLerp(currentCell, target, teleportSpeed);
 	}
     public void Detatch()
     {

@@ -16,7 +16,9 @@ public class End : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        
+        GameManager.instance.totalSteps += Player.steps;
+        GameManager.instance.levelSteps = Player.steps;
+        GameManager.instance.selState = SelectionState.ResultsScreen;
         return base.onOccupy(piece);
     }
 

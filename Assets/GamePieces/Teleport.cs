@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 public class Teleport : GamePiece
 {
     public override bool isSolid { get { return false; } set { } }
@@ -54,10 +55,9 @@ public class Teleport : GamePiece
             }
             else
             {
-                piece.JustTeleported = true;
                 Cell targetCell = target.GetComponent<GamePiece>().cell;
+                if (targetCell.pieces.Any(p => p is Teleport)) piece.JustTeleported = true;
                 piece.TeleportTo(targetCell);
-                
             }
         }
         return base.onOccupy(piece);

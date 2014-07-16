@@ -1,0 +1,17 @@
+BlockIt issues:
+teleporters:
+    -not working on zacks build after making lerp teleport
+    -if block A is on the exit, then you put block B on the teleporter, removing block A should instantly teleport block B to the exit
+
+
+
+
+
+
+
+
+
+
+
+Done:
+Switches are time-dependent, they should activate immediately
