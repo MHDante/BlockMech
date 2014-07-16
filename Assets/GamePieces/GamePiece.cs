@@ -40,7 +40,7 @@ public abstract class GamePiece : MonoBehaviour
 	public bool isMoving = false;
     public ColorSlot colorslot = ColorSlot.A;
     public Color colorPreview;
-    public SpriteRenderer rendererColorized, rendererActivated, rendererWhite;
+    public GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;
     public float moveSpeed = 5f, teleportSpeed = 10f;
     private float tempSpeed = 5f;
     public float currentLerp = 0f, maxLerp = 100f;
@@ -126,26 +126,25 @@ public abstract class GamePiece : MonoBehaviour
     {
         SetColorSlot(colorslot);
     }
-    
+
     public void FindRenderers()
     {
-        var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var r in renderers)
+        Transform temp = gameObject.transform.FindChild("Colorized");
+        if (temp != null)
         {
-            if (r.gameObject.name == "Colorized")
-            {
-                r.color = colorPreview;
-                rendererColorized = r;
-            }
-            else if (r.gameObject.name == "Activated")
-            {
-                rendererActivated = r;
-            }
-            else if (r.gameObject.name == "White")
-            {
-                rendererWhite = r;
-            }
+            ColorizedSprite = temp.gameObject;
+            ColorizedSprite.FillAndBorder(colorPreview);
         }
+        temp = gameObject.transform.FindChild("Activated");
+        if (temp != null)
+        {
+            ActivatedSprite = temp.gameObject;
+        }
+        temp = gameObject.transform.FindChild("White");
+        if (temp != null)
+        {
+            WhiteSprite = temp.gameObject;
+        } 
     }
     public List<GamePiece> GetPiecesAbove()
     {
@@ -175,26 +174,19 @@ public abstract class GamePiece : MonoBehaviour
         this.colorslot = colorSlot;
         colorPreview = Author.GetColorSlot(colorSlot);
         var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
-        //foreach (var r in renderers)
-        //{
-        //    if (r.gameObject.name == "Colorized")
-        //    {
-        //        r.color = colorPreview;
-        //    }
-        //    else if (r.gameObject.name == "Activated" && this is Triggerable)
-        //    {
-        //        Triggerable t = (Triggerable)this;
-        //        r.color = t.IsTriggered ? colorPreview : Color.white;
-        //    }
-        //}
-        if (rendererColorized != null)
+
+        if (ColorizedSprite != null)
         {
-            rendererColorized.color = colorPreview;
+            ColorizedSprite.FillAndBorder(colorPreview);
         }
-        if (rendererActivated != null && this is Triggerable)
+        if (ActivatedSprite != null && this is Triggerable)
         {
             Triggerable t = (Triggerable)this;
-            rendererActivated.color = t.IsTriggered ? colorPreview : Color.white;
+            ActivatedSprite.FillAndBorder(t.IsTriggered ? colorPreview : Color.white);
+        }
+        if (WhiteSprite != null)
+        {
+            WhiteSprite.FillAndBorder(Color.white);
         }
         if (gameObject.GetComponent<SpriteRenderer>() != null)
         {

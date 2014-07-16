@@ -11,15 +11,18 @@ public class Player : GamePiece {
 
     public int Strength = 1;
 
+    public static int steps = 0;
+    public static int restarts = 0;
 
-	public  override void Start () {
+
+	public override void Start () {
         base.Start();
         RoomManager.roomManager.player = this;
         //GameObject g = this.gameObject;
         //RoomManager.roomManager.AddPiece(g, piecetype);
 	}
     
-	public  override void Update () {
+	public override void Update () {
         base.Update();
 		if (Input.GetKey(KeyCode.UpArrow)) { TryMove(Side.top); }
 		if (Input.GetKey(KeyCode.DownArrow)) { TryMove(Side.bottom); }
@@ -28,6 +31,7 @@ public class Player : GamePiece {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            GameManager.instance.totalRestarts++;
             Application.LoadLevel(Application.loadedLevel);
         }
 
@@ -39,9 +43,10 @@ public class Player : GamePiece {
 			Cell target = cell.getNeighbour(s);
             if (target == null) return false;
 			GamePiece obstructor = target.firstSolid();
+            steps++;
             if (obstructor != null)
             {
-                if (obstructor.pushFrom(Utils.opposite(s),Strength))
+                if (obstructor.pushFrom(s.opposite(),Strength))
                 {
                     obstructor.Detatch();
                     moveTo(s);
