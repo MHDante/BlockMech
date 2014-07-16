@@ -972,7 +972,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140223604}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: 0, y: 0, z: .087155737, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -1580,7 +1580,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 235845625}
-  m_LocalRotation: {x: -.113361508, y: .200365797, z: .528527141, w: .81710577}
+  m_LocalRotation: {x: -.175054118, y: .149510354, z: .217186436, w: .948595226}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -3355,7 +3355,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 496437771}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: 0, y: 0, z: .087155737, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -8433,7 +8433,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1111196038}
-  m_LocalRotation: {x: -.0184775721, y: .0457335971, z: .452352345, w: .89047426}
+  m_LocalRotation: {x: -.0330050513, y: .0366558209, z: .120512009, w: .991485775}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -8860,7 +8860,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153224018}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: 0, y: 0, z: .087155737, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -10118,7 +10118,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1344002871}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: 0, y: 0, z: .087155737, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -16383,7 +16383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4df4e4def2f634990ed1ae362edf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  author: MHDante
+  author: 
   levelName: YourPuzzleIsInAnotherCastle
   difficulty: 2
   usesLock: 0
@@ -16394,11 +16394,11 @@ MonoBehaviour:
   usesTeleporter: 1
   colors:
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: .501960814, g: 0, b: .501960814, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 0, b: .501960814, a: 1}
-  - {r: .0196078438, g: .501960814, b: .501960814, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: .921568632, b: .0156862754, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
 --- !u!4 &2142095372
 Transform:
   m_ObjectHideFlags: 0
