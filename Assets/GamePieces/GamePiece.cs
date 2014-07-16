@@ -103,7 +103,6 @@ public abstract class GamePiece : MonoBehaviour
         {
             if (currentLerp >= maxLerp)
             {
-                //Debug.Log("end............");
                 currentLerp = 0f;
                 isMoving = false;
                 Detatch();
