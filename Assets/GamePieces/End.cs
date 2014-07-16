@@ -16,9 +16,19 @@ public class End : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        GameManager.instance.totalSteps += Player.steps;
-        GameManager.instance.levelSteps = Player.steps;
-        GameManager.instance.selState = SelectionState.ResultsScreen;
+        if (Application.isPlaying)
+        {
+            try
+            {
+                GameManager.instance.totalSteps += Player.steps;
+                GameManager.instance.levelSteps = Player.steps;
+                GameManager.instance.selState = SelectionState.ResultsScreen;
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.LogWarning("<color=green>Level complete!</color> To see additional functionality, access via the Scene Selector");
+            }
+        }
         return base.onOccupy(piece);
     }
 
