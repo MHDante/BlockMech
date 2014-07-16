@@ -145,6 +145,29 @@ public abstract class GamePiece : MonoBehaviour
             WhiteSprite = temp.gameObject;
         } 
     }
+    public List<GamePiece> GetPiecesAbove()
+    {
+        List<GamePiece> above = new List<GamePiece>();
+        if (cell == null || cell.pieces == null) return above;
+        bool found = false;
+        foreach(var piece in cell.pieces)
+        {
+            if (found) above.Add(piece);
+            else if (piece == this) found = true;
+        }
+        return above;
+    }
+    public List<GamePiece> GetPiecesBelow()
+    {
+        List<GamePiece> below = new List<GamePiece>();
+        if (cell == null || cell.pieces == null) return below;
+        foreach (var piece in cell.pieces)
+        {
+            if (piece == this) break;
+            else below.Add(piece);
+        }
+        return below;
+    }
     public void SetColorSlot(ColorSlot colorSlot)
     {
         this.colorslot = colorSlot;
