@@ -1,0 +1,14 @@
+BlockIt issues:
+
+
+
+
+
+
+
+
+
+
+
+Done:
+Switches are time-dependent, they should activate immediately
