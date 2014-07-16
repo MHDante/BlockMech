@@ -7,6 +7,7 @@ public enum PieceType
     none,
     wall,
     door,
+    block,
     player,
     end,
     button,
@@ -38,28 +39,12 @@ public abstract class GamePiece : MonoBehaviour
 	Cell destination;
 	public bool isMoving = false;
     public ColorSlot colorslot = ColorSlot.A;
-    private ColorSlot oldColorSlot = ColorSlot.A;
     public Color colorPreview;
-    private Color oldColorPreview;
-        
-	//public GamePiece container
-    //{
-    //    get 
-    //    {
-    //        if (cell == null)
-    //            return null;
-	//		GamePiece ret = cell.gamePiece;
-    //        if (ret == this || ret == null) return null;
-    //
-    //        while (ret != null && ret.containedPiece != this)
-    //        {
-	//			ret = ret.containedPiece;
-    //        } 
-    //        return ret;
-	//	}
-    //}
-    //--------
-    //formerly called container
+    public SpriteRenderer rendererColorized, rendererActivated, rendererWhite;
+    public float moveSpeed = 5f, teleportSpeed = 10f;
+    private float tempSpeed = 5f;
+    public float currentLerp = 0f, maxLerp = 100f;
+    public Vector2 StartPos;
     public GamePiece previousPiece
     {
         get
@@ -77,7 +62,6 @@ public abstract class GamePiece : MonoBehaviour
         return cell.pieces.IndexOf(this);
     }
 
-    //formerly called containedPiece
     public GamePiece nextPiece
     {
         get
@@ -96,28 +80,21 @@ public abstract class GamePiece : MonoBehaviour
 
     public abstract bool isPushable { get; set; }
 
-    //public GamePiece containedPiece { get ;set; }
-    //public bool IsOccupied { get { return containedPiece != null; } }
     public bool IsOccupied { get { return nextPiece != null; } }
     public GamePiece()
     {
-
+        //Debug.Log("CONSTRUCTOR");
     }
 
-    public virtual void Awake() {
-
+    public virtual void Awake() 
+    {
         
     }
-    private int DebugCounter = 0;
     public virtual void Start() 
     {
-        Initialize();
-    }
-    private bool initialized = false;
-    public void Initialize()
-    {
+        FindRenderers();
         Cell.GetFromWorldPos(transform.position).QueuedOccupy((int)transform.position.z, this) ;
-        UpdateColor();
+        SetColorSlot(colorslot);
     }
 
     public virtual void Update()
@@ -136,34 +113,92 @@ public abstract class GamePiece : MonoBehaviour
             else
             {
                 transform.position = Vector2.Lerp(StartPos, destination.WorldPos(), currentLerp / 100f);
-                currentLerp += speed;
+                currentLerp += moveSpeed;
             }
         }
-        //prevent user from changing the color in inspector (it's only a preview)
-        if (colorPreview != oldColorPreview)
-        {
-            colorPreview = oldColorPreview;
+        if (cell != null)
+            transform.position = new Vector3(transform.position.x, transform.position.y, -getZPosition());
         }
-        //change the actual color based on the colorslot enum inspector change
-        if (colorslot != oldColorSlot)
-        {
-            UpdateColor();
-        }
-        //Update the Zposition Based on the Stack order;
-         if (cell!=null)
-             transform.position = new Vector3(transform.position.x, transform.position.y, getZPosition());
-    }
-    private void UpdateColor()
+    void OnValidate()
     {
-        oldColorSlot = colorslot;
-        colorPreview = Author.GetColorSlot(colorslot);
-        oldColorPreview = colorPreview;
-        gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+        SetColorSlot(colorslot);
+    }
+    
+    public void FindRenderers()
+    {
+        var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        foreach (var r in renderers)
+        {
+            if (r.gameObject.name == "Colorized")
+            {
+                r.color = colorPreview;
+                rendererColorized = r;
+            }
+            else if (r.gameObject.name == "Activated")
+            {
+                rendererActivated = r;
+            }
+            else if (r.gameObject.name == "White")
+            {
+                rendererWhite = r;
+            }
+        }
+    }
+    public void SetColorSlot(ColorSlot colorSlot)
+    {
+        this.colorslot = colorSlot;
+        colorPreview = Author.GetColorSlot(colorSlot);
+        var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
+        //foreach (var r in renderers)
+        //{
+        //    if (r.gameObject.name == "Colorized")
+        //    {
+        //        r.color = colorPreview;
+        //    }
+        //    else if (r.gameObject.name == "Activated" && this is Triggerable)
+        //    {
+        //        Triggerable t = (Triggerable)this;
+        //        r.color = t.IsTriggered ? colorPreview : Color.white;
+        //    }
+        //}
+        if (rendererColorized != null)
+        {
+            rendererColorized.color = colorPreview;
+        }
+        if (rendererActivated != null && this is Triggerable)
+        {
+            Triggerable t = (Triggerable)this;
+            rendererActivated.color = t.IsTriggered ? colorPreview : Color.white;
+        }
+        if (gameObject.GetComponent<SpriteRenderer>() != null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+        }
+    }
+    [Flags]public enum Axis
+    {
+        Xaxis = 1,
+        Yaxis = 2,
+        Zaxis = 4,
+    }
+    public static Vector3 getAngleVector(float angle, Axis axis)
+    {
+        switch (axis)
+        {
+            case Axis.Xaxis: return new Vector3(angle, 0, 0);
+            case Axis.Yaxis: return new Vector3(0, angle, 0);
+            case Axis.Xaxis | Axis.Yaxis: return new Vector3(angle, angle, 0);
+            case Axis.Zaxis: return new Vector3(0, 0, angle);
+            case Axis.Xaxis | Axis.Zaxis: return new Vector3(angle, 0, angle);
+            case Axis.Yaxis | Axis.Zaxis: return new Vector3(0, angle, angle);
+            case Axis.Xaxis | Axis.Yaxis | Axis.Zaxis: return new Vector3(angle, angle, angle);
+            default: return new Vector3(0, 0, 0);
+        }
     }
     public virtual bool pushFrom(Side side, int strength = 1)
     {
         GamePiece nextpiece = this.nextPiece;
-        if (!isSolid && nextpiece != null && nextpiece.pushFrom(side, strength))
+        if (!isSolid && nextpiece != null && nextpiece.pushFrom(side, strength-1))
 			return true;
 		if(!isPushable) 
 			return false;
@@ -172,9 +207,14 @@ public abstract class GamePiece : MonoBehaviour
 			return false;
 		if (strength < weight) 
 			return false;
-		GamePiece obstructor = cell.getNeighbour(side).firstSolid();
+        Cell neighbour = cell.getNeighbour(Utils.opposite(side));
+		GamePiece obstructor = neighbour.firstSolid();
 
-		if(obstructor==null)return moveTo(Utils.opposite(side));
+        if (obstructor == null)
+        {
+            Side newside = Utils.opposite(side);
+            return moveTo(newside);
+        }
 		if(obstructor.isSolid && !isPushable) 
 			return false;
 		if(!obstructor.isSolid && !obstructor.isPushable) 
@@ -183,19 +223,12 @@ public abstract class GamePiece : MonoBehaviour
 		if (obsPushed){
 			obstructor.Detatch();
 			bool succeed = moveTo(Utils.opposite(side));
-			if (!succeed){obstructor.moveTo(side);}
+			if (!succeed)
+            {obstructor.moveTo(side);}
 			return succeed;
 		} 
 		return false;
     }
-    //public virtual bool onOccupy(GamePiece piece)
-    //{
-    //    if (containedPiece == null)
-    //    {//not intentional set
-    //        containedPiece = piece;
-    //        return true;
-    //    } return containedPiece.onOccupy(piece);
-    //}
     public virtual bool onOccupy(GamePiece piece)
     {
         return true;
@@ -208,11 +241,6 @@ public abstract class GamePiece : MonoBehaviour
     public virtual void onDeOccupy(GamePiece piece) 
     {
     }
-    //public GamePiece GetNeighbour(Side s){
-    //	Cell neighbour = cell.getNeighbour(s); 
-    //	if(neighbour == null) return null;
-    //    return neighbour.gamePiece;
-    //}
     public virtual bool moveTo(Side side) {
 		if (isMoving) return false;
         if (cell == null)
@@ -221,15 +249,31 @@ public abstract class GamePiece : MonoBehaviour
         Wall w = cell.getWall(side);
         if(w!=null && !w.isTraversible) return false;
         if (dest == null) return false;
-        bool available = dest.Reserve();//Intentional Set.
-		if (available)
+        //bool available = dest.Reserve();//Intentional Set.
+		//if (available)
+        //{
+        //    isMoving = true;
+        //    StartPos = cell.WorldPos();
+        //    destination = dest;
+        //}
+        //return available;
+        return StartLerp(dest, moveSpeed);
+	}
+    public bool StartLerp(Cell dest, float speed)
+    {
+        bool available = dest.Reserve() && dest != null;
+        if (available)
         {
             isMoving = true;
             StartPos = cell.WorldPos();
             destination = dest;
+            tempSpeed = speed;
         }
         return available;
-	}
+    }
+
+
+    public bool JustTeleported = false;
 	public virtual bool TeleportTo(Cell target){
 		Cell currentCell = cell;
 		if (target.IsSolidlyOccupied())return false;
@@ -240,104 +284,20 @@ public abstract class GamePiece : MonoBehaviour
 		} return true;
 
 	}
-    //public void Detatch(bool bringChildren = true)
-    //{
-    //    if (bringChildren)
-    //    {
-    //        if (cell == null) return;
-    //        if (container == null)
-    //        {
-    //            var gg = cell.gamePiece;
-    //            while (gg != this)
-    //            {
-    //                if (gg == null) return;
-    //                gg = gg.containedPiece;
-    //            }
-    //            var g = cell.Empty(); 
-    //        }
-    //        else
-    //        {
-    //            container.onDeOccupy();
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (containedPiece == null)
-    //        {
-    //            this.Detatch(true);
-    //            return;
-    //        }
-    //        else if (cell == null) 
-    //        {
-    //            return;
-    //        }
-    //        else if (container == null)
-    //        {
-    //            cell.gamePiece = containedPiece;
-    //        }
-    //        else
-    //        {
-    //            container.containedPiece = containedPiece;
-    //            if (containedPiece == null) container.onDeOccupy();
-    //            this.containedPiece = null;
-    //        }
-    //    }
-    //}
-    //----------------
     public void Detatch()
     {
         if (cell == null) return;
         //call onDeOccupy only for pieces Under you (possibly revisable design decision)
-        foreach(GamePiece piece in cell.pieces)
+        List<GamePiece> piecesCopy = cell.pieces.ToList();
+        cell.pieces.Remove(this);
+        cell = null;
+        foreach (GamePiece piece in piecesCopy)
         {
             if (piece == this) break;
             piece.onDeOccupy(this);
         }
-        cell.pieces.Remove(this);
-        cell = null;
-
     }
-    //----------------
     //detatches with all children, calls onDeOccupy for all pieces underneath, and returns full list of detatched pieces
-    //public List<GamePiece> DetatchWithChildren()
-    //{
-    //    if (cell == null) return null;
-    //    //if you don't have children, call normal detatch
-    //    if (nextPiece == null)
-    //    {
-    //        Detatch();
-    //        return new List<GamePiece>(){this};
-    //    }
-    //    //pieces to be detatched and returned
-    //    List<GamePiece> detatched = new List<GamePiece>();
-    //    //pieces list as it was at the beginning
-    //    List<GamePiece> currentPieces = cell.pieces.ToList();
-    //    //index of piece being originally detatched
-    //    int thisPieceIndex = currentPieces.IndexOf(this);
-    //    for (int i = 0; i < currentPieces.Count; i++)
-    //    {
-    //        GamePiece current = currentPieces[i];
-    //        //if the piece will not be detatched
-    //        if (i < thisPieceIndex)
-    //        {
-    //            //call onDeOccupy on this piece with ALL pieces will be detatched
-    //            for (int j = thisPieceIndex; j < currentPieces.Count; j++)
-    //            {
-    //                current.onDeOccupy(currentPieces[j]);
-    //            }
-    //        }
-    //        //otherwise, if the piece is being detatched
-    //        else
-    //        {
-    //            //remove and add the return list
-    //            current.cell.pieces.Remove(current);
-    //            current.cell = null;
-    //            detatched.Add(current);
-    //        }
-    //    }
-    //    return detatched;
-    //}
-    //----------------
     public List<GamePiece> DetatchWithChilren()
     {
         if (cell == null) return null;
@@ -353,21 +313,11 @@ public abstract class GamePiece : MonoBehaviour
         return detatchList;
 
     }
-    //public void Destroy(bool destroyChildren = true)
-    //{
-    //    Detatch(destroyChildren);
-    //    GamePiece g = this;
-    //    while (g!=null){
-    //        if (this.gameObject)DestroyImmediate(this.gameObject);
-    //        g = g.containedPiece; 
-    //    }
-    //    
-    //}
-    //----------------
     public void Destroy()
     {
         Detatch();
         if (this.gameObject) DestroyImmediate(this.gameObject);
+        
     }
     //----------------
     public void DestroyWithChildren()
@@ -378,12 +328,13 @@ public abstract class GamePiece : MonoBehaviour
             if (piece.gameObject) DestroyImmediate(piece.gameObject);
         }
     }
-    public float speed = 5f;
-    public float currentLerp = 0f, maxLerp = 100f;
-    public Vector2 StartPos;
-	
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }
+}
+
+public interface Triggerable
+{
+    bool IsTriggered { get; }
 }
 

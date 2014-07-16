@@ -16,6 +16,13 @@ public class RoomManager : MonoBehaviour {
     public Cell[][] Grid;
     public Player player;
 
+    public enum ButtonOptions
+    {
+        ActivateOnAllPushed,
+        ActivateOnOnePushed,
+    }
+    public ButtonOptions buttonOptions = ButtonOptions.ActivateOnAllPushed;
+
     void InitializeDictionaries()
     {
         if (RoomManager.pieceGameObjects == null || RoomManager.pieceTypes == null)
@@ -24,6 +31,7 @@ public class RoomManager : MonoBehaviour {
             {
                 { PieceType.wall, typeof(Wall) },
                 { PieceType.door, typeof(Door) },
+                { PieceType.block, typeof(Block) },
                 { PieceType.player, typeof(Player) },
                 { PieceType.end, typeof(End) },
                 { PieceType.button, typeof(Button) },
@@ -38,7 +46,8 @@ public class RoomManager : MonoBehaviour {
             RoomManager.pieceGameObjects = new Dictionary<PieceType, GameObject>()
             {
                 { PieceType.wall, Resources.Load<GameObject>("Prefabs/Wall")},
-                { PieceType.door, Resources.Load<GameObject>("Prefabs/Wall")},//also wall, door script added later
+                { PieceType.door, Resources.Load<GameObject>("Prefabs/Door")},//also wall, door script added later
+                { PieceType.block, Resources.Load<GameObject>("Prefabs/octogon")},
                 { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
                 { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
                 { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
@@ -64,10 +73,11 @@ public class RoomManager : MonoBehaviour {
                 Grid[i][j] = new Cell(i, j);
             }
         }
+        List<GameObject> walls = GameObject.FindObjectsOfType<Wall>().Select(w => w.gameObject).ToList();
 
-        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
 		foreach (GameObject wallobj in walls)
         {
+            //if (wallobj.GetComponent<Door>() != null) Debug.Log("FOUND DOOR");
 			Wall wall  = wallobj.GetComponent<Wall>();
 			if(wall != null){
 				if(((Vector2)wall.transform.position).isWithinGrid()){
@@ -78,9 +88,7 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-
         InitializeDictionaries();
-
         if (player == null)
         {
             Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
@@ -93,15 +101,6 @@ public class RoomManager : MonoBehaviour {
         {
             for(int j = 0; j < Grid[0].Length; j++)
             {
-                //foreach(Side s in Enum.GetValues(typeof(Side)))
-                //{
-                //    if (Grid[i][j].getWall(s) != null)
-                //    {
-                //        Debug.Log(i + " : " + j + " side: " + s.ToString());
-                //        count++;
-                //
-                //    }
-                //}
                 if (Cell.Get(i, j).pieces.Count != 0)
                     Debug.Log("Found : " + Cell.Get(i, j).pieces[0] + " @ " + i + " , " + j);
             }
@@ -132,6 +131,76 @@ public class RoomManager : MonoBehaviour {
         }
         return list;
     }
+    public List<Door> GetDoorsOfColor(ColorSlot colorslot)
+    {
+        List<Door> list = new List<Door>();
+        for (int i = 0; i < Grid.Length; i++)
+        {
+            for (int j = 0; j < Grid[0].Length; j++)
+            {
+                Cell cell = Grid[i][j];
+                if (cell == null) continue;
+                foreach (var wall in cell.walls.Values)
+                {
+                    if (wall != null && wall is Door)
+                    {
+                        Door door = (Door)wall;
+                        if (door.colorslot == colorslot && !list.Contains(door))
+                        {
+                            list.Add(door);
+                        }
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    public void RefreshColorFamily(ColorSlot colorslot)
+    {
+        if (buttonOptions == ButtonOptions.ActivateOnAllPushed)
+        {
+            bool allSatisfied = true;
+            List<GamePiece> pieces = GetPiecesOfColor(colorslot);
+            foreach (GamePiece piece in pieces)
+            {
+                if (piece is Triggerable)
+                {
+                    Triggerable t = (Triggerable)piece;
+                    if (!t.IsTriggered) allSatisfied = false;
+                }
+            }
+            List<Door> doors = GetDoorsOfColor(colorslot);
+            foreach (Door door in doors)
+            {
+                if (allSatisfied) door.Open();
+                else door.Close();
+            }
+        }
+        else if (buttonOptions == ButtonOptions.ActivateOnOnePushed)
+        {
+            bool oneSatisfied = false;
+            List<GamePiece> pieces = GetPiecesOfColor(colorslot);
+            foreach (GamePiece piece in pieces)
+            {
+                if (piece is Triggerable)
+                {
+                    Triggerable t = (Triggerable)piece;
+                    if (t.IsTriggered)
+                    {
+                        oneSatisfied = true;
+                        break;
+                    }
+                }
+            }
+            List<Door> doors = GetDoorsOfColor(colorslot);
+            foreach (Door door in doors)
+            {
+                if (oneSatisfied) door.Open();
+                else door.Close();
+            }
+        }
+    }
     public void AddPiece(GameObject gameobject, PieceType piecetype, ColorSlot colorslot)
     {
         GamePiece gamePiece;
@@ -142,36 +211,12 @@ public class RoomManager : MonoBehaviour {
             gamePiece = (GamePiece)gameobject.AddComponent(t);
         }
         gamePiece.piecetype = piecetype;
-        gamePiece.colorslot = colorslot;
+        gamePiece.SetColorSlot(colorslot);
         //gameobject.name = 
         if (t == typeof(Player))
         {
             player = (Player)gamePiece;
         }
-        //if (piecetype == PieceType.player)
-        //{
-        //    gamePiece = gameobject.GetComponent<Player>();
-        //    if (gamePiece == null) gamePiece = gameobject.AddComponent<Player>();
-        //    RoomManager.roomManager.player = (Player)gamePiece;
-        //    gamePiece.piecetype = piecetype;
-        //}
-        //else
-        //{
-        //    gamePiece = gameobject.GetComponent<Placeholder>();
-        //    if (gamePiece == null) gamePiece = gameobject.AddComponent<Placeholder>();
-        //    gamePiece.piecetype = piecetype;
-        //}
-		//Cell cell = Cell.GetFromWorldPos(piece.transform.position);
-        //if (cell != null)
-        //{
-        //    var list = cell.getPiecesOnCell();
-        //    if (list.Select(gpiece => gpiece.piecetype).Contains(piecetype))
-        //    {
-        //        return;
-        //    }
-        //    bool success = cell.Occupy(gamePiece);
-        //    //do something if the cell was successfully placed.
-        //}
     }
 	void Start () {
         if (Application.isPlaying)
@@ -217,9 +262,7 @@ public class RoomManager : MonoBehaviour {
         Side side; Wall.Orientation orient;
         Utils.WorldToWallPos(wall.transform.position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(wall.transform.position);
-
-        if (cell == null) {  return; }
-        
+        if (cell == null) return;
         if (cell.getWall(side) != null)
         {
             RemoveWall(wall.transform.position);
@@ -230,6 +273,5 @@ public class RoomManager : MonoBehaviour {
         {
             neighbour.setWall(Utils.opposite(side), wall);
         }
-
     }
 }

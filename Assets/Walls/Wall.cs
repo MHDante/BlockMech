@@ -8,15 +8,18 @@ public class Wall : MonoBehaviour {
     public const int blockSize = 4;
 	public const int halfBlock = blockSize/2;
     //[ExposePropertyAttribute]
-	public virtual bool isTraversible {get;set;}
+	public virtual bool isTraversible { get; set; }
 
     public enum Orientation { Horizontal, Vertical };
-    public Orientation orientation = Orientation.Horizontal;
+    public Orientation orientation = Orientation.Vertical;
 
 	// Use this for initialization
     protected virtual void Start()
     {
-	    
+        if (orientation== Orientation.Vertical && transform.rotation.Equals(Quaternion.identity)) 
+            orientation = Orientation.Vertical;
+
+        else orientation = Orientation.Horizontal;
 	}
 	
 	// Update is called once per frame

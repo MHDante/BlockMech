@@ -4,7 +4,7 @@
 TagManager:
   tags:
   - Wall
-  - Player
+  - 
   - Start
   - End
   - Key
@@ -56,8 +56,4 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
-    locked: 0
-  - name: Player
-    userID: 2
-    uniqueID: 1263257167
     locked: 0

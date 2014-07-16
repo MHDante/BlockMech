@@ -3,14 +3,32 @@ using System.Collections;
 using System;
 public class Door : Wall
 {
-    public virtual bool isTraversible { get; set; }
-    protected override void Start()
+    public ColorSlot colorslot = ColorSlot.A;
+    public Color colorPreview;
+    public bool isOpen { get { return isTraversible; } }
+
+    void OnValidate()
     {
-        base.Start();
+        SetColorSlot(colorslot);
     }
-    protected override void Update()
+    public void SetColorSlot(ColorSlot colorSlot)
     {
-        base.Update();
+        this.colorslot = colorSlot;
+        colorPreview = Author.GetColorSlot(colorSlot);
+        gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+    }
+    public void Open()
+    {
+        if (isOpen) return;
+        isTraversible = true;
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+    public void Close()
+    {
+        if (!isOpen) return;
+        isTraversible = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
 }

@@ -26,6 +26,11 @@ public class Player : GamePiece {
 		if (Input.GetKey(KeyCode.LeftArrow)) { TryMove(Side.left); }
 		if (Input.GetKey(KeyCode.RightArrow)) { TryMove(Side.right); }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+
     }
 
 	public bool TryMove(Side s){
@@ -36,7 +41,7 @@ public class Player : GamePiece {
 			GamePiece obstructor = target.firstSolid();
             if (obstructor != null)
             {
-                if (obstructor.pushFrom(Utils.opposite(s),3))
+                if (obstructor.pushFrom(Utils.opposite(s),Strength))
                 {
                     obstructor.Detatch();
                     moveTo(s);

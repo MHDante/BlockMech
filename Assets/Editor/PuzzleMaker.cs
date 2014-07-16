@@ -53,7 +53,7 @@ public class PuzzleMaker : EditorWindow
                 if (withinGrid)
                 {
                     if (!renderer.enabled) renderer.enabled = true;
-                    renderer.color = spawnColor * 0.5f;
+                    renderer.color = selectedPiece != PieceType.wall ? spawnColor * 0.5f : Color.white * 0.5f;
                 }
                 else
                 {
@@ -75,10 +75,24 @@ public class PuzzleMaker : EditorWindow
         if (preexisting != null) DestroyImmediate(preexisting);
         if (selectedPiece != PieceType.none)
         {
-            if (RoomManager.pieceGameObjects == null || RoomManager.pieceGameObjects[selectedPiece] == null)
-                Debug.Log("Why?");
+            if (RoomManager.pieceGameObjects == null)
+            {
+                Debug.Log("pieceGameObjects is null");
+            }
+            else if (RoomManager.pieceGameObjects[selectedPiece] == null)
+            {
+                Debug.Log(selectedPiece + " was not found in the dictionary");
+            }
+
             Indicator = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece]);
-            Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
+            bool foundColorized = false;
+            var renderers = Indicator.GetComponentsInChildren<SpriteRenderer>();
+            foreach (var r in renderers)
+            {
+                if (r.gameObject.name == "Colorized") r.color *= 0.5f;
+                foundColorized = true;
+            }
+            if (!foundColorized)Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
             Indicator.name = "Indicator";
             GamePiece piece = Indicator.GetComponent<GamePiece>();
             if (piece != null)
@@ -93,11 +107,16 @@ public class PuzzleMaker : EditorWindow
 		screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 		MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
         bool withinGrid = MousePos.isWithinGrid();
-        if (withinGrid && Event.current.type == EventType.MouseDown && Event.current.button == 2)
+        if (withinGrid)
         {
-            Active = !Active; 
-            Event.current.Use(); //keeping this line causes one bug, removing it causes another.
+            
+            if (Event.current.type == EventType.MouseDown && Event.current.button == 2)
+            {
+                Active = !Active;
+                Event.current.Use(); //keeping this line causes one bug, removing it causes another.
+            }
         }
+
         if (Active)
         {
             UpdateIndicator(withinGrid);
@@ -107,6 +126,7 @@ public class PuzzleMaker : EditorWindow
 	        if (Event.current.type == EventType.layout)
 	            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(GetHashCode(), FocusType.Passive));
 	        Selection.activeObject = null;
+            HandleNumKeys();
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
             Vector2 ScrollVect = getScroll();
@@ -121,7 +141,7 @@ public class PuzzleMaker : EditorWindow
                     SetIndicator();
                 }
             }
-            if (selectedPiece == PieceType.wall )
+            if (selectedPiece == PieceType.wall || selectedPiece == PieceType.door)
             {
 				Side side;
                 Wall.Orientation or;
@@ -130,10 +150,24 @@ public class PuzzleMaker : EditorWindow
                 {
                     Indicator.transform.position = target;
                     Indicator.GetComponent<Wall>().orientation = or;
+                    if (selectedPiece == PieceType.wall)
+                    {
+                    }
+                    else if (selectedPiece == PieceType.door)
+                    {
+                        Indicator.GetComponent<Door>().colorslot = colorslot;
+                    }
                 }
                 if (LeftDown())
                 {
-                    SpawnWall(target, or, side);
+                    if (selectedPiece == PieceType.wall)
+                    {
+                        SpawnWall(target, or, side);
+                    }
+                    else if (selectedPiece == PieceType.door)
+                    {
+                        SpawnDoor(target, or, side, colorslot);
+                    }
 					sceneView.Update();
 					sceneView.Repaint();
                 }
@@ -188,6 +222,40 @@ public class PuzzleMaker : EditorWindow
 			Event.current.Use();
 		}
     }
+
+    int? colorSlotCount = null;
+
+    public void HandleNumKeys()
+    {
+        if (Event.current.type == EventType.KeyDown)
+        {
+            if (colorSlotCount == null)
+            {
+                colorSlotCount = Enum.GetValues(typeof(ColorSlot)).Length;
+            }
+            ColorSlot newColorSlot = colorslot;
+            int code = (int)Event.current.keyCode;
+            int alpha = code - (int)KeyCode.Alpha0;
+            int keypad = code - (int)KeyCode.Keypad0;
+            if (alpha >= 0 && alpha < colorSlotCount)
+                newColorSlot = (ColorSlot)(alpha);
+            else if (keypad >= 0 && keypad < colorSlotCount)
+                newColorSlot = (ColorSlot)(keypad);
+
+            if (colorslot != newColorSlot)
+            {
+                colorslot = newColorSlot;
+                spawnColor = Author.GetColorSlot(colorslot);
+            }
+
+            UpdateIndicator(true);
+        }
+
+
+        
+
+
+    }
     public void SpawnPiece(PieceType piece, Cell target)
     {
         if (target.IsSolidlyOccupied()) return;
@@ -214,12 +282,23 @@ public class PuzzleMaker : EditorWindow
     public void SpawnWall(Vector3 target, Wall.Orientation orient, Side side)
     {
         GameObject wallobj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.wall], target, Quaternion.identity);
-		wallobj.transform.parent = GetPieceParent(PieceType.wall).transform;
-		Wall wall = wallobj.GetComponent<Wall>();
+        wallobj.transform.parent = GetPieceParent(PieceType.wall).transform;
+        Wall wall = null;
+        wall = wallobj.GetComponent<Wall>();
 		if(wall == null) throw new WTFException();
 		wall.orientation = orient;
-        //wall.Update();
         RoomManager.roomManager.AddWall(wall);
+    }
+    public void SpawnDoor(Vector3 target, Wall.Orientation orient, Side side, ColorSlot colorslot)
+    {
+        GameObject doorobj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.door], target, Quaternion.identity);
+        doorobj.transform.parent = GetPieceParent(PieceType.door).transform;
+        Door door = null;
+        door = doorobj.GetComponent<Door>();
+        if (door == null) throw new WTFException();
+        door.orientation = orient;
+        door.SetColorSlot(colorslot);
+        RoomManager.roomManager.AddWall(door);
     }
     public GameObject GetPieceParent(PieceType piece)
     {
@@ -284,5 +363,4 @@ public class PuzzleMaker : EditorWindow
     {
         Repaint();
     }
-
 }
