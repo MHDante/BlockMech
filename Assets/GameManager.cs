@@ -5,14 +5,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+public enum SelectionState { NoSelector, WorldSelector, LevelSelector, PlayingGame, ResultsScreen };
+
 public class GameManager : MonoBehaviour
 {
 
     private static GameManager _instance;
 
-    enum SelectionState { NoSelector, WorldSelector, LevelSelector, PlayingGame, ResultsScreen };
+    
 
-    SelectionState selState = SelectionState.WorldSelector;
+    public SelectionState selState = SelectionState.WorldSelector;
 
     List<string> worlds { get {
         return worldScenes.Keys.ToList(); 
@@ -29,8 +31,11 @@ public class GameManager : MonoBehaviour
     string selectedWorld;
 
 
-    
+    public int totalSteps;
+    public int levelSteps;
+    public int totalRestarts;
 
+    
     public static GameManager instance
     {
         get
@@ -81,6 +86,11 @@ public class GameManager : MonoBehaviour
 
         selectedWorld = "";
         textureArrow = Resources.Load<Texture>("Textures/arrow");
+
+
+        totalSteps = 0;
+        levelSteps = 0;
+        totalRestarts = 0;
     }
     void OnGUI(){
 
@@ -91,6 +101,10 @@ public class GameManager : MonoBehaviour
         else if (selState == SelectionState.LevelSelector)
         {
             Draw(levels, selectedWorld.ToUpper() + " WORLD");
+        }
+        else if (selState == SelectionState.ResultsScreen) 
+        {
+            DrawResults();
         }
 		
     }
@@ -117,10 +131,13 @@ public class GameManager : MonoBehaviour
         return pixels;
     }
 
+    
 
     Vector2 scrollPosition = Vector2.zero;
     const string worldTitle = "WORLD SELECTOR";
     Texture textureArrow;
+
+
 
 
     void Draw(List<string> boxesToSelect, string selectionTitle)
@@ -199,6 +216,7 @@ public class GameManager : MonoBehaviour
         }
 
 
+
         //**DRAW START**
         //draw level selector components
         scrollPosition =
@@ -262,4 +280,7 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void DrawResults() {
+
+    }
 }
