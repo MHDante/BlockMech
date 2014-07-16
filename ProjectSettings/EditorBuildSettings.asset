@@ -46,8 +46,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/Nadia/Nadia#5.unity
   - enabled: 1
+    path: Assets/Resources/Scenes/Zack/SceneTest.unity
+  - enabled: 1
     path: Assets/Resources/Scenes/Zack/switch_hell.unity
   - enabled: 1
     path: Assets/Resources/Scenes/Zack/zack1.unity
-  - enabled: 1
-    path: Assets/Resources/Scenes/Zack/SceneTest.unity
