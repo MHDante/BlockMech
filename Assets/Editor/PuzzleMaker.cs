@@ -47,13 +47,16 @@ public class PuzzleMaker : EditorWindow
         }
         else
         {
-            SpriteRenderer renderer = Indicator.GetComponent<SpriteRenderer>();
+            foreach (var renderer in Indicator.GetComponentsInChildren<SpriteRenderer>())
             if (renderer != null)
             {
                 if (withinGrid)
                 {
                     if (!renderer.enabled) renderer.enabled = true;
-                    renderer.color = selectedPiece != PieceType.wall ? spawnColor * 0.5f : Color.white * 0.5f;
+                    if (selectedPiece != PieceType.wall && renderer.gameObject.HasParent("Colorized")){
+                        renderer.color = spawnColor * 0.5f ;
+                    }
+                    renderer.color = Color.white * 0.5f;
                 }
                 else
                 {
@@ -85,14 +88,9 @@ public class PuzzleMaker : EditorWindow
             }
 
             Indicator = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece]);
-            bool foundColorized = false;
-            var renderers = Indicator.GetComponentsInChildren<SpriteRenderer>();
-            foreach (var r in renderers)
-            {
-                if (r.gameObject.name == "Colorized") r.color *= 0.5f;
-                foundColorized = true;
-            }
-            if (!foundColorized)Indicator.GetComponent<SpriteRenderer>().color *= 0.5f;
+            
+            foreach (var r in Indicator.GetComponentsInChildren<SpriteRenderer>()) r.color *= 0.5f;
+
             Indicator.name = "Indicator";
             GamePiece piece = Indicator.GetComponent<GamePiece>();
             if (piece != null)
@@ -260,7 +258,8 @@ public class PuzzleMaker : EditorWindow
     {
         if (target.IsSolidlyOccupied()) return;
         GameObject parent = GetPieceParent(piece);
-        GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece], target.WorldPos(), Quaternion.identity);
+        GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[selectedPiece]);
+        obj.transform.position = target.WorldPos();
         obj.transform.parent = parent.transform;
         RoomManager.roomManager.AddPiece(obj, piece, colorslot);
 
@@ -269,19 +268,19 @@ public class PuzzleMaker : EditorWindow
     {
         if (RoomManager.roomManager.player == null)
         {
-            GameObject obj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.player], target.WorldPos(), Quaternion.identity);
+            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.player]);
+            obj.transform.position = target.WorldPos();
             RoomManager.roomManager.AddPiece(obj, PieceType.player, ColorSlot.none);
         }
         else
         {
             RoomManager.roomManager.player.TeleportTo(target);
         }
-        
-
     }
     public void SpawnWall(Vector3 target, Wall.Orientation orient, Side side)
     {
-        GameObject wallobj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.wall], target, Quaternion.identity);
+        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.wall]);
+        wallobj.transform.position = target;
         wallobj.transform.parent = GetPieceParent(PieceType.wall).transform;
         Wall wall = null;
         wall = wallobj.GetComponent<Wall>();
@@ -291,7 +290,8 @@ public class PuzzleMaker : EditorWindow
     }
     public void SpawnDoor(Vector3 target, Wall.Orientation orient, Side side, ColorSlot colorslot)
     {
-        GameObject doorobj = (GameObject)Instantiate(RoomManager.pieceGameObjects[PieceType.door], target, Quaternion.identity);
+        GameObject doorobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.door]);
+        doorobj.transform.position = target;
         doorobj.transform.parent = GetPieceParent(PieceType.door).transform;
         Door door = null;
         door = doorobj.GetComponent<Door>();

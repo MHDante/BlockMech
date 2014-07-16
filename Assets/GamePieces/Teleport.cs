@@ -26,13 +26,13 @@ public class Teleport : GamePiece
             rotation = 180f - rotation;
             axisCounter = (axisCounter + 1) % 7;
         }
-        if (rendererWhite != null)
+        if (WhiteSprite != null)
         {
-            rendererWhite.transform.eulerAngles = getAngleVector(rotation, (Axis)(axisCounter + 1));
+            WhiteSprite.transform.eulerAngles = getAngleVector(rotation, (Axis)(axisCounter + 1));
         }
-        if (rendererColorized != null)
+        if (WhiteSprite != null)
         {
-            rendererColorized.transform.eulerAngles = getAngleVector(rotation, (Axis)((axisCounter + 4) % 7));
+            WhiteSprite.transform.eulerAngles = getAngleVector(rotation, (Axis)((axisCounter + 4) % 7));
         }
     }
     

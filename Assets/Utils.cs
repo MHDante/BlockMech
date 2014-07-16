@@ -2,20 +2,48 @@ using System;
 using UnityEngine;
 public static class Utils
 {
-public static Side opposite(this Side s){
-	switch(s){
-	case Side.bottom:
-		return Side.top;
-	case Side.top:
-		return Side.bottom;
-	case Side.left:
-		return Side.right;
-	case Side.right:
-		return Side.left;
-	}throw new WTFException();
-}
+    public static Side opposite(this Side s){
+	    switch(s){
+	    case Side.bottom:
+		    return Side.top;
+	    case Side.top:
+		    return Side.bottom;
+	    case Side.left:
+		    return Side.right;
+	    case Side.right:
+		    return Side.left;
+	    }throw new WTFException();
+    }
+    public static GameObject GetParent(this GameObject child, string name = null)
+    {
+        if (child.transform.parent == null) return null;
+        if (name == null || child.transform.parent.gameObject.name == name)return child.transform.parent.gameObject;
+        return child.transform.parent.gameObject.GetParent(name);
+    }
+    public static bool HasParent(this GameObject child, string name)
+    {
+        return (child.GetParent(name) != null);
+    }
+    public static void FillAndBorder(this GameObject obj, Color fillColor)
+    {
+        try
+        {
+            SpriteRenderer fill = obj.transform.FindChild("Fill").GetComponent<SpriteRenderer>();
+            SpriteRenderer border = obj.transform.FindChild("Border").GetComponent<SpriteRenderer>();
 
-
+            fill.color = fillColor;
+            border.color = fillColor.Invert()*.8f;
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.LogError("Tried to call Fill and Border on a NonCompliant Item.");
+            throw e;
+        }
+    }
+    
+    public static Color Invert(this Color color){
+        return new Color(1.0f-color.r, 1.0f-color.g, 1.0f-color.b);
+    }
 	public static bool isWithinGrid(this Vector2 worldPos){
 		
 		if (worldPos.x > RoomManager.gridWidth * Wall.blockSize || worldPos.x < 0) return false;

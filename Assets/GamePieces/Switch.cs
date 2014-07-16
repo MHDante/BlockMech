@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿ using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -32,6 +32,9 @@ public class Switch : GamePiece, Triggerable
                 flipping = false;
             }
             transform.eulerAngles = getAngleVector(fliprotation, Axis.Xaxis);
+
+            if (fliprotation > 90) transform.eulerAngles += new Vector3(0, 180, 0);
+            
         }
     }
     public void StartFlip()
@@ -39,6 +42,7 @@ public class Switch : GamePiece, Triggerable
         flipping = true;
         flipped = !flipped;
         RoomManager.roomManager.RefreshColorFamily(colorslot);
+        SetColorSlot(colorslot);
     }
     public override void onDeOccupy(GamePiece piece)
     {

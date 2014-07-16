@@ -41,7 +41,7 @@ public class Player : GamePiece {
 			GamePiece obstructor = target.firstSolid();
             if (obstructor != null)
             {
-                if (obstructor.pushFrom(Utils.opposite(s),Strength))
+                if (obstructor.pushFrom(s.opposite(),Strength))
                 {
                     obstructor.Detatch();
                     moveTo(s);
