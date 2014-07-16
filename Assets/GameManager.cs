@@ -80,10 +80,6 @@ public class GameManager : MonoBehaviour
 
         selectedWorld = "";
     }
-
-
-    
-
     void OnGUI(){
 
         if (selState == SelectionState.WorldSelector)
