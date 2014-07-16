@@ -17,8 +17,23 @@ public class Key : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        
+        if (piece is Player)
+        {
+            Player player = (Player)piece;
+            if (player.keys.Contains(this))
+            {
+                Debug.Log("Player already has key.");
+            }
+            else
+            {
+                player.keys.Add(this);
+                cell.pieces.Remove(this);
+                gameObject.SetActive(false);
+            }
+            
+        }
         return base.onOccupy(piece);
+
     }
 
 }

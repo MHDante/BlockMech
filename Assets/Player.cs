@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 
 public class Player : GamePiece {
@@ -13,7 +14,7 @@ public class Player : GamePiece {
 
     public static int steps = 0;
     public static int restarts = 0;
-
+    public List<Key> keys = new List<Key>();
 
 	public override void Start () {
         base.Start();
@@ -46,6 +47,11 @@ public class Player : GamePiece {
             steps++;
             if (obstructor != null)
             {
+                if (obstructor is Keyhole)
+                {
+                    bool tryopen = ((Keyhole)obstructor).TryOpen(this);
+                    if (tryopen) return false; //...
+                }
                 if (obstructor.pushFrom(s.opposite(),Strength))
                 {
                     obstructor.Detatch();
