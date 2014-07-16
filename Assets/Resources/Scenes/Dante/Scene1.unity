@@ -437,10 +437,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &62055406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -635,10 +638,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &80636005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -770,10 +776,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 1716369189}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &94572282
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +981,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 140223604}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: 0, y: .087155737, z: 0, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -1580,7 +1589,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 235845625}
-  m_LocalRotation: {x: -.113361508, y: .200365797, z: .528527141, w: .81710577}
+  m_LocalRotation: {x: -.187418669, y: .133684441, z: .133684456, w: .963914573}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -1769,10 +1778,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 1, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &273606876
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1880,7 +1892,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 280620757}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .00759612257, y: .0868240818, z: .0868240818, w: .992403924}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -2255,10 +2267,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 669509114}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &316674598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,10 +2320,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &316674601
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2568,10 +2586,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &359325667
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3150,10 +3171,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &427973380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3355,7 +3379,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 496437771}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: .0868240818, y: -.00759612257, z: .0868240818, w: .992403924}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -4099,7 +4123,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 572448845}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .0540452674, y: .0318544991, z: .117406696, w: .99110043}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -4162,10 +4186,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 1, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   Strength: 1
 --- !u!212 &577575863
 SpriteRenderer:
@@ -4578,10 +4605,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 1832737893}
   rendererActivated: {fileID: 1608664675}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &636915246
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,10 +4659,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 140223606}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 280620759}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   target: {fileID: 314894260}
 --- !u!1 &654594930
 GameObject:
@@ -4730,10 +4763,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &656239031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4956,7 +4992,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 683675456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .0868240818, y: .0868240818, z: -.00759612257, w: .992403924}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -5222,10 +5258,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 1344002873}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 683675458}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   target: {fileID: 93764624}
 --- !u!1 &750983862
 GameObject:
@@ -5273,10 +5312,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &750983865
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5345,10 +5387,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &760205547
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6175,10 +6220,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &822740662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6889,10 +6937,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &886276757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7024,10 +7075,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &936514757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7416,10 +7470,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 113178496}
   rendererActivated: {fileID: 984042538}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &975969928
 GameObject:
   m_ObjectHideFlags: 0
@@ -7467,10 +7524,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 496437773}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 1870709916}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   target: {fileID: 1596952105}
 --- !u!1 &984042537
 GameObject:
@@ -7569,10 +7629,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 156913456}
   rendererActivated: {fileID: 2016301652}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &1011456689
 GameObject:
   m_ObjectHideFlags: 0
@@ -7745,10 +7808,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1015411912
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8433,7 +8499,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1111196038}
-  m_LocalRotation: {x: -.0184775721, y: .0457335971, z: .452352345, w: .89047426}
+  m_LocalRotation: {x: .0510633066, y: .0364436395, z: .0305798445, w: .997561634}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -8634,10 +8700,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &1131316677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8747,10 +8816,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1140618457
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8860,7 +8932,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1153224018}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: .087155737, y: 0, z: 0, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -9061,10 +9133,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 1111196040}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 572448847}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   target: {fileID: 1307144244}
 --- !u!1 &1218017230
 GameObject:
@@ -9369,10 +9444,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 568576813}
   rendererActivated: {fileID: 252635561}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &1268406177
 GameObject:
   m_ObjectHideFlags: 0
@@ -9736,10 +9814,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1302456394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9808,10 +9889,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 654594932}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &1308359748
 GameObject:
   m_ObjectHideFlags: 0
@@ -10118,7 +10202,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1344002871}
-  m_LocalRotation: {x: 0, y: 0, z: .4226183, w: .906307817}
+  m_LocalRotation: {x: .00759612257, y: .0868240818, z: .0868240818, w: .992403924}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -10383,10 +10467,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1370646891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10456,10 +10543,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 1781106835}
   rendererActivated: {fileID: 572060748}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &1394599001
 GameObject:
   m_ObjectHideFlags: 0
@@ -10570,10 +10660,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1397141387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10960,10 +11053,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 1153224020}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 1724342905}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   target: {fileID: 1596952105}
 --- !u!1 &1497070007
 GameObject:
@@ -11666,10 +11762,13 @@ MonoBehaviour:
   colorPreview: {r: 1, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 1969477708}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &1599641726
 GameObject:
   m_ObjectHideFlags: 0
@@ -11692,7 +11791,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1599641726}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -.175054118, y: .149510354, z: .217186436, w: .948595226}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -11942,10 +12041,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1614570993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12015,10 +12117,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 235845627}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 1599641728}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   target: {fileID: 314894260}
 --- !u!1 &1623020040
 GameObject:
@@ -12464,10 +12569,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1644518303
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12802,10 +12910,13 @@ MonoBehaviour:
   colorPreview: {r: .501960814, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1695603161
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13026,7 +13137,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1724342903}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .0868240818, y: -.00759612257, z: .0868240818, w: .992403924}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -14040,7 +14151,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870709914}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: .087155737, z: 0, w: .99619472}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .456795543, y: .456795543, z: 1}
   m_Children: []
@@ -15373,10 +15484,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1973515044
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15571,10 +15685,13 @@ MonoBehaviour:
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &1995159495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15919,10 +16036,13 @@ MonoBehaviour:
   colorPreview: {r: .0196078438, g: .501960814, b: .501960814, a: 1}
   rendererColorized: {fileID: 0}
   rendererActivated: {fileID: 0}
-  speed: 5
+  rendererWhite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!212 &2062038135
 SpriteRenderer:
   m_ObjectHideFlags: 0
