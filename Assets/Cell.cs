@@ -148,18 +148,19 @@ public class Cell {
     }
     public bool IsSolidlyOccupied()
     {
-        if (IsReserved) return true;
+        if (_IsReserved) return true;
         return HasPiece() && pieces.Any(p => p.isSolid);
     }
-    private bool IsReserved = false;
+    private bool _IsReserved = false;
+    public bool IsReserved { get { return _IsReserved; } }
 	public bool Reserve()
 	{
 		if (IsSolidlyOccupied()) return false;
-        IsReserved = true;
-		return IsReserved;
+        _IsReserved = true;
+		return _IsReserved;
 	}
     public void Unreserve()
     {
-        IsReserved = false;
+        _IsReserved = false;
     }
 }
