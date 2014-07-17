@@ -22,7 +22,7 @@ public class End : GamePiece
             {
                 GameManager.instance.totalSteps += Player.steps;
                 GameManager.instance.levelSteps = Player.steps;
-                GameManager.instance.selState = SelectionState.ResultsScreen;
+                GameManager.instance.selState = GameState.ResultsScreen;
             }
             catch (NullReferenceException e)
             {
