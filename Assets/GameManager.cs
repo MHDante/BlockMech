@@ -142,54 +142,38 @@ public class GameManager : MonoBehaviour
     const string worldTitle = "WORLD SELECTOR";
     Texture textureArrow;
 
-
-
-
     //initialize various sizes
-        Vector2 padding;
-        float fontGameTitleHeight;
-        float fontWorldTitleHeight;
-        float fontButtonHeightMax;
-        float backButtonHeight;
-        float backButtonPadding;
+    Vector2 padding;
+    float fontGameTitleHeight;
+    float fontWorldTitleHeight;
+    float fontButtonHeightMax;
+    float backButtonHeight;
+    float backButtonPadding;
 
-        GUIStyle myLabelGameTitleStyle;
+    GUIStyle myLabelGameTitleStyle;
+    GUIStyle myLabelWorldTitleStyle;
+    GUIStyle myLabelButtonTitleStyle;
 
+    const string gameTitle = "BLOCK-IT";        
+    Vector2 gameTitleSz;        
+    Vector2 selectionTitleSz;
 
-        GUIStyle myLabelWorldTitleStyle;
-
-
-        GUIStyle myLabelButtonTitleStyle;
-
-        const string gameTitle = "BLOCK-IT";
-        
-        Vector2 gameTitleSz;
-
+    // string specificWorld = "";
+    // Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
 
 
-        
-        Vector2 selectionTitleSz;
+    Rect rectLabelGameTitle;
+    Rect rectWorldTitle;
+    Rect rectPosition;
+    Vector2 levelSelectorSz;
 
-        // string specificWorld = "";
-        // Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
+    int viewportReduction = 20;
+    int maxCol;
+    int maxRow;
 
-
-        Rect rectLabelGameTitle;
-
-        Rect rectWorldTitle;
-
-
-        Rect rectPosition;
-
-        Vector2 levelSelectorSz;
-
-        int viewportReduction = 20;
-        int maxCol;
-        int maxRow;
-
-        Rect rectViewport;
-
-        Vector2 backButtonSz;
+    Rect rectViewport;
+    Vector2 backButtonSz;
+    bool onceDone = false;
 
 
     void InitGUI() 
@@ -220,34 +204,28 @@ public class GameManager : MonoBehaviour
 
         rectWorldTitle = new Rect(Screen.width - selectionTitleSz.x - padding.x, rectLabelGameTitle.height - selectionTitleSz.y, padding.x + selectionTitleSz.x, padding.y + selectionTitleSz.y);
 
-        rectPosition = new Rect(padding.x + backButtonPadding, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2 - backButtonPadding * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
-
-        levelSelectorSz = new Vector2(PercentToPixel(.15f, Screen.width), PercentToPixel(.10f, Screen.width)); //this can be more versatile, it's hacky in that it only depends on width to calculate it's dimensions.
         
-        maxCol = (int)Mathf.Floor((float)(rectPosition.width - viewportReduction - padding.x * 3) / (float)(levelSelectorSz.x + padding.x)); //4
-
-        
-
-        rectViewport = new Rect(0, 0, rectPosition.width - viewportReduction, ((levelSelectorSz.y + padding.y) * maxRow + padding.y * 2) + padding.y);
-
-        backButtonSz = new Vector2(backButtonHeight, backButtonHeight);
     }
 
 
     void Draw(List<string> boxesToSelect, string selectionTitle)
     {
 
+        rectPosition = new Rect(padding.x + backButtonPadding, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2 - backButtonPadding * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
+
+        levelSelectorSz = new Vector2(PercentToPixel(.15f, Screen.width), PercentToPixel(.10f, Screen.width)); //this can be more versatile, it's hacky in that it only depends on width to calculate it's dimensions.
+
+        maxCol = (int)Mathf.Floor((float)(rectPosition.width - viewportReduction - padding.x * 3) / (float)(levelSelectorSz.x + padding.x)); //4
+
+
+
+        rectViewport = new Rect(0, 0, rectPosition.width - viewportReduction, ((levelSelectorSz.y + padding.y) * maxRow + padding.y * 2) + padding.y);
+
+        backButtonSz = new Vector2(backButtonHeight, backButtonHeight);
 
         maxRow = (int)Mathf.Ceil((float)boxesToSelect.Count / (float)maxCol);
 
-        //draw game title 
-        GUI.skin.label = myLabelGameTitleStyle;
-        GUI.Label(rectLabelGameTitle, gameTitle);
 
-
-        //draw world title placeholder
-        GUI.skin.label = myLabelWorldTitleStyle;    //not my favourite variable name... meh...
-        GUI.Label(rectWorldTitle, selectionTitle);
 
 
 
@@ -263,67 +241,81 @@ public class GameManager : MonoBehaviour
         }
 
 
-
-        //**DRAW START**
-        //draw level selector components
-        scrollPosition =
-        GUI.BeginScrollView(rectPosition, scrollPosition, rectViewport);
-        GUI.Box(rectViewport, "");
-
-
-        int c = -1;
-        for (int box = 0; box < boxesToSelect.Count; box++) 
+        if (selState != GameState.Initializing && onceDone)
         {
-            int r = box % maxCol;
-            if (r == 0) c++;
+            //draw game title 
+            GUI.skin.label = myLabelGameTitleStyle;
+            GUI.Label(rectLabelGameTitle, gameTitle);
 
-            Vector2 spawn = new Vector2(padding.x * 2 + r * (levelSelectorSz.x + padding.x), padding.y * 2 + c * (levelSelectorSz.y + padding.y));
-            float colSpaceWasted = rectViewport.width - (padding.x * 4 + maxCol * (levelSelectorSz.x + padding.x) - padding.x); 
 
-            string labelText = boxesToSelect[box].ToString();
-            if (GUI.Button(new Rect(spawn.x + colSpaceWasted/2, spawn.y, levelSelectorSz.x, levelSelectorSz.y), labelText.ToUpper(), myLabelButtonTitleStyle))
+            //draw world title placeholder
+            GUI.skin.label = myLabelWorldTitleStyle;    //not my favourite variable name... meh...
+            GUI.Label(rectWorldTitle, selectionTitle);
+
+
+            //**DRAW START**
+            //draw level selector components
+            scrollPosition =
+            GUI.BeginScrollView(rectPosition, scrollPosition, rectViewport);
+            GUI.Box(rectViewport, "");
+
+
+            int c = -1;
+            for (int box = 0; box < boxesToSelect.Count; box++)
             {
-                if (selState == GameState.WorldSelector)
+                int r = box % maxCol;
+                if (r == 0) c++;
+
+                Vector2 spawn = new Vector2(padding.x * 2 + r * (levelSelectorSz.x + padding.x), padding.y * 2 + c * (levelSelectorSz.y + padding.y));
+                float colSpaceWasted = rectViewport.width - (padding.x * 4 + maxCol * (levelSelectorSz.x + padding.x) - padding.x);
+
+                string labelText = boxesToSelect[box].ToString();
+                if (GUI.Button(new Rect(spawn.x + colSpaceWasted / 2, spawn.y, levelSelectorSz.x, levelSelectorSz.y), labelText.ToUpper(), myLabelButtonTitleStyle))
                 {
-                    //set global variable, next iteration of main game loop would cause different list menu
-                    selectedWorld = labelText;
-                    selState = GameState.LevelSelector;
-                }
-                else if (selState == GameState.LevelSelector)
-                {
-                    selState = GameState.PlayingGame;
-                    Application.LoadLevel( worldScenes[ selectedWorld ][box] );
-                    Debug.Log("<color=green>Loading level " + worldScenes[selectedWorld][box] + "</color>");
+                    if (selState == GameState.WorldSelector)
+                    {
+                        //set global variable, next iteration of main game loop would cause different list menu
+                        selectedWorld = labelText;
+                        selState = GameState.LevelSelector;
+                    }
+                    else if (selState == GameState.LevelSelector)
+                    {
+                        selState = GameState.PlayingGame;
+                        Application.LoadLevel(worldScenes[selectedWorld][box]);
+                        Debug.Log("<color=green>Loading level " + worldScenes[selectedWorld][box] + "</color>");
+
+                    }
 
                 }
-               
+
+
+
             }
 
 
+            GUI.EndScrollView();
+            //**DRAW END**
 
+
+
+
+            //**MOVE START**
+            //move according to scroll wheel
+            float scrollMovement = 3.33f * levelSelectorSz.y / 4;
+            float result = Input.GetAxis("Mouse ScrollWheel");
+            if (result != 0)
+            {
+                scrollPosition = new Vector2(scrollPosition.x, scrollPosition.y + result * -scrollMovement);
+            }
+
+            foreach (var T in Input.touches)
+            {
+
+            }
+            //**MOVE END**
         }
 
-
-        GUI.EndScrollView();
-        //**DRAW END**
-
-
-
-
-        //**MOVE START**
-        //move according to scroll wheel
-        float scrollMovement = 3.33f * levelSelectorSz.y / 4;
-        float result = Input.GetAxis("Mouse ScrollWheel");
-        if (result != 0)
-        {
-            scrollPosition = new Vector2(scrollPosition.x, scrollPosition.y + result * -scrollMovement);
-        }
-
-        foreach (var T in Input.touches)
-        {
-
-        }
-        //**MOVE END**
+        onceDone = true;
 
     }
 
