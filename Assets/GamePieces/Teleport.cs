@@ -40,6 +40,7 @@ public class Teleport : GamePiece
     {
         base.onDeOccupy(piece);
         //Debug.Log(cell.IsReserved);
+        return;
         var list = RoomManager.roomManager.GetPiecesOfType<Teleport>();
         foreach(var tel in list)
         {

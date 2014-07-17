@@ -28,6 +28,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Morgan/Morgan1.unity
   - enabled: 1
+    path: Assets/Scenes/Dante/DantesAwesomeDemo.unity
+  - enabled: 1
     path: Assets/Scenes/Morgan/Morgan2.unity
   - enabled: 1
     path: Assets/Scenes/Morgan/Morgan3.unity

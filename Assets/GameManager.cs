@@ -42,7 +42,9 @@ public class GameManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = GameObject.Find("GameManager").GetComponent<GameManager>();
+                GameObject find = GameObject.Find("GameManager");
+                if (find == null) return null;
+                _instance = find.GetComponent<GameManager>();
                 DontDestroyOnLoad(_instance.gameObject);
                 _instance.init();
             }

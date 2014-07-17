@@ -8,8 +8,6 @@ public enum PieceType
     wall,
     door,
     block,
-    player,
-    end,
     button,
     switcH,
     key,
@@ -18,6 +16,8 @@ public enum PieceType
     tile,
     trap,
     antitrap,
+    player,
+    end,
 }
 public enum ColorSlot
 {

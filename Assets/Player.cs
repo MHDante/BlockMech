@@ -32,7 +32,8 @@ public class Player : GamePiece {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameManager.instance.totalRestarts++;
+            if (GameManager.instance != null)
+                GameManager.instance.totalRestarts++;
             Application.LoadLevel(Application.loadedLevel);
         }
 
