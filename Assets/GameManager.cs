@@ -32,7 +32,46 @@ public class GameManager : MonoBehaviour
 
     List<KeyValuePair<string, List<string>>> sortedWorldScenes;
 
-    
+
+
+
+    string selectedWorld;
+    Vector2 scrollPosition = Vector2.zero;
+    const string worldTitle = "WORLD SELECTOR";
+    Texture textureArrow;
+
+    //initialize various sizes
+    Vector2 padding;
+    float fontGameTitleHeight;
+    float fontWorldTitleHeight;
+    float fontButtonHeightMax;
+    float backButtonHeight;
+    float backButtonPadding;
+
+    GUIStyle myLabelGameTitleStyle;
+    GUIStyle myLabelWorldTitleStyle;
+    GUIStyle myLabelButtonTitleStyle;
+
+    const string gameTitle = "BLOCK-IT";
+    Vector2 gameTitleSz;
+    Vector2 selectionTitleSz;
+
+    // string specificWorld = "";
+    // Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
+
+
+    Rect rectLabelGameTitle;
+    Rect rectWorldTitle;
+    Rect rectPosition;
+    Vector2 levelSelectorSz;
+
+    int viewportReduction = 20;
+    int maxCol;
+    int maxRow;
+
+    Rect rectViewport;
+    Vector2 backButtonSz;
+    bool onceDone = false;
 
 
     public int totalSteps;
@@ -123,6 +162,8 @@ public class GameManager : MonoBehaviour
         }
         else if (selState == GameState.ResultsScreen) 
         {
+            Application.LoadLevel("PuzzleSelector");
+            selState = GameState.Initializing;
             DrawResults();
         }
 		
@@ -151,43 +192,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    string selectedWorld;
-    Vector2 scrollPosition = Vector2.zero;
-    const string worldTitle = "WORLD SELECTOR";
-    Texture textureArrow;
-
-    //initialize various sizes
-    Vector2 padding;
-    float fontGameTitleHeight;
-    float fontWorldTitleHeight;
-    float fontButtonHeightMax;
-    float backButtonHeight;
-    float backButtonPadding;
-
-    GUIStyle myLabelGameTitleStyle;
-    GUIStyle myLabelWorldTitleStyle;
-    GUIStyle myLabelButtonTitleStyle;
-
-    const string gameTitle = "BLOCK-IT";        
-    Vector2 gameTitleSz;        
-    Vector2 selectionTitleSz;
-
-    // string specificWorld = "";
-    // Vector2 specificWorldSz = GUI.skin.label.CalcSize(new GUIContent(specificWorld)); //rename you later WorldSz
-
-
-    Rect rectLabelGameTitle;
-    Rect rectWorldTitle;
-    Rect rectPosition;
-    Vector2 levelSelectorSz;
-
-    int viewportReduction = 20;
-    int maxCol;
-    int maxRow;
-
-    Rect rectViewport;
-    Vector2 backButtonSz;
-    bool onceDone = false;
+   
 
 
     void InitGUI() 
