@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     public GameState selState = GameState.Initializing;
 
     List<string> worlds { get {
-        return worldScenes.Keys.ToList(); 
+        return sortedWorldScenes.ToDictionary(x => x.Key, x => x.Value).Keys.ToList();
+        //return worldScenes.Keys.ToList();
+        //return sortedWorldScenes.ToList();
     } } //ian question: why is this return statement valid in the class-space? a method is executing before inititialize if a get is executed? ... however, it seems this get would never actually execute before it's allowed... i need help conceptualizing why this is valid to access ... 
 
     List<string> levels { get 
@@ -28,7 +30,9 @@ public class GameManager : MonoBehaviour
 
     Dictionary<string, List<string>> worldScenes;
 
-    string selectedWorld;
+    List<KeyValuePair<string, List<string>>> sortedWorldScenes;
+
+    
 
 
     public int totalSteps;
@@ -84,6 +88,14 @@ public class GameManager : MonoBehaviour
 
         ArraysToDictionaryMagic atdm = new ArraysToDictionaryMagic(ReadSceneNames.instance);
         worldScenes = atdm.getScenes;
+
+
+        List<KeyValuePair<string, List<string>>> tempList = worldScenes.ToList();
+
+        sortedWorldScenes = tempList.OrderByDescending(v => v.Value.Count).ThenBy(k => k.Key).ToList();
+
+
+
         if (worlds.Count == 0) { Debug.LogWarning("No scenes detected. Please click <color=magenta>Update Scene Names</color>."); }
 
         selectedWorld = "";
@@ -138,8 +150,8 @@ public class GameManager : MonoBehaviour
         return pixels;
     }
 
-    
 
+    string selectedWorld;
     Vector2 scrollPosition = Vector2.zero;
     const string worldTitle = "WORLD SELECTOR";
     Texture textureArrow;
