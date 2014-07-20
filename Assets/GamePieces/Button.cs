@@ -10,11 +10,6 @@ public class Button : GamePiece, Triggerable
     public override void Start()
     {
         base.Start();
-        Transform activatedChild = transform.FindChild("Activated");
-        if (activatedChild != null)
-        {
-            SpriteRenderer sr = activatedChild.GetComponent<SpriteRenderer>();
-        }
     }
     public override void onDeOccupy(GamePiece piece)
     {

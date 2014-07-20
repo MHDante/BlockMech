@@ -327,10 +327,10 @@ public class GameManager : MonoBehaviour
                 scrollPosition = new Vector2(scrollPosition.x, scrollPosition.y + result * -scrollMovement);
             }
 
-            foreach (var T in Input.touches)
-            {
-
-            }
+            //foreach (var T in Input.touches)
+            //{
+            //
+            //}
             //**MOVE END**
         }
 

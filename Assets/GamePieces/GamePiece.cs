@@ -173,8 +173,6 @@ public abstract class GamePiece : MonoBehaviour
     {
         this.colorslot = colorSlot;
         colorPreview = Author.GetColorSlot(colorSlot);
-        var renderers = gameObject.GetComponentsInChildren<SpriteRenderer>();
-
         if (ColorizedSprite != null)
         {
             ColorizedSprite.FillAndBorder(colorPreview);

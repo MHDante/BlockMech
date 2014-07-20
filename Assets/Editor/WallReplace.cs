@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-// CopyComponents - by Michael L. Croswell for Colorado Game Coders, LLC
-// March 2010
-
 public class WallReplace : ScriptableWizard
 {
     public GameObject Source;
