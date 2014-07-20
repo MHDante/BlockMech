@@ -93,6 +93,7 @@ public class Cell {
         if (Zposition > pieces.Count)
         {
             occupationQueue[Zposition] = piece;
+            Debug.Log("adding " + piece.GetType() + " at " + Zposition);
         }
         else
         {

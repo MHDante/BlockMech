@@ -19,14 +19,15 @@ public class Door : Wall
     }
     public void Open()
     {
-        if (isOpen) return;
+        //if (isOpen) 
+        //    return;
         isTraversible = true;
-
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
     public void Close()
     {
-        if (!isOpen) return;
+        //if (!isOpen) 
+        //    return;
         isTraversible = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }

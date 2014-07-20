@@ -19,13 +19,15 @@ public class Button : GamePiece, Triggerable
     public override void onDeOccupy(GamePiece piece)
     {
         base.onDeOccupy(piece);
-        RoomManager.roomManager.RefreshColorFamily(colorslot);
         SetColorSlot(colorslot);
+        RoomManager.roomManager.RefreshColorFamily(colorslot);
+        
     }
     public override bool onOccupy(GamePiece piece)
     {
-        RoomManager.roomManager.RefreshColorFamily(colorslot);
         SetColorSlot(colorslot);
+        RoomManager.roomManager.RefreshColorFamily(colorslot);
+        
         return true;
     }
     public override void Update()

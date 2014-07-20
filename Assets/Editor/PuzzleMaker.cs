@@ -103,13 +103,14 @@ public class PuzzleMaker : EditorWindow
     TeleportTool teleportTool = TeleportTool.off;
     void ProcessTeleportTool()
     {
-        if (Event.current.type != EventType.KeyDown) return;
+        //if (Event.current.type != EventType.KeyDown) return;
         if (teleportTool == TeleportTool.off)
         {
             if (Event.current.keyCode == KeyCode.T)
             {
                 teleportTool = TeleportTool.selectSource;
                 Debug.Log(Event.current);
+                RoomManager.roomManager.GetPiecesOfColor(ColorSlot.B);
             }
         }
         else if (teleportTool == TeleportTool.selectSource)

@@ -245,6 +245,10 @@ public class RoomManager : MonoBehaviour {
             GameObject preexisting = GameObject.Find("Indicator");
             if (preexisting != null) DestroyImmediate(preexisting);
         }
+        foreach (ColorSlot val in Enum.GetValues(typeof(ColorSlot)))
+        {
+            RefreshColorFamily(val);
+        }
 	}
 	void Update () {
         if(!Application.isPlaying && roomManager == null)

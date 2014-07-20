@@ -93,7 +93,9 @@ public abstract class GamePiece : MonoBehaviour
     public virtual void Start() 
     {
         FindRenderers();
-        Cell.GetFromWorldPos(transform.position).QueuedOccupy((int)transform.position.z, this) ;
+        Cell get = Cell.GetFromWorldPos(transform.position);
+        int z = (int)transform.position.z;
+        get.QueuedOccupy(z, this);
         SetColorSlot(colorslot);
     }
 
