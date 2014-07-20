@@ -18,6 +18,89 @@ public class Player : GamePiece {
 
 
 
+    public class StatsV4
+    {
+        public int steps { get; set; }
+        public int restarts { get; set; }
+
+        bool timing;
+        private DateTime timeStart;
+        private DateTime timeEnd;
+
+        private TimeSpan _time;
+        public TimeSpan time
+        {
+            get
+            {
+                if (timing)
+                    return DateTime.Now - timeStart;
+                else
+                    return _time;
+            }
+        }
+
+
+        public StatsV4()
+        {
+            steps = 0;
+            restarts = 0;
+            timeStart = DateTime.Now;
+            timing = true;
+
+        }
+
+        void Stop()
+        {
+            if (timing)
+            {
+                timing = false;
+                timeEnd = DateTime.Now;
+                _time = timeEnd - timeStart;
+            }
+        }
+
+
+        public string TimeFormatted()
+        {
+
+            //mandatory 3 digits of milliseconds
+            //mandatory period between seconds . milliseconds
+            //mandatory 1 digit of seconds, optional second.    >> {ref:#0}
+            //nicely round everything higher, optionally showing colons as needed
+
+            string output;
+           
+
+            if ( (int)time.TotalHours > 0 )
+            {
+                output = String.Format("{0:#}:{1:00}:{2:00}.{3:000}", time.Hours, time.Minutes, time.Seconds, time.Milliseconds);
+            }
+
+            else if ( (int)time.TotalMinutes > 0 ) 
+            {
+                output = String.Format("{0:#}:{1:00}.{2:000}", time.Minutes, time.Seconds, time.Milliseconds);
+
+            }
+            else if ( (int)time.TotalMilliseconds > 0 ) 
+            {
+                output = String.Format("{0:0}.{1:000}", time.Seconds, time.Milliseconds);
+
+            }
+
+            else
+            {
+                output = time.ToString(); // fuck it, stop trying format
+            }
+
+
+            return output;
+
+        }
+    }
+
+    public static StatsV4 stats;
+
+    /*
     public class StatsV3
     {
         public int steps { get; set; }
@@ -62,7 +145,7 @@ public class Player : GamePiece {
     } 
 
     public static StatsV3 stats;
-
+    */
 
     //IAN: i considered using static fields, looked up that it's pointless since identical to classes, then gave up thinking about it. :'(
 
@@ -127,7 +210,7 @@ public class Player : GamePiece {
 
 	public override void Start () {
         base.Start();
-        stats = new StatsV3();
+        stats = new StatsV4();
         RoomManager.roomManager.player = this;
         //GameObject g = this.gameObject;
         //RoomManager.roomManager.AddPiece(g, piecetype);
@@ -183,7 +266,7 @@ public class Player : GamePiece {
 
             //NEW CODE
             stats.steps++;
-            Debug.Log(stats);
+            //Debug.Log(stats);
             return true;
         }
 		

@@ -14,20 +14,26 @@ public class End : GamePiece
     {
         base.onDeOccupy(piece);
     }
+
+
+
     public override bool onOccupy(GamePiece piece)
     {
+
         if (Application.isPlaying)
         {
-            try
+            if (GameManager.instance != null )
+            //try
             {
                 GameManager.instance.totalSteps += Player.stats.steps;
                 GameManager.instance.levelSteps = Player.stats.steps;
                 GameManager.instance.selState = GameState.ResultsScreen;
-                Debug.LogWarning("<color=green>Level complete!</color> Steps: " + Player.stats.steps + ". Time: " + Player.stats.time);
+                Debug.Log("<color=green>Level complete!</color> <color=teal>Steps: " + Player.stats.steps + ". Time: " + Player.stats.TimeFormatted() + ".</color>");
             }
-            catch (NullReferenceException e)
+            else 
+            //catch (NullReferenceException e)
             {
-                Debug.LogWarning("<color=green>Level complete!</color> To see additional functionality, access via the Scene Selector. Steps: " + Player.stats.steps + ". Time: " + Player.stats.time);
+                Debug.Log("<color=green>Level complete!</color> To see additional functionality, access via the <color=magenta>Scene Selector</color>. <color=teal>Steps: " + Player.stats.steps + ". Time: " + Player.stats.TimeFormatted() + ".</color>");
             }
         }
         return base.onOccupy(piece);

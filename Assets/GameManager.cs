@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-public enum GameState { NoSelector, Initializing, WorldSelector, LevelSelector, PlayingGame, ResultsScreen };
+public enum GameState { NoSelector, Initializing, SplashScreen, WorldSelector, LevelSelector, PlayingGame, ResultsScreen };
 
 public class GameManager : MonoBehaviour
 {
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
 
     Rect rectLabelGameTitle;
-    Rect rectWorldTitle;
+    Rect rectSelectionTitle;
     Rect rectPosition;
     Vector2 levelSelectorSz;
 
@@ -74,6 +74,18 @@ public class GameManager : MonoBehaviour
     bool onceDone = false;
 
 
+    //splash screen
+    Texture texPuz;
+    Texture texTitle;
+    
+    //results screen
+    Texture texResults;
+    Rect rectSteps;
+    Rect rectTime;
+
+
+    //player statistics
+    Player.StatsV4 latestStats;
     public int totalSteps;
     public int levelSteps;
     public int totalRestarts;
@@ -140,7 +152,12 @@ public class GameManager : MonoBehaviour
         selectedWorld = "";
         textureArrow = Resources.Load<Texture>("Textures/arrow");
 
+        //splash
+        texPuz = Resources.Load<Texture>("Textures/coverPuzzleRotatedPlasticWrapNon");
+        texTitle = Resources.Load<Texture>("Textures/BLOCKIT_TITLE_2_WC_DS");
+        texResults = Resources.Load<Texture>("Texture/RESULTS_1234");
 
+        //statistics
         totalSteps = 0;
         levelSteps = 0;
         totalRestarts = 0;
@@ -150,21 +167,32 @@ public class GameManager : MonoBehaviour
         if (selState == GameState.Initializing)
         {
             InitGUI();
-            selState = GameState.WorldSelector;
+            selState = GameState.SplashScreen;//.ResultsScreen;
+        }
+        else if (selState == GameState.SplashScreen)
+        {
+            DrawSplash();
+            if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
+            {
+                selState = GameState.WorldSelector;
+            }
         }
         else if (selState == GameState.WorldSelector)
         {
-            Draw(worlds, worldTitle);
+            DrawTitle(worldTitle);
+            DrawPicker(worlds);
         }
         else if (selState == GameState.LevelSelector)
         {
-            Draw(levels, selectedWorld.ToUpper() + " WORLD");
+            DrawTitle(selectedWorld.ToUpper() + " WORLD");
+            DrawPicker(levels);
         }
         else if (selState == GameState.ResultsScreen) 
         {
             Application.LoadLevel("PuzzleSelector");
-            selState = GameState.Initializing;
+            DrawTitle("RESULTS");
             DrawResults();
+            //selState = GameState.Initializing;
         }
 		
     }
@@ -216,18 +244,32 @@ public class GameManager : MonoBehaviour
         GUI.skin.label = myLabelGameTitleStyle;
         gameTitleSz = GUI.skin.label.CalcSize(new GUIContent(gameTitle));
 
-        GUI.skin.label = myLabelWorldTitleStyle;
-        selectionTitleSz = GUI.skin.label.CalcSize(new GUIContent(worldTitle));
+        
 
         rectLabelGameTitle = new Rect(padding.x, padding.y, padding.x + gameTitleSz.x, padding.y + gameTitleSz.y);
-
-        rectWorldTitle = new Rect(Screen.width - selectionTitleSz.x - padding.x, rectLabelGameTitle.height - selectionTitleSz.y, padding.x + selectionTitleSz.x, padding.y + selectionTitleSz.y);
 
         
     }
 
+    void DrawTitle(string selectionTitle) 
+    {
+        GUI.skin.label = myLabelWorldTitleStyle;
+        selectionTitleSz = GUI.skin.label.CalcSize(new GUIContent(selectionTitle));
 
-    void Draw(List<string> boxesToSelect, string selectionTitle)
+        rectSelectionTitle = new Rect(Screen.width - selectionTitleSz.x - padding.x, rectLabelGameTitle.height - selectionTitleSz.y, padding.x + selectionTitleSz.x, padding.y + selectionTitleSz.y);
+
+        //draw game title 
+        GUI.skin.label = myLabelGameTitleStyle;
+        GUI.Label(rectLabelGameTitle, gameTitle);
+
+
+        //draw world title placeholder
+        GUI.skin.label = myLabelWorldTitleStyle;    //not my favourite variable name... meh...
+        GUI.Label(rectSelectionTitle, selectionTitle);
+    }
+
+
+    void DrawPicker(List<string> boxesToSelect)
     {
 
         rectPosition = new Rect(padding.x + backButtonPadding, padding.y + rectLabelGameTitle.height, Screen.width - padding.x * 2 - backButtonPadding * 2, Screen.height - padding.y * 2 - rectLabelGameTitle.height);
@@ -260,17 +302,8 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (selState != GameState.Initializing && onceDone)
+        if (selState != GameState.Initializing && selState != GameState.ResultsScreen && onceDone)
         {
-            //draw game title 
-            GUI.skin.label = myLabelGameTitleStyle;
-            GUI.Label(rectLabelGameTitle, gameTitle);
-
-
-            //draw world title placeholder
-            GUI.skin.label = myLabelWorldTitleStyle;    //not my favourite variable name... meh...
-            GUI.Label(rectWorldTitle, selectionTitle);
-
 
             //**DRAW START**
             //draw level selector components
@@ -339,6 +372,36 @@ public class GameManager : MonoBehaviour
     }
 
     void DrawResults() {
+        float w = (Screen.width * .80f) - padding.x * 4;
+        float h = (Screen.height * .20f);// -padding.y * 4;
+
+        Rect rectTitlePos = new Rect(padding.x * 2, padding.y * 2, w, h);
+        Rect rectPos = new Rect(padding.x * 7, rectTitlePos.yMax - padding.y, Screen.width, Screen.height - rectTitlePos.yMax);
+        GUI.DrawTexture(rectPos, texResults, ScaleMode.ScaleToFit);
+
+        //SCORE
+        GUI.skin.label = myLabelGameTitleStyle;
+        GUI.Label(rectSteps, gameTitle);
+
+        GUI.Label(rectTime, gameTitle);
+
+
+    }
+
+    void DrawSplash() 
+    {
+
+        float w = (Screen.width * .80f) - padding.x * 4;
+        float h = (Screen.height * .20f);// -padding.y * 4;
+
+        Rect rectTitlePos = new Rect(padding.x * 2, padding.y * 2, w, h);
+
+        Rect rectPos = new Rect(padding.x * 7, rectTitlePos.yMax - padding.y , Screen.width, Screen.height - rectTitlePos.yMax);
+        GUI.DrawTexture(rectPos, texPuz, ScaleMode.ScaleToFit);
+
+        
+        GUI.DrawTexture(rectTitlePos, texTitle, ScaleMode.ScaleToFit);
+
 
     }
 }

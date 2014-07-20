@@ -26,6 +26,7 @@ public static class Utils
     {
         return (child.GetParent(name) != null);
     }
+
     public static void FillAndBorder(this GameObject obj, Color fillColor)
     {
         try
@@ -35,6 +36,8 @@ public static class Utils
 
             fill.color = fillColor;
             border.color = fillColor.Invert()*.8f;
+
+
         }
         catch (NullReferenceException e)
         {
