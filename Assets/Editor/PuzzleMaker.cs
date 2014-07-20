@@ -6,7 +6,7 @@ using System;
 
 public class PuzzleMaker : EditorWindow
 {
-    [MenuItem("Window/PuzzleMaker")]
+    [MenuItem("BlockIt/PuzzleMaker")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(PuzzleMaker));
@@ -91,7 +91,7 @@ public class PuzzleMaker : EditorWindow
                 Debug.Log(selectedPiece + " was not found in the dictionary");
             }
 
-            Indicator = (GameObject)Instantiate(RoomManager.pieceGameObjects[selectedPiece]);
+            Indicator = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[selectedPiece]);
             
             foreach (var r in Indicator.GetComponentsInChildren<SpriteRenderer>()) r.color *= 0.5f;
 
@@ -314,7 +314,7 @@ public class PuzzleMaker : EditorWindow
         RoomManager.roomManager.AddWall(wall);
     }
 
-    public GameObject GetPieceParent(PieceType piece)
+    public static GameObject GetPieceParent(PieceType piece)
     {
         if (!RoomManager.pieceParents.ContainsKey(piece) || RoomManager.pieceParents[piece] == null)
         {

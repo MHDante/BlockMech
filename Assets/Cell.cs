@@ -98,8 +98,12 @@ public class Cell {
         else
         {
             Occupy(piece);
-            foreach (int i in occupationQueue.Keys)
+            occupationQueue[Zposition] = null;
+            foreach (int i in occupationQueue.Keys.ToList())
+            {
+                if (occupationQueue[i] == null) continue;
                 QueuedOccupy(i, occupationQueue[i]);
+            }
         }
     }
     public List<GamePiece> Empty()
