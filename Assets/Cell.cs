@@ -117,6 +117,7 @@ public class Cell {
             }
         }
     }
+    }
     public List<GamePiece> Empty()
     {
         if (pieces.Count <= 1) return new List<GamePiece>();
