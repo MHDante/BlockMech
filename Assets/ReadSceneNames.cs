@@ -43,10 +43,12 @@ public class ReadSceneNames : MonoBehaviour
     }
     void Start()
     {
+#if UNITY_EDITOR
         if (!Application.isPlaying)
         {
             ReadNames(this);
         }
+#endif
     }
     
 

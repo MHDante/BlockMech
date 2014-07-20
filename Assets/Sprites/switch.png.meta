@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: 18f6d4fdd6b45ed4e8ff808103a1a860
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: switch_0
+    21300002: switch_1
+    21300004: switch_2
+    21300006: switch_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
