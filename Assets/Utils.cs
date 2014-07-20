@@ -67,8 +67,11 @@ public static class Utils
 
 
 		int blockSize = Wall.blockSize;
-		int originX = ((int)Mathf.Floor(worldPos.x / blockSize)) * blockSize;
-		int originY = ((int)Mathf.Floor(worldPos.y / blockSize)) * blockSize;
+        int cellx = (int)Mathf.Floor(worldPos.x / blockSize);
+        int celly = (int)Mathf.Floor(worldPos.y / blockSize);
+
+		int originX = cellx * blockSize;
+		int originY = celly * blockSize;
 
 		if (!new Vector2(originX, originY).isWithinGrid()) throw new IndexOutOfRangeException("Don't Use a try Catch, check using isWithinGrid");
 
@@ -110,6 +113,15 @@ public static class Utils
 				orientation = Orientation.Horizontal;
 			}
 		}
+
+        //if (cellx == RoomManager.roomManager.Grid.Length)
+        //{
+        //    s = s.opposite();
+        //}
+        //if (celly == RoomManager.roomManager.Grid[0].Length)
+        //{
+        //    s = s.opposite();
+        //}
 
 		vect.x += originX;
 		vect.y += originY;

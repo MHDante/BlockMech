@@ -62,8 +62,17 @@ public class Cell {
 		int blockSize = Wall.blockSize;
         int originX = (int)Mathf.Floor(x / blockSize);
         int originY = (int)Mathf.Floor(y / blockSize);
+        //Debug.Log(originX + " " + originY);
 		return Cell.Get(originX, originY);
 	}
+    public static int GetCellX(float x)
+    {
+        return (int)Mathf.Floor(x / Wall.blockSize);
+    }
+    public static int GetCellY(float y)
+    {
+        return (int)Mathf.Floor(y / Wall.blockSize);
+    }
 	/// <summary>
 	/// Returns the Unity location of the center of the cell
 	/// </summary>
@@ -98,8 +107,14 @@ public class Cell {
         else
         {
             Occupy(piece);
+            occupationQueue[Zposition] = null;
             foreach (int i in occupationQueue.Keys)
-                QueuedOccupy(i, occupationQueue[i]);
+            {
+                GamePiece p = occupationQueue[i];
+                if (p == null) continue;
+                QueuedOccupy(i, p);
+
+            }
         }
     }
     public List<GamePiece> Empty()

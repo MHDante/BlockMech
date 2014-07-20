@@ -259,7 +259,18 @@ public class RoomManager : MonoBehaviour {
         Utils.WorldToWallPos(position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(position);
 
-        if (cell == null) { return; }
+        if (cell == null)
+        {
+            cell = FindBorderCell(position);
+            if (cell != null)
+            {
+                side = side.opposite();
+            }
+            else
+            {
+                return;
+            }
+        }
 		if (cell.getWall(side) != null)
         {
             if (cell.getWall(side).gameObject) DestroyImmediate(cell.getWall(side).gameObject);
@@ -274,9 +285,23 @@ public class RoomManager : MonoBehaviour {
     {
         Side side; Orientation orient;
         Utils.WorldToWallPos(wall.transform.position, out side, out orient);
+
+
         Cell cell = Cell.GetFromWorldPos(wall.transform.position);
-        if (cell == null) return;
-        if (cell.getWall(side) != null)
+        if (cell == null)
+        {
+            cell = FindBorderCell(wall.transform.position);
+            if (cell != null)
+            {
+                side = side.opposite();
+            }
+            else
+            {
+                return;
+            }
+        }
+        Wall alreadyThere = cell.getWall(side);
+        if (alreadyThere != null)
         {
             RemoveWall(wall.transform.position);
         }
@@ -286,5 +311,20 @@ public class RoomManager : MonoBehaviour {
         {
             neighbour.setWall(Utils.opposite(side), wall);
         }
+    }
+    public Cell FindBorderCell(Vector3 position)
+    {
+        Cell cell = null;
+        int x = Cell.GetCellX(position.x);
+        int y = Cell.GetCellX(position.y);
+        if (position.x / Wall.blockSize == Grid.Length)
+        {
+            cell = Grid[x - 1][y];
+        }
+        else if (position.y / Wall.blockSize == Grid[0].Length)
+        {
+            cell = Grid[x][y - 1];
+        }
+        return cell;
     }
 }
