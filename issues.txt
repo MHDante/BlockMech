@@ -1,16 +1,12 @@
 BlockIt issues:
-teleporters:
-    -not working on zacks build after making lerp teleport
-    -if block A is on the exit, then you put block B on the teleporter, removing block A should instantly teleport block B to the exit
-
-
-
-
-
-
-
-
-
+-move pieces in the editor around
+-fix teleporting issues for blocking teleporters
+-make doors colored walls instead
+-make visual item for pushing blocks through walls
+-make open-door graphic, and allow users to put down open doors (that close when button pressed)
+-expand allowed colors
+-fix issue where doors at very top row don't function
+    
 
 
 Done:

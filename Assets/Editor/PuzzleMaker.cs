@@ -99,6 +99,37 @@ public class PuzzleMaker : EditorWindow
             }
         }
     }
+    enum TeleportTool { off, selectSource, selectTarget }
+    TeleportTool teleportTool = TeleportTool.off;
+    void ProcessTeleportTool()
+    {
+        //if (Event.current.type != EventType.KeyDown) return;
+        if (teleportTool == TeleportTool.off)
+        {
+            if (Event.current.keyCode == KeyCode.T)
+            {
+                teleportTool = TeleportTool.selectSource;
+                Debug.Log(Event.current);
+                RoomManager.roomManager.GetPiecesOfColor(ColorSlot.B);
+            }
+        }
+        else if (teleportTool == TeleportTool.selectSource)
+        {
+            if (Event.current.keyCode == KeyCode.T)
+            {
+                teleportTool = TeleportTool.selectTarget;
+                //Debug.Log("On again");
+            }
+        }
+        else if (teleportTool == TeleportTool.selectTarget)
+        {
+            if (Event.current.keyCode == KeyCode.T)
+            {
+                teleportTool = TeleportTool.off;
+                //Debug.Log("On third time");
+            }
+        }
+    }
     void OnUpdate(SceneView sceneView)
     {
 		Vector2 screenpos = Event.current.mousePosition;
@@ -107,18 +138,17 @@ public class PuzzleMaker : EditorWindow
         bool withinGrid = MousePos.isWithinGrid();
         if (withinGrid)
         {
-            
             if (Event.current.type == EventType.MouseDown && Event.current.button == 2)
             {
                 Active = !Active;
                 Event.current.Use(); //keeping this line causes one bug, removing it causes another.
             }
         }
-
         if (Active)
         {
             UpdateIndicator(withinGrid);
         }
+        ProcessTeleportTool();
 		if(Active && withinGrid)
         {
 	        if (Event.current.type == EventType.layout)
@@ -248,11 +278,6 @@ public class PuzzleMaker : EditorWindow
 
             UpdateIndicator(true);
         }
-
-
-        
-
-
     }
     public void SpawnPiece(PieceType piece, Cell target)
     {

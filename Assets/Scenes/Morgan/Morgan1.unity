@@ -1945,12 +1945,15 @@ MonoBehaviour:
   isMoving: 0
   colorslot: 1
   colorPreview: {r: 0, g: 0, b: 1, a: 1}
-  rendererColorized: {fileID: 2110020257}
-  rendererActivated: {fileID: 0}
-  speed: 5
+  ColorizedSprite: {fileID: 2110020255}
+  ActivatedSprite: {fileID: 0}
+  WhiteSprite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
 --- !u!1 &316173522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4125,13 +4128,17 @@ MonoBehaviour:
   isMoving: 0
   colorslot: 0
   colorPreview: {r: 1, g: 1, b: 1, a: 1}
-  rendererColorized: {fileID: 0}
-  rendererActivated: {fileID: 0}
-  speed: 5
+  ColorizedSprite: {fileID: 0}
+  ActivatedSprite: {fileID: 0}
+  WhiteSprite: {fileID: 0}
+  moveSpeed: 5
+  teleportSpeed: 10
   currentLerp: 0
   maxLerp: 100
   StartPos: {x: 0, y: 0}
+  JustTeleported: 0
   Strength: 1
+  keys: []
 --- !u!212 &611288050
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -107,6 +107,27 @@ public class RoomManager : MonoBehaviour {
         }
         Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
     }
+    public List<T> GetPiecesOfType<T>() where T : GamePiece
+    {
+        List<T> list = new List<T>();
+        for (int i = 0; i < Grid.Length; i++)
+        {
+            for (int j = 0; j < Grid[0].Length; j++)
+            {
+                Cell cell = Grid[i][j];
+                if (cell == null) continue;
+                var cellList = cell.pieces.ToList();
+                foreach (var gamepiece in cellList)
+                {
+                    if (gamepiece is T && !list.Contains((T)gamepiece))
+                    {
+                        list.Add((T)gamepiece);
+                    }
+                }
+            }
+        }
+        return list;
+    }
     public List<GamePiece> GetPiecesOfColor(ColorSlot colorslot, Type gamePieceType = null)
     {
         List<GamePiece> list = new List<GamePiece>();
@@ -223,6 +244,10 @@ public class RoomManager : MonoBehaviour {
         {
             GameObject preexisting = GameObject.Find("Indicator");
             if (preexisting != null) DestroyImmediate(preexisting);
+        }
+        foreach (ColorSlot val in Enum.GetValues(typeof(ColorSlot)))
+        {
+            RefreshColorFamily(val);
         }
 	}
 	void Update () {

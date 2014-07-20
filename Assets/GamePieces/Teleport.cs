@@ -36,10 +36,26 @@ public class Teleport : GamePiece
             WhiteSprite.transform.eulerAngles = getAngleVector(rotation, (Axis)((axisCounter + 4) % 7));
         }
     }
-    
     public override void onDeOccupy(GamePiece piece)
     {
         base.onDeOccupy(piece);
+        //Debug.Log(cell.IsReserved);
+        return;
+        var list = RoomManager.roomManager.GetPiecesOfType<Teleport>();
+        foreach(var tel in list)
+        {
+            if (tel == this) continue;
+            if (tel.target == this.gameObject)
+            {
+                var above = tel.GetPiecesAbove();
+                if (above.Count > 0)
+                {
+                    above[0].JustTeleported = true;
+                    above[0].TeleportTo(this.cell);
+                }
+            }
+        }
+
     }
     public override bool onOccupy(GamePiece piece)
     {

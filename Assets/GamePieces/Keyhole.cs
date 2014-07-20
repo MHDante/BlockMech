@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
 public class Keyhole : GamePiece
 {
     private bool _isSolid = true;
@@ -21,6 +22,20 @@ public class Keyhole : GamePiece
     {
         
         return base.onOccupy(piece);
+    }
+    public bool TryOpen(Player player)
+    {
+        foreach(Key key in player.keys.ToList())
+        {
+            if (key.colorslot == colorslot)
+            {
+                player.keys.Remove(key);
+                cell.pieces.Remove(this);
+                gameObject.SetActive(false);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
