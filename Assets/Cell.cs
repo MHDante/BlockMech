@@ -108,7 +108,7 @@ public class Cell {
         {
             Occupy(piece);
             occupationQueue[Zposition] = null;
-            foreach (int i in occupationQueue.Keys)
+            foreach (int i in occupationQueue.Keys.ToList())
             {
                 GamePiece p = occupationQueue[i];
                 if (p == null) continue;
