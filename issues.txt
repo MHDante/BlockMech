@@ -1,13 +1,1 @@
-BlockIt issues:
--move pieces in the editor around
--fix teleporting issues for blocking teleporters
--make doors colored walls instead
--make visual item for pushing blocks through walls
--make open-door graphic, and allow users to put down open doors (that close when button pressed)
--expand allowed colors
--fix issue where doors at very top row don't function
-    
-
-
-Done:
-Switches are time-dependent, they should activate immediately
+https://trello.com/b/FUIzSS0k/block-it

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
     public static Dictionary<PieceType, GameObject> pieceGameObjects;
+    public static GameObject masterParent;
     public static Dictionary<PieceType, GameObject> pieceParents;
     public static Dictionary<PieceType, Type> pieceTypes;
 
@@ -29,41 +30,42 @@ public class RoomManager : MonoBehaviour {
         {
             RoomManager.pieceTypes = new Dictionary<PieceType, Type>()
             {
-                { PieceType.wall, typeof(Wall) },
-                { PieceType.door, typeof(Door) },
-                { PieceType.block, typeof(Block) },
-                { PieceType.player, typeof(Player) },
-                { PieceType.end, typeof(End) },
-                { PieceType.button, typeof(Button) },
-                { PieceType.switcH, typeof(Switch) },
-                { PieceType.key, typeof(Key) },
-                { PieceType.keyhole,  typeof(Keyhole) },
-                { PieceType.teleport, typeof(Teleport) },
-                { PieceType.tile, typeof(Tile) },
-                { PieceType.trap, typeof(Trap) },
-                { PieceType.antitrap, typeof(Antitrap) },
+                { PieceType.Wall, typeof(Wall) },
+                { PieceType.Block, typeof(Block) },
+                { PieceType.Player, typeof(Player) },
+                { PieceType.End, typeof(End) },
+                { PieceType.Button, typeof(Button) },
+                { PieceType.Switch, typeof(Switch) },
+                { PieceType.Key, typeof(Key) },
+                { PieceType.Keyhole,  typeof(Keyhole) },
+                { PieceType.Teleport, typeof(Teleport) },
+                { PieceType.Tile, typeof(Tile) },
+                { PieceType.Trap, typeof(Trap) },
+                { PieceType.AntiTrap, typeof(Antitrap) },
             };
             RoomManager.pieceGameObjects = new Dictionary<PieceType, GameObject>()
             {
-                { PieceType.wall, Resources.Load<GameObject>("Prefabs/Wall")},
-                { PieceType.door, Resources.Load<GameObject>("Prefabs/Door")},//also wall, door script added later
-                { PieceType.block, Resources.Load<GameObject>("Prefabs/octogon")},
-                { PieceType.player, Resources.Load<GameObject>("Prefabs/player")},
-                { PieceType.end, Resources.Load<GameObject>("Prefabs/end")},
-                { PieceType.button, Resources.Load<GameObject>("Prefabs/button")},
-                { PieceType.switcH, Resources.Load<GameObject>("Prefabs/switch")},//also button, switcH script added later
-                { PieceType.key, Resources.Load<GameObject>("Prefabs/key")},
-                { PieceType.keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
-                { PieceType.teleport, Resources.Load<GameObject>("Prefabs/teleport")},
-                { PieceType.tile, Resources.Load<GameObject>("Prefabs/tile")},
-                { PieceType.trap, Resources.Load<GameObject>("Prefabs/trap")},
-                { PieceType.antitrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
+                { PieceType.Wall, Resources.Load<GameObject>("Prefabs/Wall")},
+                { PieceType.Block, Resources.Load<GameObject>("Prefabs/octogon")},
+                { PieceType.Player, Resources.Load<GameObject>("Prefabs/player")},
+                { PieceType.End, Resources.Load<GameObject>("Prefabs/end")},
+                { PieceType.Button, Resources.Load<GameObject>("Prefabs/button")},
+                { PieceType.Switch, Resources.Load<GameObject>("Prefabs/switch")},//also button, switcH script added later
+                { PieceType.Key, Resources.Load<GameObject>("Prefabs/key")},
+                { PieceType.Keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
+                { PieceType.Teleport, Resources.Load<GameObject>("Prefabs/teleport")},
+                { PieceType.Tile, Resources.Load<GameObject>("Prefabs/tile")},
+                { PieceType.Trap, Resources.Load<GameObject>("Prefabs/trap")},
+                { PieceType.AntiTrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
             };
             RoomManager.pieceParents = new Dictionary<PieceType, GameObject>();
         }
     }
 
     void Awake() {
+        if (masterParent == null) masterParent = GameObject.Find("Puzzle_Pieces");
+        if (masterParent == null) masterParent = new GameObject("Puzzle_Pieces");
+
         roomManager = this;
         Grid = new Cell[gridWidth][];
         for (int i = 0; i < gridWidth; i++)
@@ -93,19 +95,6 @@ public class RoomManager : MonoBehaviour {
         {
             Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
         }
-    }
-    public void PrintWallAmount()
-    {
-        int count = 0;
-        for(int i = 0; i < Grid.Length; i++)
-        {
-            for(int j = 0; j < Grid[0].Length; j++)
-            {
-                if (Cell.Get(i, j).pieces.Count != 0)
-                    Debug.Log("Found : " + Cell.Get(i, j).pieces[0] + " @ " + i + " , " + j);
-            }
-        }
-        Debug.Log(string.Format("Total refs: {0}\nActual: {1}", count, (count / 2)));
     }
     public List<T> GetPiecesOfType<T>() where T : GamePiece
     {
@@ -152,9 +141,9 @@ public class RoomManager : MonoBehaviour {
         }
         return list;
     }
-    public List<Door> GetDoorsOfColor(ColorSlot colorslot)
+    public List<Wall> GetDoorsOfColor(ColorSlot colorslot)
     {
-        List<Door> list = new List<Door>();
+        List<Wall> list = new List<Wall>();
         for (int i = 0; i < Grid.Length; i++)
         {
             for (int j = 0; j < Grid[0].Length; j++)
@@ -163,12 +152,11 @@ public class RoomManager : MonoBehaviour {
                 if (cell == null) continue;
                 foreach (var wall in cell.walls.Values)
                 {
-                    if (wall != null && wall is Door)
+                    if (wall != null && wall.isDoor)
                     {
-                        Door door = (Door)wall;
-                        if (door.colorslot == colorslot && !list.Contains(door))
+                        if (wall.colorslot == colorslot && !list.Contains(wall))
                         {
-                            list.Add(door);
+                            list.Add(wall);
                         }
                     }
                 }
@@ -191,8 +179,8 @@ public class RoomManager : MonoBehaviour {
                     if (!t.IsTriggered) allSatisfied = false;
                 }
             }
-            List<Door> doors = GetDoorsOfColor(colorslot);
-            foreach (Door door in doors)
+            List<Wall> doors = GetDoorsOfColor(colorslot);
+            foreach (Wall door in doors)
             {
                 if (allSatisfied) door.Open();
                 else door.Close();
@@ -214,8 +202,8 @@ public class RoomManager : MonoBehaviour {
                     }
                 }
             }
-            List<Door> doors = GetDoorsOfColor(colorslot);
-            foreach (Door door in doors)
+            List<Wall> doors = GetDoorsOfColor(colorslot);
+            foreach (Wall door in doors)
             {
                 if (oneSatisfied) door.Open();
                 else door.Close();
@@ -267,7 +255,7 @@ public class RoomManager : MonoBehaviour {
 
 	public void RemoveWall(Vector2 position)
     {
-        Side side; Wall.Orientation orient;
+        Side side; Orientation orient;
         Utils.WorldToWallPos(position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(position);
 
@@ -284,7 +272,7 @@ public class RoomManager : MonoBehaviour {
 	}
     public void AddWall(Wall wall)
     {
-        Side side; Wall.Orientation orient;
+        Side side; Orientation orient;
         Utils.WorldToWallPos(wall.transform.position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(wall.transform.position);
         if (cell == null) return;

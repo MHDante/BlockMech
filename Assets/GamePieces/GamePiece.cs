@@ -4,24 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 public enum PieceType
 {
-    none,
-    wall,
-    door,
-    block,
-    button,
-    switcH,
-    key,
-    keyhole,
-    teleport,
-    tile,
-    trap,
-    antitrap,
-    player,
-    end,
+    None,
+    Wall,
+    Block,
+    Button,
+    Switch,
+    Key,
+    Keyhole,
+    Teleport,
+    Tile,
+    Trap,
+    AntiTrap,
+    Player,
+    End,
 }
 public enum ColorSlot
 {
-    none,
+    None,
     A,
     B,
     C,

@@ -52,7 +52,17 @@ public static class Utils
 		if (worldPos.y > RoomManager.gridHeight * Wall.blockSize || worldPos.y  < 0)return false;
 		return true;
 	}
-	public static Vector2 WorldToWallPos(Vector2 worldPos, out Side s, out Wall.Orientation orientation)
+    public static string UppercaseFirst(this string s)
+    {
+        // Check for empty string.
+        if (string.IsNullOrEmpty(s))
+        {
+            return string.Empty;
+        }
+        // Return char and concat substring.
+        return char.ToUpper(s[0]) + s.Substring(1);
+    }
+	public static Vector2 WorldToWallPos(Vector2 worldPos, out Side s, out Orientation orientation)
 	{
 
 
@@ -74,14 +84,14 @@ public static class Utils
 			{
 				s = Side.bottom;
 				vect.x += Wall.halfBlock;
-				orientation = Wall.Orientation.Horizontal;
+				orientation = Orientation.Horizontal;
 			}
 			else
 			{
 				s = Side.right;
 				vect.x += Wall.blockSize;
 				vect.y += Wall.halfBlock;
-				orientation = Wall.Orientation.Vertical;
+				orientation = Orientation.Vertical;
 			}
 		}
 		else
@@ -90,14 +100,14 @@ public static class Utils
 			{
 				s = Side.left;
 				vect.y += Wall.halfBlock;
-				orientation = Wall.Orientation.Vertical;
+				orientation = Orientation.Vertical;
 			}
 			else
 			{
 				s = Side.top;
 				vect.x += Wall.halfBlock;
 				vect.y += Wall.blockSize;
-				orientation = Wall.Orientation.Horizontal;
+				orientation = Orientation.Horizontal;
 			}
 		}
 

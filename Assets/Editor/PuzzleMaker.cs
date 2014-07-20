@@ -6,20 +6,24 @@ using System;
 
 public class PuzzleMaker : EditorWindow
 {
-    public PieceType selectedPiece = PieceType.wall;
-    ColorSlot colorslot = ColorSlot.none;
+    [MenuItem("Window/PuzzleMaker")]
+    public static void ShowWindow()
+    {
+        EditorWindow.GetWindow(typeof(PuzzleMaker));
+    }
+
+
+    public PieceType selectedPiece = PieceType.Wall;
+    ColorSlot colorslot = ColorSlot.None;
     Color spawnColor = Color.white;
     Vector2 MousePos;
     bool LeftClick;
     bool RightClick;
 	bool Active;
     GameObject Indicator;
-    //GameObject WallParent;
-    [MenuItem("Window/PuzzleMaker")]
-    public static void ShowWindow()
-    {
-        EditorWindow.GetWindow(typeof(PuzzleMaker));
-    }
+
+    
+
     void OnEnable()
     {        
         SceneView.onSceneGUIDelegate += OnUpdate;
@@ -53,7 +57,7 @@ public class PuzzleMaker : EditorWindow
                 if (withinGrid)
                 {
                     if (!renderer.enabled) renderer.enabled = true;
-                    if (selectedPiece != PieceType.wall && renderer.gameObject.HasParent("Colorized")){
+                    if (selectedPiece != PieceType.Wall && renderer.gameObject.HasParent("Colorized")){
                         renderer.color = spawnColor * 0.5f ;
                     }
                     renderer.color = Color.white * 0.5f;
@@ -76,7 +80,7 @@ public class PuzzleMaker : EditorWindow
         }
         GameObject preexisting = GameObject.Find("Indicator");
         if (preexisting != null) DestroyImmediate(preexisting);
-        if (selectedPiece != PieceType.none)
+        if (selectedPiece != PieceType.None)
         {
             if (RoomManager.pieceGameObjects == null)
             {
@@ -169,32 +173,27 @@ public class PuzzleMaker : EditorWindow
                     SetIndicator();
                 }
             }
-            if (selectedPiece == PieceType.wall || selectedPiece == PieceType.door)
+            if (selectedPiece == PieceType.Wall)
             {
 				Side side;
-                Wall.Orientation or;
+                Orientation or;
 				Vector2 target = Utils.WorldToWallPos(MousePos, out side, out or);
                 if (Indicator)
                 {
                     Indicator.transform.position = target;
-                    Indicator.GetComponent<Wall>().orientation = or;
-                    if (selectedPiece == PieceType.wall)
+                    Wall wall = Indicator.GetComponent<Wall>();
+                    wall.orientation = or;
+
+                    if (wall.isDoor)
                     {
-                    }
-                    else if (selectedPiece == PieceType.door)
-                    {
-                        Indicator.GetComponent<Door>().colorslot = colorslot;
+                        Indicator.GetComponent<Wall>().colorslot = colorslot;
                     }
                 }
                 if (LeftDown())
                 {
-                    if (selectedPiece == PieceType.wall)
+                    if (selectedPiece == PieceType.Wall)
                     {
-                        SpawnWall(target, or, side);
-                    }
-                    else if (selectedPiece == PieceType.door)
-                    {
-                        SpawnDoor(target, or, side, colorslot);
+                        SpawnWall(target, or, side, colorslot);
                     }
 					sceneView.Update();
 					sceneView.Repaint();
@@ -207,7 +206,7 @@ public class PuzzleMaker : EditorWindow
                 }
                 
             }
-            else if (selectedPiece == PieceType.player)
+            else if (selectedPiece == PieceType.Player)
             {
                 Cell target = Cell.GetFromWorldPos(MousePos);
                 if (target != null)
@@ -228,7 +227,7 @@ public class PuzzleMaker : EditorWindow
                     }
                 }
             }
-            else if (selectedPiece != PieceType.none)//spawn any other piece (other than wall)
+            else if (selectedPiece != PieceType.None)//spawn any other piece (other than wall)
             {
 				Cell target = Cell.GetFromWorldPos(MousePos);
 				if (target!=null) {
@@ -293,51 +292,42 @@ public class PuzzleMaker : EditorWindow
     {
         if (RoomManager.roomManager.player == null)
         {
-            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.player]);
+            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.Player]);
             obj.transform.position = target.WorldPos();
-            RoomManager.roomManager.AddPiece(obj, PieceType.player, ColorSlot.none);
+            RoomManager.roomManager.AddPiece(obj, PieceType.Player, ColorSlot.None);
         }
         else
         {
             RoomManager.roomManager.player.TeleportTo(target);
         }
     }
-    public void SpawnWall(Vector3 target, Wall.Orientation orient, Side side)
+    public void SpawnWall(Vector3 target, Orientation orient, Side side, ColorSlot colorslot)
     {
-        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.wall]);
+        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.Wall]);
         wallobj.transform.position = target;
-        wallobj.transform.parent = GetPieceParent(PieceType.wall).transform;
+        wallobj.transform.parent = GetPieceParent(PieceType.Wall).transform;
         Wall wall = null;
         wall = wallobj.GetComponent<Wall>();
 		if(wall == null) throw new WTFException();
 		wall.orientation = orient;
+        wall.SetColorSlot(colorslot);
         RoomManager.roomManager.AddWall(wall);
     }
-    public void SpawnDoor(Vector3 target, Wall.Orientation orient, Side side, ColorSlot colorslot)
-    {
-        GameObject doorobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.door]);
-        doorobj.transform.position = target;
-        doorobj.transform.parent = GetPieceParent(PieceType.door).transform;
-        Door door = null;
-        door = doorobj.GetComponent<Door>();
-        if (door == null) throw new WTFException();
-        door.orientation = orient;
-        door.SetColorSlot(colorslot);
-        RoomManager.roomManager.AddWall(door);
-    }
+
     public GameObject GetPieceParent(PieceType piece)
     {
         if (!RoomManager.pieceParents.ContainsKey(piece) || RoomManager.pieceParents[piece] == null)
         {
-            GameObject preexisting = GameObject.Find(piece.ToString());
-            if (preexisting != null && preexisting.transform.parent == null)
+            GameObject preexisting = GameObject.Find(piece.ToString().UppercaseFirst() + " Group");
+            if (preexisting != null && preexisting.transform.parent == RoomManager.masterParent.transform)
             {
                 RoomManager.pieceParents[piece] = preexisting;
             }
             else
             {
                 RoomManager.pieceParents[piece] = new GameObject();
-                RoomManager.pieceParents[piece].name = piece.ToString();
+                RoomManager.pieceParents[piece].name = piece.ToString().UppercaseFirst() + " Group";
+                RoomManager.pieceParents[piece].transform.parent = RoomManager.masterParent.transform;
             }
         }
         return RoomManager.pieceParents[piece];

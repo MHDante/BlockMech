@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum Orientation { Horizontal, Vertical };
+public enum WallType { Wall, Door, Diode, Turnstile}
+
 
 [ExecuteInEditMode]
 public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
 	public const int halfBlock = blockSize/2;
-    //[ExposePropertyAttribute]
-	public virtual bool isTraversible { get; set; }
-
-    public enum Orientation { Horizontal, Vertical };
+    public ColorSlot colorslot;
+    public Color colorPreview;
     public Orientation orientation = Orientation.Vertical;
+    public bool isDoor { get { return colorslot != ColorSlot.None; } }
+
+	public virtual bool isTraversible { get; set; }
+    public bool isOpen { get { return isTraversible; } }
 
 	// Use this for initialization
     protected virtual void Start()
@@ -41,4 +46,27 @@ public class Wall : MonoBehaviour {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
 	}
+
+
+
+    void OnValidate()
+    {
+        SetColorSlot(colorslot);
+    }
+    public void SetColorSlot(ColorSlot colorSlot)
+    {
+        this.colorslot = colorSlot;
+        colorPreview = Author.GetColorSlot(colorSlot);
+        gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
+    }
+    public void Open()
+    {
+        isTraversible = true;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+    public void Close()
+    {
+        isTraversible = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
 }
