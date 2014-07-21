@@ -25,9 +25,13 @@ public class End : GamePiece
             if (GameManager.instance != null )
             //try
             {
-                GameManager.instance.totalSteps += Player.stats.steps;
+                Player.stats.Stop();
+                GameManager.instance.latestStats = Player.stats;
+
+                GameManager.instance.totalSteps += Player.stats.steps;  //TODO: to be depreciated.
                 GameManager.instance.levelSteps = Player.stats.steps;
                 GameManager.instance.selState = GameState.ResultsScreen;
+                //GameManager.instance.latestStats = Player.stats;
                 Debug.Log("<color=green>Level complete!</color> <color=teal>Steps: " + Player.stats.steps + ". Time: " + Player.stats.TimeFormatted() + ".</color>");
             }
             else 

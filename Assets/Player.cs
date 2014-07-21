@@ -18,7 +18,7 @@ public class Player : GamePiece {
 
 
 
-    public class StatsV4
+    public class Stats
     {
         public int steps { get; set; }
         public int restarts { get; set; }
@@ -40,7 +40,7 @@ public class Player : GamePiece {
         }
 
 
-        public StatsV4()
+        public Stats()
         {
             steps = 0;
             restarts = 0;
@@ -49,7 +49,7 @@ public class Player : GamePiece {
 
         }
 
-        void Stop()
+        public void Stop()
         {
             if (timing)
             {
@@ -98,119 +98,14 @@ public class Player : GamePiece {
         }
     }
 
-    public static StatsV4 stats;
-
-    /*
-    public class StatsV3
-    {
-        public int steps { get; set; }
-        public int restarts { get; set; }
-
-        bool timing;
-        private float timeStart;
-        private float timeEnd;
-
-        private float _time;
-        public float time { get {
-            if (timing)
-                return Time.time - timeStart;
-            else
-                return _time;
-            } 
-        }
+    public static Stats stats;
 
 
-        public StatsV3()
-        {
-            steps = 0;
-            restarts = 0;
-            timeStart = Time.time;
-            timing = true;
-
-        }
-
-        void Stop(){
-            if (timing) 
-            {
-                timing = false;
-                timeEnd = Time.time;
-                _time = timeEnd - timeStart;
-            }
-        }
-
-        public override string ToString() 
-        {
-            return "Steps: " + steps + ". Time: " + time;
-        }
-    } 
-
-    public static StatsV3 stats;
-    */
-
-    //IAN: i considered using static fields, looked up that it's pointless since identical to classes, then gave up thinking about it. :'(
-
-    /*
-    public struct StatsV2
-    {
-        private int _steps;
-        private int _restarts;
-        private float _timeUsed;
-        private float _timeStart;
-        private float _timeEnd; 
-        public int steps { get { return _steps; } set { if (value > 0) _steps = value; } }
-        public int restarts { get { return _restarts; } set { if (value > 0) _restarts = value; } }
-        public float timeUsed { get {
-            //HA! I put a SETTER in my GETTER! 
-            //semantically i have my doubts this is really readable to others... :'(
-            if (_timeEnd == null)
-            {
-                _timeEnd = Time.time;
-                _timeUsed = _timeEnd - _timeStart;
-            } 
-            return _timeUsed; 
-        } }
-
-        public void init() 
-        {
-            _steps = 0;
-            _restarts = 0;
-            _timeStart = Time.time;
-        }
-        
-    }
-
-    StatsV2 stats = new StatsV2();
-    */
-
-
-
-    //IAN: as much as i want to abstract away this data, i don't think a class is worth the overhead anymore.
-
-    /*
-    public class StatsV1 
-    {
-        public static int steps;
-        public static int restarts;
-        public static float time;
-        private static float startTime;
-
-        StatsV1() 
-        {
-            steps = 0;
-            restarts = 0;
-            startTime = Time.time;
-
-        } 
-        // I TRIED WRITING A GET SET HERE AND IT FAILED. I SHOULD TRY HARDER. MAYBE GUIDE ME IN ANALYSIS HERE?
-
-
-    }
-     */
 
 
 	public override void Start () {
         base.Start();
-        stats = new StatsV4();
+        stats = new Stats();
         RoomManager.roomManager.player = this;
         //GameObject g = this.gameObject;
         //RoomManager.roomManager.AddPiece(g, piecetype);
