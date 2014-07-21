@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 [ExecuteInEditMode]
 public class Author : MonoBehaviour
 {
@@ -19,14 +20,22 @@ public class Author : MonoBehaviour
     public bool usesTrap;
     public bool usesTeleporter;
 
-    public Color[] colors = { Color.white, Color.blue, Color.green, Color.red, Color.yellow, Color.magenta };
-    
+    public Dictionary<ColorSlot, Color> colors = new Dictionary<ColorSlot, Color>(){
+        { ColorSlot.None, Utils.HexToColor("E2E2E2") },
+        { ColorSlot.Gray, Utils.HexToColor("787679") },
+        { ColorSlot.Purple, Utils.HexToColor("8569CF") },
+        { ColorSlot.Blue, Utils.HexToColor("0D9FD8") },
+        { ColorSlot.Green, Utils.HexToColor("8AD749") },
+        { ColorSlot.Yellow, Utils.HexToColor("EECE00") },
+        { ColorSlot.Orange, Utils.HexToColor("F8981F") },
+        { ColorSlot.Red, Utils.HexToColor("F80E27") },
+        { ColorSlot.Pink, Utils.HexToColor("F640AE") }
+    };
     public static Color GetColorSlot(ColorSlot colorslot)
     {
-        int slotnum = (int)colorslot;
-        if (instance != null && instance.colors != null && slotnum < instance.colors.Length)
+        if (instance != null)
         {
-            return instance.colors[(int)colorslot];
+            return instance.colors[colorslot];
         }
         return Color.grey;
     }

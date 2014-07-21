@@ -114,7 +114,7 @@ public class PuzzleMaker : EditorWindow
             {
                 teleportTool = TeleportTool.selectSource;
                 Debug.Log(Event.current);
-                RoomManager.roomManager.GetPiecesOfColor(ColorSlot.B);
+                RoomManager.roomManager.GetPiecesOfColor(ColorSlot.Blue);
             }
         }
         else if (teleportTool == TeleportTool.selectSource)
@@ -305,6 +305,7 @@ public class PuzzleMaker : EditorWindow
     {
         GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.Wall]);
         wallobj.transform.position = target;
+        wallobj.transform.rotation = orient == Orientation.Vertical ? Quaternion.identity : Quaternion.EulerAngles(0, 0, 90);
         wallobj.transform.parent = GetPieceParent(PieceType.Wall).transform;
         Wall wall = null;
         wall = wallobj.GetComponent<Wall>();

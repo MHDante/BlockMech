@@ -4,9 +4,8 @@ using System.Collections;
 public enum Orientation { Horizontal, Vertical };
 public enum WallType { Wall, Door, Diode, Turnstile}
 
-
 [ExecuteInEditMode]
-public class Wall : MonoBehaviour {
+ public class Wall : MonoBehaviour {
 
     public const int blockSize = 4;
 	public const int halfBlock = blockSize/2;
@@ -21,9 +20,18 @@ public class Wall : MonoBehaviour {
 	// Use this for initialization
     protected virtual void Start()
     {
-        if (orientation == Orientation.Vertical && transform.rotation.Equals(Quaternion.identity)) 
+        if (transform.rotation.Equals(Quaternion.identity))
+        {
             orientation = Orientation.Vertical;
-        else orientation = Orientation.Horizontal;
+        }
+        else
+        {
+            orientation = Orientation.Horizontal;
+        }
+
+        //if (orientation == Orientation.Vertical && transform.rotation.Equals(Quaternion.identity)) 
+        //    orientation = Orientation.Vertical;
+        //else orientation = Orientation.Horizontal;
 	}
 	
 	// Update is called once per frame
@@ -34,7 +42,9 @@ public class Wall : MonoBehaviour {
                 ((int)Mathf.Round((transform.position.x - halfBlock) / blockSize)) * blockSize + halfBlock,
                 ((int)Mathf.Round(transform.position.y / blockSize)) * blockSize,
                 transform.position.z );
-            transform.eulerAngles = new Vector3(0, 0, 90);
+
+            if ((int)(transform.rotation.eulerAngles.z+90)%180 != 0)
+                transform.eulerAngles = new Vector3(0, 0, 90);
         }
 
         else if (orientation == Orientation.Vertical)
@@ -43,7 +53,8 @@ public class Wall : MonoBehaviour {
                 ((int)Mathf.Round(transform.position.x / blockSize)) * blockSize,
                 ((int)Mathf.Round((transform.position.y - halfBlock) / blockSize)) * blockSize + halfBlock,
                 transform.position.z);
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            if ((int)transform.rotation.eulerAngles.z % 180 != 0)
+                transform.eulerAngles = new Vector3(0, 0, 0);
         }
 	}
 
@@ -62,11 +73,25 @@ public class Wall : MonoBehaviour {
     public void Open()
     {
         isTraversible = true;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Animator>().SetBool("Open", isTraversible);
+        //gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
     public void Close()
     {
         isTraversible = false;
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Animator>().SetBool("Open", isTraversible);
+        //gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
-}
+
+    internal void BendFrom(Side s)
+    {
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("bellied")) return;
+        transform.eulerAngles =
+            s == Side.right ? new Vector3(0, 0, 0) :
+            s == Side.top ? new Vector3(0, 0, 90) :
+            s == Side.left ? new Vector3(0, 0, 180) :
+            s == Side.bottom ? new Vector3(0, 0, 270) :
+            new Vector3(float.NaN, float.NaN, float.NaN);
+        GetComponent<Animator>().SetTrigger("PushedThrough");
+    }
+ }

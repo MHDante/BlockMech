@@ -95,13 +95,14 @@ public class Cell {
         }
         return true;
     }
+  
 
     private Dictionary<int, GamePiece> occupationQueue = new Dictionary<int, GamePiece>();
     public void QueuedOccupy(int Zposition, GamePiece piece)
     {
         if (Zposition > pieces.Count)
         {
-            occupationQueue[Zposition] = piece;
+            occupationQueue[Zposition] = piece; 
             Debug.Log("adding " + piece.GetType() + " at " + Zposition);
         }
         else

@@ -236,8 +236,15 @@ public class Player : GamePiece {
 		if(isMoving) return false;
         if (!moveTo(s))
         {
+            Wall obsWall = cell.getWall(s);
+            //cell.getWall(s).transform.rotation.eulerAngles = s==Side.
+
             Cell target = cell.getNeighbour(s);
-            if (target == null) return false;
+            if (target == null)
+            {
+                if (obsWall != null) obsWall.BendFrom(s);
+                return false;
+            }
             GamePiece obstructor = target.firstSolid();
 
             if (obstructor != null)
@@ -249,11 +256,15 @@ public class Player : GamePiece {
                 }
                 if (obstructor.pushFrom(s.opposite(), Strength))
                 {
+                    if (obsWall != null) obsWall.BendFrom(s);
                     obstructor.Detatch();
                     moveTo(s);
                 }
 
-
+            }
+            else
+            {
+                if (obsWall != null) obsWall.BendFrom(s);
             }
 
             return false;//Hit a wall or something

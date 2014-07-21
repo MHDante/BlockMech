@@ -21,11 +21,14 @@ public enum PieceType
 public enum ColorSlot
 {
     None,
-    A,
-    B,
-    C,
-    D,
-    E,
+    Purple,
+    Blue,
+    Green,
+    Yellow,
+    Orange,
+    Red,
+    Pink,
+    Gray
 }
 [ExecuteInEditMode]
 public abstract class GamePiece : MonoBehaviour
@@ -37,7 +40,7 @@ public abstract class GamePiece : MonoBehaviour
 	private const int defaultWeight  = 1;
 	Cell destination;
 	public bool isMoving = false;
-    public ColorSlot colorslot = ColorSlot.A;
+    public ColorSlot colorslot = ColorSlot.Purple;
     public Color colorPreview;
     public GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;
     public float moveSpeed = 5f, teleportSpeed = 10f;
@@ -213,6 +216,9 @@ public abstract class GamePiece : MonoBehaviour
     }
     public virtual bool pushFrom(Side side, int strength = 1)
     {
+
+
+
         GamePiece nextpiece = this.nextPiece;
         if (!isSolid && nextpiece != null && nextpiece.pushFrom(side, strength-1))
 			return true;
@@ -347,6 +353,7 @@ public abstract class GamePiece : MonoBehaviour
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }
+    
 }
 
 public interface Triggerable

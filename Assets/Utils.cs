@@ -26,6 +26,13 @@ public static class Utils
     {
         return (child.GetParent(name) != null);
     }
+    public static Color HexToColor(string hex)
+    {
+        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        return new Color32(r, g, b, 255);
+    }
 
     public static void FillAndBorder(this GameObject obj, Color fillColor)
     {
@@ -35,7 +42,7 @@ public static class Utils
             SpriteRenderer border = obj.transform.FindChild("Border").GetComponent<SpriteRenderer>();
 
             fill.color = fillColor;
-            border.color = fillColor.Invert()*.8f;
+            border.color = fillColor.Invert();
 
 
         }
@@ -47,7 +54,7 @@ public static class Utils
     }
     
     public static Color Invert(this Color color){
-        return new Color(1.0f-color.r, 1.0f-color.g, 1.0f-color.b);
+        return new Color(.3f * color.r, .3f * color.g, .3f * color.b);
     }
 	public static bool isWithinGrid(this Vector2 worldPos){
 		
