@@ -278,9 +278,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zNames:
-  - Andrew
-  - Ben
   - Dante
+  - Ben
   - Ian
   - Jabir
   - Morgan
@@ -290,10 +289,9 @@ MonoBehaviour:
   - Matthew
   - Jordan
   zLevels:
-  - Andew1
-  - Ben1
   - Scene1
   - DantesAwesomeDemo
+  - Ben1
   - ian1
   - Jabir1
   - Jabir2
@@ -310,11 +308,9 @@ MonoBehaviour:
   - Nadia#3
   - Nadia#4
   - Nadia#5
-  - SceneTest
   - switch_hell
   - zack1
   - colorsquare
-  - teleporter_test
   - hunter1
   - hunter2
   - hunter3
@@ -323,4 +319,4 @@ MonoBehaviour:
   - 01
   - 02
   - 03
-  zIndexes: 0100000001000000020000000100000005000000050000000500000005000000030000000200000003000000
+  zIndexes: 02000000010000000100000005000000050000000500000003000000030000000200000003000000
