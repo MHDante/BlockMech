@@ -36,8 +36,6 @@ public static class Utils
 
             fill.color = fillColor;
             border.color = fillColor.Invert()*.8f;
-
-
         }
         catch (NullReferenceException e)
         {

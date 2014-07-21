@@ -33,10 +33,12 @@ public abstract class GamePiece : MonoBehaviour
     public static Dictionary<Type, int> spawnNumbers = new Dictionary<Type, int>();
     public Cell _cell ;
     public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
+    [SerializeBlockIt]
     public PieceType piecetype;
 	private const int defaultWeight  = 1;
 	Cell destination;
 	public bool isMoving = false;
+    [SerializeBlockIt]
     public ColorSlot colorslot = ColorSlot.A;
     public Color colorPreview;
     public GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;

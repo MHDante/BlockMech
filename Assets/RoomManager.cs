@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviour {
     public static GameObject masterParent;
     public static Dictionary<PieceType, GameObject> pieceParents;
     public static Dictionary<PieceType, Type> pieceTypes;
+    public static Dictionary<Type, PieceType> pieceEnums;
 
     public const int gridWidth = 16;
     public const int gridHeight = 12;
@@ -59,6 +60,12 @@ public class RoomManager : MonoBehaviour {
                 { PieceType.AntiTrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
             };
             RoomManager.pieceParents = new Dictionary<PieceType, GameObject>();
+            pieceEnums = new Dictionary<Type, PieceType>();
+            foreach(PieceType pt in pieceTypes.Keys)
+            {
+                Type type = pieceTypes[pt];
+                pieceEnums[type] = pt;
+            }
         }
     }
 
