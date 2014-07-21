@@ -82,13 +82,17 @@ public class GameManager : MonoBehaviour
     Texture texResults;
     Rect rectSteps;
     Rect rectTime;
+    bool mustSwitchLevel;
 
 
     //player statistics
-    Player.StatsV4 latestStats;
     public int totalSteps;
     public int levelSteps;
     public int totalRestarts;
+
+    public Player.Stats latestStats;
+    List<Player.Stats> listStats;
+
 
     
     public static GameManager instance
@@ -157,10 +161,16 @@ public class GameManager : MonoBehaviour
         texTitle = Resources.Load<Texture>("Textures/BLOCKIT_TITLE_2_WC_DS");
         texResults = Resources.Load<Texture>("Texture/RESULTS_1234");
 
+        //results
+        mustSwitchLevel = true;
+
         //statistics
         totalSteps = 0;
         levelSteps = 0;
         totalRestarts = 0;
+
+        listStats = new List<Player.Stats>();
+
     }
     void OnGUI(){
 
@@ -186,13 +196,42 @@ public class GameManager : MonoBehaviour
         {
             DrawTitle(selectedWorld.ToUpper() + " WORLD");
             DrawPicker(levels);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                selState = GameState.WorldSelector;
+            }
         }
-        else if (selState == GameState.ResultsScreen) 
+        else if (selState == GameState.PlayingGame) 
         {
-            Application.LoadLevel("PuzzleSelector");
+            mustSwitchLevel = true;
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                string s = "<color=magenta>Exiting level.</color>";
+                if (Player.stats != null) 
+                {
+                    s += " " + "<color=teal>Steps: " + Player.stats.steps + ". Time: " + Player.stats.TimeFormatted() + ".</color>"; 
+                }
+                Debug.Log(s);
+                Application.LoadLevel("PuzzleSelector");
+                selState = GameState.WorldSelector;
+            }
+        }
+        else if (selState == GameState.ResultsScreen)
+        {
+            var i = Input.anyKeyDown;
+            var m = Input.GetMouseButtonDown(0);
+            if (i || m)
+            {
+                selState = GameState.LevelSelector;
+            }
+            if (mustSwitchLevel)
+            {
+                mustSwitchLevel = false;
+                Application.LoadLevel("PuzzleSelector");
+            }
             DrawTitle("RESULTS");
             DrawResults();
-            //selState = GameState.Initializing;
+
         }
 		
     }
@@ -377,13 +416,17 @@ public class GameManager : MonoBehaviour
 
         Rect rectTitlePos = new Rect(padding.x * 2, padding.y * 2, w, h);
         Rect rectPos = new Rect(padding.x * 7, rectTitlePos.yMax - padding.y, Screen.width, Screen.height - rectTitlePos.yMax);
-        GUI.DrawTexture(rectPos, texResults, ScaleMode.ScaleToFit);
+        //GUI.DrawTexture(rectPos, texResults, ScaleMode.ScaleToFit);
 
         //SCORE
-        GUI.skin.label = myLabelGameTitleStyle;
-        GUI.Label(rectSteps, gameTitle);
+        Rect rectSteps = new Rect(rectLabelGameTitle.x, rectLabelGameTitle.yMax + padding.y, rectLabelGameTitle.width, rectLabelGameTitle.height);
+        Rect rectTime = new Rect(rectLabelGameTitle.x, rectSteps.yMax + padding.y, rectLabelGameTitle.width, rectLabelGameTitle.height);
 
-        GUI.Label(rectTime, gameTitle);
+        GUI.skin.label = myLabelGameTitleStyle;
+
+        GUI.Label(rectSteps, latestStats.steps.ToString() );
+
+        GUI.Label(rectTime, latestStats.TimeFormatted() );
 
 
     }
@@ -402,6 +445,12 @@ public class GameManager : MonoBehaviour
         
         GUI.DrawTexture(rectTitlePos, texTitle, ScaleMode.ScaleToFit);
 
+
+    }
+
+
+    void Stats()
+    {
 
     }
 }
