@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 [ExecuteInEditMode]
-public class Author : MonoBehaviour
+public class MetaData : MonoBehaviour
 {
-    private static Author _instance;
-    private static Author instance { get { if (_instance == null) _instance = (Author)Object.FindObjectOfType(typeof(Author)); return _instance; } }
+    private static MetaData _instance;
+    private static MetaData instance { get { if (_instance == null) _instance = (MetaData)Object.FindObjectOfType(typeof(MetaData)); return _instance; } }
 
 
     public enum difficulty_setting { Easy, Normal, Hard, Nightmare, Battletoads }

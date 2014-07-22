@@ -272,7 +272,7 @@ public class PuzzleMaker : EditorWindow
             if (colorslot != newColorSlot)
             {
                 colorslot = newColorSlot;
-                spawnColor = Author.GetColorSlot(colorslot);
+                spawnColor = MetaData.GetColorSlot(colorslot);
             }
 
             UpdateIndicator(true);
@@ -371,7 +371,7 @@ public class PuzzleMaker : EditorWindow
         if (newColor != colorslot)
         {
             colorslot = newColor;
-            spawnColor = Author.GetColorSlot(colorslot);
+            spawnColor = MetaData.GetColorSlot(colorslot);
         }
         EditorGUILayout.ColorField("Color Preview:", spawnColor);
     }

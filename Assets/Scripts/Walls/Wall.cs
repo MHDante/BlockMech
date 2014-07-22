@@ -67,7 +67,7 @@ public enum WallType { Wall, Door, Diode, Turnstile}
     public void SetColorSlot(ColorSlot colorSlot)
     {
         this.colorslot = colorSlot;
-        colorPreview = Author.GetColorSlot(colorSlot);
+        colorPreview = MetaData.GetColorSlot(colorSlot);
         gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
     }
     public void Open()

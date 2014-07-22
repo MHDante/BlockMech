@@ -13,7 +13,7 @@ public class MigrateOld : ScriptableWizard
     public GameObject BackgroundPrefab;
     private GameObject Scene;
     private GameObject MainCamera;
-    private Author author;
+    private MetaData metaData;
     void OnWizardCreate()
     {
         if (!tryMigrate()) { 
@@ -29,16 +29,16 @@ public class MigrateOld : ScriptableWizard
         Scene = FindObjectsOfType<RoomManager>()[0].gameObject;
         if (FindObjectsOfType<Camera>().Length != 1) return false;
         MainCamera = FindObjectsOfType<Camera>()[0].gameObject;
-        if (FindObjectsOfType<Author>().Length != 1) return false;
-        author = FindObjectOfType<Author>();
+        if (FindObjectsOfType<MetaData>().Length != 1) return false;
+        metaData = FindObjectOfType<MetaData>();
         DestroyImmediate(GameObject.Find("Indicator"));
         Scene.transform.position = new Vector3(32,24,0);
         Scene.name = "Scene";
         DestroyImmediate(Scene.GetComponent<SpriteRenderer>());
         MainCamera.transform.parent = Scene.transform;
 
-        EditorUtility.CopySerialized(author, Scene.AddComponent<Author>());
-        DestroyImmediate(author.gameObject);
+        EditorUtility.CopySerialized(metaData, Scene.AddComponent<MetaData>());
+        DestroyImmediate(metaData.gameObject);
         GameObject TrippyBackground = (PrefabUtility.InstantiatePrefab(BackgroundPrefab) as GameObject);
         TrippyBackground.transform.parent = Scene.transform;
         TrippyBackground.transform.localRotation = default(Quaternion);

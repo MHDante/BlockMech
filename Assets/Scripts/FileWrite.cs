@@ -41,9 +41,9 @@ public class FileWrite : MonoBehaviour {
     {
         XElement eRoot = new XElement("Root");
 
-        XElement eInfo = new XElement("Info");
+        XElement eInfo = new XElement("Meta");
         eRoot.Add(eInfo);
-        Author auth = FindObjectOfType<Author>();
+        MetaData auth = FindObjectOfType<MetaData>();
         if (auth != null)
         {
             eInfo.Add(new XElement("Author", auth.author));
