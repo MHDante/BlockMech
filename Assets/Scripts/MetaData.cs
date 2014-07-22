@@ -20,7 +20,7 @@ public class MetaData : MonoBehaviour
     public bool usesTrap;
     public bool usesTeleporter;
 
-    public Dictionary<ColorSlot, Color> colors = new Dictionary<ColorSlot, Color>(){
+    public static Dictionary<ColorSlot, Color> colors = new Dictionary<ColorSlot, Color>(){
         { ColorSlot.None, Utils.HexToColor("E2E2E2") },
         { ColorSlot.Gray, Utils.HexToColor("787679") },
         { ColorSlot.Purple, Utils.HexToColor("8569CF") },
@@ -35,7 +35,7 @@ public class MetaData : MonoBehaviour
     {
         if (instance != null)
         {
-            return instance.colors[colorslot];
+            return colors[colorslot];
         }
         return Color.grey;
     }
