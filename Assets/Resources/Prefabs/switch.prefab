@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: switch
+  m_Name: Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   piecetype: 7
   isMoving: 0
   colorslot: 1
-  colorPreview: {r: 0, g: 0, b: 1, a: 1}
+  colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   ColorizedSprite: {fileID: 100004}
   ActivatedSprite: {fileID: 100002}
   WhiteSprite: {fileID: 0}
@@ -245,7 +245,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 18f6d4fdd6b45ed4e8ff808103a1a860, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: .800000012}
+  m_Color: {r: .300000012, g: .300000012, b: .300000012, a: 1}
 --- !u!212 &21200002
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -267,7 +267,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 18f6d4fdd6b45ed4e8ff808103a1a860, type: 3}
-  m_Color: {r: .800000012, g: .800000012, b: 0, a: .800000012}
+  m_Color: {r: .156470597, g: .123529419, b: .243529424, a: 1}
 --- !u!212 &21200004
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -289,7 +289,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 18f6d4fdd6b45ed4e8ff808103a1a860, type: 3}
-  m_Color: {r: 0, g: 0, b: 1, a: 1}
+  m_Color: {r: .521568656, g: .411764711, b: .811764717, a: 1}
 --- !u!212 &21200006
 SpriteRenderer:
   m_ObjectHideFlags: 1

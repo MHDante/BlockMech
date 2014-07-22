@@ -40,6 +40,7 @@ public class MetaData : MonoBehaviour
 
     void OnValidate()
     {
+        if (string.IsNullOrEmpty(welcomeHint)) welcomeHint = "BlockIt";
         if (welcomeHint.Length > HintLimit) welcomeHint = welcomeHint.Substring(0, HintLimit);
         GetComponentInChildren<TextMesh>().text = welcomeHint;
     }

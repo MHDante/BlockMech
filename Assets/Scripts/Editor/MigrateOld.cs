@@ -46,10 +46,10 @@ public class MigrateOld : ScriptableWizard
         TrippyBackground.transform.localPosition = default(Vector3);
         
         
-        foreach (PieceType p in Enum.GetValues(typeof(PieceType)))
+        foreach (Type p in PuzzleMaker.PieceTypeList)
         {
-            if (p == PieceType.Player || p == PieceType.None) continue;
-            foreach (var o in FindObjectsOfType(RoomManager.pieceTypes[p])){
+            if (p == typeof(Player) || p == null ) continue;
+            foreach (var o in FindObjectsOfType(p)){
                 MonoBehaviour mb = (MonoBehaviour)o;
                 mb.transform.parent = PuzzleMaker.GetPieceParent(p).transform;
             }

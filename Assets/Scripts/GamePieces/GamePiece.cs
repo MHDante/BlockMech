@@ -2,22 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-public enum PieceType
-{
-    None,
-    Wall,
-    Block,
-    Button,
-    Switch,
-    Key,
-    Keyhole,
-    Teleport,
-    Tile,
-    Trap,
-    AntiTrap,
-    Player,
-    End,
-}
+
 public enum ColorSlot
 {
     None,
@@ -36,8 +21,6 @@ public abstract class GamePiece : MonoBehaviour
     public static Dictionary<Type, int> spawnNumbers = new Dictionary<Type, int>();
     public Cell _cell ;
     public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
-    [SerializeBlockIt]
-    public PieceType piecetype;
 	private const int defaultWeight  = 1;
 	Cell destination;
 	public bool isMoving = false;
@@ -355,7 +338,15 @@ public abstract class GamePiece : MonoBehaviour
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }
-    
+
+    public static Dictionary<Type, UnityEngine.Object> PrefabCache = new Dictionary<Type, UnityEngine.Object>();
+    public static UnityEngine.Object GetPrefab(Type piece)
+    {
+        if (piece != typeof(Wall) && (!piece.IsSubclassOf(typeof(GamePiece)) || piece.IsAbstract)) throw new WTFException("Trying to get a prefab of a non-piece/non-wall class");
+        if (!PrefabCache.ContainsKey(piece))
+            PrefabCache[piece] = Resources.Load<GameObject>("Prefabs/" + piece.Name);
+        return PrefabCache[piece];
+    }
 }
 
 public interface Triggerable
