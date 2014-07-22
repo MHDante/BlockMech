@@ -46,9 +46,10 @@ public class FileWrite : MonoBehaviour {
         Author auth = FindObjectOfType<Author>();
         if (auth != null)
         {
-            eInfo.Add(new XElement("Author", auth.author));
-            eInfo.Add(new XElement("LevelName", auth.levelName));
-            eInfo.Add(new XElement("Difficulty", auth.difficulty));
+            eInfo.Add(new XAttribute("Author", auth.author));
+            eInfo.Add(new XAttribute("LevelName", auth.levelName));
+            eInfo.Add(new XAttribute("Difficulty", auth.difficulty));
+            
         }
 
         XElement eGrid = new XElement("Grid");
