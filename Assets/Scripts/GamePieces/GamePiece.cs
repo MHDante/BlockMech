@@ -23,15 +23,15 @@ public abstract class GamePiece : MonoBehaviour
     public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
 	private const int defaultWeight  = 1;
 	Cell destination;
-	public bool isMoving = false;
+    protected bool isMoving = false;
     [SerializeBlockIt]
     public ColorSlot colorslot = ColorSlot.Purple;
     public Color colorPreview;
-    public GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;
-    public float moveSpeed = 5f, teleportSpeed = 10f;
+    protected GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;
+    private float moveSpeed = 5f, teleportSpeed = 10f;
     private float tempSpeed = 5f;
-    public float currentLerp = 0f, maxLerp = 100f;
-    public Vector2 StartPos;
+    private float currentLerp = 0f, maxLerp = 100f;
+    private Vector2 StartPos;
     public GamePiece previousPiece
     {
         get

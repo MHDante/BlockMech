@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 [ExecuteInEditMode]
 public class MetaData : MonoBehaviour
 {
     private static MetaData _instance;
-    private static MetaData instance { get { if (_instance == null) _instance = (MetaData)Object.FindObjectOfType(typeof(MetaData)); return _instance; } }
+    public static MetaData instance { get { if (_instance == null) _instance = (MetaData)FindObjectOfType(typeof(MetaData)); return _instance; } }
     private static int HintLimit = 32;
 
     public enum difficulty_setting { Easy, Normal, Hard, Nightmare, Battletoads }
@@ -15,39 +17,49 @@ public class MetaData : MonoBehaviour
     public string welcomeHint;
 
     public difficulty_setting difficulty;
-    
 
-    public static Dictionary<ColorSlot, Color> colors = new Dictionary<ColorSlot, Color>(){
-        { ColorSlot.None, Utils.HexToColor("E2E2E2") },
-        { ColorSlot.Gray, Utils.HexToColor("787679") },
-        { ColorSlot.Purple, Utils.HexToColor("8569CF") },
-        { ColorSlot.Blue, Utils.HexToColor("0D9FD8") },
-        { ColorSlot.Green, Utils.HexToColor("8AD749") },
-        { ColorSlot.Yellow, Utils.HexToColor("EECE00") },
-        { ColorSlot.Orange, Utils.HexToColor("F8981F") },
-        { ColorSlot.Red, Utils.HexToColor("F80E27") },
-        { ColorSlot.Pink, Utils.HexToColor("F640AE") }
+
+    public static Dictionary<ColorSlot, string> colorCodes = new Dictionary<ColorSlot, string>(){
+        { ColorSlot.None,   "E2E2E2" },
+        { ColorSlot.Gray,   "787679" },
+        { ColorSlot.Purple, "8569CF" },
+        { ColorSlot.Blue,   "0D9FD8" },
+        { ColorSlot.Green,  "8AD749" },
+        { ColorSlot.Yellow, "EECE00" },
+        { ColorSlot.Orange, "F8981F" },
+        { ColorSlot.Red,    "F80E27" },
+        { ColorSlot.Pink,   "F640AE" }
     };
-    
+
+    public static Dictionary<ColorSlot, Color> colors = colorCodes.Keys.ToDictionary(col => col, col => Utils.HexToColor(colorCodes[col]));
+
     public static Color GetColorSlot(ColorSlot colorslot)
     {
-        if (instance != null)
-        {
-            return colors[colorslot];
-        }
-        return Color.grey;
+        return colors[colorslot];
     }
 
     void OnValidate()
     {
         if (string.IsNullOrEmpty(welcomeHint)) welcomeHint = "BlockIt";
         if (welcomeHint.Length > HintLimit) welcomeHint = welcomeHint.Substring(0, HintLimit);
-        GetComponentInChildren<TextMesh>().text = welcomeHint;
+        UpdateText(welcomeHint);
     }
+
+    public void UpdateText(string text, ColorSlot color = ColorSlot.None)
+    {
+        TextMesh tm = GetComponentInChildren<TextMesh>();
+        tm.color = GetColorSlot(color);
+        tm.text = text;
+    }
+    public void ResetText()
+    {
+        UpdateText(welcomeHint);
+    }
+
     void Awake()
     {
         GetComponentInChildren<TextMesh>().text = welcomeHint;
-        _instance = this; //lol privaton
+        _instance = this; //lol privaton //lol nope 
     }
    
 }

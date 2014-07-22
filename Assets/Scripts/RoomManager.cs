@@ -23,6 +23,11 @@ public class RoomManager : MonoBehaviour {
     public ButtonOptions buttonOptions = ButtonOptions.ActivateOnAllPushed;
 
     void Awake() {
+        if (Application.isPlaying)
+        {
+            GameObject preexisting = GameObject.Find("Indicator");
+            if (preexisting != null) DestroyImmediate(preexisting);
+        }
         if (masterParent == null) masterParent = GameObject.Find("Puzzle_Pieces");
         if (masterParent == null) masterParent = new GameObject("Puzzle_Pieces");
 
@@ -186,11 +191,7 @@ public class RoomManager : MonoBehaviour {
         }
     }
 	void Start () {
-        if (Application.isPlaying)
-        {
-            GameObject preexisting = GameObject.Find("Indicator");
-            if (preexisting != null) DestroyImmediate(preexisting);
-        }
+
         foreach (ColorSlot val in Enum.GetValues(typeof(ColorSlot)))
         {
             RefreshColorFamily(val);

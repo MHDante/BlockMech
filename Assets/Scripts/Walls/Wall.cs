@@ -60,7 +60,7 @@ public enum WallType { Wall, Door, Diode, Turnstile}
 
 
 
-    void OnValidate()
+    protected virtual void OnValidate()
     {
         SetColorSlot(colorslot);
     }
