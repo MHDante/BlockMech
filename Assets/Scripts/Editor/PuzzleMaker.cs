@@ -103,6 +103,7 @@ public class PuzzleMaker : EditorWindow
 
             Indicator.name = "Indicator";
             GamePiece piece = Indicator.GetComponent<GamePiece>();
+            if (piece)piece.enabled = false;
             if (piece != null)
             {
                 piece.colorslot = colorslot;

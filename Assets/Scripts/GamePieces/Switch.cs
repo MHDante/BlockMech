@@ -6,10 +6,25 @@ public class Switch : GamePiece, Triggerable
 {
     public override bool isSolid { get { return false; } set { } }
     public override bool isPushable { get { return false; } set { } }
-    public bool IsTriggered { get { return flipped; } }
-    private bool flipped = false;
+    public bool IsTriggered 
+    { 
+        get { return _Triggered; } 
+        set 
+        { 
+            _Triggered = value;
+            flipping = true;
+            if (RoomManager.roomManager)RoomManager.roomManager.RefreshColorFamily(colorslot);
+            SetColorSlot(colorslot); 
+        }
+    }
+    public  bool _Triggered;
     private bool flipping = false;
     private float flipRate = 5f, fliprotation = 0f;
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        IsTriggered = _Triggered;
+    }
     public override void Start()
     {
         base.Start();
@@ -19,14 +34,14 @@ public class Switch : GamePiece, Triggerable
         base.Update();
         if (flipping)
         {
-            int sign = !flipped ? -1 : 1;
+            int sign = !IsTriggered ? -1 : 1;
             fliprotation = fliprotation + flipRate * sign;
-            if (flipped && fliprotation > 180)
+            if (IsTriggered && fliprotation > 180)
             {
                 fliprotation = 180;
                 flipping = false;
             }
-            else if (!flipped && fliprotation < 0)
+            else if (!IsTriggered && fliprotation < 0)
             {
                 fliprotation = 0;
                 flipping = false;
@@ -37,13 +52,7 @@ public class Switch : GamePiece, Triggerable
             
         }
     }
-    public void StartFlip()
-    {
-        flipping = true;
-        flipped = !flipped;
-        RoomManager.roomManager.RefreshColorFamily(colorslot);
-        SetColorSlot(colorslot);
-    }
+
     public override void onDeOccupy(GamePiece piece)
     {
         base.onDeOccupy(piece);
@@ -52,7 +61,7 @@ public class Switch : GamePiece, Triggerable
     {
         if (piece is Player)
         {
-            StartFlip();
+            IsTriggered = !IsTriggered; 
         }
         return base.onOccupy(piece);
     }

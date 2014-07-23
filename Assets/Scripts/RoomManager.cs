@@ -3,13 +3,13 @@ using System.Collections;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 [ExecuteInEditMode]
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
     public static GameObject masterParent;
 
-    public const int gridWidth = 16;
-    public const int gridHeight = 12;
+
 
     public static Dictionary<Type, GameObject> pieceParents = new Dictionary<Type,GameObject>();
     public Cell[][] Grid;
@@ -32,11 +32,12 @@ public class RoomManager : MonoBehaviour {
         if (masterParent == null) masterParent = new GameObject("Puzzle_Pieces");
 
         roomManager = this;
-        Grid = new Cell[gridWidth][];
-        for (int i = 0; i < gridWidth; i++)
+        Grid = new Cell[Values.gridWidth][];
+        for (int i = 0; i < Values.gridWidth; i++)
         {
-            Grid[i] = new Cell[gridHeight];
-            for(int j = 0; j < gridHeight; j++){
+            Grid[i] = new Cell[Values.gridHeight];
+            for (int j = 0; j < Values.gridHeight; j++)
+            {
                 Grid[i][j] = new Cell(i, j);
             }
         }
@@ -129,8 +130,10 @@ public class RoomManager : MonoBehaviour {
         return list;
     }
 
+    Dictionary<ColorSlot, bool> colorActivation = Enum.GetValues(typeof(ColorSlot)).OfType<ColorSlot>().ToDictionary(key => key, key => false);
     public void RefreshColorFamily(ColorSlot colorslot)
     {
+        
         if (buttonOptions == ButtonOptions.ActivateOnAllPushed)
         {
             bool allSatisfied = true;
@@ -143,12 +146,15 @@ public class RoomManager : MonoBehaviour {
                     if (!t.IsTriggered) allSatisfied = false;
                 }
             }
-            List<Wall> doors = GetDoorsOfColor(colorslot);
-            foreach (Wall door in doors)
+            if (allSatisfied != colorActivation[colorslot])
             {
-                if (allSatisfied) door.Open();
-                else door.Close();
+                foreach (Wall door in GetDoorsOfColor(colorslot))
+                {
+                    door.Activate();
+                }
             }
+            colorActivation[colorslot] = allSatisfied;
+
         }
         else if (buttonOptions == ButtonOptions.ActivateOnOnePushed)
         {
@@ -166,12 +172,15 @@ public class RoomManager : MonoBehaviour {
                     }
                 }
             }
-            List<Wall> doors = GetDoorsOfColor(colorslot);
-            foreach (Wall door in doors)
+            if (oneSatisfied != colorActivation[colorslot])
             {
-                if (oneSatisfied) door.Open();
-                else door.Close();
+                List<Wall> doors = GetDoorsOfColor(colorslot);
+                foreach (Wall door in doors)
+                {
+                    door.Activate();
+                }
             }
+            colorActivation[colorslot] = oneSatisfied;
         }
     }
     public void AddPiece(GameObject gameobject, Type t, ColorSlot colorslot)
@@ -276,11 +285,11 @@ public class RoomManager : MonoBehaviour {
         Cell cell = null;
         int x = Cell.GetCellX(position.x);
         int y = Cell.GetCellX(position.y);
-        if (position.x / Wall.blockSize == Grid.Length)
+        if (position.x / Values.blockSize == Grid.Length)
         {
             cell = Grid[x - 1][y];
         }
-        else if (position.y / Wall.blockSize == Grid[0].Length)
+        else if (position.y / Values.blockSize == Grid[0].Length)
         {
             cell = Grid[x][y - 1];
         }

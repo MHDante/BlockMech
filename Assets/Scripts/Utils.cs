@@ -57,9 +57,9 @@ public static class Utils
         return new Color(.3f * color.r, .3f * color.g, .3f * color.b);
     }
 	public static bool isWithinGrid(this Vector2 worldPos){
-		
-		if (worldPos.x > RoomManager.gridWidth * Wall.blockSize || worldPos.x < 0) return false;
-		if (worldPos.y > RoomManager.gridHeight * Wall.blockSize || worldPos.y  < 0)return false;
+
+        if (worldPos.x > Values.gridWidth * Values.blockSize || worldPos.x < 0) return false;
+        if (worldPos.y > Values.gridHeight * Values.blockSize || worldPos.y < 0) return false;
 		return true;
 	}
     public static string UppercaseFirst(this string s)
@@ -76,7 +76,7 @@ public static class Utils
 	{
 
 
-		int blockSize = Wall.blockSize;
+        int blockSize = Values.blockSize;
         int cellx = (int)Mathf.Floor(worldPos.x / blockSize);
         int celly = (int)Mathf.Floor(worldPos.y / blockSize);
 
@@ -93,33 +93,33 @@ public static class Utils
 		Vector3 vect = Vector3.zero;
 		if (x > y)
 		{
-			if (x < Wall.blockSize - y)
+            if (x < Values.blockSize - y)
 			{
 				s = Side.bottom;
-				vect.x += Wall.halfBlock;
+                vect.x += Values.halfBlock;
 				orientation = Orientation.Horizontal;
 			}
 			else
 			{
 				s = Side.right;
-				vect.x += Wall.blockSize;
-				vect.y += Wall.halfBlock;
+                vect.x += Values.blockSize;
+                vect.y += Values.halfBlock;
 				orientation = Orientation.Vertical;
 			}
 		}
 		else
 		{
-			if (x < Wall.blockSize - y)
+            if (x < Values.blockSize - y)
 			{
 				s = Side.left;
-				vect.y += Wall.halfBlock;
+                vect.y += Values.halfBlock;
 				orientation = Orientation.Vertical;
 			}
 			else
 			{
 				s = Side.top;
-				vect.x += Wall.halfBlock;
-				vect.y += Wall.blockSize;
+                vect.x += Values.halfBlock;
+                vect.y += Values.blockSize;
 				orientation = Orientation.Horizontal;
 			}
 		}
