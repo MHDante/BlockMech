@@ -1,11 +1,6 @@
 fileFormatVersion: 2
 guid: 7db4b663f6a1e0e4496a1bd83dcbbf07
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: button_full_0
-    21300002: button_full_1
-    21300004: button_full_2
-    21300006: button_full_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

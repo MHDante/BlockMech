@@ -1,9 +1,6 @@
 fileFormatVersion: 2
 guid: 3ed61021f7cb5bf4281e4ad25d93fb60
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: octogon_0
-    21300002: octogon_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
