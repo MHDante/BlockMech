@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Morgan/Alien Invasion.unity
   - enabled: 1
     path: Assets/Scenes/Morgan/Help I'm Stuck in a Video Game.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Morgan/Help I'm Stuck in a Video Game.unity
   - enabled: 0
     path: Assets/Scenes/Andrew/Andew1.unity
