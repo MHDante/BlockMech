@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class PuzzleMaker : EditorWindow
 {
@@ -13,7 +14,7 @@ public class PuzzleMaker : EditorWindow
     }
 
 
-    public PieceType selectedPiece = PieceType.Wall;
+    public int selectedIndex = 1;
     ColorSlot colorslot = ColorSlot.None;
     Color spawnColor = Color.white;
     Vector2 MousePos;
@@ -21,9 +22,20 @@ public class PuzzleMaker : EditorWindow
     bool RightClick;
 	bool Active;
     GameObject Indicator;
-
+    public static List<Type> PieceTypeList;
+    public Type selectedPiece { get { return PieceTypeList[selectedIndex]; } }
+    static PuzzleMaker()
+    {
+        PieceTypeList = new List<Type>();
+        PieceTypeList.Add(null);
+        PieceTypeList.Add(typeof(Wall));
+        
+        foreach (Type t in typeof(GamePiece).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(GamePiece)) && !type.IsAbstract))
+        {
+            PieceTypeList.Add(t);
+        }
+    }
     
-
     void OnEnable()
     {        
         SceneView.onSceneGUIDelegate += OnUpdate;
@@ -57,7 +69,9 @@ public class PuzzleMaker : EditorWindow
                 if (withinGrid)
                 {
                     if (!renderer.enabled) renderer.enabled = true;
-                    if (selectedPiece != PieceType.Wall && renderer.gameObject.HasParent("Colorized")){
+                    if (selectedPiece != typeof(Wall)
+                        && renderer.gameObject.HasParent("Colorized"))
+                    {
                         renderer.color = spawnColor * 0.5f ;
                     }
                     renderer.color = Color.white * 0.5f;
@@ -80,23 +94,16 @@ public class PuzzleMaker : EditorWindow
         }
         GameObject preexisting = GameObject.Find("Indicator");
         if (preexisting != null) DestroyImmediate(preexisting);
-        if (selectedPiece != PieceType.None)
+        if (selectedIndex != 0)
         {
-            if (RoomManager.pieceGameObjects == null)
-            {
-                Debug.Log("pieceGameObjects is null");
-            }
-            else if (RoomManager.pieceGameObjects[selectedPiece] == null)
-            {
-                Debug.Log(selectedPiece + " was not found in the dictionary");
-            }
 
-            Indicator = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[selectedPiece]);
+            Indicator = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(selectedPiece));
             
             foreach (var r in Indicator.GetComponentsInChildren<SpriteRenderer>()) r.color *= 0.5f;
 
             Indicator.name = "Indicator";
             GamePiece piece = Indicator.GetComponent<GamePiece>();
+            if (piece)piece.enabled = false;
             if (piece != null)
             {
                 piece.colorslot = colorslot;
@@ -166,14 +173,14 @@ public class PuzzleMaker : EditorWindow
             int scroll = Math.Sign(ScrollVect.y);
             if (scroll != 0)
             {
-                int nextPiece = (int)selectedPiece + scroll;
-                if (nextPiece >= 0 && nextPiece < Enum.GetValues(typeof(PieceType)).Length)
+                int nextPiece = (int)selectedIndex + scroll;
+                if (nextPiece >= 0 && nextPiece < PieceTypeList.Count)
                 {
-                    selectedPiece = (PieceType)nextPiece;
+                    selectedIndex = nextPiece;
                     SetIndicator();
                 }
             }
-            if (selectedPiece == PieceType.Wall)
+            if (selectedPiece == typeof(Wall))
             {
 				Side side;
                 Orientation or;
@@ -191,10 +198,8 @@ public class PuzzleMaker : EditorWindow
                 }
                 if (LeftDown())
                 {
-                    if (selectedPiece == PieceType.Wall)
-                    {
-                        SpawnWall(target, or, side, colorslot);
-                    }
+                    SpawnWall(target, or, side, colorslot);
+                    
 					sceneView.Update();
 					sceneView.Repaint();
                 }
@@ -206,7 +211,7 @@ public class PuzzleMaker : EditorWindow
                 }
                 
             }
-            else if (selectedPiece == PieceType.Player)
+            else if (selectedPiece == typeof(Player))
             {
                 Cell target = Cell.GetFromWorldPos(MousePos);
                 if (target != null)
@@ -227,7 +232,7 @@ public class PuzzleMaker : EditorWindow
                     }
                 }
             }
-            else if (selectedPiece != PieceType.None)//spawn any other piece (other than wall)
+            else if (selectedIndex != 0)//spawn any other piece (other than wall)
             {
 				Cell target = Cell.GetFromWorldPos(MousePos);
 				if (target!=null) {
@@ -278,11 +283,11 @@ public class PuzzleMaker : EditorWindow
             UpdateIndicator(true);
         }
     }
-    public void SpawnPiece(PieceType piece, Cell target)
+    public void SpawnPiece(Type piece, Cell target)
     {
         if (target.IsSolidlyOccupied()) return;
         GameObject parent = GetPieceParent(piece);
-        GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[selectedPiece]);
+        GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(selectedPiece));
         obj.transform.position = target.WorldPos();
         obj.transform.parent = parent.transform;
         RoomManager.roomManager.AddPiece(obj, piece, colorslot);
@@ -292,9 +297,9 @@ public class PuzzleMaker : EditorWindow
     {
         if (RoomManager.roomManager.player == null)
         {
-            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.Player]);
+            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(typeof(Player)));
             obj.transform.position = target.WorldPos();
-            RoomManager.roomManager.AddPiece(obj, PieceType.Player, ColorSlot.None);
+            RoomManager.roomManager.AddPiece(obj, typeof(Player), ColorSlot.None);
         }
         else
         {
@@ -303,10 +308,10 @@ public class PuzzleMaker : EditorWindow
     }
     public void SpawnWall(Vector3 target, Orientation orient, Side side, ColorSlot colorslot)
     {
-        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(RoomManager.pieceGameObjects[PieceType.Wall]);
+        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(typeof(Wall)));
         wallobj.transform.position = target;
-        wallobj.transform.rotation = orient == Orientation.Vertical ? Quaternion.identity : Quaternion.EulerAngles(0, 0, 90);
-        wallobj.transform.parent = GetPieceParent(PieceType.Wall).transform;
+        wallobj.transform.rotation = orient == Orientation.Vertical ? Quaternion.identity : Quaternion.Euler(0, 0, 90);
+        wallobj.transform.parent = GetPieceParent(typeof(Wall)).transform;
         Wall wall = null;
         wall = wallobj.GetComponent<Wall>();
 		if(wall == null) throw new WTFException();
@@ -315,7 +320,7 @@ public class PuzzleMaker : EditorWindow
         RoomManager.roomManager.AddWall(wall);
     }
 
-    public static GameObject GetPieceParent(PieceType piece)
+    public static GameObject GetPieceParent(Type piece)
     {
         if (!RoomManager.pieceParents.ContainsKey(piece) || RoomManager.pieceParents[piece] == null)
         {
@@ -361,10 +366,10 @@ public class PuzzleMaker : EditorWindow
         Active =  (EditorGUILayout.Toggle("Active", Active));// && WallPrefab != null);
         //WallPrefab = (GameObject)EditorGUILayout.ObjectField("WallPrefab", WallPrefab, typeof(GameObject), false);
 
-        PieceType newpiece = (PieceType)EditorGUILayout.EnumPopup("Select Piece:", selectedPiece);
-        if (selectedPiece != newpiece)
+        int newpiece = EditorGUILayout.Popup("Select Piece:", selectedIndex, PieceTypeList.Select(t=>t!=null?t.Name:"None").ToArray());
+        if (selectedIndex != newpiece)
         {
-            selectedPiece = newpiece;
+            selectedIndex = newpiece;
             SetIndicator();
         }
         ColorSlot newColor = (ColorSlot)EditorGUILayout.EnumPopup("Select Color:", colorslot);

@@ -6,15 +6,11 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
-    public static Dictionary<PieceType, GameObject> pieceGameObjects;
     public static GameObject masterParent;
-    public static Dictionary<PieceType, GameObject> pieceParents;
-    public static Dictionary<PieceType, Type> pieceTypes;
-    public static Dictionary<Type, PieceType> pieceEnums;
 
-    public const int gridWidth = 16;
-    public const int gridHeight = 12;
 
+
+    public static Dictionary<Type, GameObject> pieceParents = new Dictionary<Type,GameObject>();
     public Cell[][] Grid;
     public Player player;
 
@@ -25,60 +21,22 @@ public class RoomManager : MonoBehaviour {
     }
     public ButtonOptions buttonOptions = ButtonOptions.ActivateOnAllPushed;
 
-    void InitializeDictionaries()
-    {
-        if (RoomManager.pieceGameObjects == null || RoomManager.pieceTypes == null)
-        {
-            RoomManager.pieceTypes = new Dictionary<PieceType, Type>()
-            {
-                { PieceType.Wall, typeof(Wall) },
-                { PieceType.Block, typeof(Block) },
-                { PieceType.Player, typeof(Player) },
-                { PieceType.End, typeof(End) },
-                { PieceType.Button, typeof(Button) },
-                { PieceType.Switch, typeof(Switch) },
-                { PieceType.Key, typeof(Key) },
-                { PieceType.Keyhole,  typeof(Keyhole) },
-                { PieceType.Teleport, typeof(Teleport) },
-                { PieceType.Tile, typeof(Tile) },
-                { PieceType.Trap, typeof(Trap) },
-                { PieceType.AntiTrap, typeof(Antitrap) },
-            };
-            RoomManager.pieceGameObjects = new Dictionary<PieceType, GameObject>()
-            {
-                { PieceType.Wall, Resources.Load<GameObject>("Prefabs/Wall")},
-                { PieceType.Block, Resources.Load<GameObject>("Prefabs/octogon")},
-                { PieceType.Player, Resources.Load<GameObject>("Prefabs/player")},
-                { PieceType.End, Resources.Load<GameObject>("Prefabs/end")},
-                { PieceType.Button, Resources.Load<GameObject>("Prefabs/button")},
-                { PieceType.Switch, Resources.Load<GameObject>("Prefabs/switch")},//also button, switcH script added later
-                { PieceType.Key, Resources.Load<GameObject>("Prefabs/key")},
-                { PieceType.Keyhole, Resources.Load<GameObject>("Prefabs/Keyhole")},
-                { PieceType.Teleport, Resources.Load<GameObject>("Prefabs/teleport")},
-                { PieceType.Tile, Resources.Load<GameObject>("Prefabs/tile")},
-                { PieceType.Trap, Resources.Load<GameObject>("Prefabs/trap")},
-                { PieceType.AntiTrap, Resources.Load<GameObject>("Prefabs/anti-trap")},
-            };
-            RoomManager.pieceParents = new Dictionary<PieceType, GameObject>();
-            pieceEnums = new Dictionary<Type, PieceType>();
-            foreach(PieceType pt in pieceTypes.Keys)
-            {
-                Type type = pieceTypes[pt];
-                pieceEnums[type] = pt;
-            }
-        }
-    }
-
     void Awake() {
+        if (Application.isPlaying)
+        {
+            GameObject preexisting = GameObject.Find("Indicator");
+            if (preexisting != null) DestroyImmediate(preexisting);
+        }
         if (masterParent == null) masterParent = GameObject.Find("Puzzle_Pieces");
         if (masterParent == null) masterParent = new GameObject("Puzzle_Pieces");
 
         roomManager = this;
-        Grid = new Cell[gridWidth][];
-        for (int i = 0; i < gridWidth; i++)
+        Grid = new Cell[Values.gridWidth][];
+        for (int i = 0; i < Values.gridWidth; i++)
         {
-            Grid[i] = new Cell[gridHeight];
-            for(int j = 0; j < gridHeight; j++){
+            Grid[i] = new Cell[Values.gridHeight];
+            for (int j = 0; j < Values.gridHeight; j++)
+            {
                 Grid[i][j] = new Cell(i, j);
             }
         }
@@ -97,7 +55,6 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-        InitializeDictionaries();
         if (player == null)
         {
             Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
@@ -172,8 +129,10 @@ public class RoomManager : MonoBehaviour {
         return list;
     }
 
+    Dictionary<ColorSlot, bool> colorActivation = Enum.GetValues(typeof(ColorSlot)).OfType<ColorSlot>().ToDictionary(key => key, key => false);
     public void RefreshColorFamily(ColorSlot colorslot)
     {
+        
         if (buttonOptions == ButtonOptions.ActivateOnAllPushed)
         {
             bool allSatisfied = true;
@@ -186,12 +145,15 @@ public class RoomManager : MonoBehaviour {
                     if (!t.IsTriggered) allSatisfied = false;
                 }
             }
-            List<Wall> doors = GetDoorsOfColor(colorslot);
-            foreach (Wall door in doors)
+            if (allSatisfied != colorActivation[colorslot])
             {
-                if (allSatisfied) door.Open();
-                else door.Close();
+                foreach (Wall door in GetDoorsOfColor(colorslot))
+                {
+                    door.Activate();
+                }
             }
+            colorActivation[colorslot] = allSatisfied;
+
         }
         else if (buttonOptions == ButtonOptions.ActivateOnOnePushed)
         {
@@ -209,24 +171,26 @@ public class RoomManager : MonoBehaviour {
                     }
                 }
             }
-            List<Wall> doors = GetDoorsOfColor(colorslot);
-            foreach (Wall door in doors)
+            if (oneSatisfied != colorActivation[colorslot])
             {
-                if (oneSatisfied) door.Open();
-                else door.Close();
+                List<Wall> doors = GetDoorsOfColor(colorslot);
+                foreach (Wall door in doors)
+                {
+                    door.Activate();
+                }
             }
+            colorActivation[colorslot] = oneSatisfied;
         }
     }
-    public void AddPiece(GameObject gameobject, PieceType piecetype, ColorSlot colorslot)
+    public void AddPiece(GameObject gameobject, Type t, ColorSlot colorslot)
     {
+        if (!t.IsSubclassOf(typeof(GamePiece))) throw new System.Exception("Tried to add a non-GamePiece to a Cell");
         GamePiece gamePiece;
-        Type t = pieceTypes[piecetype];
         gamePiece = (GamePiece)gameobject.GetComponent(t);
         if (gamePiece == null)
         {
             gamePiece = (GamePiece)gameobject.AddComponent(t);
         }
-        gamePiece.piecetype = piecetype;
         gamePiece.SetColorSlot(colorslot);
         //gameobject.name = 
         if (t == typeof(Player))
@@ -235,11 +199,7 @@ public class RoomManager : MonoBehaviour {
         }
     }
 	void Start () {
-        if (Application.isPlaying)
-        {
-            GameObject preexisting = GameObject.Find("Indicator");
-            if (preexisting != null) DestroyImmediate(preexisting);
-        }
+
         foreach (ColorSlot val in Enum.GetValues(typeof(ColorSlot)))
         {
             RefreshColorFamily(val);
@@ -324,11 +284,11 @@ public class RoomManager : MonoBehaviour {
         Cell cell = null;
         int x = Cell.GetCellX(position.x);
         int y = Cell.GetCellX(position.y);
-        if (position.x / Wall.blockSize == Grid.Length)
+        if (position.x / Values.blockSize == Grid.Length)
         {
             cell = Grid[x - 1][y];
         }
-        else if (position.y / Wall.blockSize == Grid[0].Length)
+        else if (position.y / Values.blockSize == Grid[0].Length)
         {
             cell = Grid[x][y - 1];
         }

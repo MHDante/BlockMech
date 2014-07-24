@@ -59,7 +59,7 @@ public class Cell {
 	/// <param name="Y">y position..</param>
 	/// <returns>Returns null if given a value outside of the grid bounds</returns>
 	public static Cell GetFromWorldPos(float x, float y){
-		int blockSize = Wall.blockSize;
+		int blockSize = Values.blockSize;
         int originX = (int)Mathf.Floor(x / blockSize);
         int originY = (int)Mathf.Floor(y / blockSize);
         //Debug.Log(originX + " " + originY);
@@ -67,16 +67,16 @@ public class Cell {
 	}
     public static int GetCellX(float x)
     {
-        return (int)Mathf.Floor(x / Wall.blockSize);
+        return (int)Mathf.Floor(x / Values.blockSize);
     }
     public static int GetCellY(float y)
     {
-        return (int)Mathf.Floor(y / Wall.blockSize);
+        return (int)Mathf.Floor(y / Values.blockSize);
     }
 	/// <summary>
 	/// Returns the Unity location of the center of the cell
 	/// </summary>
-	public Vector2 WorldPos(){return new Vector2(x*Wall.blockSize+Wall.halfBlock, y*Wall.blockSize+Wall.halfBlock);}
+    public Vector2 WorldPos() { return new Vector2(x * Values.blockSize + Values.halfBlock, y * Values.blockSize + Values.halfBlock); }
 
     public bool Occupy(GamePiece piece)
     {

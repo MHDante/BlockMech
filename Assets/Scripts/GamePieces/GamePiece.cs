@@ -2,22 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-public enum PieceType
-{
-    None,
-    Wall,
-    Block,
-    Button,
-    Switch,
-    Key,
-    Keyhole,
-    Teleport,
-    Tile,
-    Trap,
-    AntiTrap,
-    Player,
-    End,
-}
+
 public enum ColorSlot
 {
     None,
@@ -36,19 +21,19 @@ public abstract class GamePiece : MonoBehaviour
     public static Dictionary<Type, int> spawnNumbers = new Dictionary<Type, int>();
     public Cell _cell ;
     public Cell cell { get { return _cell; } set { _cell = value; if (value!=null)transform.position = value.WorldPos(); } }
-    [SerializeBlockIt]
-    public PieceType piecetype;
-	private const int defaultWeight  = 1;
+	
 	Cell destination;
-	public bool isMoving = false;
+    protected bool isMoving = false;
     [SerializeBlockIt]
     public ColorSlot colorslot = ColorSlot.Purple;
     public Color colorPreview;
-    public GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;
-    public float moveSpeed = 5f, teleportSpeed = 10f;
+    protected GameObject ColorizedSprite, ActivatedSprite, WhiteSprite;
+    private float moveSpeed = 5f, teleportSpeed = 10f;
     private float tempSpeed = 5f;
-    public float currentLerp = 0f, maxLerp = 100f;
-    public Vector2 StartPos;
+    private float currentLerp = 0f, maxLerp = 100f;
+    private Vector2 StartPos;
+    [HideInInspector]
+    public bool JustTeleported = false;
     public GamePiece previousPiece
     {
         get
@@ -79,16 +64,12 @@ public abstract class GamePiece : MonoBehaviour
     }
     public abstract bool isSolid { get; set; }
 
-	private int _weight = defaultWeight;
+    private int _weight = Values.defaultWeight;
 	public virtual int weight { get{return _weight;} set{_weight=value;}}
 
     public abstract bool isPushable { get; set; }
 
     public bool IsOccupied { get { return nextPiece != null; } }
-    public GamePiece()
-    {
-        //Debug.Log("CONSTRUCTOR");
-    }
 
     public virtual void Awake() 
     {
@@ -127,7 +108,7 @@ public abstract class GamePiece : MonoBehaviour
         if (cell != null)
             transform.position = new Vector3(transform.position.x, transform.position.y, -getZPosition());
         }
-    void OnValidate()
+    protected virtual void OnValidate()
     {
         SetColorSlot(colorslot);
     }
@@ -227,7 +208,7 @@ public abstract class GamePiece : MonoBehaviour
 		if(!isPushable) 
 			return false;
 		Wall w = cell.getWall(Utils.opposite(side));
-		if(w!=null && !w.isTraversible) 
+		if(w!=null && !w.IsTraversible) 
 			return false;
 		if (strength < weight) 
 			return false;
@@ -271,7 +252,7 @@ public abstract class GamePiece : MonoBehaviour
             return false;
 		Cell dest = cell.getNeighbour(side);
         Wall w = cell.getWall(side);
-        if(w!=null && !w.isTraversible) return false;
+        if(w!=null && !w.IsTraversible) return false;
         if (dest == null) return false;
         //bool available = dest.Reserve();//Intentional Set.
 		//if (available)
@@ -296,7 +277,7 @@ public abstract class GamePiece : MonoBehaviour
         }
         return available;
     }
-    public bool JustTeleported = false;
+    
 	public virtual bool TeleportTo(Cell target)
     {
 		Cell currentCell = cell;
@@ -355,7 +336,15 @@ public abstract class GamePiece : MonoBehaviour
     public virtual void OnDestroy(){
         if (cell != null) Detatch();
     }
-    
+
+    public static Dictionary<Type, GameObject> PrefabCache = new Dictionary<Type, GameObject>();
+    public static GameObject GetPrefab(Type piece)
+    {
+        if (piece != typeof(Wall) && (!piece.IsSubclassOf(typeof(GamePiece)) || piece.IsAbstract)) throw new WTFException("Trying to get a prefab of a non-piece/non-wall class");
+        if (!PrefabCache.ContainsKey(piece))
+            PrefabCache[piece] = Resources.Load<GameObject>("Prefabs/" + piece.Name);
+        return PrefabCache[piece];
+    }
 }
 
 public interface Triggerable
@@ -363,3 +352,7 @@ public interface Triggerable
     bool IsTriggered { get; }
 }
 
+public interface Activatable
+{
+    void Activate();
+}

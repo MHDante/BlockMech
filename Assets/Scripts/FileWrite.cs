@@ -97,7 +97,7 @@ public class FileWrite : MonoBehaviour {
                     eWall.Add(new XAttribute("y", y));
                     eWall.Add(new XAttribute("Side", s));
                     eWall.Add(new XAttribute("colorslot", wall.colorslot));
-                    eWall.Add(new XAttribute("isTraversible", wall.isTraversible));
+                    eWall.Add(new XAttribute("isTraversible", wall.IsTraversible));
                     eWalls.Add(eWall);
                 }
             }

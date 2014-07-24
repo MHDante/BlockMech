@@ -214,7 +214,7 @@ MonoBehaviour:
   piecetype: 6
   isMoving: 0
   colorslot: 5
-  colorPreview: {r: 1, g: 0, b: 1, a: 1}
+  colorPreview: {r: .5, g: .5, b: .5, a: 1}
   ColorizedSprite: {fileID: 100004}
   ActivatedSprite: {fileID: 100002}
   WhiteSprite: {fileID: 0}
@@ -245,7 +245,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 7db4b663f6a1e0e4496a1bd83dcbbf07, type: 3}
-  m_Color: {r: 0, g: .800000012, b: 0, a: .800000012}
+  m_Color: {r: .400000006, g: .400000006, b: .400000006, a: .800000012}
 --- !u!212 &21200002
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -289,7 +289,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7db4b663f6a1e0e4496a1bd83dcbbf07, type: 3}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
+  m_Color: {r: .5, g: .5, b: .5, a: 1}
 --- !u!212 &21200006
 SpriteRenderer:
   m_ObjectHideFlags: 1
