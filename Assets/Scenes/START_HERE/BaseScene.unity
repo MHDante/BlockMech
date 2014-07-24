@@ -3402,6 +3402,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
   m_RootGameObject: {fileID: 1192943873}
@@ -4859,7 +4875,7 @@ GameObject:
   - 4: {fileID: 1192943874}
   - 114: {fileID: 1192943875}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4889,8 +4905,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebbac5e70efbc14ca819ac573053654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  piecetype: 0
+  isMoving: 0
   colorslot: 0
-  colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
+  colorPreview: {r: 1, g: 1, b: 1, a: 1}
+  ColorizedSprite: {fileID: 0}
+  ActivatedSprite: {fileID: 0}
+  WhiteSprite: {fileID: 357869007}
+  moveSpeed: 5
+  teleportSpeed: 10
+  currentLerp: 0
+  maxLerp: 100
+  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   Strength: 1
   keys: []
@@ -5763,8 +5789,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   author: 
   levelName: YourPuzzleIsInAnotherCastle
-  welcomeHint: BlockIt
   difficulty: 2
+  usesLock: 0
+  usesBlock: 0
+  usesSwitch: 0
+  usesButton: 0
+  usesTrap: 0
+  usesTeleporter: 0
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: .921568632, b: .0156862754, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
 --- !u!4 &1394599003
 Transform:
   m_ObjectHideFlags: 0
@@ -6382,7 +6420,7 @@ GameObject:
   - 4: {fileID: 1597116983}
   - 114: {fileID: 1597116984}
   m_Layer: 0
-  m_Name: End
+  m_Name: end
   m_TagString: End
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6412,8 +6450,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6436f3adfafd3e4b9493fac76730875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  piecetype: 0
+  isMoving: 0
   colorslot: 0
-  colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
+  colorPreview: {r: 1, g: 1, b: 1, a: 1}
+  ColorizedSprite: {fileID: 0}
+  ActivatedSprite: {fileID: 0}
+  WhiteSprite: {fileID: 1229723269}
+  moveSpeed: 5
+  teleportSpeed: 10
+  currentLerp: 0
+  maxLerp: 100
+  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1001 &1602895390
 Prefab:
@@ -6759,6 +6807,22 @@ Prefab:
     - target: {fileID: 400000, guid: 161e53547533da943b35614054ddde15, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: 161e53547533da943b35614054ddde15, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: 161e53547533da943b35614054ddde15, type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: 161e53547533da943b35614054ddde15, type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200002, guid: 161e53547533da943b35614054ddde15, type: 2}
+      propertyPath: m_Color.a
+      value: .800000012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 161e53547533da943b35614054ddde15, type: 2}
@@ -7592,7 +7656,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 032ab8750f13aa14ca8dd77c45615d87, type: 3}
-  m_Color: {r: .300000012, g: .300000012, b: .300000012, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .800000012}
 --- !u!1 &1892958779
 GameObject:
   m_ObjectHideFlags: 0
@@ -8094,7 +8158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 22c0d6a58cb957943af1caca9912ebe0, type: 3}
-  m_Color: {r: .300000012, g: .300000012, b: .300000012, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: .800000012}
 --- !u!1 &2010809676
 GameObject:
   m_ObjectHideFlags: 0

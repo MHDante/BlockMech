@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 [ExecuteInEditMode]
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;

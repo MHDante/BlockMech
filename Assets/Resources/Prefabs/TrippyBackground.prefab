@@ -336,7 +336,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
-  m_Text: <color=#8569CF>Get Jiggy with it.</color>
+  m_Text: Help I'm Stuck in a Video Game!
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -349,7 +349,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: b77709927ba4df74e95405cca6515656, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293059298
 --- !u!108 &10800000
 Light:
   m_ObjectHideFlags: 1
