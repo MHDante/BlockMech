@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class MigrateOld : ScriptableWizard
@@ -10,13 +11,10 @@ public class MigrateOld : ScriptableWizard
     {
         ScriptableWizard.DisplayWizard("Replace GameObjects", typeof(MigrateOld), "Replace");
     }
-    public GameObject BackgroundPrefab;
-    private GameObject Scene;
-    private GameObject MainCamera;
-    private MetaData metaData;
     void OnWizardCreate()
     {
-        if (!tryMigrate()) { 
+        if (!tryMigrate())
+        {
             Debug.Log("FAILED."); 
         }
         else
@@ -24,34 +22,48 @@ public class MigrateOld : ScriptableWizard
             Debug.Log("Success!");
         }
     }
-    bool tryMigrate(){
-        if (FindObjectsOfType<RoomManager>().Length != 1) return false;
-        Scene = FindObjectsOfType<RoomManager>()[0].gameObject;
-        if (FindObjectsOfType<Camera>().Length != 1) return false;
-        MainCamera = FindObjectsOfType<Camera>()[0].gameObject;
-        if (FindObjectsOfType<MetaData>().Length != 1) return false;
-        metaData = FindObjectOfType<MetaData>();
-        DestroyImmediate(GameObject.Find("Indicator"));
-        Scene.transform.position = new Vector3(32,24,0);
-        Scene.name = "Scene";
-        DestroyImmediate(Scene.GetComponent<SpriteRenderer>());
-        MainCamera.transform.parent = Scene.transform;
 
-        EditorUtility.CopySerialized(metaData, Scene.AddComponent<MetaData>());
-        DestroyImmediate(metaData.gameObject);
-        GameObject TrippyBackground = (PrefabUtility.InstantiatePrefab(BackgroundPrefab) as GameObject);
-        TrippyBackground.transform.parent = Scene.transform;
-        TrippyBackground.transform.localRotation = default(Quaternion);
-        TrippyBackground.transform.localScale = Vector3.one;
-        TrippyBackground.transform.localPosition = default(Vector3);
+
+
+    private GameObject TrippyBackground;
+    private GameObject Scene;
+    private GameObject PuzzleMaster;
+    private GameObject player;
+
+    static Dictionary<string, int> namecounters = new Dictionary<string, int>();
+    bool tryMigrate(){
+        if (!GameObject.Find("Scene")) return false;
+        Scene = GameObject.Find("Scene");
+        if (!GameObject.Find("TrippyBackground")) return false;
+        TrippyBackground = GameObject.Find("TrippyBackground");
+        if (!GameObject.Find("Puzzle_Pieces")) return false;
+        PuzzleMaster = GameObject.Find("Puzzle_Pieces");
+        if (!GameObject.Find("Player")) return false;
+        player = GameObject.Find("Player");
+        DestroyImmediate(GameObject.Find("Indicator"));
+
+        TrippyBackground.transform.parent = null;
+        MetaData target = TrippyBackground.GetComponent<MetaData>()?? TrippyBackground.AddComponent<MetaData>();
+        EditorUtility.CopySerialized(Scene.GetComponent<MetaData>(), target);
+
+        DestroyImmediate(Scene);
         
+        TrippyBackground.name = "Scene";
+        player.transform.parent = PuzzleMaster.transform;
         
         foreach (Type p in PuzzleMaker.PieceTypeList)
         {
             if (p == typeof(Player) || p == null ) continue;
             foreach (var o in FindObjectsOfType(p)){
                 MonoBehaviour mb = (MonoBehaviour)o;
-                mb.transform.parent = RoomManager.GetPieceParent(p).transform;
+                if (namecounters.ContainsKey(mb.name))
+                {
+                    mb.name += "+" + ++namecounters[mb.name];
+                }
+                else
+                {
+                    namecounters[mb.name] = 0;
+                }
             }
         }
         return true;

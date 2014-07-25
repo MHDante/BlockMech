@@ -54,15 +54,12 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-        if (player == null)
-        {
-            Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
-        }
+
 
         if (FileWrite.instance != null)
         {
             FileWrite.instance.DeserializationCallback();
-        }
+    }
     }
     public List<T> GetPiecesOfType<T>() where T : GamePiece
     {
@@ -164,7 +161,7 @@ public class RoomManager : MonoBehaviour {
                 else
                 {
                     door.Deactivate();
-                }
+            }
             }
 
         }
@@ -266,8 +263,8 @@ public class RoomManager : MonoBehaviour {
                 RoomManager.pieceParents[piece] = new GameObject();
                 RoomManager.pieceParents[piece].name = piece.ToString().UppercaseFirst() + " Group";
                 RoomManager.pieceParents[piece].transform.parent = RoomManager.masterParent.transform;
-            }
         }
+    }
         return RoomManager.pieceParents[piece];
     }
 
@@ -296,7 +293,7 @@ public class RoomManager : MonoBehaviour {
         {
             RefreshColorFamily(val);
         }
-    }
+	}
 	void Update () {
         if(!Application.isPlaying && roomManager == null)
         { roomManager = this; Awake(); }
