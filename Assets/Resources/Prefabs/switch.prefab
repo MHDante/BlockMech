@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: switch
+  m_Name: Switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,19 +211,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f04dc3df29d33649ada2b11e887f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 7
-  isMoving: 0
   colorslot: 1
-  colorPreview: {r: .5, g: .5, b: .5, a: 1}
-  ColorizedSprite: {fileID: 100004}
-  ActivatedSprite: {fileID: 100002}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
+  colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   JustTeleported: 0
+  _Triggered: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

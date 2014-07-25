@@ -1,6 +1,8 @@
 fileFormatVersion: 2
 guid: 449932e9bb15cb6489d3bc623bf31ca0
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: wall_bounce
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

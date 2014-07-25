@@ -1,6 +1,11 @@
 fileFormatVersion: 2
 guid: b1fc2e2ee419fc64ca361ffe149cb013
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: teleport_0
+    21300002: teleport_1
+    21300004: teleport_2
+    21300006: teleport_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
