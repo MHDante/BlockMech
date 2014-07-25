@@ -20,6 +20,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Andrew/Andew1.unity
   - enabled: 1
+    path: Assets/Scenes/Zack/Blank.unity
+  - enabled: 1
     path: Assets/Scenes/Morgan/Alien Invasion.unity
   - enabled: 1
     path: Assets/Scenes/Ben/Ben1.unity

@@ -51,7 +51,7 @@ public class MigrateOld : ScriptableWizard
             if (p == typeof(Player) || p == null ) continue;
             foreach (var o in FindObjectsOfType(p)){
                 MonoBehaviour mb = (MonoBehaviour)o;
-                mb.transform.parent = PuzzleMaker.GetPieceParent(p).transform;
+                mb.transform.parent = RoomManager.GetPieceParent(p).transform;
             }
         }
         return true;

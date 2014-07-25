@@ -180,4 +180,19 @@ public class Cell {
     {
         _IsReserved = false;
     }
+    public static Vector2 SideOffset(Side s)
+    {
+        switch (s)
+        {
+            case Side.bottom: return new Vector3(0, -Values.halfBlock);
+            case Side.top: return new Vector3(0,Values.halfBlock);
+            case Side.left: return new Vector3(-Values.halfBlock, 0);
+            case Side.right: return new Vector3(Values.halfBlock, 0);
+            default: return Vector3.zero;
+        }
+    }
+    public override string ToString()
+    {
+        return x + ", " + y;
+    }
 }

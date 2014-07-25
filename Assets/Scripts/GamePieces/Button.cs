@@ -16,13 +16,11 @@ public class Button : GamePiece, Triggerable
         base.onDeOccupy(piece);
         SetColorSlot(colorslot);
         RoomManager.roomManager.RefreshColorFamily(colorslot);
-        
     }
     public override bool onOccupy(GamePiece piece)
     {
         SetColorSlot(colorslot);
         RoomManager.roomManager.RefreshColorFamily(colorslot);
-        
         return true;
     }
     public override void Update()

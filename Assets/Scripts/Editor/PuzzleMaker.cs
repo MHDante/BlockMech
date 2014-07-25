@@ -169,7 +169,7 @@ public class PuzzleMaker : EditorWindow
 			RightClick = isRightPressed(RightClick);
 			LeftClick = isLeftPressed(LeftClick);
             Vector2 ScrollVect = getScroll();
-
+            Cell target = Cell.GetFromWorldPos(MousePos);
             int scroll = Math.Sign(ScrollVect.y);
             if (scroll != 0)
             {
@@ -184,10 +184,11 @@ public class PuzzleMaker : EditorWindow
             {
 				Side side;
                 Orientation or;
-				Vector2 target = Utils.WorldToWallPos(MousePos, out side, out or);
+				Vector2 worldpos = Utils.WorldToWallPos(MousePos, out side, out or);
                 if (Indicator)
                 {
-                    Indicator.transform.position = target;
+                    Indicator.transform.position = worldpos;
+                    Indicator.transform.rotation = or == Orientation.Horizontal ? Quaternion.Euler(0, 0, 90) : Quaternion.Euler(0, 0, 0);
                     Wall wall = Indicator.GetComponent<Wall>();
                     wall.orientation = or;
 
@@ -198,7 +199,7 @@ public class PuzzleMaker : EditorWindow
                 }
                 if (LeftDown())
                 {
-                    SpawnWall(target, or, side, colorslot);
+                    RoomManager.roomManager.SpawnWall(target, side, colorslot);
                     
 					sceneView.Update();
 					sceneView.Repaint();
@@ -213,14 +214,13 @@ public class PuzzleMaker : EditorWindow
             }
             else if (selectedPiece == typeof(Player))
             {
-                Cell target = Cell.GetFromWorldPos(MousePos);
                 if (target != null)
                 {
                     Indicator.transform.position = target.WorldPos();
                     if (LeftDown())
                     {
                         //SpawnPiece(selectedPiece, target);
-                        SpawnPlayer(target);
+                        RoomManager.roomManager.SpawnPlayer(target);
                         sceneView.Update();
                         sceneView.Repaint();
                     }
@@ -234,12 +234,12 @@ public class PuzzleMaker : EditorWindow
             }
             else if (selectedIndex != 0)//spawn any other piece (other than wall)
             {
-				Cell target = Cell.GetFromWorldPos(MousePos);
+				
 				if (target!=null) {
 					if (Indicator != null) Indicator.transform.position = target.WorldPos();
                     if (LeftDown())
                     {
-					    SpawnPiece(selectedPiece, target);
+                        RoomManager.roomManager.SpawnPiece(selectedPiece, target, colorslot);
 						sceneView.Update();
 						sceneView.Repaint();
 					}
@@ -283,62 +283,6 @@ public class PuzzleMaker : EditorWindow
             UpdateIndicator(true);
         }
     }
-    public void SpawnPiece(Type piece, Cell target)
-    {
-        if (target.IsSolidlyOccupied()) return;
-        GameObject parent = GetPieceParent(piece);
-        GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(selectedPiece));
-        obj.transform.position = target.WorldPos();
-        obj.transform.parent = parent.transform;
-        RoomManager.roomManager.AddPiece(obj, piece, colorslot);
-
-    }
-    public void SpawnPlayer(Cell target)
-    {
-        if (RoomManager.roomManager.player == null)
-        {
-            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(typeof(Player)));
-            obj.transform.position = target.WorldPos();
-            RoomManager.roomManager.AddPiece(obj, typeof(Player), ColorSlot.None);
-        }
-        else
-        {
-            RoomManager.roomManager.player.TeleportTo(target);
-        }
-    }
-    public void SpawnWall(Vector3 target, Orientation orient, Side side, ColorSlot colorslot)
-    {
-        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(typeof(Wall)));
-        wallobj.transform.position = target;
-        wallobj.transform.rotation = orient == Orientation.Vertical ? Quaternion.identity : Quaternion.Euler(0, 0, 90);
-        wallobj.transform.parent = GetPieceParent(typeof(Wall)).transform;
-        Wall wall = null;
-        wall = wallobj.GetComponent<Wall>();
-		if(wall == null) throw new WTFException();
-		wall.orientation = orient;
-        wall.SetColorSlot(colorslot);
-        RoomManager.roomManager.AddWall(wall);
-    }
-
-    public static GameObject GetPieceParent(Type piece)
-    {
-        if (!RoomManager.pieceParents.ContainsKey(piece) || RoomManager.pieceParents[piece] == null)
-        {
-            GameObject preexisting = GameObject.Find(piece.ToString().UppercaseFirst() + " Group");
-            if (preexisting != null && preexisting.transform.parent == RoomManager.masterParent.transform)
-            {
-                RoomManager.pieceParents[piece] = preexisting;
-            }
-            else
-            {
-                RoomManager.pieceParents[piece] = new GameObject();
-                RoomManager.pieceParents[piece].name = piece.ToString().UppercaseFirst() + " Group";
-                RoomManager.pieceParents[piece].transform.parent = RoomManager.masterParent.transform;
-            }
-        }
-        return RoomManager.pieceParents[piece];
-    }
-
 
     bool isLeftPressed(bool prevValue)
     {
