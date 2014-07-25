@@ -16,7 +16,6 @@ public class Trap : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        
         return base.onOccupy(piece);
     }
 

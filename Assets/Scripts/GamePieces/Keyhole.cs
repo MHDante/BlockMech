@@ -20,7 +20,6 @@ public class Keyhole : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        
         return base.onOccupy(piece);
     }
     public bool TryOpen(Player player)

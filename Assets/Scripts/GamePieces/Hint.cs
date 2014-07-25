@@ -5,10 +5,13 @@ public class Hint : GamePiece {
 
     public override bool isSolid { get { return false; } set { } }
     public override bool isPushable { get { return false; } set { } }
+    [SerializeBlockIt]
     public bool persistent = false;
+    [SerializeBlockIt]
     public bool oneShot = false;
-    private bool consumed = false;
+    [SerializeBlockIt]
     public string hint;
+    private bool consumed = false;
     public override void Awake()
     {
         base.Awake();
