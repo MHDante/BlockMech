@@ -16,7 +16,10 @@ public class FileWrite : MonoBehaviour {
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<FileWrite>();
-                DontDestroyOnLoad(_instance.gameObject);
+                if (_instance != null)
+                {
+                    DontDestroyOnLoad(_instance.gameObject);
+                }
             }
             return _instance;
         }
@@ -83,9 +86,10 @@ public class FileWrite : MonoBehaviour {
                 foreach (XElement gamePiece in eCell.Elements())
                 {
                     string typeName = gamePiece.Name.ToString();
+                    string gameObjectName = gamePiece.Attribute("Name").Value;
                     Type pieceType = Type.GetType(typeName);
-
                     GamePiece gp = room.SpawnPiece(pieceType, cell);
+                    gp.gameObject.name = gameObjectName;
                     foreach (XElement FPInfo in gamePiece.Elements())
                     {
                         string infotype = FPInfo.Name.ToString();

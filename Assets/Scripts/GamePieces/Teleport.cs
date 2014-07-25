@@ -8,7 +8,33 @@ public class Teleport : GamePiece
     public override bool isPushable { get { return false; } set { } }
     private float rotation = 0f, rotationRate = 1f;
     private int axisCounter = 0;
+
     public GameObject target;
+    [SerializeBlockIt]
+    public string targetName = "";
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
+        if (target != null)
+        {
+            targetName = target.name;
+        }
+    }
+    public GamePiece FindTarget()
+    {
+        if (string.IsNullOrEmpty(targetName)) return null;
+        var list = FindObjectsOfType<GamePiece>();
+        foreach (GamePiece gp in list)
+        {
+            if (gp == this) continue;
+            if (gp.gameObject.name == targetName)
+            {
+                return gp;
+            }
+        }
+        return null;
+    }
+
     public override void Start()
     {
         base.Start();
@@ -57,11 +83,12 @@ public class Teleport : GamePiece
                 }
             }
         }
-
     }
     public override bool onOccupy(GamePiece piece)
     {
-        if (target == null)
+        GamePiece targ = FindTarget();
+        //GameObject targ = target;
+        if (targ == null)//(target == null)
         {
             Debug.Log("Teleporter placed @ " + cell.x + ", " + cell.y + " does not have a target set!");
         }
@@ -73,7 +100,8 @@ public class Teleport : GamePiece
             }
             else
             {
-                Cell targetCell = target.GetComponent<GamePiece>().cell;
+                Cell targetCell = targ.cell;
+                //Cell targetCell = target.GetComponent<GamePiece>().cell;
                 if (targetCell.pieces.Any(p => p is Teleport)) piece.JustTeleported = true;
                 piece.TeleportTo(targetCell);
             }

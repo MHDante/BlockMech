@@ -12,7 +12,6 @@ public class Key : GamePiece
     }
     public override void onDeOccupy(GamePiece piece)
     {
-
         base.onDeOccupy(piece);
     }
     public override bool onOccupy(GamePiece piece)

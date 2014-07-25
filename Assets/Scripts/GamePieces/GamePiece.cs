@@ -45,12 +45,10 @@ public abstract class GamePiece : MonoBehaviour
             return cell.pieces[index - 1];
         }
     }
-
     public int getZPosition()
     {
         return cell.pieces.IndexOf(this);
     }
-
     public GamePiece nextPiece
     {
         get
@@ -203,9 +201,6 @@ public abstract class GamePiece : MonoBehaviour
     }
     public virtual bool pushFrom(Side side, int strength = 1)
     {
-
-
-
         GamePiece nextpiece = this.nextPiece;
         if (!isSolid && nextpiece != null && nextpiece.pushFrom(side, strength-1))
 			return true;
@@ -220,7 +215,6 @@ public abstract class GamePiece : MonoBehaviour
         if (neighbour == null)
             return false;
 		GamePiece obstructor = neighbour.firstSolid();
-
         if (obstructor == null)
         {
             Side newside = Utils.opposite(side);
@@ -244,7 +238,6 @@ public abstract class GamePiece : MonoBehaviour
     {
         return true;
     }
-
     public virtual bool canBeOccupiedBy(GamePiece piece)
     {
         return true;

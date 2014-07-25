@@ -9,12 +9,9 @@ public class FPInfo
 {
     private FieldInfo _fieldInfo;
     public FieldInfo fieldInfo { get { return _fieldInfo; } set { _fieldInfo = value; } }
-
     private PropertyInfo _propertyInfo;
     public PropertyInfo propertyInfo { get { return _propertyInfo; } set { _propertyInfo = value; } }
-
     public string DeclaringTypeName { get; set; }
-
     public string Name { get; set; }
     public Type FPType
     {
@@ -171,6 +168,16 @@ public class FPInfo
         {
             byte v;
             if (byte.TryParse(s, out v))
+            {
+                //fpinfo.SetValue(v, parentItem.obj);
+                return v;
+            }
+            else return null;
+        }
+        else if (primitiveType == typeof(bool))
+        {
+            bool v;
+            if (bool.TryParse(s, out v))
             {
                 //fpinfo.SetValue(v, parentItem.obj);
                 return v;
