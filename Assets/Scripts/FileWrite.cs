@@ -4,39 +4,120 @@ using System.Xml.Linq;
 using System.IO;
 using System;
 using System.Linq;
+using System.Reflection;
 
 public class FileWrite : MonoBehaviour {
 
+    private static FileWrite _instance = null;
+    public static FileWrite instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<FileWrite>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
+        }
+    }
 	// Use this for initialization
 	void Start () {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(_instance.gameObject);
+        }
+        else
+        {
+            if (this != _instance)
+                Destroy(this.gameObject);
+        }
+
         //InitSerialization();
 	}
-
+    string filename = "xmlfile.xml";
     public void InitSerialization()
     {
         XElement all = SerializeGrid();
         Debug.Log(all);
 
-        string filename = "xmlfile.xml";
-
         WriteFile(filename, all.ToString());
-
-
-        //XElement loaded = XElement.Load(Application.persistentDataPath + "/" + filename);
-        //foreach(XElement element in loaded.Elements())
-        //{
-        //    //Debug.Log(element);
-        //    Type t = Type.GetType(element.Name.ToString());
-        //    if (t == null) throw new WTFException("Type was null while parsing xml");
-        //    if (RoomManager.pieceEnums.ContainsKey(t))
-        //    {
-        //        
-        //    }
-        //}
     }
 
+    public void InitDeserialization()
+    {
+        Destroy(RoomManager.roomManager);
+        RoomManager.roomManager = null;
+        Application.LoadLevel("Blank");
+        AwaitingDSCallback = true;
+    }
+    bool AwaitingDSCallback = false;
+    public bool DeserializationCallback()
+    {
+        if (!AwaitingDSCallback)
+        {
+            return false;
+        }
+        AwaitingDSCallback = false;
 
+        RoomManager room = FindObjectOfType<RoomManager>();
 
+        XElement loaded = XElement.Load(Application.persistentDataPath + "/" + filename);
+        XElement meta = loaded.Element(XName.Get("Meta"));
+        MetaData metaData = (MetaData)FindObjectOfType(typeof(MetaData));
+        metaData.author = meta.Attribute("Author").Value;
+        metaData.levelName = meta.Attribute("LevelName").Value;
+        metaData.welcomeHint = meta.Attribute("WelcomeHint").Value;
+        metaData.difficulty = (MetaData.Difficulty)Enum.Parse(typeof(MetaData.Difficulty), meta.Attribute("Difficulty").Value);
+
+        XElement grid = loaded.Element( "Grid");
+
+        foreach (XElement row in grid.Elements( "Row"))
+        {
+            foreach (XElement eCell in row.Elements( "Cell"))
+            {
+                int cellx = int.Parse(eCell.Attribute("x").Value);
+                int celly = int.Parse(eCell.Attribute("y").Value);
+                Cell cell = RoomManager.roomManager.Grid[cellx][celly];
+                foreach (XElement gamePiece in eCell.Elements())
+                {
+                    string typeName = gamePiece.Name.ToString();
+                    Type pieceType = Type.GetType(typeName);
+
+                    GamePiece gp = room.SpawnPiece(pieceType, cell);
+                    foreach (XElement FPInfo in gamePiece.Elements())
+                    {
+                        string infotype = FPInfo.Name.ToString();
+                        XAttribute attr = FPInfo.Attribute("Name");
+                        FPInfo fpinfo = null;
+                        if (infotype == "Field" || infotype == "Property")
+                        {
+                            fpinfo = pieceType.GetFPInfo(attr.Value);
+                        }
+                        string val = FPInfo.Attribute("Value").Value;
+                        fpinfo.SetValue(val, gp);
+                    }
+                }
+            }
+        }
+        XElement Walls = loaded.Element("Walls");
+
+        foreach (XElement eWall in Walls.Elements())
+        {
+            int CellX = int.Parse(eWall.Attribute("x").Value);
+            int CellY = int.Parse(eWall.Attribute("y").Value);
+            Side s = (Side)Enum.Parse(typeof(Side), eWall.Attribute("Side").Value);
+            ColorSlot clrSlt = (ColorSlot)Enum.Parse(typeof(ColorSlot),eWall.Attribute("colorslot").Value);
+            WallType walltype = (WallType)Enum.Parse(typeof(WallType), eWall.Name.ToString());
+            Cell targetCell = Cell.Get(CellX, CellY);
+            Wall wall = RoomManager.roomManager.SpawnWall(targetCell, s, clrSlt);
+            wall.IsTraversible = bool.Parse(eWall.Attribute("isTraversible").Value);
+            wall.wallType = walltype;
+        }
+        
+        return true;
+    }
     public XElement SerializeGrid()
     {
         XElement eRoot = new XElement("Root");
@@ -48,6 +129,7 @@ public class FileWrite : MonoBehaviour {
         {
             eInfo.Add(new XAttribute("Author", auth.author));
             eInfo.Add(new XAttribute("LevelName", auth.levelName));
+            eInfo.Add(new XAttribute("WelcomeHint", auth.welcomeHint));
             eInfo.Add(new XAttribute("Difficulty", auth.difficulty));
             
         }
@@ -56,6 +138,10 @@ public class FileWrite : MonoBehaviour {
         eRoot.Add(eGrid);
 
         var grid = RoomManager.roomManager.Grid;
+        eGrid.Add(new XAttribute("Width", grid[0].Length));
+        eGrid.Add(new XAttribute("Height", grid.Length));
+
+
         for(int y = 0; y < grid[0].Length; y++)
         {
             XElement eRow = new XElement("Row", new XAttribute("y",y));
@@ -90,9 +176,9 @@ public class FileWrite : MonoBehaviour {
                 Cell cell = grid[x][y];
                 foreach(Side s in cell.walls.Keys)
                 {
-                    if (s == Side.right || s == Side.top || cell.walls[s] == null) continue;
+                    if (s == Side.right || s == Side.top || cell.walls[s] == null || cell.walls[s].gameObject.HasParent("OuterWalls")) continue;
                     Wall wall = cell.walls[s];
-                    XElement eWall = new XElement("Wall");
+                    XElement eWall = new XElement(wall.wallType.ToString());
                     eWall.Add(new XAttribute("x", x));
                     eWall.Add(new XAttribute("y", y));
                     eWall.Add(new XAttribute("Side", s));
@@ -110,7 +196,8 @@ public class FileWrite : MonoBehaviour {
     public XElement SerializeObject(object o)
     {
         Type type = o.GetType();
-        XElement r = new XElement(type.ToString());
+        
+        XElement r = new XElement(type.Name);
         if (o is MonoBehaviour)
         {
             MonoBehaviour mono = (MonoBehaviour)o;
@@ -130,9 +217,14 @@ public class FileWrite : MonoBehaviour {
         {
             if (prop.GetCustomAttributes(typeof(SerializeBlockIt), true).Length > 0)
             {
-                XElement p = new XElement(prop.Name, prop.GetValue(o, null));
-                XAttribute att = new XAttribute("PType", prop.PropertyType);
+                XElement p = new XElement("Property");
+                XAttribute att = new XAttribute("Name", prop.Name);
+                XAttribute att2 = new XAttribute("Type", prop.PropertyType);
+                XAttribute att3 = new XAttribute("Value", prop.GetValue(o, null));
+                
                 p.Add(att);
+                p.Add(att2);
+                p.Add(att3);
                 r.Add(p);
             }
         }
@@ -140,9 +232,14 @@ public class FileWrite : MonoBehaviour {
         {
             if (field.GetCustomAttributes(typeof(SerializeBlockIt), true).Length > 0)
             {
-                XElement f = new XElement(field.Name, field.GetValue(o));
-                XAttribute att = new XAttribute("FType", field.FieldType);
+                XElement f = new XElement("Field");
+                XAttribute att = new XAttribute("Name", field.Name);
+                XAttribute att2 = new XAttribute("Type", field.FieldType);
+                XAttribute att3 = new XAttribute("Value", field.GetValue(o));
+
                 f.Add(att);
+                f.Add(att2);
+                f.Add(att3);
                 r.Add(f);
             }
         }
@@ -162,7 +259,9 @@ public class FileWrite : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        if (Input.GetKeyDown(KeyCode.S)) InitSerialization();
+        if (Input.GetKeyDown(KeyCode.D)) InitDeserialization();
+        if (Input.GetKeyDown(KeyCode.T)) RoomManager.roomManager.RefreshColorFamilyAll();
 	}
 }
 [System.AttributeUsage(System.AttributeTargets.Property |

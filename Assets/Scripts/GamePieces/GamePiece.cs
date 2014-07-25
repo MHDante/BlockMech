@@ -176,6 +176,10 @@ public abstract class GamePiece : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
         }
+        if (RoomManager.roomManager != null)
+        {
+            RoomManager.roomManager.RefreshColorFamily(colorslot);
+        }
     }
     [Flags]public enum Axis
     {
@@ -213,6 +217,8 @@ public abstract class GamePiece : MonoBehaviour
 		if (strength < weight) 
 			return false;
         Cell neighbour = cell.getNeighbour(Utils.opposite(side));
+        if (neighbour == null)
+            return false;
 		GamePiece obstructor = neighbour.firstSolid();
 
         if (obstructor == null)

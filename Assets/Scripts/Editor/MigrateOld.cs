@@ -15,7 +15,7 @@ public class MigrateOld : ScriptableWizard
     {
         if (!tryMigrate())
         {
-            Debug.Log("FAILED.");
+            Debug.Log("FAILED."); 
         }
         else
         {
@@ -47,7 +47,7 @@ public class MigrateOld : ScriptableWizard
         EditorUtility.CopySerialized(Scene.GetComponent<MetaData>(), target);
 
         DestroyImmediate(Scene);
-
+        
         TrippyBackground.name = "Scene";
         player.transform.parent = PuzzleMaster.transform;
         

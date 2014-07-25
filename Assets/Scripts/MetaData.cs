@@ -10,13 +10,13 @@ public class MetaData : MonoBehaviour
     public static MetaData instance { get { if (_instance == null) _instance = (MetaData)FindObjectOfType(typeof(MetaData)); return _instance; } }
     private static int HintLimit = 32;
 
-    public enum difficulty_setting { Easy, Normal, Hard, Nightmare, Battletoads }
+    public enum Difficulty { Easy, Normal, Hard, Nightmare, Battletoads }
 
     public string author;
     public string levelName;
     public string welcomeHint;
 
-    public difficulty_setting difficulty;
+    public Difficulty difficulty;
 
 
     public static Dictionary<ColorSlot, string> colorCodes = new Dictionary<ColorSlot, string>(){
