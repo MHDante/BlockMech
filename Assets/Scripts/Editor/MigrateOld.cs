@@ -32,10 +32,9 @@ public class MigrateOld : ScriptableWizard
 
     static Dictionary<string, int> namecounters = new Dictionary<string, int>();
     bool tryMigrate(){
-        if (!GameObject.Find("Scene")) return false;
-        Scene = GameObject.Find("Scene");
-        if (!GameObject.Find("TrippyBackground")) return false;
-        TrippyBackground = GameObject.Find("TrippyBackground");
+        if (!GameObject.Find("LightEffect")) return false;
+        TrippyBackground = GameObject.Find("LightEffect").GetParent();
+        Scene = TrippyBackground.GetParent();
         if (!GameObject.Find("Puzzle_Pieces")) return false;
         PuzzleMaster = GameObject.Find("Puzzle_Pieces");
         if (!GameObject.Find("Player")) return false;

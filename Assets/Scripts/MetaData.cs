@@ -47,7 +47,7 @@ public class MetaData : MonoBehaviour
 
     public void UpdateText(string text, ColorSlot color = ColorSlot.None)
     {
-        TextMesh tm = GetComponentInChildren<TextMesh>();
+        TextMesh tm = FindObjectOfType<TextMesh>();
         tm.color = GetColorSlot(color);
         tm.text = text;
     }

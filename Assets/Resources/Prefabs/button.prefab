@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: button
+  m_Name: Button
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,18 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3562a36e17147d47a810c009de59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 6
-  isMoving: 0
   colorslot: 5
-  colorPreview: {r: .5, g: .5, b: .5, a: 1}
-  ColorizedSprite: {fileID: 100004}
-  ActivatedSprite: {fileID: 100002}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
+  colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
   JustTeleported: 0
 --- !u!212 &21200000
 SpriteRenderer:

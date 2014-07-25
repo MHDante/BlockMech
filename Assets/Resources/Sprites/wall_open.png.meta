@@ -1,6 +1,26 @@
 fileFormatVersion: 2
 guid: 1f4c8c4e3cf53de4bacb61a99b40d113
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: wall_open_0
+    21300002: wall_open_1
+    21300004: wall_open_2
+    21300006: wall_open_3
+    21300008: wall_open_4
+    21300010: wall_open_5
+    21300012: wall_open_6
+    21300014: wall_open_7
+    21300016: wall_open_8
+    21300018: wall_open_9
+    21300020: wall_open_10
+    21300022: wall_open_11
+    21300024: wall_open_12
+    21300026: wall_open_13
+    21300028: wall_open_14
+    21300030: wall_open_15
+    21300032: wall_open_16
+    21300034: wall_open_17
+    21300036: wall_open_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
