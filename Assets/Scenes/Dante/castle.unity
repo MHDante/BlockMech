@@ -119,6 +119,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &7769862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -201,7 +203,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &20201711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -345,11 +349,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: .00872653536
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .00872653536
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -524,6 +528,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &33914707
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -733,6 +739,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 1
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &47743044
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -852,6 +860,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &49476905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -935,6 +945,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &49514330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1399,6 +1411,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &67651655
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1481,7 +1495,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &68797527
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1778,94 +1794,6 @@ Prefab:
   m_RootGameObject: {fileID: 972650136}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1001 &91560344
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 38
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.r
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.g
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.b
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.a
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.r
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.g
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.b
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Color.a
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Name
-      value: Indicator
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_RootGameObject: {fileID: 802037930}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &102609850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,6 +1933,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &103477117
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2138,7 +2068,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &108710319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2222,6 +2154,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &108882457
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2332,7 +2266,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 26747473}
   m_GameObject: {fileID: 111605908}
-  m_LocalRotation: {x: 0, y: 0, z: .00872653536, w: .999961913}
+  m_LocalRotation: {x: 0, y: .00872653536, z: 0, w: .999961913}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2444,6 +2378,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 1
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &116289404
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2873,6 +2809,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 1
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &131503815
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2940,7 +2878,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &138714884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3024,6 +2964,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &139219169
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3198,6 +3140,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &160146633
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3384,7 +3328,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &179933034
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3770,7 +3716,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &219127310
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4067,6 +4015,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &224767620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4150,6 +4100,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &226740777
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4322,6 +4274,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &243017904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4522,7 +4476,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &252817284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4701,6 +4657,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &258450481
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4828,7 +4786,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &266844001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4911,7 +4871,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &271446846
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5352,6 +5314,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &296768259
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5494,7 +5458,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &300633643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5577,7 +5543,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &300750237
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5660,7 +5628,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &302061181
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5744,6 +5714,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &322282019
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6323,7 +6295,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &364638658
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6774,7 +6748,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &375474849
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7030,6 +7006,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &387200439
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7217,6 +7195,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &396259767
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7410,7 +7390,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &408869978
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7681,6 +7663,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &431582282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7800,6 +7784,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &434259477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7882,7 +7868,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &437485062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7965,7 +7953,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &448619559
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8004,35 +7994,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!1 &451401678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 451401679}
-  m_Layer: 0
-  m_Name: Colorized
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &451401679
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400002, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  m_GameObject: {fileID: 451401678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1666924612}
-  - {fileID: 1064045207}
-  m_Father: {fileID: 802037931}
-  m_RootOrder: 0
 --- !u!1 &453104282
 GameObject:
   m_ObjectHideFlags: 0
@@ -8078,6 +8039,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &453104285
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8161,6 +8124,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &457331592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8363,6 +8328,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &481725488
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8442,11 +8409,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: .00872653536
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .999961913
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
@@ -8502,19 +8469,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 7.61524279e-05
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: .00872620381
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: .00872620381
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .999923885
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -8771,6 +8738,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &495402822
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8905,6 +8874,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &501046419
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9141,7 +9112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &513551282
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9224,7 +9197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &515356607
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9745,6 +9720,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &554354944
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9981,7 +9958,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &575649037
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10203,6 +10182,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &610576201
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10604,6 +10585,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &630617778
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10743,6 +10726,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &632930081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10825,7 +10810,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &639327393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11071,7 +11058,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &651920284
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11154,7 +11143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &656185221
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11485,6 +11476,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 1
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &673555929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11940,6 +11933,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &688614070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12066,6 +12061,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &696269479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12488,7 +12485,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &713944302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12907,7 +12906,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &739025828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13096,6 +13097,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &756223406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13178,7 +13181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &757106063
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13357,6 +13362,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &760793648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13469,6 +13476,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &769326365
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13959,34 +13968,6 @@ Prefab:
   m_RootGameObject: {fileID: 1697995979}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &802037930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 802037931}
-  m_Layer: 0
-  m_Name: Indicator
-  m_TagString: Tile
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &802037931
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  m_GameObject: {fileID: 802037930}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 38, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 451401679}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!1001 &808065270
 Prefab:
   m_ObjectHideFlags: 0
@@ -14075,7 +14056,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &808762666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14252,7 +14235,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &815556574
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14336,6 +14321,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &815921549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14581,6 +14568,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &828342222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14971,6 +14960,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &846644368
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15114,6 +15105,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &850009431
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15363,7 +15356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &864494156
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15768,6 +15763,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &884613264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15910,7 +15907,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &890631984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16009,6 +16008,8 @@ MonoBehaviour:
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
   orientation: 0
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &892480264
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16136,6 +16137,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 0
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &901612012
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16545,7 +16548,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &920706380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17016,7 +17021,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &950961366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17203,6 +17210,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &954256999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17285,7 +17294,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &954932489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17397,7 +17408,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &957363344
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17652,6 +17665,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &978358434
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17734,7 +17749,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &982395159
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17817,7 +17834,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &987204124
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17900,7 +17919,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &987540888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18352,6 +18373,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1011303213
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18435,6 +18458,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1012579240
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18570,6 +18595,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
+      propertyPath: _Triggered
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -18754,6 +18783,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1023678033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19410,6 +19441,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1050800650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19477,57 +19510,6 @@ Transform:
   - {fileID: 1031887034}
   m_Father: {fileID: 1853646377}
   m_RootOrder: 0
---- !u!1 &1064045206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1064045207}
-  - 212: {fileID: 1064045208}
-  m_Layer: 0
-  m_Name: Border
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1064045207
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  m_GameObject: {fileID: 1064045206}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.100000001}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 451401679}
-  m_RootOrder: 1
---- !u!212 &1064045208
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21200002, guid: 4d5b0f3845bee1544993600b356d1dbd,
-    type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  m_GameObject: {fileID: 1064045206}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 3ed61021f7cb5bf4281e4ad25d93fb60, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
 --- !u!1 &1072948762
 GameObject:
   m_ObjectHideFlags: 0
@@ -19639,6 +19621,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 1
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &1081228730
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19782,6 +19766,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1087510393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19850,6 +19836,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1088561602
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19932,7 +19920,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1103012652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20122,7 +20112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1110213479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20334,6 +20326,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1129174113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20445,7 +20439,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1130890125
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20529,6 +20525,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1131430003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20707,6 +20705,8 @@ MonoBehaviour:
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
   orientation: 0
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &1136810593
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20987,6 +20987,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1157255885
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21210,6 +21212,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1170669276
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21321,7 +21325,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1181025344
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21405,6 +21411,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1182751108
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21488,6 +21496,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1185155771
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21750,7 +21760,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1193945581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21885,6 +21897,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1194623907
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22094,6 +22108,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1202106949
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22161,7 +22177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1212093581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22244,7 +22262,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1213679324
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22606,7 +22626,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1239730799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22689,7 +22711,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1240713165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22773,6 +22797,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1248754547
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22920,6 +22946,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1263058595
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23047,6 +23075,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1266364408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23685,6 +23715,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1326962064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23768,6 +23800,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1328070066
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24226,6 +24260,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1351526821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24561,7 +24597,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1375530346
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24644,7 +24682,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1382119883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24778,7 +24818,7 @@ Transform:
   m_Children:
   - {fileID: 1577535126}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &1394599004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25027,6 +25067,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1409385133
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25109,7 +25151,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1411917639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25252,7 +25296,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1412670981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25395,7 +25441,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1417826879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25534,7 +25582,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1425253299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25618,6 +25668,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1425470399
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25701,6 +25753,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1426603171
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25903,7 +25957,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1432250277
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25986,7 +26042,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1436462938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26070,6 +26128,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1439815179
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26152,7 +26212,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1441312552
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26642,7 +26704,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1460332535
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27035,7 +27099,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1471926313
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27119,6 +27185,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1472502624
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27258,6 +27326,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1475776003
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27435,6 +27505,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1481727458
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27569,6 +27641,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1482957923
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27864,7 +27938,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 483714169}
   m_GameObject: {fileID: 1491534462}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .00872653536, y: 0, z: 0, w: .999961913}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28010,7 +28084,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1501231198
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28093,7 +28169,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1501293766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28233,6 +28311,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1519789110
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28292,7 +28372,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 485504054}
   m_GameObject: {fileID: 1530697843}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 7.61524279e-05, y: .00872620381, z: .00872620381, w: .999923885}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28345,6 +28425,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1532061145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28512,7 +28594,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1550304203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28655,7 +28739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1558511392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28794,7 +28880,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1560430329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28929,6 +29017,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1567097266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29476,6 +29566,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1593581932
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29639,6 +29731,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1607846019
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29722,6 +29816,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1608027544
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29860,7 +29956,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1612433596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30352,7 +30450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1634273291
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30435,7 +30535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1643904937
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30657,7 +30759,7 @@ Transform:
   - {fileID: 1487235734}
   - {fileID: 141548048}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &1657497733
 Prefab:
   m_ObjectHideFlags: 0
@@ -30774,57 +30876,6 @@ Prefab:
   m_RootGameObject: {fileID: 1239730796}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1666924611
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100004, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1666924612}
-  - 212: {fileID: 1666924613}
-  m_Layer: 0
-  m_Name: Fill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1666924612
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400004, guid: 4d5b0f3845bee1544993600b356d1dbd, type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  m_GameObject: {fileID: 1666924611}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.400000006}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 451401679}
-  m_RootOrder: 0
---- !u!212 &1666924613
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21200000, guid: 4d5b0f3845bee1544993600b356d1dbd,
-    type: 2}
-  m_PrefabInternal: {fileID: 91560344}
-  m_GameObject: {fileID: 1666924611}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3ed61021f7cb5bf4281e4ad25d93fb60, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
 --- !u!1 &1669100010
 GameObject:
   m_ObjectHideFlags: 0
@@ -30898,7 +30949,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1670483719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31033,6 +31086,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1680590828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31142,7 +31197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1683225572
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31299,6 +31356,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 0
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &1685857716
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31636,7 +31695,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1697995982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31719,7 +31780,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1702105792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31803,6 +31866,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1703179392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32301,6 +32366,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1730915981
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32384,6 +32451,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1731290899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32538,7 +32607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1737121750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32622,6 +32693,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1739585667
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32704,7 +32777,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1743398689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33005,6 +33080,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1764053296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33613,7 +33690,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1792608177
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33696,7 +33775,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1800444792
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -33779,7 +33860,7 @@ Transform:
   m_Children:
   - {fileID: 788227816}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1810529301
 GameObject:
   m_ObjectHideFlags: 0
@@ -34360,7 +34441,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1846386306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34443,7 +34526,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1847643391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34527,6 +34612,7 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   JustTeleported: 0
+  _Triggered: 0
 --- !u!1001 &1855146700
 Prefab:
   m_ObjectHideFlags: 0
@@ -34660,7 +34746,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1876876109
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34738,6 +34826,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
+      propertyPath: _Triggered
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
   m_RootGameObject: {fileID: 1853646376}
@@ -34788,6 +34880,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1882114665
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35138,6 +35232,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1900822829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35548,7 +35644,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1929164391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35631,7 +35729,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1930993802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -35766,6 +35866,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1937131048
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36106,7 +36208,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1956967884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36249,7 +36353,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1963985309
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36389,6 +36495,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1968318091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36630,6 +36738,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1989304330
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36742,6 +36852,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1991781758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36825,6 +36937,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &1998195323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36900,7 +37014,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
@@ -36952,6 +37066,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2003237617
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37281,6 +37397,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2020862992
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37420,6 +37538,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2021426715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37558,7 +37678,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2034497576
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37925,6 +38047,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2044942164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38023,6 +38147,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 1
+  wallType: 1
+  _IsTraversible: 0
 --- !u!212 &2050477292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38151,6 +38277,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2053979899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38289,7 +38417,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2057836417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38686,7 +38816,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2073740934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -38978,6 +39110,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2089320675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39224,7 +39358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  orientation: 1
+  orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2109136081
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39308,6 +39444,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2110683309
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39442,6 +39580,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  _IsTraversible: 0
 --- !u!212 &2129239058
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39525,6 +39665,7 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   JustTeleported: 0
+  _Triggered: 0
 --- !u!1001 &2139236683
 Prefab:
   m_ObjectHideFlags: 0
