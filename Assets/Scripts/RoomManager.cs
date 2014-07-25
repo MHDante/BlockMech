@@ -286,6 +286,7 @@ public class RoomManager : MonoBehaviour {
     }
 	void Start () {
         RefreshColorFamilyAll();
+        //Debug.Log("Roommanager");
 	}
     public void RefreshColorFamilyAll()
     {
