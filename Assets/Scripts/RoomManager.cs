@@ -55,10 +55,10 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-        if (player == null)
-        {
-            Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
-        }
+        //if (player == null)
+        //{
+        //    Debug.LogWarning("Level needs <color=magenta>player</color>, add with <color=magenta>PuzzleMaker plugin</color>");
+        //}
     }
     public List<T> GetPiecesOfType<T>() where T : GamePiece
     {
