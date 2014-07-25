@@ -344,6 +344,10 @@ public abstract class GamePiece : MonoBehaviour
             PrefabCache[piece] = Resources.Load<GameObject>("Prefabs/" + piece.Name);
         return PrefabCache[piece];
     }
+    public virtual void OnSerialize()
+    {
+
+    }
 }
 
 public interface Triggerable

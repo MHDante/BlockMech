@@ -6,7 +6,7 @@ using System;
 
 public class MigrateOld : ScriptableWizard
 {
-    [MenuItem("BlockIt/Migrate Old")]
+    [MenuItem("BlockIt/Migrate Old %e")]
     static void CreateWizard()
     {
         ScriptableWizard.DisplayWizard("Replace GameObjects", typeof(MigrateOld), "Replace");
@@ -37,12 +37,13 @@ public class MigrateOld : ScriptableWizard
         Scene = TrippyBackground.GetParent();
         if (!GameObject.Find("Puzzle_Pieces")) return false;
         PuzzleMaster = GameObject.Find("Puzzle_Pieces");
-        if (!GameObject.Find("Player")) return false;
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player") ?? GameObject.Find("player");
+        if (!player) return player;
+        player.name = "Player";
         DestroyImmediate(GameObject.Find("Indicator"));
 
         TrippyBackground.transform.parent = null;
-        MetaData target = TrippyBackground.GetComponent<MetaData>()?? TrippyBackground.AddComponent<MetaData>();
+        MetaData target = TrippyBackground.GetComponent<MetaData>() ?? TrippyBackground.AddComponent<MetaData>();
         EditorUtility.CopySerialized(Scene.GetComponent<MetaData>(), target);
 
         DestroyImmediate(Scene);
@@ -65,6 +66,7 @@ public class MigrateOld : ScriptableWizard
                 }
             }
         }
+        FileWrite.InitSerialization();
         return true;
     }
 }

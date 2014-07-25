@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Switch
+  m_Name: switch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   JustTeleported: 0
-  _Triggered: 0
+  StartsTriggered: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

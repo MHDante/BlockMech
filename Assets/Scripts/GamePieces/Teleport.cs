@@ -8,18 +8,28 @@ public class Teleport : GamePiece
     public override bool isPushable { get { return false; } set { } }
     private float rotation = 0f, rotationRate = 1f;
     private int axisCounter = 0;
-
-    public GameObject target;
-    [SerializeBlockIt]
-    public string targetName = "";
-    public void SetTarget(GameObject target)
+    public GameObject target = null;
+    public GameObject targetProp
     {
-        this.target = target;
-        if (target != null)
+        get 
         {
-            targetName = target.name;
+            if (target == null)
+            {
+                var gp = FindTarget();
+                if (gp != null)
+                    target = gp.gameObject; 
+            }
+            UpdateTargetName();
+            return target;
+        } 
+        set 
+        {
+            target = value;
+            UpdateTargetName();
         }
     }
+    [SerializeBlockIt]
+    public string targetName = "";
     public GamePiece FindTarget()
     {
         if (string.IsNullOrEmpty(targetName)) return null;
@@ -33,6 +43,18 @@ public class Teleport : GamePiece
             }
         }
         return null;
+    }
+    public void UpdateTargetName()
+    {
+        if (target != null)
+        {
+            targetName = target.name;
+        }
+    }
+    public override void OnSerialize()
+    {
+        base.OnSerialize();
+        UpdateTargetName();
     }
 
     public override void Start()
@@ -73,7 +95,7 @@ public class Teleport : GamePiece
         foreach(var tel in list)
         {
             if (tel == this) continue;
-            if (tel.target == this.gameObject)
+            if (tel.targetProp == this.gameObject)
             {
                 var above = tel.GetPiecesAbove();
                 if (above.Count > 0)
@@ -86,8 +108,8 @@ public class Teleport : GamePiece
     }
     public override bool onOccupy(GamePiece piece)
     {
-        GamePiece targ = FindTarget();
-        //GameObject targ = target;
+        //GamePiece targ = FindTarget();
+        GameObject targ = targetProp;
         if (targ == null)//(target == null)
         {
             Debug.Log("Teleporter placed @ " + cell.x + ", " + cell.y + " does not have a target set!");
@@ -100,8 +122,8 @@ public class Teleport : GamePiece
             }
             else
             {
-                Cell targetCell = targ.cell;
-                //Cell targetCell = target.GetComponent<GamePiece>().cell;
+                //Cell targetCell = targ.cell;
+                Cell targetCell = targetProp.GetComponent<GamePiece>().cell;
                 if (targetCell.pieces.Any(p => p is Teleport)) piece.JustTeleported = true;
                 piece.TeleportTo(targetCell);
             }

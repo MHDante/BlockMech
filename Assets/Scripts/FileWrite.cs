@@ -5,58 +5,41 @@ using System.IO;
 using System;
 using System.Linq;
 using System.Reflection;
-
-public class FileWrite : MonoBehaviour {
-
-    private static FileWrite _instance = null;
-    public static FileWrite instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<FileWrite>();
-                if (_instance != null)
-                {
-                    DontDestroyOnLoad(_instance.gameObject);
-                }
-            }
-            return _instance;
-        }
-    }
-	// Use this for initialization
-	void Start () {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(_instance.gameObject);
-        }
-        else
-        {
-            if (this != _instance)
-                Destroy(this.gameObject);
-        }
-
-        //InitSerialization();
-	}
-    string filename = "xmlfile.xml";
-    public void InitSerialization()
+using UnityEditor;
+public static class FileWrite
+{
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.S)) InitSerialization();
+    //    if (Input.GetKeyDown(KeyCode.D)) InitDeserialization();
+    //    if (Input.GetKeyDown(KeyCode.T)) RoomManager.roomManager.RefreshColorFamilyAll();
+    //}
+    static string filename = "Battletoads+Tetris.xml";
+    public static void InitSerialization()
     {
         XElement all = SerializeGrid();
         Debug.Log(all);
 
-        WriteFile(filename, all.ToString());
+        string fname = MonoBehaviour.FindObjectOfType<MetaData>().levelName;
+        if (string.IsNullOrEmpty(fname))
+        {
+            fname = Application.isPlaying ? Application.loadedLevelName : Path.GetFileNameWithoutExtension(EditorApplication.currentScene);
+        }
+        fname = WWW.EscapeURL(fname);
+        Debug.Log("Writing file: " + fname);
+        WriteFile(fname + ".xml", all.ToString());
     }
 
-    public void InitDeserialization()
+    public static void InitDeserialization(string filename)
     {
-        Destroy(RoomManager.roomManager);
-        RoomManager.roomManager = null;
+        //MonoBehaviour.Destroy(RoomManager.roomManager);
+        //RoomManager.roomManager = null;
         Application.LoadLevel("Blank");
         AwaitingDSCallback = true;
+        FileWrite.filename = filename;
     }
-    bool AwaitingDSCallback = false;
-    public bool DeserializationCallback()
+    static bool AwaitingDSCallback = false;
+    public static bool DeserializationCallback()
     {
         if (!AwaitingDSCallback)
         {
@@ -64,11 +47,11 @@ public class FileWrite : MonoBehaviour {
         }
         AwaitingDSCallback = false;
 
-        RoomManager room = FindObjectOfType<RoomManager>();
+        RoomManager room = MonoBehaviour.FindObjectOfType<RoomManager>();
 
-        XElement loaded = XElement.Load(Application.persistentDataPath + "/" + filename);
+        XElement loaded = XElement.Load(Application.dataPath + "/SavedLevels/" + filename);
         XElement meta = loaded.Element(XName.Get("Meta"));
-        MetaData metaData = (MetaData)FindObjectOfType(typeof(MetaData));
+        MetaData metaData = (MetaData)MonoBehaviour.FindObjectOfType(typeof(MetaData));
         metaData.author = meta.Attribute("Author").Value;
         metaData.levelName = meta.Attribute("LevelName").Value;
         metaData.welcomeHint = meta.Attribute("WelcomeHint").Value;
@@ -122,20 +105,19 @@ public class FileWrite : MonoBehaviour {
         
         return true;
     }
-    public XElement SerializeGrid()
+    public static XElement SerializeGrid()
     {
         XElement eRoot = new XElement("Root");
 
         XElement eInfo = new XElement("Meta");
         eRoot.Add(eInfo);
-        MetaData auth = FindObjectOfType<MetaData>();
+        MetaData auth = MonoBehaviour.FindObjectOfType<MetaData>();
         if (auth != null)
         {
             eInfo.Add(new XAttribute("Author", auth.author));
             eInfo.Add(new XAttribute("LevelName", auth.levelName));
             eInfo.Add(new XAttribute("WelcomeHint", auth.welcomeHint));
             eInfo.Add(new XAttribute("Difficulty", auth.difficulty));
-            
         }
 
         XElement eGrid = new XElement("Grid");
@@ -159,6 +141,7 @@ public class FileWrite : MonoBehaviour {
                     XElement eCell = new XElement("Cell", new XAttribute("x", x), new XAttribute("y", y));
                     foreach(GamePiece piece in cell.pieces)
                     {
+                        piece.OnSerialize();
                         XElement ePiece = SerializeObject(piece);
                         eCell.Add(ePiece);
                     }
@@ -197,7 +180,7 @@ public class FileWrite : MonoBehaviour {
         return eRoot;
     }
 
-    public XElement SerializeObject(object o)
+    public static XElement SerializeObject(object o)
     {
         Type type = o.GetType();
         
@@ -251,22 +234,15 @@ public class FileWrite : MonoBehaviour {
     }
 
 
-    void WriteFile(string filename, string text)
+    static void WriteFile(string filename, string text)
     {
-        Debug.Log(Application.persistentDataPath);
-        string fullFileName = Application.persistentDataPath + "/" + filename;
+        //Debug.Log(Application.persistentDataPath);
+        string fullFileName = Application.dataPath + "/SavedLevels/" + filename;
         StreamWriter fileWriter = File.CreateText(fullFileName);
         //fileWriter.WriteLine("Hello world");
         fileWriter.Write(text);
         fileWriter.Close();
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.S)) InitSerialization();
-        if (Input.GetKeyDown(KeyCode.D)) InitDeserialization();
-        if (Input.GetKeyDown(KeyCode.T)) RoomManager.roomManager.RefreshColorFamilyAll();
-	}
 }
 [System.AttributeUsage(System.AttributeTargets.Property |
                        System.AttributeTargets.Field)

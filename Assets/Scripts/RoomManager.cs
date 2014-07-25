@@ -54,12 +54,7 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-
-
-        if (FileWrite.instance != null)
-        {
-            FileWrite.instance.DeserializationCallback();
-    }
+        FileWrite.DeserializationCallback();
     }
     public List<T> GetPiecesOfType<T>() where T : GamePiece
     {
