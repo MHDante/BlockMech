@@ -307,6 +307,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &32342884
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -390,6 +392,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &35532180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -521,6 +525,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &40062604
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -604,6 +610,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &40118524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -827,6 +835,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &53792823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -998,6 +1008,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &66850827
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1081,6 +1093,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &86353192
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1296,6 +1310,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &93247875
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1379,6 +1395,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &95769686
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1550,6 +1568,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &107567370
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1633,6 +1653,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &108234528
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1716,6 +1738,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &115814560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1799,6 +1823,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &122601162
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1882,6 +1908,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &131226165
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2009,6 +2037,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &137782985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2136,6 +2166,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &140268234
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2219,6 +2251,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &142857555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2302,6 +2336,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &142886519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2481,6 +2517,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &161252214
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2564,6 +2602,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &171276824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2647,6 +2687,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &174816217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2918,6 +2960,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &218672783
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3001,6 +3045,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &237055795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3160,6 +3206,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &245405164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3243,6 +3291,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &245754546
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3374,6 +3424,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &254699746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3593,6 +3645,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &275252405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3676,6 +3730,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &276586286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3759,6 +3815,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &277890151
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3842,6 +3900,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &283428921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4017,6 +4077,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &296306267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4236,6 +4298,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &328421505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4455,6 +4519,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &343580843
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4526,6 +4592,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &349445015
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4621,6 +4689,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &349629054
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4752,6 +4822,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &358533800
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4879,6 +4951,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &362335145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5094,6 +5168,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &387977001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5228,6 +5304,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &392999663
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5359,6 +5437,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &405385866
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5486,6 +5566,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &406900314
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5569,6 +5651,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &408989714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5700,6 +5784,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &413326804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5827,6 +5913,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &422492059
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5910,6 +5998,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &425858121
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6037,6 +6127,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &444239309
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6120,6 +6212,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &446636403
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6295,6 +6389,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &456026814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6562,6 +6658,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &488854515
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6730,6 +6828,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &506002697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6861,6 +6961,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &510589215
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7032,6 +7134,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &531732641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7115,6 +7219,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &533909583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7242,6 +7348,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &539995777
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7417,6 +7525,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &575644491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7500,6 +7610,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &578244061
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7583,6 +7695,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &605145927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7666,6 +7780,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &609122650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7797,6 +7913,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &620355013
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7880,6 +7998,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &628545871
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8151,6 +8271,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &653231803
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8374,6 +8496,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &673191562
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8457,6 +8581,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &673715359
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8588,6 +8714,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &693839717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8671,6 +8799,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &699085746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8802,6 +8932,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &711810921
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8933,6 +9065,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &713845821
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9253,6 +9387,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &723066237
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9516,6 +9652,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &748032279
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9643,6 +9781,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &767200781
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9770,6 +9910,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &769454893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9853,6 +9995,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &771056293
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9980,6 +10124,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &780440226
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10063,6 +10209,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &782159091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10146,6 +10294,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &782714318
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10365,6 +10515,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &819209300
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10496,6 +10648,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &821163627
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10608,6 +10762,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &825834553
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10691,6 +10847,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &828044914
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11010,6 +11168,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &849849511
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11093,6 +11253,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &853923329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11224,6 +11386,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &859752146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11351,6 +11515,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &889689662
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11482,6 +11648,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &909121737
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11565,6 +11733,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &932519879
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11648,6 +11818,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &938333242
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11731,6 +11903,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &938433938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11814,6 +11988,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &939498689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11941,6 +12117,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &941430512
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12024,6 +12202,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &946504573
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12199,6 +12379,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &957584005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12282,6 +12464,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &960071021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12370,7 +12554,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: b77709927ba4df74e95405cca6515656, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293059298
 --- !u!23 &960748431
 Renderer:
   m_ObjectHideFlags: 0
@@ -12437,6 +12621,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &964596248
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12564,6 +12750,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &979514294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12691,6 +12879,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &984545357
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12774,6 +12964,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &990294044
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12996,6 +13188,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1025433743
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13167,6 +13361,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1033129043
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13419,6 +13615,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1056203697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13546,6 +13744,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1077387864
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13717,6 +13917,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1082655809
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13800,6 +14002,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1083361334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13883,6 +14087,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1091264956
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14014,6 +14220,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1111864274
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14249,6 +14457,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1133169669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14424,6 +14634,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1139995770
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14507,6 +14719,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1144103823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14590,6 +14804,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1148796962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14673,6 +14889,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1149529369
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14756,6 +14974,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1153543605
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14839,6 +15059,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1164838496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14970,6 +15192,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1168832435
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15053,6 +15277,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1172272701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15203,7 +15429,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 25
+  orthographic size: 27
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15222,7 +15448,7 @@ Transform:
   m_PrefabInternal: {fileID: 652367862}
   m_GameObject: {fileID: 1175950914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.00302521395, z: -10}
+  m_LocalPosition: {x: 0, y: -.0299999993, z: -10}
   m_LocalScale: {x: .015625, y: .020833334, z: 1}
   m_Children: []
   m_Father: {fileID: 1585540780}
@@ -15360,6 +15586,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1184405619
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15583,6 +15811,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1198118363
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16078,6 +16308,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1271479217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16161,6 +16393,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1277218071
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16244,6 +16478,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1280069133
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16327,6 +16563,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1281428200
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16458,6 +16696,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1287805251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16633,6 +16873,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1296128170
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16808,6 +17050,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1298931268
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16979,6 +17223,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1314340380
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17062,6 +17308,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1314618422
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17145,6 +17393,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1315884615
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17228,6 +17478,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1316952097
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17311,6 +17563,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1323287643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17394,6 +17648,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1328514891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17525,6 +17781,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1338429762
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17784,6 +18042,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1348752519
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17959,6 +18219,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1359207055
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18090,6 +18352,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1362669203
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18313,6 +18577,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1384784239
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18379,8 +18645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4df4e4def2f634990ed1ae362edf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  author: Sparks
-  levelName: HELL
+  author: Nadia
+  levelName: Nadia2
   welcomeHint: BlockIt
   difficulty: 4
 --- !u!4 &1394599003
@@ -18542,6 +18808,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1415964883
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18625,6 +18893,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1417182600
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18752,6 +19022,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1427367809
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18927,6 +19199,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1440941429
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19010,6 +19284,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1441822571
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19093,6 +19369,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1444112371
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19323,6 +19601,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1454777560
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19406,6 +19686,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1455881567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19533,6 +19815,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1471415712
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19616,6 +19900,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1471445366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19747,6 +20033,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1480524572
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19974,6 +20262,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1508680024
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20057,6 +20347,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1514390940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20140,6 +20432,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1516946603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20223,6 +20517,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1524482919
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20306,6 +20602,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1525296581
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20433,6 +20731,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1530998951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20516,6 +20816,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1540211772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20599,6 +20901,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1542190970
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20682,6 +20986,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1543011252
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20809,6 +21115,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1550559057
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20892,6 +21200,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1560428382
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21063,6 +21373,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1563235701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21146,6 +21458,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1563486948
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21224,18 +21538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6436f3adfafd3e4b9493fac76730875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 5
-  isMoving: 0
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  ColorizedSprite: {fileID: 0}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1603285746}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1001 &1565226815
 Prefab:
@@ -21326,6 +21630,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1571040725
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21409,6 +21715,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1573376001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21455,8 +21763,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1585540780}
+  - 114: {fileID: 1585540782}
+  - 114: {fileID: 1585540781}
   m_Layer: 8
-  m_Name: TrippyBackground
+  m_Name: Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21479,6 +21789,36 @@ Transform:
   - {fileID: 1175950919}
   m_Father: {fileID: 1394599003}
   m_RootOrder: 0
+--- !u!114 &1585540781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 37dc4a68f58c05946b9efedf15b11682,
+    type: 2}
+  m_PrefabInternal: {fileID: 652367862}
+  m_GameObject: {fileID: 1585540779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4df4e4def2f634990ed1ae362edf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  author: 
+  levelName: 
+  welcomeHint: BlockIt
+  difficulty: 1
+--- !u!114 &1585540782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: 37dc4a68f58c05946b9efedf15b11682,
+    type: 2}
+  m_PrefabInternal: {fileID: 652367862}
+  m_GameObject: {fileID: 1585540779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6e598ecb0b06a4686474e4b4e1868e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  buttonOptions: 0
 --- !u!1 &1603285746
 GameObject:
   m_ObjectHideFlags: 0
@@ -21553,6 +21893,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1605536464
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21636,6 +21978,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1609010554
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21719,6 +22063,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1611020653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21802,6 +22148,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1628653924
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22069,6 +22417,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1644091709
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22284,6 +22634,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1660007829
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22411,6 +22763,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1680267959
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22542,6 +22896,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1685913369
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22625,6 +22981,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1689547526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22708,6 +23066,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1696607460
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22835,6 +23195,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1716133062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22962,6 +23324,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1725890893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23093,6 +23457,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1735021697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23176,6 +23542,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1749434730
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23259,6 +23627,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1758298747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23434,6 +23804,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1774375521
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23609,6 +23981,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1795767665
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23692,6 +24066,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1797735448
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23775,6 +24151,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1804479645
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23840,18 +24218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebbac5e70efbc14ca819ac573053654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 4
-  isMoving: 0
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  ColorizedSprite: {fileID: 0}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 824130875}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   Strength: 1
   keys: []
@@ -23913,6 +24281,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1829939831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23996,6 +24366,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1837315101
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24171,6 +24543,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1839981936
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24350,6 +24724,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1850947823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24433,6 +24809,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1863709771
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24516,6 +24894,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1866634470
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24691,6 +25071,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1877269323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24910,6 +25292,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1903507227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24993,6 +25377,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1911209222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25168,6 +25554,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1920681818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25347,6 +25735,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1926661824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25474,6 +25864,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1946426292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25601,6 +25993,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1951786096
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25816,6 +26210,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1974002822
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25899,6 +26295,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1976772423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26078,6 +26476,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1985737858
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26209,6 +26609,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1997766892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26677,6 +27079,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2027042018
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26760,6 +27164,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2027483449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26843,6 +27249,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2036006823
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27021,6 +27429,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2060734710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27148,6 +27558,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2068461445
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27231,6 +27643,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2070079720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27314,6 +27728,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2073210095
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27397,6 +27813,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2082951802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27480,6 +27898,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2084181615
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27563,6 +27983,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2087581951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27826,6 +28248,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2107229057
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28005,6 +28429,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2113779578
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28088,6 +28514,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2119728387
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28219,6 +28647,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2129735447
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28375,6 +28805,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2146655474
 SpriteRenderer:
   m_ObjectHideFlags: 0

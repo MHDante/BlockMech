@@ -157,6 +157,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .0117647173
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
+      propertyPath: m_Name
+      value: Button+6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
   m_RootGameObject: {fileID: 934698412}
@@ -274,7 +278,7 @@ GameObject:
   - 4: {fileID: 23123924}
   - 114: {fileID: 23123925}
   m_Layer: 0
-  m_Name: octogon
+  m_Name: Block
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,18 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c323c1e719ef5449e92eabd7e0ad0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 3
-  isMoving: 0
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  ColorizedSprite: {fileID: 1742360796}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1 &29602791
 GameObject:
@@ -367,7 +361,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: b77709927ba4df74e95405cca6515656, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4293059298
 --- !u!23 &29602794
 Renderer:
   m_ObjectHideFlags: 0
@@ -427,6 +421,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 47
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+228
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -502,20 +500,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 285119454}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1428570268}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 800800084}
+  targetName: teleport+6
 --- !u!1 &50307166
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,7 +577,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 470061568}
   m_GameObject: {fileID: 52047796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .219185561, y: -.0506029725, z: .219185561, w: .949397027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -659,7 +648,7 @@ GameObject:
   - 114: {fileID: 62297316}
   - 95: {fileID: 62297318}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+157
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -692,6 +681,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &62297317
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -742,7 +733,7 @@ GameObject:
   - 114: {fileID: 72802701}
   - 95: {fileID: 72802703}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+158
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -775,6 +766,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &72802702
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -958,6 +951,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+158
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 72802699}
@@ -1026,7 +1023,7 @@ GameObject:
   - 114: {fileID: 108819613}
   - 95: {fileID: 108819615}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+159
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1059,6 +1056,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &108819614
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1109,7 +1108,7 @@ GameObject:
   - 114: {fileID: 110425591}
   - 95: {fileID: 110425593}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+160
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1142,6 +1141,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &110425592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1221,7 +1222,7 @@ GameObject:
   - 114: {fileID: 115928632}
   - 95: {fileID: 115928634}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+161
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1254,6 +1255,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &115928633
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1345,11 +1348,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: .224951044
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .974370062
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -1361,7 +1368,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1848680494}
     m_Modifications:
     - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1393,7 +1400,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
@@ -1412,7 +1423,7 @@ GameObject:
   - 114: {fileID: 132769139}
   - 95: {fileID: 132769141}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+162
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1445,6 +1456,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &132769140
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1495,7 +1508,7 @@ GameObject:
   - 114: {fileID: 137230566}
   - 95: {fileID: 137230568}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+163
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1528,6 +1541,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &137230567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1638,7 +1653,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 562011773}
   m_GameObject: {fileID: 142380359}
-  m_LocalRotation: {x: .0609346777, y: .0609346777, z: -.00372692454, w: .9962731}
+  m_LocalRotation: {x: .0506029725, y: .219185561, z: .219185561, w: .949397027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1709,7 +1724,7 @@ GameObject:
   - 114: {fileID: 150010853}
   - 95: {fileID: 150010855}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+164
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1742,6 +1757,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &150010854
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1823,6 +1840,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+165
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 175594598}
@@ -1838,7 +1859,7 @@ GameObject:
   - 4: {fileID: 156367460}
   - 114: {fileID: 156367461}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+1
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1869,20 +1890,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
-  ColorizedSprite: {fileID: 342752695}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1220852689}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 626714043}
+  targetName: teleport+3
 --- !u!1 &175594598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1907,7 @@ GameObject:
   - 114: {fileID: 175594600}
   - 95: {fileID: 175594602}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+165
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1928,6 +1940,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &175594601
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2029,7 +2043,7 @@ GameObject:
   - 114: {fileID: 208040419}
   - 95: {fileID: 208040421}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+166
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2062,6 +2076,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &208040420
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2139,6 +2155,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 85
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+205
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 986617593}
@@ -2156,7 +2176,7 @@ GameObject:
   - 114: {fileID: 215414441}
   - 95: {fileID: 215414443}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+167
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2189,6 +2209,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &215414442
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2239,7 +2261,7 @@ GameObject:
   - 114: {fileID: 219656938}
   - 95: {fileID: 219656940}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+168
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2272,6 +2294,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &219656939
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2322,7 +2346,7 @@ GameObject:
   - 114: {fileID: 222277790}
   - 95: {fileID: 222277792}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+169
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2355,6 +2379,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &222277791
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2405,7 +2431,7 @@ GameObject:
   - 114: {fileID: 230192556}
   - 95: {fileID: 230192558}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+170
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2438,6 +2464,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &230192557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2617,6 +2645,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 29
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+175
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 372069689}
@@ -2634,7 +2666,7 @@ GameObject:
   - 114: {fileID: 252509617}
   - 95: {fileID: 252509620}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+171
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2655,6 +2687,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &252509618
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2748,6 +2782,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+213
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1184854663}
@@ -2812,6 +2850,10 @@ Prefab:
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_RootGameObject: {fileID: 1721997475}
@@ -2829,7 +2871,7 @@ GameObject:
   - 114: {fileID: 264666040}
   - 95: {fileID: 264666042}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+172
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2862,6 +2904,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &264666041
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2963,6 +3007,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+181
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 441854039}
@@ -2978,7 +3026,7 @@ GameObject:
   - 4: {fileID: 266302299}
   - 114: {fileID: 266302300}
   m_Layer: 0
-  m_Name: button
+  m_Name: Button+4
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3010,18 +3058,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3562a36e17147d47a810c009de59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 6
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1320687906}
-  ActivatedSprite: {fileID: 901804989}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1 &279583226
 GameObject:
@@ -3115,7 +3153,7 @@ GameObject:
   - 114: {fileID: 288171680}
   - 95: {fileID: 288171682}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+173
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3148,6 +3186,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &288171681
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3260,19 +3300,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .0609346777
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .9962731
+      value: .974370062
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0609346777
+      value: .224951044
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.00372692454
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -3322,6 +3362,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+239
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1789184241}
@@ -3365,6 +3409,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 73
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+174
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3429,6 +3477,10 @@ Prefab:
     - target: {fileID: 21200000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_Color.b
       value: .131034613
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+244
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3553,6 +3605,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .985294104
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+224
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1487997428}
@@ -3601,6 +3657,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+229
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1572466178}
@@ -3618,7 +3678,7 @@ GameObject:
   - 114: {fileID: 331200424}
   - 95: {fileID: 331200426}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+174
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3651,6 +3711,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &331200425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3727,6 +3789,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+162
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3936,6 +4002,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+186
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 512717272}
@@ -4004,6 +4074,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 780663422}
@@ -4021,7 +4095,7 @@ GameObject:
   - 114: {fileID: 372069691}
   - 95: {fileID: 372069693}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+175
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4054,6 +4128,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &372069692
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4102,7 +4178,7 @@ GameObject:
   - 4: {fileID: 375898733}
   - 114: {fileID: 375898734}
   m_Layer: 0
-  m_Name: end
+  m_Name: end+2
   m_TagString: End
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4132,18 +4208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6436f3adfafd3e4b9493fac76730875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 5
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 0}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 459774535}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1001 &376207792
 Prefab:
@@ -4232,6 +4298,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+163
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 137230564}
@@ -4308,6 +4378,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .985294104
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+245
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 2000685542}
@@ -4325,7 +4399,7 @@ GameObject:
   - 114: {fileID: 390297061}
   - 95: {fileID: 390297063}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+176
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4358,6 +4432,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &390297062
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4408,7 +4484,7 @@ GameObject:
   - 114: {fileID: 393278746}
   - 95: {fileID: 393278748}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+177
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4441,6 +4517,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &393278747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4593,7 +4671,7 @@ GameObject:
   - 114: {fileID: 401560537}
   - 95: {fileID: 401560539}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+178
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4626,6 +4704,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &401560538
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4664,35 +4744,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!1 &405403799
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 405403800}
-  m_Layer: 0
-  m_Name: White
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &405403800
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  m_GameObject: {fileID: 405403799}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 728481233}
-  - {fileID: 521918685}
-  m_Father: {fileID: 945529527}
-  m_RootOrder: 0
 --- !u!1 &407479360
 GameObject:
   m_ObjectHideFlags: 0
@@ -4705,7 +4756,7 @@ GameObject:
   - 114: {fileID: 407479362}
   - 95: {fileID: 407479364}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+179
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4738,6 +4789,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &407479363
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4788,7 +4841,7 @@ GameObject:
   - 114: {fileID: 411700675}
   - 95: {fileID: 411700677}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+180
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4821,6 +4874,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &411700676
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4918,6 +4973,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+217
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1271397304}
@@ -4986,6 +5045,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .131034613
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+243
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1957278150}
@@ -5030,6 +5093,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 83
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+187
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 533769835}
@@ -5073,6 +5140,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 77
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5138,6 +5209,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+226
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1494757567}
@@ -5155,7 +5230,7 @@ GameObject:
   - 114: {fileID: 441854041}
   - 95: {fileID: 441854043}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+181
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5188,6 +5263,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &441854042
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5238,7 +5315,7 @@ GameObject:
   - 114: {fileID: 442327194}
   - 95: {fileID: 442327196}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+182
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5271,6 +5348,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &442327195
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5321,7 +5400,7 @@ GameObject:
   - 114: {fileID: 447470851}
   - 95: {fileID: 447470853}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+183
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5354,6 +5433,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &447470852
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5404,7 +5485,7 @@ GameObject:
   - 114: {fileID: 454968774}
   - 95: {fileID: 454968776}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+184
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5437,6 +5518,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &454968775
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5549,19 +5632,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -.0506029725
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .949397027
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -5630,6 +5717,10 @@ Prefab:
     - target: {fileID: 21200000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+223
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5726,6 +5817,10 @@ Prefab:
     - target: {fileID: 21200000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5835,19 +5930,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .0610485412
+      value: .0506029725
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .998134792
+      value: .949397027
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -5936,6 +6035,10 @@ Prefab:
     - target: {fileID: 400000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
+      propertyPath: m_Name
+      value: Switch+44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
@@ -6052,6 +6155,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+201
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 850530807}
@@ -6069,7 +6176,7 @@ GameObject:
   - 114: {fileID: 504181358}
   - 95: {fileID: 504181360}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+185
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6102,6 +6209,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &504181359
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6274,6 +6383,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .800000012
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
+      propertyPath: m_Name
+      value: Button+7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
   m_RootGameObject: {fileID: 1238532465}
@@ -6291,7 +6404,7 @@ GameObject:
   - 114: {fileID: 512717274}
   - 95: {fileID: 512717276}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+186
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6324,6 +6437,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &512717275
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6420,57 +6535,6 @@ Transform:
   - {fileID: 233490517}
   m_Father: {fileID: 1979503431}
   m_RootOrder: 0
---- !u!1 &521918684
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 521918685}
-  - 212: {fileID: 521918686}
-  m_Layer: 0
-  m_Name: Border
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &521918685
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  m_GameObject: {fileID: 521918684}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 405403800}
-  m_RootOrder: 1
---- !u!212 &521918686
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164,
-    type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  m_GameObject: {fileID: 521918684}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 22c0d6a58cb957943af1caca9912ebe0, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
 --- !u!1001 &531328108
 Prefab:
   m_ObjectHideFlags: 0
@@ -6510,6 +6574,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+247
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 2115875856}
@@ -6527,7 +6595,7 @@ GameObject:
   - 114: {fileID: 533769837}
   - 95: {fileID: 533769839}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+187
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6560,6 +6628,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &533769838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6610,7 +6680,7 @@ GameObject:
   - 114: {fileID: 537275125}
   - 95: {fileID: 537275127}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+188
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6643,6 +6713,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &537275126
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6775,6 +6847,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+241
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1870517296}
@@ -6790,7 +6866,7 @@ GameObject:
   - 4: {fileID: 547356101}
   - 114: {fileID: 547356102}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+2
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6821,20 +6897,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
-  ColorizedSprite: {fileID: 1615554594}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 749443163}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 1120244525}
+  targetName: teleport+10
 --- !u!1001 &559468667
 Prefab:
   m_ObjectHideFlags: 0
@@ -6877,6 +6944,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+231
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6928,19 +6999,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .0609346777
+      value: .0506029725
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0609346777
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.00372692454
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .9962731
+      value: .949397027
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -7006,6 +7081,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+168
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 219656936}
@@ -7021,7 +7100,7 @@ GameObject:
   - 4: {fileID: 567879249}
   - 114: {fileID: 567879250}
   m_Layer: 0
-  m_Name: switch
+  m_Name: Switch+43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7053,19 +7132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f04dc3df29d33649ada2b11e887f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 7
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1123544021}
-  ActivatedSprite: {fileID: 340687700}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
+  StartsTriggered: 0
 --- !u!1 &569478533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7129,7 +7199,7 @@ GameObject:
   - 114: {fileID: 570114348}
   - 95: {fileID: 570114350}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+189
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7162,6 +7232,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &570114349
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7288,6 +7360,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .131034613
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+220
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1394027677}
@@ -7352,8 +7428,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 581893691}
+  - 114: {fileID: 581893693}
+  - 114: {fileID: 581893692}
   m_Layer: 8
-  m_Name: TrippyBackground
+  m_Name: Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7366,16 +7444,46 @@ Transform:
   m_PrefabInternal: {fileID: 809883963}
   m_GameObject: {fileID: 581893690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 32, y: 24, z: 0}
+  m_LocalScale: {x: 64, y: 48, z: 1}
   m_Children:
   - {fileID: 1835399431}
   - {fileID: 1073481252}
   - {fileID: 1687850968}
   - {fileID: 29602792}
   - {fileID: 1252524510}
-  m_Father: {fileID: 1394599003}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &581893692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 37dc4a68f58c05946b9efedf15b11682,
+    type: 2}
+  m_PrefabInternal: {fileID: 809883963}
+  m_GameObject: {fileID: 581893690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4df4e4def2f634990ed1ae362edf2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  author: Zack
+  levelName: ColorSquare
+  welcomeHint: BlockIt
+  difficulty: 1
+--- !u!114 &581893693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: 37dc4a68f58c05946b9efedf15b11682,
+    type: 2}
+  m_PrefabInternal: {fileID: 809883963}
+  m_GameObject: {fileID: 581893690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a6e598ecb0b06a4686474e4b4e1868e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  buttonOptions: 0
 --- !u!1 &585563228
 GameObject:
   m_ObjectHideFlags: 0
@@ -7388,7 +7496,7 @@ GameObject:
   - 114: {fileID: 585563230}
   - 95: {fileID: 585563232}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+190
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7421,6 +7529,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &585563231
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7600,6 +7710,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 71
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+178
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 401560535}
@@ -7644,6 +7758,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 23
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+222
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1452443590}
@@ -7661,7 +7779,7 @@ GameObject:
   - 114: {fileID: 610723859}
   - 95: {fileID: 610723861}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+191
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7694,6 +7812,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &610723860
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7777,19 +7897,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: .949397027
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: .0506029725
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: .219185561
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -7806,7 +7930,7 @@ GameObject:
   - 4: {fileID: 626714044}
   - 114: {fileID: 626714045}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+3
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7837,20 +7961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
-  ColorizedSprite: {fileID: 1993898780}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 142380359}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 156367459}
+  targetName: teleport+1
 --- !u!1 &629008859
 GameObject:
   m_ObjectHideFlags: 0
@@ -7863,7 +7978,7 @@ GameObject:
   - 114: {fileID: 629008861}
   - 95: {fileID: 629008863}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+192
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7896,6 +8011,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &629008862
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8024,6 +8141,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 46
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+161
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 115928630}
@@ -8123,6 +8244,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 110425589}
@@ -8171,6 +8296,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+240
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1830874771}
@@ -8214,6 +8343,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+176
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8283,7 +8416,7 @@ GameObject:
   - 114: {fileID: 682551004}
   - 95: {fileID: 682551006}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+193
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8316,6 +8449,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &682551005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8366,7 +8501,7 @@ GameObject:
   - 114: {fileID: 684377755}
   - 95: {fileID: 684377757}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+194
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8399,6 +8534,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &684377756
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8540,6 +8677,10 @@ Prefab:
       propertyPath: m_RootMapOrder
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 161e53547533da943b35614054ddde15, type: 2}
+      propertyPath: m_Name
+      value: end+2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 161e53547533da943b35614054ddde15, type: 2}
   m_RootGameObject: {fileID: 375898732}
@@ -8557,7 +8698,7 @@ GameObject:
   - 114: {fileID: 705068694}
   - 95: {fileID: 705068696}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+195
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8590,6 +8731,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &705068695
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8691,7 +8834,7 @@ GameObject:
   - 114: {fileID: 714845264}
   - 95: {fileID: 714845266}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+196
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8724,6 +8867,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &714845265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8772,7 +8917,7 @@ GameObject:
   - 4: {fileID: 715643032}
   - 114: {fileID: 715643033}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+4
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8803,20 +8948,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
-  ColorizedSprite: {fileID: 981623927}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 721839380}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 1979503430}
+  targetName: teleport+13
 --- !u!1 &721839380
 GameObject:
   m_ObjectHideFlags: 0
@@ -8838,7 +8974,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 622485593}
   m_GameObject: {fileID: 721839380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: .0506029725, y: .219185561, z: .219185561, w: .949397027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8909,7 +9045,7 @@ GameObject:
   - 114: {fileID: 726020475}
   - 95: {fileID: 726020477}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+197
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8942,6 +9078,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &726020476
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8980,57 +9118,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!1 &728481231
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 728481233}
-  - 212: {fileID: 728481232}
-  m_Layer: 0
-  m_Name: Fill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &728481232
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 21200002, guid: 0af8dbfd94938234c99753e61d76c164,
-    type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  m_GameObject: {fileID: 728481231}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 22c0d6a58cb957943af1caca9912ebe0, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
---- !u!4 &728481233
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  m_GameObject: {fileID: 728481231}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.300000012}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 405403800}
-  m_RootOrder: 0
 --- !u!1001 &728704091
 Prefab:
   m_ObjectHideFlags: 0
@@ -9069,6 +9156,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+184
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9187,7 +9278,7 @@ GameObject:
   - 4: {fileID: 743117241}
   - 114: {fileID: 743117242}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+5
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9218,20 +9309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 571362638}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1594219348}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 958464412}
+  targetName: teleport+7
 --- !u!1 &749443163
 GameObject:
   m_ObjectHideFlags: 0
@@ -9253,7 +9335,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 116816996}
   m_GameObject: {fileID: 749443163}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .224951044, w: .974370062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9273,7 +9355,7 @@ GameObject:
   - 114: {fileID: 763106024}
   - 95: {fileID: 763106026}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+198
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9306,6 +9388,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &763106025
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9356,7 +9440,7 @@ GameObject:
   - 114: {fileID: 771091952}
   - 95: {fileID: 771091954}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+199
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9389,6 +9473,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &771091953
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9439,7 +9525,7 @@ GameObject:
   - 114: {fileID: 780663424}
   - 95: {fileID: 780663426}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+200
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9472,6 +9558,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &780663425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9531,7 +9619,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 1716748201}
   m_GameObject: {fileID: 792389068}
-  m_LocalRotation: {x: .00372692454, y: .0609346777, z: .0609346777, w: .9962731}
+  m_LocalRotation: {x: 0, y: 0, z: .224951044, w: .974370062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9600,7 +9688,7 @@ GameObject:
   - 4: {fileID: 800800085}
   - 114: {fileID: 800800086}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+6
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9631,20 +9719,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1818755554}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 907240342}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 981684813}
+  targetName: teleport+8
 --- !u!1 &804090587
 GameObject:
   m_ObjectHideFlags: 0
@@ -9764,6 +9843,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 39
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+203
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 965554016}
@@ -9774,15 +9857,15 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1394599003}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 400000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9815,6 +9898,22 @@ Prefab:
     - target: {fileID: 400012, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
       propertyPath: m_LocalPosition.y
       value: -.0299999993
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
+      propertyPath: author
+      value: Zack
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
+      propertyPath: levelName
+      value: ColorSquare
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
@@ -9915,6 +10014,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+212
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1130975908}
@@ -9991,6 +10094,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .985294104
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+164
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 150010851}
@@ -10038,6 +10145,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+189
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10107,7 +10218,7 @@ GameObject:
   - 114: {fileID: 850530809}
   - 95: {fileID: 850530811}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+201
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10140,6 +10251,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &850530810
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10221,6 +10334,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+167
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 215414439}
@@ -10265,7 +10382,7 @@ GameObject:
   - 4: {fileID: 872661027}
   - 114: {fileID: 872661028}
   m_Layer: 0
-  m_Name: button
+  m_Name: Button+5
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10297,18 +10414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3562a36e17147d47a810c009de59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 6
-  isMoving: 0
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
-  ColorizedSprite: {fileID: 804090587}
-  ActivatedSprite: {fileID: 871601423}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1 &880386798
 GameObject:
@@ -10373,7 +10480,7 @@ GameObject:
   - 114: {fileID: 880808149}
   - 95: {fileID: 880808151}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+202
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10406,6 +10513,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &880808150
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10486,6 +10595,10 @@ Prefab:
     - target: {fileID: 400000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
+      propertyPath: m_Name
+      value: Button+4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
@@ -10593,7 +10706,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 1964248811}
   m_GameObject: {fileID: 907240342}
-  m_LocalRotation: {x: 0, y: 0, z: .0610485412, w: .998134792}
+  m_LocalRotation: {x: 0, y: 0, z: .224951044, w: .974370062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -10694,6 +10807,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+209
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10834,6 +10951,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .69517231
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
+      propertyPath: m_Name
+      value: Button+5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
   m_RootGameObject: {fileID: 872661026}
@@ -10849,7 +10970,7 @@ GameObject:
   - 4: {fileID: 934698413}
   - 114: {fileID: 934698414}
   m_Layer: 0
-  m_Name: button
+  m_Name: Button+6
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10881,18 +11002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3562a36e17147d47a810c009de59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 6
-  isMoving: 0
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
-  ColorizedSprite: {fileID: 489093680}
-  ActivatedSprite: {fileID: 111963998}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1001 &941156742
 Prefab:
@@ -10933,39 +11044,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 48
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+182
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 442327192}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &945529526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 945529527}
-  m_Layer: 0
-  m_Name: Indicator
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &945529527
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_PrefabInternal: {fileID: 1905171172}
-  m_GameObject: {fileID: 945529526}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34, y: 46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 405403800}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1001 &945548255
 Prefab:
   m_ObjectHideFlags: 0
@@ -11004,6 +11091,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+246
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11052,7 +11143,7 @@ GameObject:
   - 4: {fileID: 958464413}
   - 114: {fileID: 958464414}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+7
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11083,20 +11174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 290153007}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 52047796}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 48162145}
+  targetName: teleport
 --- !u!1 &965554016
 GameObject:
   m_ObjectHideFlags: 0
@@ -11109,7 +11191,7 @@ GameObject:
   - 114: {fileID: 965554018}
   - 95: {fileID: 965554020}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+203
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11142,6 +11224,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &965554019
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11243,7 +11327,7 @@ GameObject:
   - 114: {fileID: 976247812}
   - 95: {fileID: 976247814}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+204
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11276,6 +11360,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &976247813
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11353,7 +11439,7 @@ GameObject:
   - 4: {fileID: 981684814}
   - 114: {fileID: 981684815}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+8
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11384,20 +11470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1415690605}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1828701802}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 743117240}
+  targetName: teleport+5
 --- !u!1 &986617593
 GameObject:
   m_ObjectHideFlags: 0
@@ -11410,7 +11487,7 @@ GameObject:
   - 114: {fileID: 986617595}
   - 95: {fileID: 986617597}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+205
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11443,6 +11520,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &986617596
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11520,6 +11599,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 62
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+166
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 208040417}
@@ -11568,6 +11651,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+221
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1446018613}
@@ -11585,7 +11672,7 @@ GameObject:
   - 114: {fileID: 1000253221}
   - 95: {fileID: 1000253223}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+206
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11618,6 +11705,8 @@ MonoBehaviour:
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1000253222
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11723,6 +11812,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 68
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+179
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11903,6 +11996,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+169
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 222277788}
@@ -11971,7 +12068,7 @@ GameObject:
   - 114: {fileID: 1066484591}
   - 95: {fileID: 1066484593}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+207
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12004,6 +12101,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1066484592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12127,7 +12226,7 @@ GameObject:
   - 114: {fileID: 1085556631}
   - 95: {fileID: 1085556633}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+208
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12160,6 +12259,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1085556632
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12241,6 +12342,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+208
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1085556629}
@@ -12317,6 +12422,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .647058845
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+206
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1000253219}
@@ -12383,7 +12492,7 @@ GameObject:
   - 4: {fileID: 1097946929}
   - 114: {fileID: 1097946930}
   m_Layer: 0
-  m_Name: switch
+  m_Name: Switch+44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12415,19 +12524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f04dc3df29d33649ada2b11e887f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 7
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1428686512}
-  ActivatedSprite: {fileID: 1714167502}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
+  StartsTriggered: 0
 --- !u!1 &1100351666
 GameObject:
   m_ObjectHideFlags: 0
@@ -12440,7 +12540,7 @@ GameObject:
   - 114: {fileID: 1100351668}
   - 95: {fileID: 1100351670}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+209
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12473,6 +12573,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1100351669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12595,6 +12697,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+202
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 880808147}
@@ -12612,7 +12718,7 @@ GameObject:
   - 114: {fileID: 1106337259}
   - 95: {fileID: 1106337261}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+210
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12645,6 +12751,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1106337260
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12744,7 +12852,7 @@ GameObject:
   - 4: {fileID: 1113034514}
   - 114: {fileID: 1113034513}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+9
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12761,20 +12869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1994228648}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 792389068}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 958464412}
+  targetName: teleport+7
 --- !u!4 &1113034514
 Transform:
   m_ObjectHideFlags: 0
@@ -12850,7 +12949,7 @@ GameObject:
   - 4: {fileID: 1120244526}
   - 114: {fileID: 1120244527}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+10
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12881,20 +12980,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
-  ColorizedSprite: {fileID: 1739969916}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1606453115}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 547356100}
+  targetName: teleport+2
 --- !u!1 &1123544021
 GameObject:
   m_ObjectHideFlags: 0
@@ -12936,7 +13026,7 @@ GameObject:
   - 114: {fileID: 1125067319}
   - 95: {fileID: 1125067321}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+211
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12969,6 +13059,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1125067320
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13070,6 +13162,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 411700673}
@@ -13142,6 +13238,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .985294104
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+225
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1491093636}
@@ -13159,7 +13259,7 @@ GameObject:
   - 114: {fileID: 1130975910}
   - 95: {fileID: 1130975912}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+212
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13192,6 +13292,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1130975911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13268,6 +13370,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+194
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -13368,6 +13474,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+227
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1516880048}
@@ -13436,7 +13546,7 @@ GameObject:
   - 114: {fileID: 1184854665}
   - 95: {fileID: 1184854667}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+213
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13469,6 +13579,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1184854666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13590,6 +13702,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
+      propertyPath: m_Name
+      value: Switch+46
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
   m_RootGameObject: {fileID: 2139119797}
@@ -13607,7 +13723,7 @@ GameObject:
   - 114: {fileID: 1190785488}
   - 95: {fileID: 1190785490}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+214
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13640,6 +13756,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1190785489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13717,6 +13835,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 51
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+196
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 714845262}
@@ -13760,6 +13882,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+170
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -13829,7 +13955,7 @@ GameObject:
   - 114: {fileID: 1214488426}
   - 95: {fileID: 1214488428}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+215
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13862,6 +13988,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1214488427
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13921,7 +14049,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 1278900132}
   m_GameObject: {fileID: 1220852689}
-  m_LocalRotation: {x: .0610485412, y: 0, z: 0, w: .998134792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13941,7 +14069,7 @@ GameObject:
   - 114: {fileID: 1222167271}
   - 95: {fileID: 1222167273}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+216
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13974,6 +14102,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1222167272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14073,7 +14203,7 @@ GameObject:
   - 4: {fileID: 1238532466}
   - 114: {fileID: 1238532467}
   m_Layer: 0
-  m_Name: button
+  m_Name: Button+7
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14105,18 +14235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3562a36e17147d47a810c009de59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 6
-  isMoving: 0
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
-  ColorizedSprite: {fileID: 1028427423}
-  ActivatedSprite: {fileID: 2038940006}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1 &1252524509
 GameObject:
@@ -14269,7 +14389,7 @@ GameObject:
   - 114: {fileID: 1271397305}
   - 95: {fileID: 1271397308}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+217
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14290,6 +14410,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1271397306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14389,15 +14511,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .998134792
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .0610485412
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -14487,6 +14613,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .800000012
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
+      propertyPath: m_Name
+      value: Button+8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2772305ec2549494ea43d6c662845f7e, type: 2}
   m_RootGameObject: {fileID: 1929582284}
@@ -14504,7 +14634,7 @@ GameObject:
   - 114: {fileID: 1286797560}
   - 95: {fileID: 1286797562}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+218
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14537,6 +14667,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1286797561
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14638,7 +14770,7 @@ GameObject:
   - 114: {fileID: 1296716712}
   - 95: {fileID: 1296716714}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+219
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14671,6 +14803,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1296716713
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14802,6 +14936,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+191
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -14947,6 +15085,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .131034613
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+199
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 771091950}
@@ -14994,6 +15136,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+171
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -15061,7 +15207,7 @@ GameObject:
   - 4: {fileID: 1356692870}
   - 114: {fileID: 1356692871}
   m_Layer: 0
-  m_Name: switch
+  m_Name: Switch+45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15093,19 +15239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f04dc3df29d33649ada2b11e887f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 7
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1387746498}
-  ActivatedSprite: {fileID: 2119019461}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
+  StartsTriggered: 0
 --- !u!1 &1358419989
 GameObject:
   m_ObjectHideFlags: 0
@@ -15278,7 +15415,7 @@ GameObject:
   - 114: {fileID: 1394027679}
   - 95: {fileID: 1394027681}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+220
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15311,6 +15448,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1394027680
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15349,64 +15488,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!1 &1394599001
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1394599003}
-  - 114: {fileID: 1394599004}
-  - 114: {fileID: 1394599002}
-  m_Layer: 8
-  m_Name: Scene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1394599002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1394599001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4df4e4def2f634990ed1ae362edf2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  author: Sparks
-  levelName: HELL
-  welcomeHint: BlockIt
-  difficulty: 4
---- !u!4 &1394599003
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1394599001}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32, y: 24, z: 0}
-  m_LocalScale: {x: 64, y: 48, z: 1}
-  m_Children:
-  - {fileID: 581893691}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
---- !u!114 &1394599004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1394599001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6e598ecb0b06a4686474e4b4e1868e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2058393501}
-  buttonOptions: 0
 --- !u!1001 &1396724657
 Prefab:
   m_ObjectHideFlags: 0
@@ -15456,15 +15537,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0610485412
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
-      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .224951044
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .998134792
+      value: .974370062
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -15481,7 +15566,7 @@ GameObject:
   - 4: {fileID: 1398256127}
   - 114: {fileID: 1398256128}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+11
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15512,20 +15597,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
-  ColorizedSprite: {fileID: 518649591}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1850024166}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 1721997475}
+  targetName: teleport+12
 --- !u!1 &1400702975
 GameObject:
   m_ObjectHideFlags: 0
@@ -15593,6 +15669,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+177
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -15693,6 +15773,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+235
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1709228422}
@@ -15776,15 +15860,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0610485412
-      objectReference: {fileID: 0}
-    - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
-      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .224951044
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .998134792
+      value: .974370062
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -15812,7 +15900,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 290870064}
   m_GameObject: {fileID: 1428570268}
-  m_LocalRotation: {x: .0609346777, y: .0609346777, z: -.00372692454, w: .9962731}
+  m_LocalRotation: {x: 0, y: .224951044, z: 0, w: .974370062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15892,6 +15980,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+215
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1214488424}
@@ -15909,7 +16001,7 @@ GameObject:
   - 114: {fileID: 1446018615}
   - 95: {fileID: 1446018617}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+221
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15942,6 +16034,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1446018616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15992,7 +16086,7 @@ GameObject:
   - 114: {fileID: 1452443592}
   - 95: {fileID: 1452443594}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+222
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16025,6 +16119,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1452443593
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16075,7 +16171,7 @@ GameObject:
   - 114: {fileID: 1453858976}
   - 95: {fileID: 1453858978}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+223
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16108,6 +16204,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1453858977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16287,6 +16385,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 79
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+233
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1619578838}
@@ -16304,7 +16406,7 @@ GameObject:
   - 114: {fileID: 1487997430}
   - 95: {fileID: 1487997432}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+224
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16337,6 +16439,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1487997431
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16387,7 +16491,7 @@ GameObject:
   - 114: {fileID: 1491093638}
   - 95: {fileID: 1491093640}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+225
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16420,6 +16524,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1491093639
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16470,7 +16576,7 @@ GameObject:
   - 114: {fileID: 1494757569}
   - 95: {fileID: 1494757571}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+226
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16503,6 +16609,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1494757570
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16553,7 +16661,7 @@ GameObject:
   - 114: {fileID: 1516880050}
   - 95: {fileID: 1516880052}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+227
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16586,6 +16694,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1516880051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16687,7 +16797,7 @@ GameObject:
   - 114: {fileID: 1536250903}
   - 95: {fileID: 1536250905}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+228
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16720,6 +16830,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1536250904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16852,6 +16964,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+230
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1610585786}
@@ -16900,6 +17016,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+207
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1066484589}
@@ -16917,7 +17037,7 @@ GameObject:
   - 114: {fileID: 1572466180}
   - 95: {fileID: 1572466182}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+229
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16950,6 +17070,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1572466181
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17078,6 +17200,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 84
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+211
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1125067317}
@@ -17104,7 +17230,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 1421556886}
   m_GameObject: {fileID: 1594219348}
-  m_LocalRotation: {x: 0, y: .0610485412, z: 0, w: .998134792}
+  m_LocalRotation: {x: 0, y: 0, z: .224951044, w: .974370062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17195,6 +17321,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
+      propertyPath: m_Name
+      value: Switch+45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
   m_RootGameObject: {fileID: 1356692869}
@@ -17238,6 +17368,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+198
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -17283,6 +17417,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+157
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 62297314}
@@ -17309,7 +17447,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 1396724657}
   m_GameObject: {fileID: 1606453115}
-  m_LocalRotation: {x: 0, y: .0610485412, z: 0, w: .998134792}
+  m_LocalRotation: {x: 0, y: 0, z: .224951044, w: .974370062}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17329,7 +17467,7 @@ GameObject:
   - 114: {fileID: 1610585788}
   - 95: {fileID: 1610585790}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+230
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17362,6 +17500,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1610585789
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17441,7 +17581,7 @@ GameObject:
   - 114: {fileID: 1616996939}
   - 95: {fileID: 1616996941}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+231
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17474,6 +17614,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1616996940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17555,6 +17697,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+214
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1190785486}
@@ -17572,7 +17718,7 @@ GameObject:
   - 114: {fileID: 1617880884}
   - 95: {fileID: 1617880886}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+232
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17605,6 +17751,8 @@ MonoBehaviour:
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1617880885
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17655,7 +17803,7 @@ GameObject:
   - 114: {fileID: 1619578840}
   - 95: {fileID: 1619578842}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+233
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17688,6 +17836,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1619578841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17768,6 +17918,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+210
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -17939,6 +18093,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+192
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 629008859}
@@ -18034,6 +18192,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+159
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 108819611}
@@ -18128,6 +18290,10 @@ Prefab:
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
       value: 54
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+218
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -18270,7 +18436,7 @@ GameObject:
   - 114: {fileID: 1696285172}
   - 95: {fileID: 1696285174}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+234
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18303,6 +18469,8 @@ MonoBehaviour:
   colorslot: 4
   colorPreview: {r: .933333337, g: .807843149, b: 0, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1696285173
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18404,7 +18572,7 @@ GameObject:
   - 114: {fileID: 1709228424}
   - 95: {fileID: 1709228426}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+235
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18437,6 +18605,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1709228425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18496,7 +18666,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 490103400}
   m_GameObject: {fileID: 1709912983}
-  m_LocalRotation: {x: .0610485412, y: 0, z: 0, w: .998134792}
+  m_LocalRotation: {x: .0506029725, y: .219185561, z: .219185561, w: .949397027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -18625,23 +18795,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0609346777
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .9962731
+      value: .974370062
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .00372692454
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0609346777
+      value: .224951044
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -18658,7 +18832,7 @@ GameObject:
   - 4: {fileID: 1721997476}
   - 114: {fileID: 1721997477}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+12
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18689,20 +18863,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
-  ColorizedSprite: {fileID: 485065726}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1400702975}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 1398256126}
+  targetName: teleport+11
 --- !u!1 &1722525372
 GameObject:
   m_ObjectHideFlags: 0
@@ -18817,7 +18982,7 @@ GameObject:
   - 114: {fileID: 1726037027}
   - 95: {fileID: 1726037029}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+236
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18850,6 +19015,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1726037028
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19078,6 +19245,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+234
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1696285170}
@@ -19282,6 +19453,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+193
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 682551002}
@@ -19329,6 +19504,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: orientation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+183
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -19476,6 +19655,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+204
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 976247810}
@@ -19493,7 +19676,7 @@ GameObject:
   - 114: {fileID: 1778113761}
   - 95: {fileID: 1778113763}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+237
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19526,6 +19709,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1778113762
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19636,6 +19821,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+197
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 726020473}
@@ -19653,7 +19842,7 @@ GameObject:
   - 114: {fileID: 1788250145}
   - 95: {fileID: 1788250147}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+238
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19686,6 +19875,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1788250146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19736,7 +19927,7 @@ GameObject:
   - 114: {fileID: 1789184243}
   - 95: {fileID: 1789184245}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+239
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19769,6 +19960,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1789184244
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19954,19 +20147,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .0609346777
+      value: .0506029725
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.00372692454
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0609346777
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .9962731
+      value: .949397027
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -20041,6 +20238,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 66
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+185
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 504181356}
@@ -20089,6 +20290,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+238
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1788250143}
@@ -20115,7 +20320,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 1808046568}
   m_GameObject: {fileID: 1828701802}
-  m_LocalRotation: {x: .0609346777, y: -.00372692454, z: .0609346777, w: .9962731}
+  m_LocalRotation: {x: .0506029725, y: .219185561, z: .219185561, w: .949397027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20135,7 +20340,7 @@ GameObject:
   - 114: {fileID: 1830874773}
   - 95: {fileID: 1830874775}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+240
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20168,6 +20373,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1830874774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20329,8 +20536,9 @@ Transform:
   - {fileID: 1897167850}
   - {fileID: 1103147058}
   - {fileID: 473557508}
+  - {fileID: 2058393500}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &1850024166
 GameObject:
   m_ObjectHideFlags: 0
@@ -20352,7 +20560,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
   m_PrefabInternal: {fileID: 2040149787}
   m_GameObject: {fileID: 1850024166}
-  m_LocalRotation: {x: .00372692454, y: .0609346777, z: .0609346777, w: .9962731}
+  m_LocalRotation: {x: .219185561, y: -.0506029725, z: .219185561, w: .949397027}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20505,6 +20713,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+242
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1904707405}
@@ -20522,7 +20734,7 @@ GameObject:
   - 114: {fileID: 1870517298}
   - 95: {fileID: 1870517300}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+241
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20555,6 +20767,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1870517299
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20651,6 +20865,10 @@ Prefab:
     - target: {fileID: 21200000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_Color.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+232
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -20751,7 +20969,7 @@ GameObject:
   - 114: {fileID: 1904707407}
   - 95: {fileID: 1904707409}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+242
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20784,6 +21002,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &1904707408
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20822,94 +21042,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
---- !u!1001 &1905171172
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 46
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.r
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.g
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.b
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.a
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.r
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.g
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.b
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Color.a
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Name
-      value: Indicator
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200004, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 21200002, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0af8dbfd94938234c99753e61d76c164, type: 2}
-  m_RootGameObject: {fileID: 945529526}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &1909960760
 GameObject:
   m_ObjectHideFlags: 0
@@ -21055,6 +21187,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+190
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 585563228}
@@ -21127,6 +21263,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .985294104
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+173
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 288171678}
@@ -21142,7 +21282,7 @@ GameObject:
   - 4: {fileID: 1929582285}
   - 114: {fileID: 1929582286}
   m_Layer: 0
-  m_Name: button
+  m_Name: Button+8
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21174,18 +21314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3562a36e17147d47a810c009de59287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 6
-  isMoving: 0
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
-  ColorizedSprite: {fileID: 2134577577}
-  ActivatedSprite: {fileID: 1737694745}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
 --- !u!1 &1941156148
 GameObject:
@@ -21332,6 +21462,10 @@ Prefab:
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+237
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1778113759}
@@ -21349,7 +21483,7 @@ GameObject:
   - 114: {fileID: 1957278152}
   - 95: {fileID: 1957278154}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+243
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21382,6 +21516,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1957278153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21473,11 +21609,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0610485412
+      value: .224951044
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .998134792
+      value: .974370062
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -21496,7 +21636,7 @@ GameObject:
   - 114: {fileID: 1976905928}
   - 95: {fileID: 1976905930}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+244
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21529,6 +21669,8 @@ MonoBehaviour:
   colorslot: 1
   colorPreview: {r: .521568656, g: .411764711, b: .811764717, a: 1}
   orientation: 1
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &1976905929
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21577,7 +21719,7 @@ GameObject:
   - 4: {fileID: 1979503431}
   - 114: {fileID: 1979503432}
   m_Layer: 0
-  m_Name: teleport
+  m_Name: teleport+13
   m_TagString: Teleport
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21608,20 +21750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66394da9b7da6dc4f9bfc78f2fd93ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 10
-  isMoving: 0
   colorslot: 3
   colorPreview: {r: .541176498, g: .843137264, b: .286274523, a: 1}
-  ColorizedSprite: {fileID: 519173076}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1709912983}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   target: {fileID: 715643031}
+  targetName: teleport+4
 --- !u!1 &1981304060
 GameObject:
   m_ObjectHideFlags: 0
@@ -21744,6 +21877,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .985294104
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+216
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1222167269}
@@ -21819,7 +21956,7 @@ GameObject:
   - 114: {fileID: 2000685544}
   - 95: {fileID: 2000685546}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+245
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21852,6 +21989,8 @@ MonoBehaviour:
   colorslot: 2
   colorPreview: {r: .0509803928, g: .623529434, b: .847058833, a: 1}
   orientation: 0
+  wallType: 1
+  StartsOpen: 0
 --- !u!212 &2000685545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22055,6 +22194,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .131034613
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+172
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 264666038}
@@ -22134,19 +22277,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.x
-      value: .00372692454
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.y
-      value: .0609346777
+      value: -.0506029725
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0609346777
+      value: .219185561
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .9962731
+      value: .949397027
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
+      propertyPath: m_Name
+      value: teleport+11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9937fbc50712c3d4ebc384068cd975a3, type: 2}
@@ -22214,7 +22361,7 @@ GameObject:
   - 4: {fileID: 2058393500}
   - 114: {fileID: 2058393501}
   m_Layer: 0
-  m_Name: player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22231,8 +22378,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1023886921}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Father: {fileID: 1848680494}
+  m_RootOrder: 6
 --- !u!114 &2058393501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22244,18 +22391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebbac5e70efbc14ca819ac573053654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 11
-  isMoving: 0
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
-  ColorizedSprite: {fileID: 0}
-  ActivatedSprite: {fileID: 0}
-  WhiteSprite: {fileID: 1023886920}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
   Strength: 1
   keys: []
@@ -22511,6 +22648,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
+      propertyPath: m_Name
+      value: Switch+43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc1b78e884d402847aa5c44105d807cd, type: 2}
   m_RootGameObject: {fileID: 567879248}
@@ -22630,7 +22771,7 @@ GameObject:
   - 114: {fileID: 2104755925}
   - 95: {fileID: 2104755927}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+246
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22663,6 +22804,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2104755926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22740,6 +22883,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+236
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 1726037025}
@@ -22808,7 +22955,7 @@ GameObject:
   - 114: {fileID: 2115875858}
   - 95: {fileID: 2115875860}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall+247
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22841,6 +22988,8 @@ MonoBehaviour:
   colorslot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
+  wallType: 0
+  StartsOpen: 0
 --- !u!212 &2115875859
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22998,7 +23147,7 @@ GameObject:
   - 4: {fileID: 2139119798}
   - 114: {fileID: 2139119799}
   m_Layer: 0
-  m_Name: switch
+  m_Name: Switch+46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23030,19 +23179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f04dc3df29d33649ada2b11e887f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  piecetype: 7
-  isMoving: 0
   colorslot: 5
   colorPreview: {r: .972549021, g: .596078455, b: .121568628, a: 1}
-  ColorizedSprite: {fileID: 1779352257}
-  ActivatedSprite: {fileID: 1383748105}
-  WhiteSprite: {fileID: 0}
-  moveSpeed: 5
-  teleportSpeed: 10
-  currentLerp: 0
-  maxLerp: 100
-  StartPos: {x: 0, y: 0}
   JustTeleported: 0
+  StartsTriggered: 0
 --- !u!1001 &2146749651
 Prefab:
   m_ObjectHideFlags: 0
@@ -23105,6 +23245,10 @@ Prefab:
     - target: {fileID: 21200000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_Color.b
       value: .131034613
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
+      propertyPath: m_Name
+      value: Wall+219
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}

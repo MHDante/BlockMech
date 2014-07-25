@@ -1,0 +1,264 @@
+<Root>
+  <Meta Author="Zack" LevelName="ColorSquare" WelcomeHint="BlockIt" Difficulty="Normal" />
+  <Grid Width="12" Height="16">
+    <Row y="1">
+      <Cell x="1" y="1">
+        <Teleport Name="teleport+5" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+7" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Teleport>
+      </Cell>
+      <Cell x="8" y="1">
+        <Teleport Name="teleport+10" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+2" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Yellow" />
+        </Teleport>
+      </Cell>
+    </Row>
+    <Row y="2">
+      <Cell x="1" y="2">
+        <Button Name="Button+4" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Button>
+      </Cell>
+      <Cell x="2" y="2">
+        <End Name="end+2" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </End>
+      </Cell>
+      <Cell x="8" y="2">
+        <Button Name="Button+7" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="Yellow" />
+        </Button>
+      </Cell>
+    </Row>
+    <Row y="3">
+      <Cell x="3" y="3">
+        <Player Name="Player" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="None" />
+        </Player>
+      </Cell>
+      <Cell x="6" y="3">
+        <Switch Name="Switch+43" Zpos="0">
+          <Field Name="StartsTriggered" Type="System.Boolean" Value="false" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Switch>
+      </Cell>
+      <Cell x="8" y="3">
+        <Teleport Name="teleport+8" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+5" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Teleport>
+      </Cell>
+      <Cell x="10" y="3">
+        <Switch Name="Switch+45" Zpos="0">
+          <Field Name="StartsTriggered" Type="System.Boolean" Value="false" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Switch>
+      </Cell>
+    </Row>
+    <Row y="4">
+      <Cell x="8" y="4">
+        <Teleport Name="teleport+2" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+10" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Yellow" />
+        </Teleport>
+      </Cell>
+    </Row>
+    <Row y="5">
+      <Cell x="2" y="5">
+        <Teleport Name="teleport+9" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+7" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Teleport>
+      </Cell>
+      <Cell x="3" y="5">
+        <Block Name="Block" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="None" />
+        </Block>
+      </Cell>
+      <Cell x="4" y="5">
+        <Teleport Name="teleport+12" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+11" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Purple" />
+        </Teleport>
+      </Cell>
+      <Cell x="5" y="5">
+        <Button Name="Button+5" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="Purple" />
+        </Button>
+      </Cell>
+      <Cell x="6" y="5">
+        <Teleport Name="teleport+7" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Teleport>
+      </Cell>
+      <Cell x="7" y="5">
+        <Teleport Name="teleport+11" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+12" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Purple" />
+        </Teleport>
+      </Cell>
+      <Cell x="9" y="5">
+        <Teleport Name="teleport+3" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+1" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Blue" />
+        </Teleport>
+      </Cell>
+      <Cell x="10" y="5">
+        <Teleport Name="teleport+6" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+8" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Teleport>
+      </Cell>
+      <Cell x="11" y="5">
+        <Button Name="Button+6" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="Blue" />
+        </Button>
+      </Cell>
+      <Cell x="12" y="5">
+        <Teleport Name="teleport+1" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+3" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Blue" />
+        </Teleport>
+      </Cell>
+    </Row>
+    <Row y="6">
+      <Cell x="8" y="6">
+        <Teleport Name="teleport+13" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+4" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Green" />
+        </Teleport>
+      </Cell>
+    </Row>
+    <Row y="7">
+      <Cell x="6" y="7">
+        <Switch Name="Switch+44" Zpos="0">
+          <Field Name="StartsTriggered" Type="System.Boolean" Value="false" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Switch>
+      </Cell>
+      <Cell x="8" y="7">
+        <Teleport Name="teleport" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+6" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Teleport>
+      </Cell>
+      <Cell x="10" y="7">
+        <Switch Name="Switch+46" Zpos="0">
+          <Field Name="StartsTriggered" Type="System.Boolean" Value="false" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Orange" />
+        </Switch>
+      </Cell>
+    </Row>
+    <Row y="8">
+      <Cell x="8" y="8">
+        <Button Name="Button+8" Zpos="0">
+          <Field Name="colorslot" Type="ColorSlot" Value="Green" />
+        </Button>
+      </Cell>
+    </Row>
+    <Row y="9">
+      <Cell x="8" y="9">
+        <Teleport Name="teleport+4" Zpos="0">
+          <Field Name="targetName" Type="System.String" Value="teleport+13" />
+          <Field Name="colorslot" Type="ColorSlot" Value="Green" />
+        </Teleport>
+      </Cell>
+    </Row>
+  </Grid>
+  <Walls>
+    <Wall x="8" y="0" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="1" y="1" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="1" y="1" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="2" y="1" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="8" y="1" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="1" y="2" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="2" y="2" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="2" y="2" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="3" y="2" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="8" y="2" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="8" y="2" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="2" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="1" y="3" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="2" y="3" Side="bottom" colorslot="Orange" isTraversible="false" />
+    <Door x="6" y="3" Side="bottom" colorslot="Purple" isTraversible="false" />
+    <Door x="6" y="3" Side="left" colorslot="Purple" isTraversible="false" />
+    <Wall x="7" y="3" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="7" y="3" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="8" y="3" Side="left" colorslot="Purple" isTraversible="false" />
+    <Wall x="9" y="3" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="9" y="3" Side="left" colorslot="Yellow" isTraversible="false" />
+    <Door x="10" y="3" Side="bottom" colorslot="Yellow" isTraversible="false" />
+    <Wall x="10" y="3" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="11" y="3" Side="left" colorslot="Yellow" isTraversible="false" />
+    <Wall x="6" y="4" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="6" y="4" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="7" y="4" Side="bottom" colorslot="Purple" isTraversible="false" />
+    <Door x="7" y="4" Side="left" colorslot="Purple" isTraversible="false" />
+    <Wall x="8" y="4" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="8" y="4" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="9" y="4" Side="bottom" colorslot="Yellow" isTraversible="false" />
+    <Wall x="9" y="4" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="10" y="4" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="10" y="4" Side="left" colorslot="Yellow" isTraversible="false" />
+    <Wall x="11" y="4" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="2" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="2" y="5" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="3" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="4" y="5" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="5" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="5" y="5" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="6" y="5" Side="bottom" colorslot="Purple" isTraversible="false" />
+    <Wall x="7" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="7" y="5" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="10" y="5" Side="bottom" colorslot="Yellow" isTraversible="false" />
+    <Wall x="10" y="5" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="11" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="12" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="12" y="5" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="13" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="14" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="15" y="5" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="0" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="1" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="2" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="3" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="4" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="5" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="6" y="6" Side="bottom" colorslot="Green" isTraversible="false" />
+    <Wall x="6" y="6" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="7" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="7" y="6" Side="left" colorslot="Green" isTraversible="false" />
+    <Wall x="8" y="6" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="6" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="10" y="6" Side="bottom" colorslot="Blue" isTraversible="false" />
+    <Door x="10" y="6" Side="left" colorslot="Blue" isTraversible="false" />
+    <Wall x="11" y="6" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="11" y="6" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="6" y="7" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="6" y="7" Side="left" colorslot="Green" isTraversible="false" />
+    <Door x="7" y="7" Side="bottom" colorslot="Green" isTraversible="false" />
+    <Wall x="7" y="7" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="8" y="7" Side="bottom" colorslot="None" isTraversible="false" />
+    <Door x="8" y="7" Side="left" colorslot="Green" isTraversible="false" />
+    <Door x="9" y="7" Side="bottom" colorslot="Blue" isTraversible="false" />
+    <Door x="9" y="7" Side="left" colorslot="Blue" isTraversible="false" />
+    <Wall x="10" y="7" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="10" y="7" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="11" y="7" Side="left" colorslot="Blue" isTraversible="false" />
+    <Door x="6" y="8" Side="bottom" colorslot="Green" isTraversible="false" />
+    <Wall x="7" y="8" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="8" y="8" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="8" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="8" Side="left" colorslot="None" isTraversible="false" />
+    <Door x="10" y="8" Side="bottom" colorslot="Blue" isTraversible="false" />
+    <Wall x="8" y="9" Side="bottom" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="9" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="10" Side="left" colorslot="None" isTraversible="false" />
+    <Wall x="9" y="11" Side="left" colorslot="None" isTraversible="false" />
+  </Walls>
+</Root>
