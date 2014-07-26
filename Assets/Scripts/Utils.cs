@@ -16,6 +16,13 @@ public static class Utils
 		    return Side.left;
 	    }throw new WTFException();
     }
+    public static float SmootherStep(float start, float end, float t)
+    {
+        float affection = end - start;
+        t = t * t * t * (t * (6f * t - 15f) + 10f);
+        affection *= t;
+        return start + affection;
+    }
     public static GameObject GetParent(this GameObject child, string name = null)
     {
         if (child.transform.parent == null) return null;

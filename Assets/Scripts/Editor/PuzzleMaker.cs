@@ -22,19 +22,8 @@ public class PuzzleMaker : EditorWindow
     bool RightClick;
 	bool Active;
     GameObject Indicator;
-    public static List<Type> PieceTypeList;
+    public static List<Type> PieceTypeList { get { return RoomManager.PieceTypeList.Union(new Type[]{null}).ToList(); } }
     public Type selectedPiece { get { return PieceTypeList[selectedIndex]; } }
-    static PuzzleMaker()
-    {
-        PieceTypeList = new List<Type>();
-        PieceTypeList.Add(null);
-        PieceTypeList.Add(typeof(Wall));
-        
-        foreach (Type t in typeof(GamePiece).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(GamePiece)) && !type.IsAbstract))
-        {
-            PieceTypeList.Add(t);
-        }
-    }
     
     void OnEnable()
     {        

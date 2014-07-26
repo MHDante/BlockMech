@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Wall
+  m_Name: WallAnim
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: PushedThrough
@@ -265,18 +265,6 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110269568}
-      second:
-      - {fileID: 110182486}
-    data:
-      first: {fileID: 110278801}
-      second:
-      - {fileID: 110126091}
-    data:
-      first: {fileID: 110206057}
-      second:
-      - {fileID: 110167613}
-    data:
       first: {fileID: 0}
       second: []
     data:
@@ -288,6 +276,18 @@ StateMachine:
       first: {fileID: 110200000}
       second:
       - {fileID: 110159326}
+    data:
+      first: {fileID: 110206057}
+      second:
+      - {fileID: 110167613}
+    data:
+      first: {fileID: 110278801}
+      second:
+      - {fileID: 110126091}
+    data:
+      first: {fileID: 110269568}
+      second:
+      - {fileID: 110182486}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -264, y: -84, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

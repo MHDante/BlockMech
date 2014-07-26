@@ -10,6 +10,7 @@ public class RoomManager : MonoBehaviour {
     public static GameObject masterParent;
 
 
+
     public static Dictionary<Type, GameObject> pieceParents = new Dictionary<Type,GameObject>();
     public Cell[][] Grid;
     public Player player;
@@ -20,6 +21,17 @@ public class RoomManager : MonoBehaviour {
         ActivateOnOnePushed,
     }
     public ButtonOptions buttonOptions = ButtonOptions.ActivateOnAllPushed;
+    public static List<Type> PieceTypeList;
+    static RoomManager()
+    {
+        PieceTypeList = new List<Type>();
+        PieceTypeList.Add(typeof(Wall));
+        
+        foreach (Type t in typeof(GamePiece).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(GamePiece)) && !type.IsAbstract))
+        {
+            PieceTypeList.Add(t);
+        }
+    }
 
     void Awake() {
         roomManager = this;
