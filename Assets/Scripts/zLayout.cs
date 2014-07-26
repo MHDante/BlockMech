@@ -4,11 +4,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public class zGridLayout<T> where T : zButton {
+public class zGridLayout {
     private enum State { Growing, Shrinking, Hidden , Visible}
     State state;
     public GUISkin skin;
-    List<T> contents;
+    List<zButton> contents;
     Vector2 scrollViewVector;
     Rect properRect;
     Rect currentRect;
@@ -18,8 +18,8 @@ public class zGridLayout<T> where T : zButton {
     float t;
     float heightCounter;
     float padding;
-    
-    public zGridLayout(Rect rect, IEnumerable<T> contents, bool startHidden, Vector2? animOrigin = null, float animDuration = 0.5f, float padding = 10)
+
+    public zGridLayout(Rect rect, IEnumerable<zButton> contents, bool startHidden, Vector2? animOrigin = null, float animDuration = 2f, float padding = 10)
     {
         this.properRect = rect;
         this.contents = contents.ToList();
@@ -32,22 +32,22 @@ public class zGridLayout<T> where T : zButton {
         heightCounter += padding;
 
         //first pass
-        List<int> indexArray = new List<int>();
+        List<int> rowPieceCount = new List<int>();
         List<Vector2> rowSize = new List<Vector2>();
         float widthCounter = padding, tempHeight = 0;
         int counter = 0;
         for(int i = 0; i < this.contents.Count;i++)
         {
-            counter++;
-            T element = this.contents[i];
-            if (element.Width + widthCounter > rect.width)
+            
+            zButton element = this.contents[i];
+            if (element.Width + widthCounter + padding > rect.width)
             {
                 heightCounter += tempHeight + padding;
-                indexArray.Add(counter);
+                rowPieceCount.Add(counter);
                 rowSize.Add(new Vector2(widthCounter, tempHeight));
                 counter = 0;
                 tempHeight = 0;
-                widthCounter = padding;
+                widthCounter = element.Width + padding;
             }
             else
             {
@@ -59,22 +59,25 @@ public class zGridLayout<T> where T : zButton {
                 //throw new SystemException("Button too big. (or, conversly, zLayout too small)");
                 Debug.Log("Button too big. (or, conversly, zLayout too small)");
             }
+            counter++;
         }
         heightCounter += tempHeight;
+        rowPieceCount.Add(counter);
+        rowSize.Add(new Vector2(widthCounter, tempHeight));
         this.virtualRect = new Rect(0, 0, properRect.width, heightCounter + padding);
 
         counter = 0;
         heightCounter = padding;
         //second pass
-        for (int i = 0; i < indexArray.Count; i++)
+        for (int i = 0; i < rowPieceCount.Count; i++)
         {
-            int index = indexArray[i];
+            int index = rowPieceCount[i];
             int end = counter + index;
             float wCounter = (this.properRect.width - rowSize[i].x) / 2 + padding;
 
             while(counter<end)
             {
-                T element = this.contents[counter];
+                zButton element = this.contents[counter];
                 element.x = wCounter; wCounter += element.Width + padding;
                 element.y = heightCounter;
                 counter++;
@@ -89,8 +92,8 @@ public class zGridLayout<T> where T : zButton {
         currentRect = new Rect(
                     Utils.SmootherStep(origin.x, properRect.x, t),
                     Utils.SmootherStep(origin.y, properRect.y, t),
-                    Utils.SmootherStep(0, properRect.width, t),
-                    Utils.SmootherStep(0, properRect.height, t));
+                    Utils.SmootherStep(30, properRect.width, t),
+                    Utils.SmootherStep(30, properRect.height, t));
     }
 
     public void Show() { state = State.Growing; }
@@ -104,21 +107,21 @@ public class zGridLayout<T> where T : zButton {
             case State.Hidden:
                 return;
             case State.Growing:
-                t += Time.deltaTime / duration;
+                t += Time.deltaTime;
                 if (t > 1f) { t = 1f; state = State.Visible; }
                 scaleRect();
                 break;
             case State.Shrinking:
                 t -= Time.deltaTime / duration;
-                if (t > 1f) { t = 1f; state = State.Hidden; }
+                if (t < 0f) { t = 0f; state = State.Hidden; }
                 scaleRect();
                 break;
         }
 
+        GUI.Box(currentRect, "");
+        scrollViewVector = GUI.BeginScrollView(new Rect(currentRect.x,currentRect.y,currentRect.width+20,currentRect.height), scrollViewVector, virtualRect);
         
-        scrollViewVector = GUI.BeginScrollView(currentRect, scrollViewVector, virtualRect);
-
-        foreach (T Element in contents)
+        foreach (zButton Element in contents)
         {
             Element.Draw();
         }
@@ -126,4 +129,19 @@ public class zGridLayout<T> where T : zButton {
         GUI.EndScrollView(true);
 
     }
+}
+
+public class yButton : zButton
+{
+    public override float Width { get { return 80; } }
+    public override float Height { get { return 40; } }
+
+    public yButton(Type t) : base(t) { }
+}
+public class xButton : zButton
+{
+    public override float Width { get { return 40; } }
+    public override float Height { get { return 80; } }
+    public xButton(Type t) : base(t) { }
+
 }
