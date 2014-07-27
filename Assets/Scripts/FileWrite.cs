@@ -5,7 +5,9 @@ using System.IO;
 using System;
 using System.Linq;
 using System.Reflection;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 public static class FileWrite
 {
     //void Update()
@@ -23,11 +25,17 @@ public static class FileWrite
         string fname = MonoBehaviour.FindObjectOfType<MetaData>().levelName;
         if (string.IsNullOrEmpty(fname))
         {
+#if UNITY_EDITOR
             fname = Application.isPlaying ? Application.loadedLevelName : Path.GetFileNameWithoutExtension(EditorApplication.currentScene);
+#else
+            fname = Application.loadedLevelName;
+#endif
         }
         fname = WWW.EscapeURL(fname);
         Debug.Log("Writing file: " + fname);
         WriteFile(fname + ".xml", all.ToString());
+
+        int a = 4;
     }
 
     public static void InitDeserialization(string filename)

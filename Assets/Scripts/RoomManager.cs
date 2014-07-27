@@ -3,7 +3,9 @@ using System.Collections;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 [ExecuteInEditMode]
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
@@ -220,7 +222,7 @@ public class RoomManager : MonoBehaviour {
             return null;
         }
         GameObject parent = GetPieceParent(piece);
-        GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(piece));
+        GameObject obj = CreatePrefabSafe(piece);
         obj.transform.position = target.WorldPos();
         obj.transform.parent = parent.transform;
         return RoomManager.roomManager.AddPiece(obj, piece, colorslot);
@@ -230,7 +232,7 @@ public class RoomManager : MonoBehaviour {
     {
         if (RoomManager.roomManager.player == null)
         {
-            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(typeof(Player)));
+            GameObject obj = CreatePrefabSafe(typeof(Player));
             obj.transform.position = target.WorldPos();
             RoomManager.roomManager.AddPiece(obj, typeof(Player), ColorSlot.None);
         }
@@ -243,7 +245,7 @@ public class RoomManager : MonoBehaviour {
     public Wall SpawnWall(Cell target, Side side, ColorSlot colorslot)
     {
         Orientation orient = (side == Side.top || side == Side.bottom) ? Orientation.Horizontal : Orientation.Vertical;
-        GameObject wallobj = (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(typeof(Wall)));
+        GameObject wallobj = CreatePrefabSafe(typeof(Wall));
         wallobj.transform.position = target.WorldPos() + Cell.SideOffset(side);
         wallobj.transform.rotation = orient == Orientation.Vertical ? Quaternion.identity : Quaternion.Euler(0, 0, 90);
         wallobj.transform.parent = GetPieceParent(typeof(Wall)).transform;
@@ -254,6 +256,15 @@ public class RoomManager : MonoBehaviour {
         wall.SetColorSlot(colorslot);
         AddWall(wall);
         return wall;
+    }
+
+    public GameObject CreatePrefabSafe(Type type)
+    {
+#if UNITY_EDITOR
+        return (GameObject)PrefabUtility.InstantiatePrefab(GamePiece.GetPrefab(type));
+#else
+        return (GameObject)Instantiate(GamePiece.GetPrefab(type));
+#endif
     }
 
     public static GameObject GetPieceParent(Type piece)

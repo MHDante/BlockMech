@@ -1,44 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
-using UnityEditor;
 using System.Linq;
 using System.Collections.Generic;
 
 public class zButton {
 
     public SpriteRenderer border;
-    public virtual float Width { get { return 60; } }
-    public virtual float Height { get { return 60; } }
+    public virtual float Width { get; set; }
+    public virtual float Height { get; set; }
 
     private Func<bool> drawCall;
     public float x, y;
 
     public event Action<zButton> OnClick;
     public event Action<zButton> LongPress;
-
-
+    public Color color = Color.white;
+    public Type type;
     public static Dictionary<Type, List<SpriteTexture>> spriteCache = new Dictionary<Type, List<SpriteTexture>>();
-    public zButton(Type type, int border = 10)
+    public zButton(Type type, float Width, float Height, int border = 10)
     {
+        this.Width = Width;
+        this.Height = Height;
+        this.type = type;
         drawCall = delegate
         {
             Rect rect = new Rect(x, y, Width, Height);
-            if (!spriteCache.ContainsKey(type))
+            if (!spriteCache.ContainsKey(this.type))
             {
-                string name = type.Name;
+                string name = this.type.Name;
                 Sprite[] multisprite = Resources.LoadAll<Sprite>("Sprites/" + name);
                 List<SpriteTexture> excuses = new List<SpriteTexture>();
 
                 foreach (var sprite in multisprite)
                 {
                     excuses.Add(new SpriteTexture(sprite));
-                    if (type == (typeof(Wall))) break;
+                    if (this.type == (typeof(Wall))) break;
                 }
 
-                spriteCache[type] = excuses;
+                spriteCache[this.type] = excuses;
             }
-            List<SpriteTexture> sprTex = spriteCache[type];
+            List<SpriteTexture> sprTex = spriteCache[this.type];
             bool ret = GUI.RepeatButton(rect, "");
             for (int i = sprTex.Count - 1; i >= 0; i--)
             {
@@ -50,46 +52,47 @@ public class zButton {
                     case 3: c = new Color(0.4f, 0.4f, 0.4f); break;
                     case 2: c = new Color(0.8f, 0.8f, 0.8f); break;
                     case 1: c = new Color(0.5f, 0.5f, 0.5f); break;
-                    case 0: c = new Color(1f, 1f, 1f); break;
+                    case 0: c = new Color(1.0f, 1.0f, 1.0f); break;
                 }
-                GUI.color = c;
+                Color temp = GUI.color;
+                GUI.color = c * color;
                 GUI.DrawTextureWithTexCoords(new Rect(rect.x + border, rect.y + border, rect.width - border * 2, rect.height - border * 2), sprTex[i].texture, sprTex[i].rect);
+                GUI.color = temp;
             }
             return ret;
         };
     }
-
-    public class SpriteTexture
+    public zButton(Texture t, float Width, float Height)
     {
-        public Texture texture;
-        public Rect rect;
-        public SpriteTexture(Sprite sprite)
-        {
-            texture = sprite.texture;
-            Rect tr = sprite.textureRect;
-            rect = new Rect(tr.x / texture.width, tr.y / texture.height, tr.width / texture.width, tr.height / texture.height);
-        }
-    }
-
-    public zButton(Texture t)
-    {
+        this.Width = Width;
+        this.Height = Height;
         drawCall = delegate
         {
             return GUI.RepeatButton(new Rect(x, y, Width, Height), t);
         };
     }
-
-    public zButton(string text)
+    GUIStyle custombutton;
+    public zButton(string text, float Width, float Height)
     {
+        this.Width = Width;
+        this.Height = Height;
         drawCall = delegate
         {
-            return GUI.RepeatButton(new Rect(x, y, Width, Height), text);
+            if (custombutton == null)
+            {
+                custombutton = new GUIStyle("button");
+                custombutton.fontSize = (int)(Width / (text.Length + 1));
+
+
+            }
+            return GUI.RepeatButton(new Rect(x, y, Width, Height), text, custombutton);
         };
     }
     bool prevClick;
     float downTime;
     bool longPressHappened;
     int falseCounter = 3;
+    KeyCode lastRelease = KeyCode.None;
     public void Draw()
     {
         bool currentClick = drawCall();
@@ -121,7 +124,7 @@ public class zButton {
                 {
                     if (LongPress != null) LongPress(this);
                     longPressHappened = true;
-                    Debug.Log("Longpress");
+                    //Debug.Log("Longpress");
 
                 }
             }
@@ -132,16 +135,36 @@ public class zButton {
             {
                 if (!longPressHappened)
                 {
-                    if (OnClick!=null)OnClick(this);
-                    Debug.Log("onclick");
+                    if (lastRelease == KeyCode.Mouse0)
+                    {
+                        if (OnClick != null) OnClick(this);
+                        //Debug.Log("onclick");
+                    }
+                    else if (lastRelease == KeyCode.Mouse1)
+                    {
+                        if (LongPress != null) LongPress(this);
+                        //longPressHappened = true;
+                        //Debug.Log("Longpress");
+                    }
+                    
                 }
             }
             longPressHappened = false;
         }
 
         prevClick = currentClick;
+        if (Input.GetKeyUp(KeyCode.Mouse0)) lastRelease = KeyCode.Mouse0;
+        else if (Input.GetKeyUp(KeyCode.Mouse1)) lastRelease = KeyCode.Mouse1;
     }
-
-
-
+}
+public class SpriteTexture
+{
+    public Texture texture;
+    public Rect rect;
+    public SpriteTexture(Sprite sprite)
+    {
+        texture = sprite.texture;
+        Rect tr = sprite.textureRect;
+        rect = new Rect(tr.x / texture.width, tr.y / texture.height, tr.width / texture.width, tr.height / texture.height);
+    }
 }

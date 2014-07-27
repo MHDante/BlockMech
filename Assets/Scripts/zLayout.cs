@@ -7,8 +7,9 @@ using System.Collections.Generic;
 public class zGridLayout {
     private enum State { Growing, Shrinking, Hidden , Visible}
     State state;
-    public GUISkin skin;
-    List<zButton> contents;
+    public bool IsVisible { get { return state == State.Visible || state == State.Growing; } }
+    private List<zButton> _contents;
+    public List<zButton> contents { get { return _contents; } }
     Vector2 scrollViewVector;
     Rect properRect;
     Rect currentRect;
@@ -18,11 +19,10 @@ public class zGridLayout {
     float t;
     float heightCounter;
     float padding;
-
     public zGridLayout(Rect rect, IEnumerable<zButton> contents, bool startHidden, Vector2? animOrigin = null, float animDuration = 2f, float padding = 10)
     {
         this.properRect = rect;
-        this.contents = contents.ToList();
+        this._contents = contents.ToList();
         this.origin = animOrigin?? new Vector2(rect.x, rect.y);
         this.currentRect = new Rect(origin.x, origin.y, 0, 0);
         this.duration = animDuration;
@@ -47,7 +47,7 @@ public class zGridLayout {
                 rowSize.Add(new Vector2(widthCounter, tempHeight));
                 counter = 0;
                 tempHeight = 0;
-                widthCounter = element.Width + padding;
+                widthCounter = element.Width + padding * 2;
             }
             else
             {
@@ -94,6 +94,7 @@ public class zGridLayout {
                     Utils.SmootherStep(origin.y, properRect.y, t),
                     Utils.SmootherStep(30, properRect.width, t),
                     Utils.SmootherStep(30, properRect.height, t));
+        
     }
 
     public void Show() { state = State.Growing; }
@@ -107,7 +108,7 @@ public class zGridLayout {
             case State.Hidden:
                 return;
             case State.Growing:
-                t += Time.deltaTime;
+                t += Time.deltaTime / duration;
                 if (t > 1f) { t = 1f; state = State.Visible; }
                 scaleRect();
                 break;
@@ -117,9 +118,10 @@ public class zGridLayout {
                 scaleRect();
                 break;
         }
+        
 
         GUI.Box(currentRect, "");
-        scrollViewVector = GUI.BeginScrollView(new Rect(currentRect.x,currentRect.y,currentRect.width+20,currentRect.height), scrollViewVector, virtualRect);
+        scrollViewVector = GUI.BeginScrollView(new Rect(currentRect.x, currentRect.y, currentRect.width+10, currentRect.height), scrollViewVector, virtualRect);
         
         foreach (zButton Element in contents)
         {
@@ -129,19 +131,4 @@ public class zGridLayout {
         GUI.EndScrollView(true);
 
     }
-}
-
-public class yButton : zButton
-{
-    public override float Width { get { return 80; } }
-    public override float Height { get { return 40; } }
-
-    public yButton(Type t) : base(t) { }
-}
-public class xButton : zButton
-{
-    public override float Width { get { return 40; } }
-    public override float Height { get { return 80; } }
-    public xButton(Type t) : base(t) { }
-
 }
