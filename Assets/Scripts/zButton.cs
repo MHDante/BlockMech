@@ -12,12 +12,13 @@ public class zButton {
 
     private Func<bool> drawCall;
     public float x, y;
-
+    public bool activated { get; set; }
     public event Action<zButton> OnClick;
     public event Action<zButton> LongPress;
     public Color color = Color.white;
     public Type type;
     public static Dictionary<Type, List<SpriteTexture>> spriteCache = new Dictionary<Type, List<SpriteTexture>>();
+    static GUIStyle activeStyle;
     public zButton(Type type, float Width, float Height, int border = 10)
     {
         this.Width = Width;
@@ -26,22 +27,18 @@ public class zButton {
         drawCall = delegate
         {
             Rect rect = new Rect(x, y, Width, Height);
-            if (!spriteCache.ContainsKey(this.type))
-            {
-                string name = this.type.Name;
-                Sprite[] multisprite = Resources.LoadAll<Sprite>("Sprites/" + name);
-                List<SpriteTexture> excuses = new List<SpriteTexture>();
-
-                foreach (var sprite in multisprite)
-                {
-                    excuses.Add(new SpriteTexture(sprite));
-                    if (this.type == (typeof(Wall))) break;
-                }
-
-                spriteCache[this.type] = excuses;
-            }
+            UpdateSpriteCache();
             List<SpriteTexture> sprTex = spriteCache[this.type];
-            bool ret = GUI.RepeatButton(rect, "");
+            bool ret = false;
+            if (activated)
+            {
+                ret = GUI.RepeatButton(rect, "", activeStyle);
+            }
+            else
+            {
+                ret = GUI.RepeatButton(rect, "");
+            }
+            
             for (int i = sprTex.Count - 1; i >= 0; i--)
             {
                 Color c = Color.black;
@@ -61,6 +58,31 @@ public class zButton {
             }
             return ret;
         };
+    }
+    void UpdateSpriteCache()
+    {
+        if (!spriteCache.ContainsKey(this.type))
+        {
+            string name = this.type.Name;
+            Sprite[] multisprite = Resources.LoadAll<Sprite>("Sprites/" + name);
+            List<SpriteTexture> excuses = new List<SpriteTexture>();
+
+            foreach (var sprite in multisprite)
+            {
+                excuses.Add(new SpriteTexture(sprite));
+                if (this.type == (typeof(Wall))) break;
+            }
+
+            spriteCache[this.type] = excuses;
+        }
+        if (activeStyle == null)
+        {
+            var style = GUI.skin.GetStyle("Button");
+            activeStyle = new GUIStyle(style);
+            activeStyle.normal.background = style.focused.background;
+            activeStyle.hover.background = style.focused.background;
+            //activeStyle.normal.background = activeStyle.active.background;
+        }
     }
     public zButton(Texture t, float Width, float Height)
     {
@@ -82,8 +104,6 @@ public class zButton {
             {
                 custombutton = new GUIStyle("button");
                 custombutton.fontSize = (int)(Width / (text.Length + 1));
-
-
             }
             return GUI.RepeatButton(new Rect(x, y, Width, Height), text, custombutton);
         };
