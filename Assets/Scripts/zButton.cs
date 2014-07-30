@@ -77,12 +77,21 @@ public class zButton {
         }
         if (activeStyle == null)
         {
-            var style = GUI.skin.GetStyle("Button");
-            activeStyle = new GUIStyle(style);
-            activeStyle.normal.background = style.focused.background;
-            activeStyle.hover.background = style.focused.background;
-            //activeStyle.normal.background = activeStyle.active.background;
+            activeStyle = CreateActiveStyle();
         }
+    }
+    GUIStyle CreateActiveStyle(string text = "")
+    {
+        var style = GUI.skin.GetStyle("Button");
+        var newStyle = new GUIStyle(style);
+        newStyle.normal.background = style.focused.background;
+        newStyle.hover.background = style.focused.background;
+        if (text != "")
+        {
+            newStyle.fontSize = (int)(Width / (text.Length + 1));
+        }
+        return newStyle;
+        //activeStyle.normal.background = activeStyle.active.background;
     }
     public zButton(Texture t, float Width, float Height)
     {
@@ -93,19 +102,31 @@ public class zButton {
             return GUI.RepeatButton(new Rect(x, y, Width, Height), t);
         };
     }
-    GUIStyle custombutton;
+    GUIStyle customButton, activeCustomButton;
     public zButton(string text, float Width, float Height)
     {
         this.Width = Width;
         this.Height = Height;
         drawCall = delegate
         {
-            if (custombutton == null)
+            if (customButton == null || activeCustomButton == null)
             {
-                custombutton = new GUIStyle("button");
-                custombutton.fontSize = (int)(Width / (text.Length + 1));
+                customButton = new GUIStyle("button");
+                customButton.fontSize = (int)(Width / (text.Length + 1));
+                activeCustomButton = CreateActiveStyle(text);
             }
-            return GUI.RepeatButton(new Rect(x, y, Width, Height), text, custombutton);
+            bool ret = false;
+            Rect rect = new Rect(x, y, Width, Height);
+            if (activated)
+            {
+                ret = GUI.RepeatButton(rect, text, activeCustomButton);
+            }
+            else
+            {
+                ret = GUI.RepeatButton(rect, text, customButton);
+            }
+            return ret;
+            //return GUI.RepeatButton(rect, text, customButton);
         };
     }
     bool prevClick;

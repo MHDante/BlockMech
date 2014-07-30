@@ -37,6 +37,11 @@ public class MetaData : MonoBehaviour
     {
         return colors[colorslot];
     }
+    public static ColorSlot GetColorFromSlot(Color color)
+    {
+        var slot = colors.First(kv => kv.Value == color);
+        return slot.Key;
+    }
 
     void OnValidate()
     {

@@ -54,6 +54,42 @@ public class zEditor
 
         Action<zButton> hideLayout = (zb) => { colorLayout.Hide(); sidebar.colorPicker.color = zb.color; };
         foreach (var zb in colorLayout.contents) { zb.OnClick += hideLayout; }
+        sidebar.colorPicker.color = colorButtons[0].color;
+    }
+
+    public void UpdateEditor()
+    {
+        Vector2 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
+        if (!mouse.isWithinGrid()) return;
+        if (sidebar.activeButton == sidebar.piecePicker)
+        {
+            OnPiecePicker(mouse);
+        }
+    }
+    void OnPiecePicker(Vector2 mouse)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Type type = sidebar.piecePicker.type;
+            Cell target = Cell.GetFromWorldPos(mouse);
+            ColorSlot colorslot = MetaData.GetColorFromSlot(sidebar.colorPicker.color);
+            if (type == typeof(Wall))
+            {
+                Side side;
+                Orientation or;
+                Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+                RoomManager.roomManager.SpawnWall(target, side, colorslot);
+            }
+            else if (type == typeof(Player))
+            {
+                RoomManager.roomManager.SpawnPlayer(target);
+            }
+            else
+            {
+                RoomManager.roomManager.SpawnPiece(type, target, colorslot);
+            }
+        }
+        
     }
 }
 
@@ -85,9 +121,9 @@ public class zSidebar
 
         piecePicker = new zButton(typeof(Wall), buttonWidth, buttonWidth); contents.Add(piecePicker);
         colorPicker = new zButton(typeof(Tile), buttonWidth, buttonWidth); contents.Add(colorPicker);
-        eraserTool = new zButton(typeof(Player), buttonWidth, buttonWidth); contents.Add(eraserTool);
-        selectTool = new zButton(typeof(Key), buttonWidth, buttonWidth); contents.Add(selectTool);
-        undoAction = new zButton(typeof(Button), buttonWidth, buttonWidth); contents.Add(undoAction);
+        eraserTool = new zButton("Erase", buttonWidth, buttonWidth); contents.Add(eraserTool);
+        selectTool = new zButton("Select", buttonWidth, buttonWidth); contents.Add(selectTool);
+        undoAction = new zButton("Undo", buttonWidth, buttonWidth); contents.Add(undoAction);
         menuButton = new zButton("Menu", buttonWidth, buttonWidth); contents.Add(menuButton);
 
         piecePicker.OnClick += delegate(zButton zb)

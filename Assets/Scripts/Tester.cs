@@ -16,8 +16,7 @@ public class Tester : MonoBehaviour {
 	}
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P)) pieceLayout.Show();
-        //if (Input.GetKeyDown(KeyCode.O)) pieceLayout.Hide();
+        editor.UpdateEditor();
     }
 
     void OnGUI()
