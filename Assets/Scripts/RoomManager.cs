@@ -215,7 +215,6 @@ public class RoomManager : MonoBehaviour {
     //Used to be in PuzzleMaker
     public GamePiece SpawnPiece(Type piece, Cell target, ColorSlot colorslot = ColorSlot.None)
     {
-
         if (target.IsSolidlyOccupied())
         {
             Debug.LogError("Could not spawn: " + piece.Name + " at " + target.ToString() + " As it was occupied");
@@ -225,8 +224,10 @@ public class RoomManager : MonoBehaviour {
         GameObject obj = CreatePrefabSafe(piece);
         obj.transform.position = target.WorldPos();
         obj.transform.parent = parent.transform;
-        return RoomManager.roomManager.AddPiece(obj, piece, colorslot);
 
+        GamePiece gp = RoomManager.roomManager.AddPiece(obj, piece, colorslot);
+        gp.cell = target;
+        return gp;
     }
     public void SpawnPlayer(Cell target)
     {
@@ -286,7 +287,7 @@ public class RoomManager : MonoBehaviour {
         return RoomManager.pieceParents[piece];
     }
 
-    private GamePiece AddPiece(GameObject gameobject, Type t, ColorSlot colorslot)
+    public GamePiece AddPiece(GameObject gameobject, Type t, ColorSlot colorslot)
     {
         if (!t.IsSubclassOf(typeof(GamePiece))) throw new System.Exception("Tried to add a non-GamePiece to a Cell");
         GamePiece gamePiece;
@@ -317,18 +318,20 @@ public class RoomManager : MonoBehaviour {
         if(!Application.isPlaying && roomManager == null)
         { roomManager = this; Awake(); }
 	}
-    public void RemoveTopPiece(Cell target)
+    public GamePiece RemoveTopPiece(Cell target)
     {
 		if (target != null)
         {
 			var gamepieces = target.pieces.ToList();
-			if (!target.HasPiece()) return;
+			if (!target.HasPiece()) return null;
             GamePiece g = gamepieces.Last();
             g.Destroy();
+            return g;
         }
+        return null;
     }
 
-	public void RemoveWall(Vector2 position)
+	public Wall RemoveWall(Vector2 position)
     {
         Side side; Orientation orient;
         Utils.WorldToWallPos(position, out side, out orient);
@@ -343,24 +346,25 @@ public class RoomManager : MonoBehaviour {
             }
             else
             {
-                return;
+                return null;
             }
         }
-		if (cell.getWall(side) != null)
+        Wall wall = cell.getWall(side);
+		if (wall != null)
         {
-            if (cell.getWall(side).gameObject) DestroyImmediate(cell.getWall(side).gameObject);
+            if (wall.gameObject) DestroyImmediate(wall.gameObject);
         }
 		cell.setWall(side, null);
 		Cell neighbour = cell.getNeighbour(side);
 		if (neighbour != null){
 			neighbour.setWall(Utils.opposite(side), null);
 	    }
+        return wall;
 	}
     public void AddWall(Wall wall)
     {
         Side side; Orientation orient;
         Utils.WorldToWallPos(wall.transform.position, out side, out orient);
-
 
         Cell cell = Cell.GetFromWorldPos(wall.transform.position);
         if (cell == null)

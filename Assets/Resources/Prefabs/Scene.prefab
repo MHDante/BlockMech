@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 114: {fileID: 11400008}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400008}
   m_Layer: 8
   m_Name: Scene
   m_TagString: Untagged
@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.875, y: 0, z: -.370000005}
+  m_LocalPosition: {x: -1.875, y: 0, z: .370000005}
   m_LocalScale: {x: -1.875, y: 1.25, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -438,7 +438,7 @@ MonoBehaviour:
   author: 
   levelName: 
   welcomeHint: BlockIt
-  difficulty: 1
+  difficulty: 0
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1

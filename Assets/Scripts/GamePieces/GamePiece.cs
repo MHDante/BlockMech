@@ -320,7 +320,7 @@ public abstract class GamePiece : MonoBehaviour
     public void Destroy()
     {
         Detatch();
-        if (this.gameObject) DestroyImmediate(this.gameObject);
+        if (this.gameObject) Destroy(this.gameObject);//DestroyImmediate(this.gameObject);
         
     }
     //----------------
@@ -329,7 +329,7 @@ public abstract class GamePiece : MonoBehaviour
         List<GamePiece> detatched = DetatchWithChilren();
         foreach(var piece in detatched)
         {
-            if (piece.gameObject) DestroyImmediate(piece.gameObject);
+            if (piece.gameObject) Destroy(piece.gameObject);//DestroyImmediate(piece.gameObject);
         }
     }
     public virtual void OnDestroy(){

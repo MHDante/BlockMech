@@ -8,12 +8,14 @@ public class zEditor
 {
     public zSidebar sidebar;
     public zGridLayout pieceLayout, colorLayout;
+    private Stack<UndoAction> undoActions = new Stack<UndoAction>();
     public float sidebarScreenRation { get { return sidebarScreenRation; } }
     public zEditor(float sidebarScreenRatio, float buttonWidth)
     {
         sidebar = new zSidebar(this, sidebarScreenRatio, buttonWidth);
         SetupPieceLayout(sidebarScreenRatio, buttonWidth);
         SetupColorLayout(sidebarScreenRatio, buttonWidth);
+        sidebar.undoAction.OnClick += (zb) => { OnUndo(); };
     }
     public void Draw()
     {
@@ -63,33 +65,164 @@ public class zEditor
         if (!mouse.isWithinGrid()) return;
         if (sidebar.activeButton == sidebar.piecePicker)
         {
-            OnPiecePicker(mouse);
+            OnAdd(mouse);
+        }
+        else if (sidebar.activeButton == sidebar.eraserTool)
+        {
+            OnErase(mouse);
         }
     }
-    void OnPiecePicker(Vector2 mouse)
+    Queue<Vector2> prevMousePositions = new Queue<Vector2>();
+    void OnAdd(Vector2 mouse)
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (pieceLayout.IsVisible || colorLayout.IsVisible) return;
             Type type = sidebar.piecePicker.type;
             Cell target = Cell.GetFromWorldPos(mouse);
             ColorSlot colorslot = MetaData.GetColorFromSlot(sidebar.colorPicker.color);
             if (type == typeof(Wall))
             {
-                Side side;
-                Orientation or;
+                Side side; Orientation or;
                 Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
-                RoomManager.roomManager.SpawnWall(target, side, colorslot);
+                Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
+                AddUndoAction(wall, UndoAction.ActionType.Add);
+                //TryWallSpawn(mouse, target, colorslot);
             }
             else if (type == typeof(Player))
             {
                 RoomManager.roomManager.SpawnPlayer(target);
+                AddUndoAction(RoomManager.roomManager.player, UndoAction.ActionType.Add);
             }
             else
             {
-                RoomManager.roomManager.SpawnPiece(type, target, colorslot);
+                GamePiece gamePiece = RoomManager.roomManager.SpawnPiece(type, target, colorslot);
+                AddUndoAction(gamePiece, UndoAction.ActionType.Add);
             }
         }
-        
+        else
+        {
+            if (prevMousePositions.Count != 0) prevMousePositions = new Queue<Vector2>();
+        }
+    }
+
+    void TryWallSpawn(Vector2 mouse, Cell target, ColorSlot colorslot)
+    {
+        prevMousePositions.Enqueue(mouse);
+        if (prevMousePositions.Count == 0)
+        {
+            Side side; Orientation or;
+            Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+            Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
+            AddUndoAction(wall, UndoAction.ActionType.Add);
+        }
+        else if (prevMousePositions.Count >= 5)
+        {
+            Vector2 oldPos = prevMousePositions.Dequeue();
+            Vector2 dir = mouse - oldPos;
+
+            
+        }
+    }
+
+    void OnErase(Vector2 mouse)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (pieceLayout.IsVisible || colorLayout.IsVisible) return;
+            Type type = sidebar.piecePicker.type;
+            if (type == typeof(Wall))
+            {
+                Wall wall = RoomManager.roomManager.RemoveWall(mouse);
+                AddUndoAction(wall, UndoAction.ActionType.Remove);
+            }
+            else
+            {
+                Cell target = Cell.GetFromWorldPos(mouse);
+                GamePiece gamePiece = RoomManager.roomManager.RemoveTopPiece(target);
+                AddUndoAction(gamePiece, UndoAction.ActionType.Remove);
+            }
+        }
+    }
+    void OnUndo()
+    {
+        if (undoActions.Count != 0)
+        {
+            UndoAction undoAction = undoActions.Pop();
+            undoAction.PerformUndoAction();
+        }
+    }
+    void AddUndoAction(Wall wall, UndoAction.ActionType actionType)
+    {
+        if (wall == null) return;
+        UndoAction action = new UndoAction(wall, actionType);
+        undoActions.Push(action);
+    }
+    void AddUndoAction(GamePiece piece, UndoAction.ActionType actionType)
+    {
+        if (piece == null) return;
+        UndoAction action = new UndoAction(piece, actionType);
+        undoActions.Push(action);
+    }
+}
+
+public class UndoAction
+{
+    public enum ActionType
+    {
+        Add,
+        Remove,
+    }
+    Cell cell;
+    Wall wall;
+    GamePiece piece;
+    ActionType actionType;
+    Vector2 position;
+    public UndoAction(Wall wall, ActionType actionType)
+    {
+        this.wall = wall;
+        this.actionType = actionType;
+        this.position = wall.transform.position;
+        this.cell = Cell.GetFromWorldPos(position);
+    }
+    public UndoAction(GamePiece piece, ActionType actionType)
+    {
+        this.piece = piece;
+        this.actionType = actionType;
+        this.position = piece.transform.position;
+        this.cell = piece.cell;
+    }
+    public void PerformUndoAction()
+    {
+        if (actionType == ActionType.Add)
+        {
+            if (wall != null)
+            {
+                RoomManager.roomManager.RemoveWall(position);
+            }
+            else if (piece != null)
+            {
+                RoomManager.roomManager.RemoveTopPiece(cell);
+            }
+        }
+        else if (actionType == ActionType.Remove)
+        {
+            if (wall != null)
+            {
+                RoomManager.roomManager.AddWall(wall);
+            }
+            else if (piece != null)
+            {
+                if (piece is Player)
+                {
+                    RoomManager.roomManager.SpawnPlayer(cell);
+                }
+                else
+                {
+                    RoomManager.roomManager.AddPiece(piece.gameObject, piece.GetType(), piece.colorslot);
+                }
+            }
+        }
     }
 }
 
@@ -189,7 +322,7 @@ public class zSidebar
 
     public void SwitchActiveButton(zButton button)
     {
-        if (activeButton == button || button == colorPicker) return;
+        if (activeButton == button || button == colorPicker || button == undoAction || button == menuButton) return;
         if (activeButton != null)
         {
             activeButton.activated = false;
