@@ -19,8 +19,11 @@ public class Tester : MonoBehaviour {
     {
         editor.UpdateEditor();
         if (Input.GetKeyDown(KeyCode.A)) ShowKeyboard();
-    }
 
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+        }
+    }
     void OnGUI()
     {
         GUI.skin = skin;
@@ -30,17 +33,6 @@ public class Tester : MonoBehaviour {
     void ShowKeyboard()
     {
         keyboard = TouchScreenKeyboard.Open("Enter name");
-    }
-
-    void Test()
-    {
-        List<int> list = new List<int> { 1, 2, 3, 4, 5, 6 };
-        var grouping = list.GroupBy(x => x % 2 == 0);
-        var selected = grouping.Select(x => { int i = x.First(); i++; return i; });
-        foreach(var s in selected)
-        {
-            Debug.Log(s);
-        }
     }
     
 }

@@ -61,6 +61,11 @@ public class zEditor
 
     public void UpdateEditor()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         Vector2 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
         if (!mouse.isWithinGrid()) return;
         if (sidebar.activeButton == sidebar.piecePicker)
@@ -75,7 +80,7 @@ public class zEditor
     Queue<Vector2> prevMousePositions = new Queue<Vector2>();
     void OnAdd(Vector2 mouse)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (pieceLayout.IsVisible || colorLayout.IsVisible) return;
             Type type = sidebar.piecePicker.type;
@@ -83,21 +88,20 @@ public class zEditor
             ColorSlot colorslot = MetaData.GetColorFromSlot(sidebar.colorPicker.color);
             if (type == typeof(Wall))
             {
-                Side side; Orientation or;
-                Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
-                Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
-                AddUndoAction(wall, UndoAction.ActionType.Add);
-                //TryWallSpawn(mouse, target, colorslot);
+                TryWallSpawn(mouse, target, colorslot);
             }
-            else if (type == typeof(Player))
+            else if (Input.GetMouseButtonDown(0))
             {
-                RoomManager.roomManager.SpawnPlayer(target);
-                AddUndoAction(RoomManager.roomManager.player, UndoAction.ActionType.Add);
-            }
-            else
-            {
-                GamePiece gamePiece = RoomManager.roomManager.SpawnPiece(type, target, colorslot);
-                AddUndoAction(gamePiece, UndoAction.ActionType.Add);
+                if (type == typeof(Player))
+                {
+                    RoomManager.roomManager.SpawnPlayer(target);
+                    AddUndoAction(RoomManager.roomManager.player, UndoAction.ActionType.Add);
+                }
+                else
+                {
+                    GamePiece gamePiece = RoomManager.roomManager.SpawnPiece(type, target, colorslot);
+                    AddUndoAction(gamePiece, UndoAction.ActionType.Add);
+                }
             }
         }
         else
@@ -109,18 +113,44 @@ public class zEditor
     void TryWallSpawn(Vector2 mouse, Cell target, ColorSlot colorslot)
     {
         prevMousePositions.Enqueue(mouse);
-        if (prevMousePositions.Count == 0)
+        Side side; Orientation or;
+        Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+        if (prevMousePositions.Count == 1)
         {
-            Side side; Orientation or;
-            Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
             Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
             AddUndoAction(wall, UndoAction.ActionType.Add);
         }
-        else if (prevMousePositions.Count >= 5)
+        else if (prevMousePositions.Count >= 15)
         {
             Vector2 oldPos = prevMousePositions.Dequeue();
             Vector2 dir = mouse - oldPos;
+            float angle = Mathf.Atan2(dir.y, dir.x);
+            angle = Mathf.Abs(angle);
+            //Debug.Log(angle);
 
+            float dead = Mathf.PI / 12;
+            Wall existing = target.getWall(side);
+            if (existing == null)
+            {
+                if (side == Side.left || side == Side.right)
+                {
+                    if (Mathf.Abs(angle - Mathf.PI / 2f) < dead)
+                    {
+                        Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
+                        AddUndoAction(wall, UndoAction.ActionType.Add);
+                        Debug.Log(side);
+                    }
+                }
+                else
+                {
+                    if (angle > Mathf.PI - dead || angle < dead)
+                    {
+                        Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
+                        AddUndoAction(wall, UndoAction.ActionType.Add);
+                        Debug.Log(side);
+                    }
+                }
+            }
             
         }
     }
