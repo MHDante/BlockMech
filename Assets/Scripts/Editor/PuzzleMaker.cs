@@ -1,4 +1,5 @@
-﻿using OrbItUtils;
+﻿using System.Reflection;
+using OrbItUtils;
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
@@ -161,6 +162,9 @@ public class PuzzleMaker : EditorWindow
             Vector2 ScrollVect = getScroll();
             Cell target = Cell.GetFromWorldPos(MousePos);
             int scroll = Math.Sign(ScrollVect.y);
+
+            
+
             if (scroll != 0)
             {
                 int nextPiece = (int)selectedIndex + scroll;

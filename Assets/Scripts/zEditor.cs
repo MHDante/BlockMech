@@ -115,7 +115,7 @@ public class zEditor
     {
         prevMousePositions.Enqueue(mouse);
             Side side; Orientation or;
-        Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+        Vector2 worldpos = Wall.WorldToWallPos(mouse, out side, out or);
         if (prevMousePositions.Count == 1)
         {
             Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
