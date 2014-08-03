@@ -7,6 +7,7 @@ namespace OrbItUtils
 {
     public static partial class Utils
     {
+
         public static Color ContrastColor(this Color col)
         {
             byte r = (byte)((((int)col.r) * 255 + 128) % 255);
