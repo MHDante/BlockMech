@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using OrbItUtils;
+using UnityEngine;
 using System.Collections;
 using UnityEditor;
 using System.Collections.Generic;
@@ -135,7 +136,7 @@ public class PuzzleMaker : EditorWindow
 		Vector2 screenpos = Event.current.mousePosition;
 		screenpos.y = sceneView.camera.pixelHeight - screenpos.y;
 		MousePos = sceneView.camera.ScreenPointToRay(screenpos).origin;
-        bool withinGrid = MousePos.isWithinGrid();
+        bool withinGrid = RoomManager.IsWithinGrid(MousePos);
         if (withinGrid)
         {
             if (Event.current.type == EventType.MouseDown && Event.current.button == 2)
@@ -173,7 +174,7 @@ public class PuzzleMaker : EditorWindow
             {
 				Side side;
                 Orientation or;
-				Vector2 worldpos = Utils.WorldToWallPos(MousePos, out side, out or);
+				Vector2 worldpos = Wall.WorldToWallPos(MousePos, out side, out or);
                 if (Indicator)
                 {
                     Indicator.transform.position = worldpos;
@@ -183,7 +184,7 @@ public class PuzzleMaker : EditorWindow
 
                     if (wall.isDoor)
                     {
-                        Indicator.GetComponent<Wall>().colorslot = colorslot;
+                        Indicator.GetComponent<Wall>().colorSlot = colorslot;
                     }
                 }
                 if (LeftDown())

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using OrbItUtils;
+
 using System.Linq;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,7 @@ public class RoomManager : MonoBehaviour {
 
 
 
-    public static Dictionary<Type, GameObject> pieceParents = new Dictionary<Type,GameObject>();
+    public static Dictionary<Type, GameObject> pieceParents = new Dictionary<Type, GameObject>();
     public Cell[][] Grid;
     public Player player;
 
@@ -35,6 +37,13 @@ public class RoomManager : MonoBehaviour {
         }
     }
 
+    public static bool IsWithinGrid(Vector2 worldPos)
+    {
+        if (worldPos.x > Values.gridWidth * Values.blockSize || worldPos.x < 0) return false;
+        if (worldPos.y > Values.gridHeight * Values.blockSize || worldPos.y < 0) return false;
+        return true;
+    }
+
     void Awake() {
         roomManager = this;
         if (Application.isPlaying)
@@ -53,14 +62,14 @@ public class RoomManager : MonoBehaviour {
                 Grid[i][j] = new Cell(i, j);
             }
         }
-        List<GameObject> walls = GameObject.FindObjectsOfType<Wall>().Select(w => w.gameObject).ToList();
+        List<GameObject> walls = FindObjectsOfType<Wall>().Select(w => w.gameObject).ToList();
 
 		foreach (GameObject wallobj in walls)
         {
             //if (wallobj.GetComponent<Door>() != null) Debug.Log("FOUND DOOR");
 			Wall wall  = wallobj.GetComponent<Wall>();
 			if(wall != null){
-				if(((Vector2)wall.transform.position).isWithinGrid()){
+				if((IsWithinGrid(wall.transform.position))){
                     AddWall(wall);
 				}
 				else{
@@ -128,7 +137,7 @@ public class RoomManager : MonoBehaviour {
                 {
                     if (wall != null && wall.isDoor)
                     {
-                        if (wall.colorslot == colorslot && !list.Contains(wall))
+                        if (wall.colorSlot == colorslot && !list.Contains(wall))
                         {
                             list.Add(wall);
                         }
@@ -225,21 +234,21 @@ public class RoomManager : MonoBehaviour {
         obj.transform.position = target.WorldPos();
         obj.transform.parent = parent.transform;
 
-        GamePiece gp = RoomManager.roomManager.AddPiece(obj, piece, colorslot);
+        GamePiece gp = roomManager.AddPiece(obj, piece, colorslot);
         gp.cell = target;
         return gp;
     }
     public void SpawnPlayer(Cell target)
     {
-        if (RoomManager.roomManager.player == null)
+        if (roomManager.player == null)
         {
             GameObject obj = CreatePrefabSafe(typeof(Player));
             obj.transform.position = target.WorldPos();
-            RoomManager.roomManager.AddPiece(obj, typeof(Player), ColorSlot.None);
+            roomManager.AddPiece(obj, typeof(Player), ColorSlot.None);
         }
         else
         {
-            RoomManager.roomManager.player.TeleportTo(target);
+            roomManager.player.TeleportTo(target);
         }
     }
     //public void SpawnWall
@@ -270,26 +279,26 @@ public class RoomManager : MonoBehaviour {
 
     public static GameObject GetPieceParent(Type piece)
     {
-        if (!RoomManager.pieceParents.ContainsKey(piece) || RoomManager.pieceParents[piece] == null)
+        if (!pieceParents.ContainsKey(piece) || pieceParents[piece] == null)
         {
             GameObject preexisting = GameObject.Find(piece.ToString().UppercaseFirst() + " Group");
-            if (preexisting != null && preexisting.transform.parent == RoomManager.masterParent.transform)
+            if (preexisting != null && preexisting.transform.parent == masterParent.transform)
             {
-                RoomManager.pieceParents[piece] = preexisting;
+                pieceParents[piece] = preexisting;
             }
             else
             {
-                RoomManager.pieceParents[piece] = new GameObject();
-                RoomManager.pieceParents[piece].name = piece.ToString().UppercaseFirst() + " Group";
-                RoomManager.pieceParents[piece].transform.parent = RoomManager.masterParent.transform;
+                pieceParents[piece] = new GameObject();
+                pieceParents[piece].name = piece.ToString().UppercaseFirst() + " Group";
+                pieceParents[piece].transform.parent = masterParent.transform;
         }
     }
-        return RoomManager.pieceParents[piece];
+        return pieceParents[piece];
     }
 
     public GamePiece AddPiece(GameObject gameobject, Type t, ColorSlot colorslot)
     {
-        if (!t.IsSubclassOf(typeof(GamePiece))) throw new System.Exception("Tried to add a non-GamePiece to a Cell");
+        if (!t.IsSubclassOf(typeof(GamePiece))) throw new Exception("Tried to add a non-GamePiece to a Cell");
         GamePiece gamePiece;
         gamePiece = (GamePiece)gameobject.GetComponent(t);
         if (gamePiece == null)
@@ -334,7 +343,7 @@ public class RoomManager : MonoBehaviour {
 	public Wall RemoveWall(Vector2 position)
     {
         Side side; Orientation orient;
-        Utils.WorldToWallPos(position, out side, out orient);
+        Wall.WorldToWallPos(position, out side, out orient);
         Cell cell = Cell.GetFromWorldPos(position);
 
         if (cell == null)
@@ -357,14 +366,14 @@ public class RoomManager : MonoBehaviour {
 		cell.setWall(side, null);
 		Cell neighbour = cell.getNeighbour(side);
 		if (neighbour != null){
-			neighbour.setWall(Utils.opposite(side), null);
+			neighbour.setWall(side.opposite(), null);
 	    }
         return wall;
 	}
     public void AddWall(Wall wall)
     {
         Side side; Orientation orient;
-        Utils.WorldToWallPos(wall.transform.position, out side, out orient);
+        Wall.WorldToWallPos(wall.transform.position, out side, out orient);
 
         Cell cell = Cell.GetFromWorldPos(wall.transform.position);
         if (cell == null)
@@ -388,7 +397,7 @@ public class RoomManager : MonoBehaviour {
         Cell neighbour = cell.getNeighbour(side);
         if (neighbour != null)
         {
-            neighbour.setWall(Utils.opposite(side), wall);
+            neighbour.setWall(side.opposite(), wall);
         }
     }
     public Cell FindBorderCell(Vector3 position)

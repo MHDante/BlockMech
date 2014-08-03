@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
+using OrbItUtils;
 using System.Xml.Linq;
 using System.IO;
 using System;
-using System.Linq;
-using System.Reflection;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -177,7 +175,7 @@ public static class FileWrite
                     eWall.Add(new XAttribute("x", x));
                     eWall.Add(new XAttribute("y", y));
                     eWall.Add(new XAttribute("Side", s));
-                    eWall.Add(new XAttribute("colorslot", wall.colorslot));
+                    eWall.Add(new XAttribute("colorslot", wall.colorSlot));
                     eWall.Add(new XAttribute("isTraversible", wall.IsTraversible));
                     eWalls.Add(eWall);
                 }

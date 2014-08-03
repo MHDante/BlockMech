@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using OrbItUtils;
 
 public class zEditor
 {
@@ -62,7 +63,7 @@ public class zEditor
     public void UpdateEditor()
     {
         Vector2 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-        if (!mouse.isWithinGrid()) return;
+        if (!RoomManager.IsWithinGrid(mouse)) return;
         if (sidebar.activeButton == sidebar.piecePicker)
         {
             OnAdd(mouse);
@@ -84,7 +85,7 @@ public class zEditor
             if (type == typeof(Wall))
             {
                 Side side; Orientation or;
-                Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+                Vector2 worldpos = Wall.WorldToWallPos(mouse, out side, out or);
                 Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
                 AddUndoAction(wall, UndoAction.ActionType.Add);
                 //TryWallSpawn(mouse, target, colorslot);
@@ -112,7 +113,7 @@ public class zEditor
         if (prevMousePositions.Count == 0)
         {
             Side side; Orientation or;
-            Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+            Vector2 worldpos = Wall.WorldToWallPos(mouse, out side, out or);
             Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);
             AddUndoAction(wall, UndoAction.ActionType.Add);
         }

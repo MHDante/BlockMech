@@ -3,8 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using OrbItUtils;
 
 public enum Side {top, right, bottom, left };
+public static class SideExtensions
+{
+    public static Side opposite(this Side s)
+    {
+        switch (s)
+        {
+            case Side.bottom:
+                return Side.top;
+            case Side.top:
+                return Side.bottom;
+            case Side.left:
+                return Side.right;
+            case Side.right:
+                return Side.left;
+        } throw new WTFException();
+    }
+}
 public class Cell {
 
     public int x { get; set; }
