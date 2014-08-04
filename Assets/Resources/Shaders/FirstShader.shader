@@ -40,13 +40,16 @@
 //	} 
 //	FallBack "Diffuse"
 //}
-Shader "First"
+Shader "Custom/Grid"
 {
 	Properties
 	{
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
 		_Color ("Tint", Color) = (1,1,1,1)
 		[MaterialToggle] PixelSnap ("Pixel snap", Float) = 0
+		_gridWith ("gridWith", Float) = 16
+		_gridHeight ("gridHeight", Float) = 12
+		_blockSize ("blockSize", Float) = 4
 	}
 
 	SubShader
@@ -71,6 +74,7 @@ Shader "First"
 		CGPROGRAM
 // Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct appdata_t members worldPos)
 #pragma exclude_renderers d3d11 xbox360
+			#pragma target 3.0
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma multi_compile DUMMY PIXELSNAP_ON
@@ -92,6 +96,9 @@ Shader "First"
 			};
 			
 			fixed4 _Color;
+			float _gridWith;
+			float _gridHeight;
+			float _blockSize;
 
 			v2f vert(appdata_t IN)
 			{
@@ -111,17 +118,47 @@ Shader "First"
 
 			sampler2D _MainTex;
 
+			float colFactor(float alpha, float value)
+			{
+				return alpha * fmod(value + _Time.w, 1f);
+			}
+
 			fixed4 frag(v2f IN) : SV_Target
 			{
 				float increment = 4f;
+				float4 wp = IN.worldpos;
 				fixed4 c = tex2D(_MainTex, IN.texcoord) * IN.color;
-				if (fmod(IN.worldpos.x, increment) < 0.2f || fmod(IN.worldpos.y, increment) < 0.2f){
-					c.rgb *= c.a;
+				if (wp.x < 0 || wp.y < 0 || wp.x > _gridWith * _blockSize || wp.y > _gridHeight * _blockSize)
+				{
+					c.rgba *= 0;
 					return c;
 				}
-				else{
-				c.rgba *= 0;
-				return c;
+				else if (fmod(wp.x, increment) < 0.2f)
+				{
+					//c.r = fmod(wp.y / 100f + wp.x + _Time.x, 1f);
+					//c.g = fmod(2 *wp.y/ 100f + wp.x + _Time.x, 1f);
+					//c.b = fmod(3 *wp.y/ 100f - wp.x + _Time.x, 1f);
+					//c.rgb *= fmod(c.rgb + wp.x + _Time.x, 1f);
+					//c.rgb *= c.a * (_SinTime.w * 0.2f) + 0.5f;
+					//c.rgb *= c.a * fmod(wp.y + _Time.w, 1f);
+					c.rgb *= colFactor(c.a, wp.y);
+					return c;
+				}
+				else if (fmod(wp.y, increment) < 0.2f)
+				{
+					//c.r = fmod(wp.x / 100f * wp.y + _Time.x, 1f);
+					//c.g = fmod(2 *wp.x/ 100f + wp.y + _Time.x, 1f);
+					//c.b = fmod(3 *wp.x/ 100f - wp.y + _Time.x, 1f);
+					//c.rgb *= fmod(c.rgb + wp.y + _Time.x, 1f);
+					//c.rgb *= c.a * (_SinTime.w * 0.2f) + 0.5f;
+					//c.rgb *= c.a * fmod(wp.x + _Time.w, 1f);
+					c.rgb *= colFactor(c.a, wp.x);
+					return c;
+				}
+				else
+				{
+					c.rgba *= 0;
+					return c;
 				}
 				
 			}

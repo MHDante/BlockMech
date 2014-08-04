@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: FirstMaterial
-  m_Shader: {fileID: 4800000, guid: 0f47c407e49cf264a82feecc5025b6c7, type: 3}
+  m_Name: PanMaterial
+  m_Shader: {fileID: 4800000, guid: 737f7cb5ba7d59d4a945576d70640118, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:

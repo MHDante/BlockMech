@@ -17,7 +17,7 @@ public static class FileWrite
     //    if (Input.GetKeyDown(KeyCode.T)) RoomManager.roomManager.RefreshColorFamilyAll();
     //}
     static string filename = "Battletoads+Tetris.xml";
-    public static void InitSerialization()
+    public static string InitSerialization()
     {
         XElement all = SerializeGrid();
         Debug.Log(all);
@@ -33,9 +33,7 @@ public static class FileWrite
         }
         fname = WWW.EscapeURL(fname);
         Debug.Log("Writing file: " + fname);
-        WriteFile(fname + ".xml", all.ToString());
-
-        int a = 4;
+        return WriteFile(fname + ".xml", all.ToString());
     }
 
     public static void InitDeserialization(string filename)
@@ -242,14 +240,20 @@ public static class FileWrite
     }
 
 
-    static void WriteFile(string filename, string text)
+    static string WriteFile(string filename, string text)
     {
         //Debug.Log(Application.persistentDataPath);
-        string fullFileName = Application.dataPath + "/SavedLevels/" + filename;
+        string path = Application.persistentDataPath;
+#if UNITY_EDITOR
+        path = Application.dataPath;
+#endif
+        //string fullFileName = path + "/SavedLevels/" + filename;
+        string fullFileName = path + "/" + filename;
         StreamWriter fileWriter = File.CreateText(fullFileName);
         //fileWriter.WriteLine("Hello world");
         fileWriter.Write(text);
         fileWriter.Close();
+        return fullFileName;
     }
 }
 [System.AttributeUsage(System.AttributeTargets.Property |

@@ -18,21 +18,12 @@ public class Tester : MonoBehaviour {
     void Update()
     {
         editor.UpdateEditor();
-        if (Input.GetKeyDown(KeyCode.A)) ShowKeyboard();
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-        }
     }
     void OnGUI()
     {
         GUI.skin = skin;
         editor.Draw();
     }
-    TouchScreenKeyboard keyboard;
-    void ShowKeyboard()
-    {
-        keyboard = TouchScreenKeyboard.Open("Enter name");
-    }
+    
     
 }

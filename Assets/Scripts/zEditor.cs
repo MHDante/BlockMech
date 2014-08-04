@@ -330,7 +330,7 @@ public class zSidebar
         };
         colorPicker.OnClick += toggleColors;
         colorPicker.LongPress += toggleColors;
-
+        menuButton.OnClick += Serialize;
 
         float vertPadding = (Screen.height - (piecePicker.Height * contents.Count)) / (contents.Count + 1);
         float heightCounter = vertPadding;
@@ -360,7 +360,26 @@ public class zSidebar
         activeButton = button;
         activeButton.activated = true;
     }
+    TouchScreenKeyboard keyboard; 
+    public void ShowKeyboard(zButton button)
+    {
+        //keyboard = TouchScreenKeyboard.Open("Enter name");
 
+    }
+    public void Serialize(zButton button)
+    {
+        string filepath = "";
+        try
+        {
+            filepath = FileWrite.InitSerialization();
+
+        }
+        catch(Exception e)
+        {
+            filepath = e.Message;
+        }
+        keyboard = TouchScreenKeyboard.Open(filepath);
+    }
     public void Draw()
     {
         GUI.Box(properRect, "");
