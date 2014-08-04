@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using OrbItUtils;
 
 
 //Source: http://answers.unity3d.com/questions/33263/how-to-get-names-of-all-available-levels.html
@@ -88,9 +89,9 @@ public class ReadSceneNames : MonoBehaviour
             }
         }
         DictionaryToArraysMagic dtam = new DictionaryToArraysMagic(tempMaster);
-        inst.zNames = dtam.getNames;
-        inst.zLevels = dtam.getLevels;
-        inst.zIndexes = dtam.getIndexes;
+        inst.zNames = dtam.GetNames;
+        inst.zLevels = dtam.GetLevels;
+        inst.zIndexes = dtam.GetIndexes;
 
         //instance.scenesD = tempMaster;  //DOESN'T WORK. DANTE SAYS WON'T SERIALIZE
         //DictionaryToArraysMagic dtam = new DictionaryToArraysMagic(tempMaster);

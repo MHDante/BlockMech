@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+using OrbItUtils;
+
 
 public enum GameState { NoSelector, Initializing, SplashScreen, WorldSelector, LevelSelector, PlayingGame, ResultsScreen };
 
@@ -142,7 +141,7 @@ public class GameManager : MonoBehaviour
         //worldScenes = atdm.get();
 
         ArraysToDictionaryMagic atdm = new ArraysToDictionaryMagic(ReadSceneNames.instance);
-        worldScenes = atdm.getScenes;
+        worldScenes = atdm.GetScenes;
 
 
         List<KeyValuePair<string, List<string>>> tempList = worldScenes.ToList();

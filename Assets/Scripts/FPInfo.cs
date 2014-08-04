@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using OrbItUtils;
 using System.Reflection;
 using UnityEngine;
 
@@ -119,7 +117,7 @@ public class FPInfo
     }
     public void SetValue(string value, object obj)
     {
-        object val = parsePrimitive(FPType, value);
+        object val = Utils.ParsePrimitive(FPType, value);
         if (val != null)
         {
             SetValue(val, obj);
@@ -130,76 +128,7 @@ public class FPInfo
         }
     }
 
-    public static object parsePrimitive(Type primitiveType, String value)
-    {
-        string s = value.ToString().Trim();
 
-        if (primitiveType == typeof(int))
-        {
-            int v;
-            if (Int32.TryParse(s, out v))
-            {
-                //fpinfo.SetValue(v, parentItem.obj);
-                return v;
-            }
-            else return null;
-        }
-        else if (primitiveType == typeof(float))
-        {
-            float v;
-            if (float.TryParse(s, out v))
-            {
-                //fpinfo.SetValue(v, parentItem.obj);
-                return v;
-            }
-            else return null;
-        }
-        else if (primitiveType == typeof(double))
-        {
-            double v;
-            if (double.TryParse(s, out v))
-            {
-                //fpinfo.SetValue(v, parentItem.obj);
-                return v;
-            }
-            else return null;
-        }
-        else if (primitiveType == typeof(byte))
-        {
-            byte v;
-            if (byte.TryParse(s, out v))
-            {
-                //fpinfo.SetValue(v, parentItem.obj);
-                return v;
-            }
-            else return null;
-        }
-        else if (primitiveType == typeof(bool))
-        {
-            bool v;
-            if (bool.TryParse(s, out v))
-            {
-                //fpinfo.SetValue(v, parentItem.obj);
-                return v;
-            }
-            else return null;
-        }
-        else if (primitiveType.IsEnum)
-        {
-            foreach (var val in Enum.GetValues(primitiveType))
-            {
-                if (val.ToString().ToLower().Equals(s.ToLower()))
-                {
-                    return val;
-                }
-            }
-        }
-        else if (primitiveType == typeof(string))
-        {
-            return s;
-        }
-        return null;
-    }
 }
 public static class FPInfoUtils
 {

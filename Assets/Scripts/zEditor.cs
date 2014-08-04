@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using OrbItUtils;
 
 public class zEditor
 {
@@ -67,7 +68,7 @@ public class zEditor
         }
 
         Vector2 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-        if (!mouse.isWithinGrid()) return;
+        if (!RoomManager.IsWithinGrid(mouse)) return;
         if (sidebar.activeButton == sidebar.piecePicker)
         {
             OnAdd(mouse);
@@ -94,15 +95,15 @@ public class zEditor
             {
                 if (type == typeof(Player))
                 {
-                    RoomManager.roomManager.SpawnPlayer(target);
-                    AddUndoAction(RoomManager.roomManager.player, UndoAction.ActionType.Add);
-                }
-                else
-                {
-                    GamePiece gamePiece = RoomManager.roomManager.SpawnPiece(type, target, colorslot);
-                    AddUndoAction(gamePiece, UndoAction.ActionType.Add);
-                }
+                RoomManager.roomManager.SpawnPlayer(target);
+                AddUndoAction(RoomManager.roomManager.player, UndoAction.ActionType.Add);
             }
+            else
+            {
+                GamePiece gamePiece = RoomManager.roomManager.SpawnPiece(type, target, colorslot);
+                AddUndoAction(gamePiece, UndoAction.ActionType.Add);
+            }
+        }
         }
         else
         {
@@ -113,8 +114,8 @@ public class zEditor
     void TryWallSpawn(Vector2 mouse, Cell target, ColorSlot colorslot)
     {
         prevMousePositions.Enqueue(mouse);
-        Side side; Orientation or;
-        Vector2 worldpos = Utils.WorldToWallPos(mouse, out side, out or);
+            Side side; Orientation or;
+        Vector2 worldpos = Wall.WorldToWallPos(mouse, out side, out or);
         if (prevMousePositions.Count == 1)
         {
             Wall wall = RoomManager.roomManager.SpawnWall(target, side, colorslot);

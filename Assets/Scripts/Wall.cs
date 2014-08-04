@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 
 public enum Orientation { Horizontal, Vertical };
 public enum WallType { Wall, Door, Diode, Turnstile}
@@ -8,7 +8,7 @@ public enum WallType { Wall, Door, Diode, Turnstile}
  public class Wall : MonoBehaviour, Activatable {
 
 
-    public ColorSlot colorslot;
+    public ColorSlot colorSlot;
     public Color colorPreview;
     public Orientation orientation = Orientation.Vertical;
     public WallType wallType = WallType.Door;
@@ -48,9 +48,8 @@ public enum WallType { Wall, Door, Diode, Turnstile}
     protected virtual void OnValidate()
     {
 
-        if (colorslot == ColorSlot.None /*&& wallType == WallType.Door*/) wallType = WallType.Wall;
-        else wallType = WallType.Door;
-        SetColorSlot(colorslot);
+        wallType = colorSlot == ColorSlot.None ? WallType.Wall : WallType.Door;
+        SetColorSlot(colorSlot);
         //IsTraversible = wallType == WallType.Wall ? false : _IsTraversible;
         if (wallType == WallType.Wall)
         {
@@ -61,7 +60,7 @@ public enum WallType { Wall, Door, Diode, Turnstile}
     }
     public void SetColorSlot(ColorSlot colorSlot)
     {
-        this.colorslot = colorSlot;
+        this.colorSlot = colorSlot;
         colorPreview = MetaData.GetColorSlot(colorSlot);
         gameObject.GetComponent<SpriteRenderer>().color = colorPreview;
     }
@@ -90,5 +89,69 @@ public enum WallType { Wall, Door, Diode, Turnstile}
             new Vector3(float.NaN, float.NaN, float.NaN);
         GetComponent<Animator>().SetTrigger("PushedThrough");
     }
-    
+    public static Vector2 WorldToWallPos(Vector2 worldPos, out Side s, out Orientation orientation)
+    {
+
+
+        int blockSize = Values.blockSize;
+        int cellx = (int)Mathf.Floor(worldPos.x / blockSize);
+        int celly = (int)Mathf.Floor(worldPos.y / blockSize);
+
+        int originX = cellx * blockSize;
+        int originY = celly * blockSize;
+
+        if (!RoomManager.IsWithinGrid(new Vector2(originX, originY))) throw new IndexOutOfRangeException("Don't Use a try Catch, check using isWithinGrid");
+
+
+
+        float x = worldPos.x - originX;
+        float y = worldPos.y - originY;
+
+        Vector3 vect = Vector3.zero;
+        if (x > y)
+        {
+            if (x < Values.blockSize - y)
+            {
+                s = Side.bottom;
+                vect.x += Values.halfBlock;
+                orientation = Orientation.Horizontal;
+            }
+            else
+            {
+                s = Side.right;
+                vect.x += Values.blockSize;
+                vect.y += Values.halfBlock;
+                orientation = Orientation.Vertical;
+            }
+        }
+        else
+        {
+            if (x < Values.blockSize - y)
+            {
+                s = Side.left;
+                vect.y += Values.halfBlock;
+                orientation = Orientation.Vertical;
+            }
+            else
+            {
+                s = Side.top;
+                vect.x += Values.halfBlock;
+                vect.y += Values.blockSize;
+                orientation = Orientation.Horizontal;
+            }
+        }
+
+        //if (cellx == RoomManager.roomManager.Grid.Length)
+        //{
+        //    s = s.opposite();
+        //}
+        //if (celly == RoomManager.roomManager.Grid[0].Length)
+        //{
+        //    s = s.opposite();
+        //}
+
+        vect.x += originX;
+        vect.y += originY;
+        return vect;
+    }
  }

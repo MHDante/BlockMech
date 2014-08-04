@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using OrbItUtils;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +69,22 @@ public abstract class GamePiece : MonoBehaviour
     public abstract bool isPushable { get; set; }
 
     public bool IsOccupied { get { return nextPiece != null; } }
+    public static void FillAndBorder(GameObject obj, Color fillColor)
+    {
+        try
+        {
+            SpriteRenderer fill = obj.transform.FindChild("Fill").GetComponent<SpriteRenderer>();
+            SpriteRenderer border = obj.transform.FindChild("Border").GetComponent<SpriteRenderer>();
 
+            fill.color = fillColor;
+            border.color = fillColor.Invert();
+        }
+        catch (NullReferenceException)
+        {
+            Debug.LogError("Tried to call Fill and Border on a NonCompliant Item.");
+            throw;
+        }
+    }
     public virtual void Awake() 
     {
         
@@ -117,7 +133,7 @@ public abstract class GamePiece : MonoBehaviour
         if (temp != null)
         {
             ColorizedSprite = temp.gameObject;
-            ColorizedSprite.FillAndBorder(colorPreview);
+ GamePiece.FillAndBorder(           ColorizedSprite ,colorPreview);
         }
         temp = gameObject.transform.FindChild("Activated");
         if (temp != null)
@@ -159,16 +175,16 @@ public abstract class GamePiece : MonoBehaviour
         colorPreview = MetaData.GetColorSlot(colorSlot);
         if (ColorizedSprite != null)
         {
-            ColorizedSprite.FillAndBorder(colorPreview);
+ GamePiece.FillAndBorder(           ColorizedSprite ,colorPreview);
         }
         if (ActivatedSprite != null && this is Triggerable)
         {
             Triggerable t = (Triggerable)this;
-            ActivatedSprite.FillAndBorder(t.IsTriggered ? colorPreview : Color.white);
+ GamePiece.FillAndBorder(           ActivatedSprite ,t.IsTriggered ? colorPreview : Color.white);
         }
         if (WhiteSprite != null)
         {
-            WhiteSprite.FillAndBorder(Color.white);
+ GamePiece.FillAndBorder(           WhiteSprite ,Color.white);
         }
         if (gameObject.GetComponent<SpriteRenderer>() != null)
         {
@@ -206,28 +222,28 @@ public abstract class GamePiece : MonoBehaviour
 			return true;
 		if(!isPushable) 
 			return false;
-		Wall w = cell.getWall(Utils.opposite(side));
+		Wall w = cell.getWall(side.opposite());
 		if(w!=null && !w.IsTraversible) 
 			return false;
 		if (strength < weight) 
 			return false;
-        Cell neighbour = cell.getNeighbour(Utils.opposite(side));
+        Cell neighbour = cell.getNeighbour(side.opposite());
         if (neighbour == null)
             return false;
 		GamePiece obstructor = neighbour.firstSolid();
         if (obstructor == null)
         {
-            Side newside = Utils.opposite(side);
+            Side newside = side.opposite();
             return moveTo(newside);
         }
 		if(obstructor.isSolid && !isPushable) 
 			return false;
 		if(!obstructor.isSolid && !obstructor.isPushable) 
-			return moveTo(Utils.opposite(side));
+			return moveTo(side.opposite());
 		bool obsPushed = obstructor.pushFrom(side, strength - weight);
 		if (obsPushed){
 			obstructor.Detatch();
-			bool succeed = moveTo(Utils.opposite(side));
+			bool succeed = moveTo(side.opposite());
 			if (!succeed)
             {obstructor.moveTo(side);}
 			return succeed;
