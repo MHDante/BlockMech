@@ -17,9 +17,9 @@ public class MetaData : MonoBehaviour
     public string author;
     public string levelName;
     public string welcomeHint;
+    private string hintAppend = "Editing";
 
     public Difficulty difficulty;
-
 
     public static Dictionary<ColorSlot, string> colorCodes = new Dictionary<ColorSlot, string>(){
         { ColorSlot.None,   "E2E2E2" },
@@ -49,7 +49,12 @@ public class MetaData : MonoBehaviour
     {
         if (string.IsNullOrEmpty(welcomeHint)) welcomeHint = "BlockIt";
         if (welcomeHint.Length > HintLimit) welcomeHint = welcomeHint.Substring(0, HintLimit);
-        UpdateText(welcomeHint);
+        UpdateText(GetHintString());
+    }
+    public void SetStateString(string state)
+    {
+        hintAppend = state;
+        OnValidate();
     }
 
     public void UpdateText(string text, ColorSlot color = ColorSlot.None)
@@ -61,15 +66,19 @@ public class MetaData : MonoBehaviour
             tm.text = text;
         }
     }
+    public string GetHintString()
+    {
+        return welcomeHint + (string.IsNullOrEmpty(hintAppend) ? "" : ("(" + hintAppend + ")"));
+    }
     public void ResetText()
     {
-        UpdateText(welcomeHint);
+        UpdateText(GetHintString());
     }
-
     void Awake()
     {
-        GetComponentInChildren<TextMesh>().text = welcomeHint;
+        GetComponentInChildren<TextMesh>().text = GetHintString();
         _instance = this; //lol privaton //lol nope 
+
     }
    
 }

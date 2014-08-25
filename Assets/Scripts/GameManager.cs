@@ -8,11 +8,7 @@ public enum GameState { NoSelector, Initializing, SplashScreen, WorldSelector, L
 
 public class GameManager : MonoBehaviour
 {
-
     private static GameManager _instance;
-
-    
-
     public GameState selState = GameState.Initializing;
 
     List<string> worlds { get {

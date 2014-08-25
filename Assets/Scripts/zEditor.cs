@@ -7,6 +7,7 @@ using OrbItUtils;
 
 public class zEditor
 {
+    public static bool IsPuzzleActive = false;
     public zSidebar sidebar;
     public zGridLayout pieceLayout, colorLayout;
     private Stack<UndoAction> undoActions = new Stack<UndoAction>();
@@ -55,7 +56,7 @@ public class zEditor
         float layouty = colorButtons[0].Height + 12;
         colorLayout = new zGridLayout(new Rect(layoutx, layouty, layoutwidth, layoutheight), colorButtons, true, new Vector2(Screen.width, layouty), 1f);
 
-        Action<zButton> hideLayout = (zb) => { colorLayout.Hide(); sidebar.colorPicker.color = zb.color; };
+        Action<zButton> hideLayout = (zb) => { colorLayout.Hide(); sidebar.colorPicker.color = zb.color; /*Bug.Log(zb.color);*/ };
         foreach (var zb in colorLayout.contents) { zb.OnClick += hideLayout; }
         sidebar.colorPicker.color = colorButtons[0].color;
     }
@@ -66,7 +67,7 @@ public class zEditor
         {
             Application.Quit();
         }
-
+        sidebar.Update();
         Vector2 mouse = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
         if (!RoomManager.IsWithinGrid(mouse)) return;
         if (sidebar.activeButton == sidebar.piecePicker)
@@ -77,6 +78,7 @@ public class zEditor
         {
             OnErase(mouse);
         }
+        
     }
     Queue<Vector2> prevMousePositions = new Queue<Vector2>();
     void OnAdd(Vector2 mouse)
@@ -196,7 +198,235 @@ public class zEditor
         undoActions.Push(action);
     }
 }
+public class zSidebar
+{
+    public zEditor editor;
+    List<zButton> contents;
+    Rect properRect;
+    Vector2 origin;
+    float screenWidthPercent, width;
 
+    public zButton piecePicker;
+    public zButton colorPicker;
+    public zButton eraserTool;
+    public zButton playTool;
+    public zButton undoAction;
+    public zButton menuButton;
+
+    public zButton activeButton;
+
+    public zSidebar(zEditor editor, float screenWidthPercent, float buttonWidth)
+    {
+        this.editor = editor;
+        this.screenWidthPercent = screenWidthPercent;
+        this.origin = new Vector2(Screen.width * (1f - screenWidthPercent), 0);
+        this.width = Screen.width * screenWidthPercent;
+        this.properRect = new Rect(origin.x, origin.y, width, Screen.height);
+        this.contents = new List<zButton>();
+
+        piecePicker = new zButton(typeof(Wall), buttonWidth, buttonWidth); contents.Add(piecePicker);
+        colorPicker = new zButton(typeof(Tile), buttonWidth, buttonWidth); contents.Add(colorPicker);
+        eraserTool = new zButton("Erase", buttonWidth, buttonWidth); contents.Add(eraserTool);
+        playTool = new zButton("PLAY", buttonWidth, buttonWidth); contents.Add(playTool);
+        undoAction = new zButton("Undo", buttonWidth, buttonWidth); contents.Add(undoAction);
+        menuButton = new zButton("Menu", buttonWidth, buttonWidth); contents.Add(menuButton);
+
+        piecePicker.OnClick += delegate(zButton zb)
+        {
+            if (zb.activated && !editor.pieceLayout.IsVisible)
+            {
+                editor.pieceLayout.Show();
+            }
+            else if (editor.pieceLayout.IsVisible)
+            {
+                editor.pieceLayout.Hide();
+            }
+        };
+        piecePicker.LongPress += (zb) =>
+        {
+            if (editor.pieceLayout.IsVisible)
+            {
+                editor.pieceLayout.Hide();
+            }
+            else
+            {
+                if (editor.colorLayout.IsVisible)
+                {
+                    editor.colorLayout.Hide();
+                }
+                editor.pieceLayout.Show();
+            }
+            SwitchActiveButton(zb);
+        };
+
+        Action<zButton> toggleColors = (zb) =>
+        {
+            if (editor.colorLayout.IsVisible)
+            {
+                editor.colorLayout.Hide();
+            }
+            else
+            {
+                editor.colorLayout.Show();
+            }
+        };
+        colorPicker.OnClick += toggleColors;
+        colorPicker.LongPress += toggleColors;
+        menuButton.OnClick += delegate { OnMenuClick(); };
+        playTool.OnClick += TogglePuzzleActive;
+
+        float vertPadding = (Screen.height - (piecePicker.Height * contents.Count)) / (contents.Count + 1);
+        float heightCounter = vertPadding;
+        foreach(zButton btn in contents)
+        {
+            btn.x = Screen.width - (width / 2) - (btn.Width / 2);
+            btn.y = heightCounter;
+            heightCounter += btn.Height + vertPadding;
+            btn.OnClick += (zb) => 
+            { 
+                SwitchActiveButton(zb); 
+                if (zb != piecePicker && editor.pieceLayout.IsVisible) 
+                    editor.pieceLayout.Hide();
+                if (zb != colorPicker && editor.colorLayout.IsVisible)
+                    editor.colorLayout.Hide(); 
+            };
+        }
+    }
+    //private bool recievePC
+    public void OnMenuClick()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            ShowKeyboard(false);
+        }
+        else
+        {
+
+        }
+    }
+    public void SwitchActiveButton(zButton button)
+    {
+        if (activeButton == button || button == colorPicker || button == undoAction || button == menuButton || button == playTool) return;
+        if (activeButton != null)
+        {
+            activeButton.activated = false;
+        }
+        activeButton = button;
+        activeButton.activated = true;
+    }
+    public void TogglePuzzleActive(zButton button)
+    {
+        ToggleActiveButton(playTool);
+        //puzzle is in active mode and switching to edit mode
+        if (zEditor.IsPuzzleActive)
+        {
+            if (string.IsNullOrEmpty(currentFileName))
+            {
+                throw new SystemException("The currentFileName was empty when trying to re-enter edit mode.");
+            }
+            FileWrite.InitDeserialization(currentFileName);
+            zEditor.IsPuzzleActive = false;
+            playTool.text = "PLAY";
+            UnityEngine.Object.FindObjectOfType<MetaData>().SetStateString("EDITING");
+        }
+        //puzzle is in edit mode and is switching to active mode
+        else
+        {
+            if (string.IsNullOrEmpty(currentFileName))
+            {
+                ShowKeyboard(true);
+            }
+            else
+            {
+                Serialize(currentFileName);
+                zEditor.IsPuzzleActive = true;
+                playTool.text = "STOP";
+                UnityEngine.Object.FindObjectOfType<MetaData>().SetStateString("PLAYING");
+            }
+        }
+    }
+    public void ToggleActiveButton(zButton button)
+    {
+        if (button != activeButton)
+        {
+            activeButton = button;
+            button.activated = true;
+        }
+        else
+        {
+            activeButton = null;
+            button.activated = false;
+        }
+    }
+    TouchScreenKeyboard keyboard;
+    bool activateAfterInput = false;
+    public void ShowKeyboard(bool activateAfterInput)
+    {
+        keyboard = TouchScreenKeyboard.Open("Enter level name to save. previous path:" + returnedPath);
+        this.activateAfterInput = activateAfterInput;
+    }
+    string returnedPath = "";
+    string currentFileName = "pctesting";//"";
+    public string Serialize(string filename)
+    {
+        Debug.Log("starting serialization");
+        string filepath = "";
+        try
+        {
+            filepath = FileWrite.InitSerialization(filename);
+        }
+        catch (Exception e)
+        {
+            filepath = e.Message;
+        }
+        Debug.Log("FILEPATH:" + filepath);
+        returnedPath = filepath;
+        return filepath;
+    }
+    public void Update()
+    {
+        if (keyboard != null && keyboard.done)
+        {
+            string path = "none";
+            if (!string.IsNullOrEmpty(keyboard.text))
+            {
+                currentFileName = keyboard.text;
+                path = Serialize(keyboard.text);
+                if (activateAfterInput)
+                {
+                    zEditor.IsPuzzleActive = true;
+                    playTool.text = "STOP";
+                    UnityEngine.Object.FindObjectOfType<MetaData>().SetStateString("PLAYING");
+                }
+            }
+            if (activateAfterInput)
+            {
+                activateAfterInput = false;
+
+            }
+            keyboard = null;
+        }
+    }
+    public void OnGUI()
+    {
+
+    }
+    public void Draw()
+    {
+        GUI.Box(properRect, "");
+        if (zEditor.IsPuzzleActive)
+        {
+            playTool.Draw();
+        }
+        else
+        {
+            foreach (var btn in contents)
+            {
+                btn.Draw();
+            }
+        }
+    }
+}
 public class UndoAction
 {
     public enum ActionType
@@ -253,140 +483,6 @@ public class UndoAction
                     RoomManager.roomManager.AddPiece(piece.gameObject, piece.GetType(), piece.colorslot);
                 }
             }
-        }
-    }
-}
-
-public class zSidebar
-{
-    public zEditor editor;
-    List<zButton> contents;
-    Rect properRect;
-    Vector2 origin;
-    float screenWidthPercent, width;
-
-    public zButton piecePicker;
-    public zButton colorPicker;
-    public zButton eraserTool;
-    public zButton selectTool;
-    public zButton undoAction;
-    public zButton menuButton;
-
-    public zButton activeButton;
-
-    public zSidebar(zEditor editor, float screenWidthPercent, float buttonWidth)
-    {
-        this.editor = editor;
-        this.screenWidthPercent = screenWidthPercent;
-        this.origin = new Vector2(Screen.width * (1f - screenWidthPercent), 0);
-        this.width = Screen.width * screenWidthPercent;
-        this.properRect = new Rect(origin.x, origin.y, width, Screen.height);
-        this.contents = new List<zButton>();
-
-        piecePicker = new zButton(typeof(Wall), buttonWidth, buttonWidth); contents.Add(piecePicker);
-        colorPicker = new zButton(typeof(Tile), buttonWidth, buttonWidth); contents.Add(colorPicker);
-        eraserTool = new zButton("Erase", buttonWidth, buttonWidth); contents.Add(eraserTool);
-        selectTool = new zButton("Select", buttonWidth, buttonWidth); contents.Add(selectTool);
-        undoAction = new zButton("Undo", buttonWidth, buttonWidth); contents.Add(undoAction);
-        menuButton = new zButton("Menu", buttonWidth, buttonWidth); contents.Add(menuButton);
-
-        piecePicker.OnClick += delegate(zButton zb)
-        {
-            if (zb.activated && !editor.pieceLayout.IsVisible)
-            {
-                editor.pieceLayout.Show();
-            }
-            else if (editor.pieceLayout.IsVisible)
-            {
-                editor.pieceLayout.Hide();
-            }
-        };
-        piecePicker.LongPress += (zb) =>
-        {
-            if (editor.pieceLayout.IsVisible)
-            {
-                editor.pieceLayout.Hide();
-            }
-            else
-            {
-                if (editor.colorLayout.IsVisible)
-                {
-                    editor.colorLayout.Hide();
-                }
-                editor.pieceLayout.Show();
-            }
-            SwitchActiveButton(zb);
-        };
-
-        Action<zButton> toggleColors = (zb) =>
-        {
-            if (editor.colorLayout.IsVisible)
-            {
-                editor.colorLayout.Hide();
-            }
-            else
-            {
-                editor.colorLayout.Show();
-            }
-        };
-        colorPicker.OnClick += toggleColors;
-        colorPicker.LongPress += toggleColors;
-        menuButton.OnClick += Serialize;
-
-        float vertPadding = (Screen.height - (piecePicker.Height * contents.Count)) / (contents.Count + 1);
-        float heightCounter = vertPadding;
-        foreach(zButton btn in contents)
-        {
-            btn.x = Screen.width - (width / 2) - (btn.Width / 2);
-            btn.y = heightCounter;
-            heightCounter += btn.Height + vertPadding;
-            btn.OnClick += (zb) => 
-            { 
-                SwitchActiveButton(zb); 
-                if (zb != piecePicker && editor.pieceLayout.IsVisible) 
-                    editor.pieceLayout.Hide();
-                if (zb != colorPicker && editor.colorLayout.IsVisible)
-                    editor.colorLayout.Hide(); 
-            };
-        }
-    }
-
-    public void SwitchActiveButton(zButton button)
-    {
-        if (activeButton == button || button == colorPicker || button == undoAction || button == menuButton) return;
-        if (activeButton != null)
-        {
-            activeButton.activated = false;
-        }
-        activeButton = button;
-        activeButton.activated = true;
-    }
-    TouchScreenKeyboard keyboard; 
-    public void ShowKeyboard(zButton button)
-    {
-        //keyboard = TouchScreenKeyboard.Open("Enter name");
-
-    }
-    public void Serialize(zButton button)
-    {
-        string filepath = "";
-        try
-        {
-            filepath = FileWrite.InitSerialization();
-
-        }
-        catch(Exception e)
-        {
-            filepath = e.Message;
-        }
-        keyboard = TouchScreenKeyboard.Open(filepath);
-    }
-    public void Draw()
-    {
-        GUI.Box(properRect, "");
-        foreach(var btn in contents)
-        {
-            btn.Draw();
         }
     }
 }

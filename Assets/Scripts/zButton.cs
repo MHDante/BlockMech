@@ -19,6 +19,7 @@ public class zButton {
     public event Action<zButton> LongPress;
     public Color color = Color.white;
     public Type type;
+    public string text;
     public static Dictionary<Type, List<SpriteTexture>> spriteCache = new Dictionary<Type, List<SpriteTexture>>();
     static GUIStyle activeStyle;
     public zButton(Type type, float Width, float Height, int border = 10)
@@ -105,27 +106,29 @@ public class zButton {
         };
     }
     GUIStyle customButton, activeCustomButton;
+
     public zButton(string text, float Width, float Height)
     {
         this.Width = Width;
         this.Height = Height;
+        this.text = text;
         drawCall = delegate
         {
             if (customButton == null || activeCustomButton == null)
             {
                 customButton = new GUIStyle("button");
-                customButton.fontSize = (int)(Width / (text.Length + 1));
-                activeCustomButton = CreateActiveStyle(text);
+                customButton.fontSize = (int)(Width / (this.text.Length + 1));
+                activeCustomButton = CreateActiveStyle(this.text);
             }
             bool ret = false;
             Rect rect = new Rect(x, y, Width, Height);
             if (activated)
             {
-                ret = GUI.RepeatButton(rect, text, activeCustomButton);
+                ret = GUI.RepeatButton(rect, this.text, activeCustomButton);
             }
             else
             {
-                ret = GUI.RepeatButton(rect, text, customButton);
+                ret = GUI.RepeatButton(rect, this.text, customButton);
             }
             return ret;
             //return GUI.RepeatButton(rect, text, customButton);

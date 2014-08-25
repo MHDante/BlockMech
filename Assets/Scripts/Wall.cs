@@ -12,11 +12,12 @@ public enum WallType { Wall, Door, Diode, Turnstile}
     public Color colorPreview;
     public Orientation orientation = Orientation.Vertical;
     public WallType wallType = WallType.Door;
-    public bool isDoor { get { return wallType == WallType.Door; } }
+    //public bool isDoor { get { return wallType == WallType.Door; } }
+    public bool isDoor { get { return colorSlot != ColorSlot.None; } }
     public bool StartsOpen = false;
 
     private bool _IsTraversible = false;
-    public virtual bool IsTraversible { get { return _IsTraversible; } set { _IsTraversible = value; if (wallType == WallType.Door)GetComponent<Animator>().SetBool("Open", value); } }
+    public virtual bool IsTraversible { get { return _IsTraversible; } set { _IsTraversible = value; if (isDoor) GetComponent<Animator>().SetBool("Open", value); } }
 
 	// Use this for initialization
     protected virtual void Start()
@@ -47,7 +48,6 @@ public enum WallType { Wall, Door, Diode, Turnstile}
    
     protected virtual void OnValidate()
     {
-
         wallType = colorSlot == ColorSlot.None ? WallType.Wall : WallType.Door;
         SetColorSlot(colorSlot);
         //IsTraversible = wallType == WallType.Wall ? false : _IsTraversible;
@@ -66,14 +66,14 @@ public enum WallType { Wall, Door, Diode, Turnstile}
     }
     public void Activate()
     {
-        if (wallType == WallType.Door) //IsTraversible = !_IsTraversible;
+        if (isDoor) //IsTraversible = !_IsTraversible;
         {
             IsTraversible = !StartsOpen;
         }
     }
     public void Deactivate()
     {
-        if (wallType == WallType.Door)
+        if (isDoor)
         {
             IsTraversible = StartsOpen;
         }

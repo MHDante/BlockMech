@@ -120,20 +120,21 @@ Shader "Custom/Grid"
 
 			float colFactor(float alpha, float value)
 			{
-				return alpha * fmod(value + _Time.w, 1f);
+				return alpha * fmod(value / 10f + _Time.x * 20f, 0.3f) + 0.2f;
 			}
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
 				float increment = 4f;
+				float deadzone = 0.2f;
 				float4 wp = IN.worldpos;
 				fixed4 c = tex2D(_MainTex, IN.texcoord) * IN.color;
-				if (wp.x < 0 || wp.y < 0 || wp.x > _gridWith * _blockSize || wp.y > _gridHeight * _blockSize)
+				if (wp.x < 0 || wp.y < 0 || wp.x > _gridWith * _blockSize + deadzone || wp.y > _gridHeight * _blockSize + deadzone)
 				{
 					c.rgba *= 0;
 					return c;
 				}
-				else if (fmod(wp.x, increment) < 0.2f)
+				else if (fmod(wp.x, increment) < deadzone)
 				{
 					//c.r = fmod(wp.y / 100f + wp.x + _Time.x, 1f);
 					//c.g = fmod(2 *wp.y/ 100f + wp.x + _Time.x, 1f);
@@ -144,7 +145,7 @@ Shader "Custom/Grid"
 					c.rgb *= colFactor(c.a, wp.y);
 					return c;
 				}
-				else if (fmod(wp.y, increment) < 0.2f)
+				else if (fmod(wp.y, increment) < deadzone)
 				{
 					//c.r = fmod(wp.x / 100f * wp.y + _Time.x, 1f);
 					//c.g = fmod(2 *wp.x/ 100f + wp.y + _Time.x, 1f);

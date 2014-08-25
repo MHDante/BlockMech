@@ -115,7 +115,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 82
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -151,7 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 12
+  m_RootOrder: 78
 --- !u!95 &14248996
 Animator:
   serializedVersion: 3
@@ -167,6 +167,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &14248997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -252,7 +253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 38
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -288,7 +289,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 34
+  m_RootOrder: 16
 --- !u!95 &38567245
 Animator:
   serializedVersion: 3
@@ -304,6 +305,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &38567246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -385,7 +387,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 55
+      value: 37
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -433,7 +435,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 47
+      value: 29
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -481,7 +483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -529,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 62
+      value: 44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -565,7 +567,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 72
+  m_RootOrder: 54
 --- !u!95 &115788344
 Animator:
   serializedVersion: 3
@@ -581,6 +583,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &115788345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -662,7 +665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -714,7 +717,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -750,7 +753,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 18
+  m_RootOrder: 0
 --- !u!95 &148351088
 Animator:
   serializedVersion: 3
@@ -766,6 +769,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &148351089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -778,7 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -816,12 +820,12 @@ GameObject:
   - 4: {fileID: 156717460}
   - 212: {fileID: 156717459}
   m_Layer: 0
-  m_Name: tile_colorized_0
+  m_Name: grid_effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &156717459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -901,7 +905,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 43
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -937,7 +941,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 29
+  m_RootOrder: 11
 --- !u!95 &198750980
 Animator:
   serializedVersion: 3
@@ -953,6 +957,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &198750981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -965,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -1067,7 +1072,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 37
+  m_RootOrder: 19
 --- !u!95 &228836370
 Animator:
   serializedVersion: 3
@@ -1083,6 +1088,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &228836371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,7 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -1168,7 +1174,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 76
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -1204,7 +1210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 69
+  m_RootOrder: 51
 --- !u!95 &247380763
 Animator:
   serializedVersion: 3
@@ -1220,6 +1226,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &247380764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,7 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -1301,7 +1308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 68
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -1337,7 +1344,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 54
+  m_RootOrder: 36
 --- !u!95 &289395354
 Animator:
   serializedVersion: 3
@@ -1353,6 +1360,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &289395355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -1438,7 +1446,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -1490,7 +1498,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 69
+      value: 51
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -1526,7 +1534,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 56
+  m_RootOrder: 38
 --- !u!95 &308625517
 Animator:
   serializedVersion: 3
@@ -1542,6 +1550,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &308625518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,7 +1563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -1611,7 +1620,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 52
+  m_RootOrder: 34
 --- !u!95 &315345143
 Animator:
   serializedVersion: 3
@@ -1627,6 +1636,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &315345144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,7 +1649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -1696,7 +1706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 49
+  m_RootOrder: 31
 --- !u!95 &344969678
 Animator:
   serializedVersion: 3
@@ -1712,6 +1722,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &344969679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1724,7 +1735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -1793,7 +1804,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 52
+      value: 34
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -1858,7 +1869,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 48
+  m_RootOrder: 30
 --- !u!95 &371868011
 Animator:
   serializedVersion: 3
@@ -1874,6 +1885,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &371868012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1886,7 +1898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -1943,7 +1955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 27
+  m_RootOrder: 9
 --- !u!95 &378838539
 Animator:
   serializedVersion: 3
@@ -1959,6 +1971,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &378838540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,7 +1984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -2028,7 +2041,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 45
+  m_RootOrder: 27
 --- !u!95 &381832324
 Animator:
   serializedVersion: 3
@@ -2044,6 +2057,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &381832325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2056,7 +2070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -2129,7 +2143,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -2181,7 +2195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -2217,7 +2231,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 30
+  m_RootOrder: 12
 --- !u!95 &403772823
 Animator:
   serializedVersion: 3
@@ -2233,6 +2247,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &403772824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -2302,7 +2317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 81
+  m_RootOrder: 63
 --- !u!95 &415790929
 Animator:
   serializedVersion: 3
@@ -2318,6 +2333,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &415790930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2330,7 +2346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -2387,7 +2403,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 51
+  m_RootOrder: 33
 --- !u!95 &424884482
 Animator:
   serializedVersion: 3
@@ -2403,6 +2419,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &424884483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,7 +2432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -2488,7 +2505,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 58
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -2524,7 +2541,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 6
+  m_RootOrder: 72
 --- !u!95 &428269380
 Animator:
   serializedVersion: 3
@@ -2540,6 +2557,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &428269381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2552,7 +2570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -2609,7 +2627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 79
+  m_RootOrder: 61
 --- !u!95 &454517166
 Animator:
   serializedVersion: 3
@@ -2625,6 +2643,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &454517167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,7 +2656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -2694,7 +2713,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 4
+  m_RootOrder: 70
 --- !u!95 &475725341
 Animator:
   serializedVersion: 3
@@ -2710,6 +2729,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &475725342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2722,7 +2742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -2791,7 +2811,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 72
+      value: 54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -2843,7 +2863,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -2895,7 +2915,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -2987,7 +3007,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 70
+      value: 52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3039,7 +3059,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 44
+      value: 26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3087,7 +3107,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 64
+      value: 46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3135,7 +3155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 59
+      value: 41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3171,7 +3191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 41
+  m_RootOrder: 23
 --- !u!95 &563004907
 Animator:
   serializedVersion: 3
@@ -3187,6 +3207,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &563004908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3199,7 +3220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -3272,7 +3293,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 57
+      value: 39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3308,7 +3329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 35
+  m_RootOrder: 17
 --- !u!95 &580629529
 Animator:
   serializedVersion: 3
@@ -3324,6 +3345,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &580629530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3336,7 +3358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -3393,7 +3415,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 77
+  m_RootOrder: 59
 --- !u!95 &590990700
 Animator:
   serializedVersion: 3
@@ -3409,6 +3431,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &590990701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3421,7 +3444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -3478,7 +3501,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 23
+  m_RootOrder: 5
 --- !u!95 &592957954
 Animator:
   serializedVersion: 3
@@ -3494,6 +3517,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &592957955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3506,7 +3530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -3563,7 +3587,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 31
+  m_RootOrder: 13
 --- !u!95 &616685111
 Animator:
   serializedVersion: 3
@@ -3579,6 +3603,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &616685112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3591,7 +3616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -3648,7 +3673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 5
+  m_RootOrder: 71
 --- !u!95 &620554027
 Animator:
   serializedVersion: 3
@@ -3664,6 +3689,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &620554028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3676,7 +3702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -3749,7 +3775,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 77
+      value: 59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -3785,7 +3811,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 74
+  m_RootOrder: 56
 --- !u!95 &626225808
 Animator:
   serializedVersion: 3
@@ -3801,6 +3827,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &626225809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3813,7 +3840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -3921,7 +3948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 63
+  m_RootOrder: 45
 --- !u!95 &637158444
 Animator:
   serializedVersion: 3
@@ -3937,6 +3964,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &637158445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3949,7 +3977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -4006,7 +4034,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 8
+  m_RootOrder: 74
 --- !u!95 &679356557
 Animator:
   serializedVersion: 3
@@ -4022,6 +4050,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &679356558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4034,7 +4063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -4091,7 +4120,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 78
+  m_RootOrder: 60
 --- !u!95 &701818728
 Animator:
   serializedVersion: 3
@@ -4107,6 +4136,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &701818729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4119,7 +4149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -4176,7 +4206,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 82
+  m_RootOrder: 64
 --- !u!95 &722035499
 Animator:
   serializedVersion: 3
@@ -4192,6 +4222,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &722035500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4204,7 +4235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -4265,6 +4296,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &747735873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4277,7 +4309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -4316,7 +4348,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 7
+  m_RootOrder: 73
 --- !u!1 &753920014
 GameObject:
   m_ObjectHideFlags: 0
@@ -4346,7 +4378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 17
+  m_RootOrder: 83
 --- !u!95 &753920016
 Animator:
   serializedVersion: 3
@@ -4362,6 +4394,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &753920017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4374,7 +4407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -4531,7 +4564,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 50
+      value: 32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -4583,7 +4616,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -4635,7 +4668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -4671,7 +4704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 13
+  m_RootOrder: 79
 --- !u!95 &814740114
 Animator:
   serializedVersion: 3
@@ -4687,6 +4720,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &814740115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4699,7 +4733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -4756,7 +4790,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 80
+  m_RootOrder: 62
 --- !u!95 &821975657
 Animator:
   serializedVersion: 3
@@ -4772,6 +4806,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &821975658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4784,7 +4819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -4837,24 +4872,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1222394258}
-  - {fileID: 1525063269}
-  - {fileID: 1451143456}
-  - {fileID: 1369712596}
-  - {fileID: 475725340}
-  - {fileID: 620554026}
-  - {fileID: 428269379}
-  - {fileID: 747735875}
-  - {fileID: 679356556}
-  - {fileID: 2147068726}
-  - {fileID: 881488021}
-  - {fileID: 2105889708}
-  - {fileID: 14248995}
-  - {fileID: 814740113}
-  - {fileID: 1838948215}
-  - {fileID: 1326968622}
-  - {fileID: 1246014082}
-  - {fileID: 753920015}
   - {fileID: 148351087}
   - {fileID: 1770419882}
   - {fileID: 992318400}
@@ -4921,6 +4938,24 @@ Transform:
   - {fileID: 415790928}
   - {fileID: 722035498}
   - {fileID: 1602370930}
+  - {fileID: 1222394258}
+  - {fileID: 1525063269}
+  - {fileID: 1451143456}
+  - {fileID: 1369712596}
+  - {fileID: 475725340}
+  - {fileID: 620554026}
+  - {fileID: 428269379}
+  - {fileID: 747735875}
+  - {fileID: 679356556}
+  - {fileID: 2147068726}
+  - {fileID: 881488021}
+  - {fileID: 2105889708}
+  - {fileID: 14248995}
+  - {fileID: 814740113}
+  - {fileID: 1838948215}
+  - {fileID: 1326968622}
+  - {fileID: 1246014082}
+  - {fileID: 753920015}
   m_Father: {fileID: 1900085857}
   m_RootOrder: 0
 --- !u!1 &850556993
@@ -4952,7 +4987,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 33
+  m_RootOrder: 15
 --- !u!95 &850556995
 Animator:
   serializedVersion: 3
@@ -4968,6 +5003,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &850556996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4980,7 +5016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -5049,7 +5085,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5085,7 +5121,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 46
+  m_RootOrder: 28
 --- !u!95 &876689396
 Animator:
   serializedVersion: 3
@@ -5101,6 +5137,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &876689397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5113,7 +5150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -5182,7 +5219,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5218,7 +5255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 10
+  m_RootOrder: 76
 --- !u!95 &881488022
 Animator:
   serializedVersion: 3
@@ -5234,6 +5271,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &881488023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5246,7 +5284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -5319,7 +5357,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 36
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5367,7 +5405,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5403,7 +5441,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 60
+  m_RootOrder: 42
 --- !u!95 &897511768
 Animator:
   serializedVersion: 3
@@ -5419,6 +5457,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &897511769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5431,7 +5470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -5500,7 +5539,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 71
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5552,7 +5591,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 46
+      value: 28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5588,7 +5627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 43
+  m_RootOrder: 25
 --- !u!95 &945096793
 Animator:
   serializedVersion: 3
@@ -5604,6 +5643,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &945096794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,7 +5656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -5689,7 +5729,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 42
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5725,7 +5765,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 22
+  m_RootOrder: 4
 --- !u!95 &956254613
 Animator:
   serializedVersion: 3
@@ -5741,6 +5781,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &956254614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5753,7 +5794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -5895,7 +5936,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -5931,7 +5972,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 62
+  m_RootOrder: 44
 --- !u!95 &984204719
 Animator:
   serializedVersion: 3
@@ -5947,6 +5988,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &984204720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5959,7 +6001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -6016,7 +6058,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 20
+  m_RootOrder: 2
 --- !u!95 &992318401
 Animator:
   serializedVersion: 3
@@ -6032,6 +6074,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &992318402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6044,7 +6087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -6101,7 +6144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 25
+  m_RootOrder: 7
 --- !u!95 &1020577699
 Animator:
   serializedVersion: 3
@@ -6117,6 +6160,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1020577700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6129,7 +6173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -6202,7 +6246,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6250,7 +6294,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 61
+      value: 43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6298,7 +6342,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 53
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6334,7 +6378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 70
+  m_RootOrder: 52
 --- !u!95 &1048256906
 Animator:
   serializedVersion: 3
@@ -6350,6 +6394,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1048256907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6362,7 +6407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -6431,7 +6476,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 56
+      value: 38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6467,7 +6512,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 71
+  m_RootOrder: 53
 --- !u!95 &1057969838
 Animator:
   serializedVersion: 3
@@ -6483,6 +6528,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1057969839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6495,7 +6541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -6568,7 +6614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6604,7 +6650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 57
+  m_RootOrder: 39
 --- !u!95 &1082401288
 Animator:
   serializedVersion: 3
@@ -6620,6 +6666,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1082401289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6632,7 +6679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -6701,7 +6748,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 34
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6737,7 +6784,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 28
+  m_RootOrder: 10
 --- !u!95 &1121072692
 Animator:
   serializedVersion: 3
@@ -6753,6 +6800,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1121072693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6765,7 +6813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -6838,7 +6886,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 33
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -6874,7 +6922,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 58
+  m_RootOrder: 40
 --- !u!95 &1126586881
 Animator:
   serializedVersion: 3
@@ -6890,6 +6938,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1126586882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6902,7 +6951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -6959,7 +7008,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 40
+  m_RootOrder: 22
 --- !u!95 &1126687080
 Animator:
   serializedVersion: 3
@@ -6975,6 +7024,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1126687081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6987,7 +7037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -7060,7 +7110,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 68
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7096,7 +7146,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 21
+  m_RootOrder: 3
 --- !u!95 &1132066249
 Animator:
   serializedVersion: 3
@@ -7112,6 +7162,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1132066250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7124,7 +7175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -7181,7 +7232,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 55
+  m_RootOrder: 37
 --- !u!95 &1141480884
 Animator:
   serializedVersion: 3
@@ -7197,6 +7248,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1141480885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7209,7 +7261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -7282,7 +7334,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 39
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7318,7 +7370,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 36
+  m_RootOrder: 18
 --- !u!95 &1160004411
 Animator:
   serializedVersion: 3
@@ -7334,6 +7386,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1160004412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7346,7 +7399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -7415,7 +7468,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7451,7 +7504,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 76
+  m_RootOrder: 58
 --- !u!95 &1187142043
 Animator:
   serializedVersion: 3
@@ -7467,6 +7520,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1187142044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7479,7 +7533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -7548,7 +7602,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 78
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7596,7 +7650,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 65
+      value: 47
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7644,13 +7698,63 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 49
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
   m_RootGameObject: {fileID: 344969676}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1212026843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1212026845}
+  - 212: {fileID: 1212026844}
+  m_Layer: 0
+  m_Name: shader_testing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &1212026844
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212026843}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: e7525f0a150f493449979fddec02f349, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: df3692235bbd5ad4ea791ac9b2859b45, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &1212026845
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212026843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.2675743, y: 20.6791115, z: -5}
+  m_LocalScale: {x: 10.1289511, y: 10.1289902, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1212271082
 GameObject:
   m_ObjectHideFlags: 0
@@ -7721,7 +7825,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 0
+  m_RootOrder: 66
 --- !u!95 &1222394259
 Animator:
   serializedVersion: 3
@@ -7737,6 +7841,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1222394260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7749,7 +7854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -7818,7 +7923,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7870,7 +7975,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -7906,7 +8011,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 16
+  m_RootOrder: 82
 --- !u!95 &1246014083
 Animator:
   serializedVersion: 3
@@ -7922,6 +8027,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1246014084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7934,7 +8040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -7991,7 +8097,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 24
+  m_RootOrder: 6
 --- !u!95 &1287192668
 Animator:
   serializedVersion: 3
@@ -8007,6 +8113,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1287192669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8019,7 +8126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -8076,7 +8183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 15
+  m_RootOrder: 81
 --- !u!95 &1326968623
 Animator:
   serializedVersion: 3
@@ -8092,6 +8199,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1326968624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8104,7 +8212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -8161,7 +8269,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 44
+  m_RootOrder: 26
 --- !u!95 &1343517476
 Animator:
   serializedVersion: 3
@@ -8177,6 +8285,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1343517477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8189,7 +8298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -8286,7 +8395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 82
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8338,7 +8447,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 78
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8374,7 +8483,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 65
+  m_RootOrder: 47
 --- !u!95 &1363120079
 Animator:
   serializedVersion: 3
@@ -8390,6 +8499,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1363120080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8402,7 +8512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -8475,7 +8585,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 79
+      value: 61
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8511,7 +8621,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 3
+  m_RootOrder: 69
 --- !u!95 &1369712597
 Animator:
   serializedVersion: 3
@@ -8527,6 +8637,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1369712598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8539,7 +8650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -8596,7 +8707,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 53
+  m_RootOrder: 35
 --- !u!95 &1392764459
 Animator:
   serializedVersion: 3
@@ -8612,6 +8723,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1392764460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8624,7 +8736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -8697,7 +8809,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 69
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8749,7 +8861,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 35
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8801,7 +8913,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 73
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -8888,7 +9000,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 75
+  m_RootOrder: 57
 --- !u!95 &1432681599
 Animator:
   serializedVersion: 3
@@ -8904,6 +9016,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1432681600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8916,7 +9029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -8985,7 +9098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 71
+      value: 53
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9021,7 +9134,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 2
+  m_RootOrder: 68
 --- !u!95 &1451143457
 Animator:
   serializedVersion: 3
@@ -9037,6 +9150,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1451143458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9049,7 +9163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -9106,7 +9220,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 67
+  m_RootOrder: 49
 --- !u!95 &1483302234
 Animator:
   serializedVersion: 3
@@ -9122,6 +9236,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1483302235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9134,7 +9249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -9191,7 +9306,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 73
+  m_RootOrder: 55
 --- !u!95 &1497361746
 Animator:
   serializedVersion: 3
@@ -9207,6 +9322,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1497361747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9219,7 +9335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -9288,7 +9404,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 31
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9324,7 +9440,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 26
+  m_RootOrder: 8
 --- !u!95 &1502271642
 Animator:
   serializedVersion: 3
@@ -9340,6 +9456,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1502271643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9352,7 +9469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -9409,7 +9526,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 1
+  m_RootOrder: 67
 --- !u!95 &1525063270
 Animator:
   serializedVersion: 3
@@ -9425,6 +9542,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1525063271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9437,7 +9555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -9510,7 +9628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 40
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9562,7 +9680,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 80
+      value: 62
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9614,7 +9732,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 73
+      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9662,7 +9780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 48
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -9706,7 +9824,7 @@ TextMesh:
     type: 2}
   m_PrefabInternal: {fileID: 1822875179}
   m_GameObject: {fileID: 1566555195}
-  m_Text: BlockIt
+  m_Text: BlockIt(Editing)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -9770,7 +9888,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 38
+  m_RootOrder: 20
 --- !u!95 &1598362968
 Animator:
   serializedVersion: 3
@@ -9786,6 +9904,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1598362969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9798,7 +9917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -9855,7 +9974,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 47
+  m_RootOrder: 29
 --- !u!95 &1600782130
 Animator:
   serializedVersion: 3
@@ -9871,6 +9990,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1600782131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9883,7 +10003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -9940,7 +10060,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 83
+  m_RootOrder: 65
 --- !u!95 &1602370931
 Animator:
   serializedVersion: 3
@@ -9956,6 +10076,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1602370932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9968,7 +10089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -10041,7 +10162,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 41
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10077,7 +10198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 39
+  m_RootOrder: 21
 --- !u!95 &1623523606
 Animator:
   serializedVersion: 3
@@ -10093,6 +10214,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1623523607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10105,7 +10227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -10174,7 +10296,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 45
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10210,7 +10332,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 42
+  m_RootOrder: 24
 --- !u!95 &1629342404
 Animator:
   serializedVersion: 3
@@ -10226,6 +10348,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1629342405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10238,7 +10361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -10311,7 +10434,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 76
+      value: 58
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10363,7 +10486,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 74
+      value: 56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10455,7 +10578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 67
+      value: 49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10507,7 +10630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10543,7 +10666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 61
+  m_RootOrder: 43
 --- !u!95 &1699978926
 Animator:
   serializedVersion: 3
@@ -10559,6 +10682,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1699978927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10571,7 +10695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -10640,7 +10764,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10688,7 +10812,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 66
+      value: 48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10736,7 +10860,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 51
+      value: 33
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10772,7 +10896,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 19
+  m_RootOrder: 1
 --- !u!95 &1770419883
 Animator:
   serializedVersion: 3
@@ -10788,6 +10912,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1770419884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10800,7 +10925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -10869,7 +10994,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 63
+      value: 45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -10985,7 +11110,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 81
+      value: 63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11021,7 +11146,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 68
+  m_RootOrder: 50
 --- !u!95 &1811198774
 Animator:
   serializedVersion: 3
@@ -11037,6 +11162,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1811198775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11049,7 +11175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -11122,7 +11248,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 60
+      value: 42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11184,6 +11310,10 @@ Prefab:
       propertyPath: offset
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 10200000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
+      propertyPath: m_Text
+      value: BlockIt(Editing)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37dc4a68f58c05946b9efedf15b11682, type: 2}
   m_RootGameObject: {fileID: 1847852584}
@@ -11218,7 +11348,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 14
+  m_RootOrder: 80
 --- !u!95 &1838948216
 Animator:
   serializedVersion: 3
@@ -11234,6 +11364,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1838948217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11246,7 +11377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -11284,6 +11415,7 @@ GameObject:
   - 4: {fileID: 1847852587}
   - 114: {fileID: 1847852585}
   - 114: {fileID: 1847852586}
+  - 114: {fileID: 1847852588}
   m_Layer: 8
   m_Name: Scene
   m_TagString: Untagged
@@ -11338,6 +11470,17 @@ Transform:
   - {fileID: 754764551}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1847852588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847852584}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ccdb71c7a3a064a8cca4bf33f695b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1861234166
 Prefab:
   m_ObjectHideFlags: 0
@@ -11379,7 +11522,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11415,7 +11558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 66
+  m_RootOrder: 48
 --- !u!95 &1870210458
 Animator:
   serializedVersion: 3
@@ -11431,6 +11574,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1870210459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11443,7 +11587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -11602,7 +11746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 32
+  m_RootOrder: 14
 --- !u!95 &1952936103
 Animator:
   serializedVersion: 3
@@ -11618,6 +11762,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &1952936104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11630,7 +11775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0
@@ -11703,7 +11848,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 83
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11755,7 +11900,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 75
+      value: 57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11807,7 +11952,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11855,7 +12000,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 77
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -11891,7 +12036,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 64
+  m_RootOrder: 46
 --- !u!95 &2069727712
 Animator:
   serializedVersion: 3
@@ -11907,6 +12052,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2069727713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11919,7 +12065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -11992,7 +12138,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 83
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -12040,7 +12186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -12088,7 +12234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
       propertyPath: m_RootOrder
-      value: 54
+      value: 36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ffb6bbb74f25549befb3a15a49c3e3, type: 2}
@@ -12124,7 +12270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 11
+  m_RootOrder: 77
 --- !u!95 &2105889709
 Animator:
   serializedVersion: 3
@@ -12140,6 +12286,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2105889710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12152,7 +12299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -12209,7 +12356,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 59
+  m_RootOrder: 41
 --- !u!95 &2127767218
 Animator:
   serializedVersion: 3
@@ -12225,6 +12372,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2127767219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12237,7 +12385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -12294,7 +12442,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 50
+  m_RootOrder: 32
 --- !u!95 &2136207218
 Animator:
   serializedVersion: 3
@@ -12310,6 +12458,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2136207219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12322,7 +12471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 0
   wallType: 0
@@ -12379,7 +12528,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849601629}
-  m_RootOrder: 9
+  m_RootOrder: 75
 --- !u!95 &2147068727
 Animator:
   serializedVersion: 3
@@ -12395,6 +12544,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2147068728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12407,7 +12557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b5fc1e61351434091ab13eed0799c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorslot: 0
+  colorSlot: 0
   colorPreview: {r: .886274517, g: .886274517, b: .886274517, a: 1}
   orientation: 1
   wallType: 0

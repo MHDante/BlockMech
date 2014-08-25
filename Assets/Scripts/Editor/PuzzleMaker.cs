@@ -204,7 +204,6 @@ public class PuzzleMaker : EditorWindow
                     sceneView.Update();
                     sceneView.Repaint();
                 }
-                
             }
             else if (selectedPiece == typeof(Player))
             {

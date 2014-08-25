@@ -14,13 +14,20 @@ public static class FileWrite
     //    if (Input.GetKeyDown(KeyCode.D)) InitDeserialization();
     //    if (Input.GetKeyDown(KeyCode.T)) RoomManager.roomManager.RefreshColorFamilyAll();
     //}
-    static string filename = "Battletoads+Tetris.xml";
-    public static string InitSerialization()
+    static string defaultFileName = "Battletoads+Tetris";
+    public static string InitSerialization(string fileName = "")
     {
         XElement all = SerializeGrid();
         Debug.Log(all);
-
-        string fname = MonoBehaviour.FindObjectOfType<MetaData>().levelName;
+        string fname = "";
+        if (!string.IsNullOrEmpty(fileName))
+        {
+            fname = fileName;
+        }
+        else
+        {
+            fname = MonoBehaviour.FindObjectOfType<MetaData>().levelName;
+        }
         if (string.IsNullOrEmpty(fname))
         {
 #if UNITY_EDITOR
@@ -33,14 +40,37 @@ public static class FileWrite
         Debug.Log("Writing file: " + fname);
         return WriteFile(fname + ".xml", all.ToString());
     }
+    static string WriteFile(string filename, string text)
+    {
+        string path = GetPath();
+        //string fullFileName = path + "/SavedLevels/" + filename;
+        string fullFileName = path + "/" + filename;
+        StreamWriter fileWriter = File.CreateText(fullFileName);
+        //fileWriter.WriteLine("Hello world");
+        fileWriter.Write(text);
+        fileWriter.Close();
 
+
+        Debug.Log("=======PERSISTENTDATAPATH:" + Application.persistentDataPath);
+        Debug.Log("=================DATAPATH:" + Application.dataPath);
+
+        return fullFileName;
+    }
+    static string GetPath()
+    {
+        string path = Application.persistentDataPath;
+#if UNITY_EDITOR
+        path = Application.dataPath;
+#endif
+        return path;
+    }
     public static void InitDeserialization(string filename)
     {
         //MonoBehaviour.Destroy(RoomManager.roomManager);
         //RoomManager.roomManager = null;
         Application.LoadLevel("Blank");
         AwaitingDSCallback = true;
-        FileWrite.filename = filename;
+        FileWrite.defaultFileName = filename;
     }
     static bool AwaitingDSCallback = false;
     public static bool DeserializationCallback()
@@ -53,7 +83,9 @@ public static class FileWrite
 
         RoomManager room = MonoBehaviour.FindObjectOfType<RoomManager>();
 
-        XElement loaded = XElement.Load(Application.dataPath + "/SavedLevels/" + filename);
+        string path = GetPath();
+        //XElement loaded = XElement.Load(Application.dataPath + "/SavedLevels/" + defaultFileName);
+        XElement loaded = XElement.Load(path + "/" + defaultFileName + ".xml");
         XElement meta = loaded.Element(XName.Get("Meta"));
         MetaData metaData = (MetaData)MonoBehaviour.FindObjectOfType(typeof(MetaData));
         metaData.author = meta.Attribute("Author").Value;
@@ -236,23 +268,7 @@ public static class FileWrite
         }
         return r;
     }
-
-
-    static string WriteFile(string filename, string text)
-    {
-        //Debug.Log(Application.persistentDataPath);
-        string path = Application.persistentDataPath;
-#if UNITY_EDITOR
-        path = Application.dataPath;
-#endif
-        //string fullFileName = path + "/SavedLevels/" + filename;
-        string fullFileName = path + "/" + filename;
-        StreamWriter fileWriter = File.CreateText(fullFileName);
-        //fileWriter.WriteLine("Hello world");
-        fileWriter.Write(text);
-        fileWriter.Close();
-        return fullFileName;
-    }
+    
 }
 [System.AttributeUsage(System.AttributeTargets.Property |
                        System.AttributeTargets.Field)

@@ -12,9 +12,6 @@ using UnityEditor;
 public class RoomManager : MonoBehaviour {
     public static RoomManager roomManager;
     public static GameObject masterParent;
-
-
-
     public static Dictionary<Type, GameObject> pieceParents = new Dictionary<Type, GameObject>();
     public Cell[][] Grid;
     public Player player;
@@ -77,7 +74,15 @@ public class RoomManager : MonoBehaviour {
 				}
 			}
         }
-        FileWrite.DeserializationCallback();
+        try
+        {
+            FileWrite.DeserializationCallback();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Exception : " + e);
+            throw e;
+        }
     }
     public List<T> GetPiecesOfType<T>() where T : GamePiece
     {
@@ -170,7 +175,8 @@ public class RoomManager : MonoBehaviour {
             //    }
             //}
             //colorActivation[colorslot] = allSatisfied;
-            foreach(Wall door in GetDoorsOfColor(colorslot))
+            var doors = GetDoorsOfColor(colorslot);
+            foreach(Wall door in doors)
             {
                 if (allSatisfied)
                 {
@@ -208,7 +214,8 @@ public class RoomManager : MonoBehaviour {
             //    }
             //}
             //colorActivation[colorslot] = oneSatisfied;
-            foreach (Wall door in GetDoorsOfColor(colorslot))
+            var doors = GetDoorsOfColor(colorslot);
+            foreach (Wall door in doors)
             {
                 if (oneSatisfied)
                 {
